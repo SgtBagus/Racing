@@ -88,6 +88,50 @@
       </div>
     </section>
     <div class="col-xs-12">
+      <div class="box box-solid">
+        <div class="box-header with-border">
+          <h3 class="box-title">Even Terbaru</h3>
+        </div>
+        <div class="box-body">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="https://images.pexels.com/photos/2984347/pexels-photo-2984347.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="First slide" style="height: 250px; width: 100%">
+                <div class="carousel-caption">
+                  <h3>Lorem Ipsum</h3>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/2911657/pexels-photo-2911657.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Second slide" style="height: 250px; width: 100%">
+
+                <div class="carousel-caption">
+                  <h3>Lorem Ipsum</h3>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide" style="height: 250px; width: 100%">
+
+                <div class="carousel-caption">
+                  <h3>Lorem Ipsum</h3>
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+              <span class="fa fa-angle-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+              <span class="fa fa-angle-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12">
       <div class="box box-info">
         <div class="box-header with-border">
           <h3 class="box-title">5 List terbaru Event Yang Diikuti</h3>
@@ -167,10 +211,10 @@
                 </tr>
               </tbody>
             </table>
-            <button class="btn btn-block btn-primary">
-              <i class="fa fa-plus"></i> Ikuti Even Lain
-            </button>
           </div>
+          <button class="btn btn-block btn-primary">
+            <i class="fa fa-plus"></i> Ikuti Even Lain
+          </button>
         </div>
       </div>
     </div>
@@ -254,10 +298,10 @@
                 </tr>
               </tbody>
             </table>
-            <button class="btn btn-block btn-primary">
-              <i class="fa fa-plus"></i> Tambah Data Pembalap
-            </button>
           </div>
+          <button class="btn btn-block btn-primary">
+            <i class="fa fa-plus"></i> Ikuti Even Lain
+          </button>
         </div>
       </div>
     </div>

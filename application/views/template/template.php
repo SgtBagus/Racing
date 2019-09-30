@@ -120,9 +120,6 @@
   <script src="<?= base_url('assets/') ?>dist/js/adminlte.min.js"></script>
   <script src="<?= base_url('assets/') ?>dist/js/pages/dashboard.js"></script>
   <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
-  <script src="<?= base_url('assets/') ?>mobile/main.js"></script>
-  <script src="<?= base_url('assets/') ?>mobile/jquery.mobile-1.4.5.min.js"></script>
-  <script src="<?= base_url('assets/') ?>mobile/mobile_custom.js"></script>
   <script type="text/javascript">
     $("#btnFile").click(function() {
       document.getElementById('imageFile').click();

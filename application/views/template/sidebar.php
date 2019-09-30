@@ -2,8 +2,8 @@
     <section class="sidebar" style="height: auto;">
         <div class="user-panel">
             <div class="row" align="center">
-                <img src="<?= base_url('assets/')?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                <h2>Alexander Pierce</h2>
+                <img src="<?= base_url('assets/')?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" height="150px" width="150px">
+                <h2>Alexander Pierce  <i class="fa fa-check-circle" style="color: #3b8dbc"> </i> </h2>
             </div>
         </div>
         <ul class="sidebar-menu tree" data-widget="tree">
@@ -16,32 +16,61 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-archive"></i>
-                    <span>Manajemen Event</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i>
-                    <span>Pendaftaran</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span>Pengguna</span>
+                    <i class="fa fa-check-square-o"></i>
+                    <span>Manajemen</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#"><i class="fa fa-user"></i> Pendaftar</a>
+                        <a href="#"><i class="fa fa-motorcycle"></i> Pembalap</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-user"></i> Pembalap</a>
+                        <a href="#"><i class="fa fa-users"></i> Tim</a>
                     </li>
                 </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-map-o"></i> 
+                    <span>Even</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-star"></i> Cari Even</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-television"></i> Monitoring Even</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-users"></i> 
+                    <span>Verified Team</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-motorcycle"></i> 
+                    <span>Verified Rider</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-picture-o"></i> 
+                    <span>Gallery</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-cubes"></i> 
+                    <span>Merchandise</span>
+                </a>
             </li>
             <li class="treeview">
                 <a href="#">
