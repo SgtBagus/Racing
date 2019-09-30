@@ -14,9 +14,10 @@
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/morris.js/morris.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/select2/dist/css/select2.min.css">
+
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
 </head>
 
 <body class="layout-top-nav fixed skin-purple-light">
@@ -30,7 +31,7 @@
                 <i class="fa fa-bars"></i>
               </a>
               <a href="#" class="navbar-brand">
-                <b>Admin</b>LTE
+                <b>Admin</b>LTE - <b><?=$page ?></b>
               </a>
             </div>
           </div>
@@ -69,9 +70,6 @@
     </header>
     <div class="content-wrapper">
       <div class="container" style="margin-top: -50px;">
-        <section class="content-header" align="center">
-          <h1><?= $page ?></h1>
-        </section>
         <?= $contents ?>
         <?php $this->load->view('template/sidebar') ?>
         <div class="fixed-footer"></div>
@@ -106,6 +104,7 @@
   </div>
   <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <script src="<?= base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>
   <script>
     $.widget.bridge('uibutton', $.ui.button);
   </script>
@@ -125,7 +124,13 @@
   <script src="<?= base_url('assets/') ?>dist/js/adminlte.min.js"></script>
   <script src="<?= base_url('assets/') ?>dist/js/pages/dashboard.js"></script>
   <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
+  <script src="<?= base_url('assets/') ?>mobile/main.js"></script>
+  <script src="<?= base_url('assets/') ?>mobile/jquery.mobile-1.4.5.min.js"></script>
+  <script src="<?= base_url('assets/') ?>mobile/mobile_custom.js"></script>
   <script type="text/javascript">
+    $(function() {
+      $('.select2').select2()
+    });
     $("#btnFile").click(function() {
       document.getElementById('imageFile').click();
     });
@@ -140,7 +145,7 @@
         var reader = new FileReader();
 
         reader.onload = function(e) {
-          $('#preview_image').before('<img src="'+e.target.result+'" width="100%" style="margin-bottom: 10px" id="preview">');
+          $('#preview_image').before('<img src="' + e.target.result + '" width="100%" style="margin-bottom: 10px" id="preview">');
         }
 
         reader.readAsDataURL(input.files[0]);
@@ -154,7 +159,7 @@
     $('#refresh').click(function() {
       location.reload();
     });
-
   </script>
 </body>
+
 </html>

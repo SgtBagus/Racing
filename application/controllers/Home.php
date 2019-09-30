@@ -5,7 +5,7 @@ class Home extends MY_Controller {
 	}
 
 	public function index(){
-		$data['page'] = '<i class="fa fa-bar-chart"></i> Statistik';
+		$data['page'] = 'Statistik';
         $this->template->load('template/template','index', $data); 
 	}
 	

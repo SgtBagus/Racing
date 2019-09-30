@@ -5,12 +5,12 @@ class Login extends MY_Controller {
 	}
 
 	public function index(){
-		$data['page'] = '<i class="fa fa-sign-in"></i> Login';
+		$data['page'] = 'Login';
         $this->template->load('template/template','login/index', $data); 
 	}
 
 	public function register(){
-		$data['page'] = '<i class="fa fa-users"></i> Mendaftar';
+		$data['page'] = 'Daftar';
         $this->template->load('template/template','login/register', $data); 
 	}
 	

@@ -41,10 +41,10 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#"><i class="fa fa-star"></i> Cari Even</a>
+                        <a href="<?= base_url('event') ?>"><i class="fa fa-star"></i> Cari Event</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-television"></i> Monitoring Even</a>
+                        <a href="#"><i class="fa fa-television"></i> Monitoring Event</a>
                     </li>
                 </ul>
             </li>
