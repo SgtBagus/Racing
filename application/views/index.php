@@ -132,86 +132,65 @@
       </div>
     </div>
     <div class="col-xs-12">
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h3 class="box-title">5 List terbaru Event Yang Diikuti</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-          </div>
-        </div>
+      <div class="box">
         <div class="box-body">
-          <div class="table-responsive">
-            <table class="table no-margin">
-              <thead>
-                <tr>
-                  <th>Order ID</th>
-                  <th>Item</th>
-                  <th>Status</th>
-                  <th>Popularity</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                  <td>Call of Duty IV</td>
-                  <td><span class="label label-success">Shipped</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                  <td>Samsung Smart TV</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                  <td>iPhone 6 Plus</td>
-                  <td><span class="label label-danger">Delivered</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                  <td>Samsung Smart TV</td>
-                  <td><span class="label label-info">Processing</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                  <td>Samsung Smart TV</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                  <td>iPhone 6 Plus</td>
-                  <td><span class="label label-danger">Delivered</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                  <td>Call of Duty IV</td>
-                  <td><span class="label label-success">Shipped</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <h5 class="box-title" align="center"><b>3 List terbaru Event Yang Diikuti</b></h5>
+          <hr>
+          <div class="row" style="margin-bottom: 15px">
+            <div class="col-xs-5">
+              <img class="img-even" src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide">
+            </div>
+            <div class="col-xs-7">
+              <h4>Lorem Ipsum
+                <br>
+                <small>
+                  <i class="fa fa-globe"></i> Lorem Ipsum Ipsum Damet
+                  <br>
+                  <b>
+                    <i class="fa fa-motorcycle"></i> 154
+                    <i class="fa fa-users"></i> 12
+                  </b>
+                </small>
+              </h4>
+            </div>
           </div>
+          <div class="row" style="margin-bottom: 15px">
+            <div class="col-xs-5">
+              <img class="img-even" src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide">
+            </div>
+            <div class="col-xs-7">
+              <h4>Lorem Ipsum
+                <br>
+                <small>
+                  <i class="fa fa-globe"></i> Lorem Ipsum Ipsum Damet
+                  <br>
+                  <b>
+                    <i class="fa fa-motorcycle"></i> 154
+                    <i class="fa fa-users"></i> 12
+                  </b>
+                </small>
+              </h4>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 15px">
+            <div class="col-xs-5">
+              <img class="img-even" src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide">
+            </div>
+            <div class="col-xs-7">
+              <h4>Lorem Ipsum
+                <br>
+                <small>
+                  <i class="fa fa-globe"></i> Lorem Ipsum Ipsum Damet
+                  <br>
+                  <b>
+                    <i class="fa fa-motorcycle"></i> 154
+                    <i class="fa fa-users"></i> 12
+                  </b>
+                </small>
+              </h4>
+            </div>
+          </div>
+          <hr>
           <button class="btn btn-block btn-primary">
             <i class="fa fa-plus"></i> Ikuti Even Lain
           </button>
@@ -219,88 +198,50 @@
       </div>
     </div>
     <div class="col-xs-12">
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h3 class="box-title">5 Data Pembalap Terbaru</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-          </div>
-        </div>
+      <div class="box">
         <div class="box-body">
-          <div class="table-responsive">
-            <table class="table no-margin">
-              <thead>
-                <tr>
-                  <th>Order ID</th>
-                  <th>Item</th>
-                  <th>Status</th>
-                  <th>Popularity</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                  <td>Call of Duty IV</td>
-                  <td><span class="label label-success">Shipped</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                  <td>Samsung Smart TV</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                  <td>iPhone 6 Plus</td>
-                  <td><span class="label label-danger">Delivered</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                  <td>Samsung Smart TV</td>
-                  <td><span class="label label-info">Processing</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                  <td>Samsung Smart TV</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                  <td>iPhone 6 Plus</td>
-                  <td><span class="label label-danger">Delivered</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                  <td>Call of Duty IV</td>
-                  <td><span class="label label-success">Shipped</span></td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <h5 class="box-title" align="center"><b>6 Data Pembalap Terbaru</b></h5>
+          <hr>
+          <div class="row" style="margin-bottom: 15px"  align="center">
+            <div class="col-xs-4">
+              <img src="<?= base_url('assets/')?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <h4>Alex Masion <br>
+                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
+              </h4>
+            </div>
+            <div class="col-xs-4">
+              <img src="<?= base_url('assets/')?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <h4>Alex Masion <br>
+                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
+              </h4>
+            </div>
+            <div class="col-xs-4">
+              <img src="<?= base_url('assets/')?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <h4>Alex Masion <br>
+                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
+              </h4>
+            </div>
+            <div class="col-xs-4">
+              <img src="<?= base_url('assets/')?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <h4>Alex Masion <br>
+                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
+              </h4>
+            </div>
+            <div class="col-xs-4">
+              <img src="<?= base_url('assets/')?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <h4>Alex Masion <br>
+                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
+              </h4>
+            </div>
+            <div class="col-xs-4">
+              <img src="<?= base_url('assets/')?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <h4>Alex Masion <br>
+                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
+              </h4>
+            </div>
           </div>
           <button class="btn btn-block btn-primary">
-            <i class="fa fa-plus"></i> Ikuti Even Lain
+            <i class="fa fa-plus"></i> Tambah Pembalap
           </button>
         </div>
       </div>

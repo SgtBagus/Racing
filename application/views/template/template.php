@@ -57,6 +57,11 @@
                   <li class="footer"><a href="#">View all</a></li>
                 </ul>
               </li>
+              <li>
+                <a href="" type="button" class="dropdown-toggle" id="refresh">
+                  <i class="fa fa-refresh"></i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -145,6 +150,11 @@
     $('#datepicker').datepicker({
       format: 'dd-mm-yyyy',
     });
+
+    $('#refresh').click(function() {
+      location.reload();
+    });
+
   </script>
 </body>
 </html>
