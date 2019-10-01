@@ -19,58 +19,35 @@
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
   <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
   <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <script src="<?= base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>
 </head>
 
 <body class="layout-top-nav fixed skin-purple-light">
   <div class="wrapper">
     <header class="main-header">
-      <nav class="navbar navbar-static-top" style="height: 60px">
-        <div class="container">
-          <div class="navbar-header">
-            <div class="header-center">
-              <a href="#" id="sidebarButton" class="navbar-brand open-sidebar" data-toggle="control-sidebar">
-                <i class="fa fa-bars"></i>
-              </a>
-              <a href="#" class="navbar-brand">
-                <b>ENDURORALLY</b>
-              </a>
+      <nav class="navbar">
+        <div class="row">
+          <div class="col-xs-2">
+            <a href="#" id="sidebarButton" class="header-menu open-sidebar" data-toggle="control-sidebar">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+          <a href="#">
+            <div class="col-xs-8 header-menu" align="center">
+              <b>ENDURORALLY</b>
             </div>
-          </div>
-          <div class="navbar-collapse pull-left">
-          </div>
-          <div class="navbar-custom-menu header-center">
-            <ul class="nav navbar-nav">
-              <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-bell-o"></i>
-                  <span class="label label-warning">10</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="header">You have 10 notifications</li>
-                  <li>
-                    <ul class="menu">
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="footer"><a href="#">View all</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="" type="button" class="dropdown-toggle" id="refresh">
-                  <i class="fa fa-refresh"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
+          </a>
+          <a href="#" id="refresh">
+            <div class="col-xs-2 header-menu">
+              <i class="fa fa-refresh" style="margin-left: 7px;"></i>
+            </div>
+          </a>
         </div>
       </nav>
     </header>
     <div class="content-wrapper">
-      <div class="container" style="margin-top: -50px;">
+      <div class="container" style="margin-top: -25px;">
         <?= $contents ?>
         <?php $this->load->view('template/sidebar') ?>
         <div class="fixed-footer"></div>
@@ -103,8 +80,6 @@
       </div>
     </footer>
   </div>
-  <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
-  <script src="<?= base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>
   <script>
     $.widget.bridge('uibutton', $.ui.button);
   </script>

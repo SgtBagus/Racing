@@ -13,4 +13,9 @@ class Event extends MY_Controller {
 		$data['page'] = 'Event';
         $this->template->load('template/template','event/view', $data); 
 	}
+
+	public function register($id){
+		$data['page'] = 'Event';
+        $this->template->load('template/template','event/register', $data); 
+	}
 }

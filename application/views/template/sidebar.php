@@ -34,7 +34,7 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-map-o"></i> 
-                    <span>Even</span>
+                    <span>Event</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -58,6 +58,12 @@
                 <a href="#">
                     <i class="fa fa-motorcycle"></i> 
                     <span>Verified Rider</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-newspaper-o"></i> 
+                    <span>Blog</span>
                 </a>
             </li>
             <li>
