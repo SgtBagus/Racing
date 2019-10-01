@@ -28,7 +28,7 @@
     <header class="main-header">
       <nav class="navbar">
         <div class="row">
-          <div class="col-xs-2">
+          <div class="col-xs-2" align="center">
             <a href="#" id="sidebarButton" class="header-menu open-sidebar" data-toggle="control-sidebar">
               <i class="fa fa-bars"></i>
             </a>
@@ -39,8 +39,8 @@
             </div>
           </a>
           <a href="#" id="refresh">
-            <div class="col-xs-2 header-menu">
-              <i class="fa fa-refresh" style="margin-left: 7px;"></i>
+            <div class="col-xs-2 header-menu" align="center" style="margin-left: -5px">
+              <i class="fa fa-refresh"></i>
             </div>
           </a>
         </div>
