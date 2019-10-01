@@ -199,37 +199,37 @@
           <hr>
           <div class="row" style="margin-bottom: 15px" align="center">
             <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
               <h4>Alex Masion <br>
                 <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
               </h4>
             </div>
             <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
               <h4>Alex Masion <br>
                 <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
               </h4>
             </div>
             <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
               <h4>Alex Masion <br>
                 <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
               </h4>
             </div>
             <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
               <h4>Alex Masion <br>
                 <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
               </h4>
             </div>
             <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
               <h4>Alex Masion <br>
                 <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
               </h4>
             </div>
             <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="100px" width="100px">
+              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
               <h4>Alex Masion <br>
                 <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
               </h4>

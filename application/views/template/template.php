@@ -18,12 +18,13 @@
 
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
   <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+  <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body class="layout-top-nav fixed skin-purple-light">
   <div class="wrapper">
     <header class="main-header">
-      <nav class="navbar navbar-static-top">
+      <nav class="navbar navbar-static-top" style="height: 60px">
         <div class="container">
           <div class="navbar-header">
             <div class="header-center">
@@ -31,7 +32,7 @@
                 <i class="fa fa-bars"></i>
               </a>
               <a href="#" class="navbar-brand">
-                <b>Admin</b>LTE - <b><?=$page ?></b>
+                <b>ENDURORALLY</b>
               </a>
             </div>
           </div>
@@ -102,7 +103,6 @@
       </div>
     </footer>
   </div>
-  <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>
   <script>

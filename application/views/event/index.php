@@ -12,10 +12,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Kategori</label>
-                                    <select class="form-control select2" multiple="multiple" data-placeholder="Kategori" style="width: 100%;">
-                                        <option>Motor</option>
-                                        <option>Mobil</option>
-                                        <option>Pesawat</option>
+                                    <select class="form-control select2" multiple="multiple" data-placeholder="Kategori" style="width: 100%;" id="kategori">
                                     </select>
                                 </div>
                                 <div class="box-footer" align="center">
@@ -115,3 +112,13 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    $(function() {
+        $('#kategori').select2({
+            data: ["Piano", "Flute", "Guitar", "Drums", "Photography"],
+            tags: true,
+            maximumSelectionLength: 10,
+            tokenSeparators: [',', ' '],
+        });
+    });
+</script>
