@@ -78,8 +78,8 @@
                     <span>Merchandise</span>
                 </a>
             </li>
-            <li class="treeview">
-                <a href="#">
+            <li>
+                <a href="<?= base_url('login/logout')?>">
                     <i class="fa fa-sign-out"></i>
                     <span>Logout</span>
                 </a>

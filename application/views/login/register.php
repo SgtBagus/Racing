@@ -3,73 +3,48 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">General Elements</h3>
+          <h3 class="box-title">Daftarkan Tim Anda</h3>
         </div>
         <div class="box-body">
-          <form role="form">
+          <form role="form" action="<?= base_url('login/actionRegister') ?>" method="POST" id="sumbit">
+            <div class="show_error"></div>
             <div class="form-group">
-              <label>Text</label>
-              <input type="text" class="form-control" placeholder="Enter ...">
+              <label>Nama Tim</label>
+              <input type="text" name="dt[name]" class="form-control">
             </div>
             <div class="form-group">
-              <label>Textarea</label>
-              <textarea class="form-control" rows="5" placeholder="Enter ..."></textarea>
+              <label>Email Tim</label>
+              <input type="email" name="dt[email]" class="form-control">
             </div>
-            <div class="form-group">
-              <label>File Preview</label>
-              <div class="input-group" id="preview_image">
-                <div class="input-group-btn">
-                  <button type="button" class="btn btn-danger" id="btnFile">Pilih Gambar</button>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" name="password" class="form-control">
                 </div>
-                <input type="text" class="form-control" readonly>
-                <input type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
               </div>
-              <p class="help-block">Foto yang diupload disarankan berukuran 70px x 70px dan memiliki format PNG, JPG, atau JPEG</p>
-            </div>
-            <div class="form-group">
-              <label>Textarea</label>
-              <input type="text"class="form-control" id="datepicker" placeholder="Masukan Tanggal Lahir">
-            </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox">
-                  Checkbox 1
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox">
-                  Checkbox 2
-                </label>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label>Konfirmasi Password</label>
+                  <input type="password" name="confirmpassword" class="form-control">
+                </div>
               </div>
             </div>
             <div class="form-group">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                  Option one is this and that—be sure to include why it's great
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  Option two can be something else and selecting it will deselect option one
-                </label>
-              </div>
+              <label>Alamat Tim</label>
+              <textarea name="dt[alamat]" class="form-control" rows="5"></textarea>
             </div>
             <div class="form-group">
-              <label>Select</label>
-              <select class="form-control">
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
+              <label>Kota Tim</label>
+              <input type="password" name="dt[kota]" class="form-control">
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-md btn-block btn-primary">
+              <label>Nomor Wa</label>
+              <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+            </div>
+            <div class="show_error"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
                 <i class="fa fa-send"></i> Submit
               </button>
               <p class="help-block pull-right">Sudah Punya Akun ? <a href="<?= base_url('login') ?>">Login Disini </a></p>
@@ -80,3 +55,44 @@
     </div>
   </div>
 </section>
+<script type="text/javascript">
+  $(function() {
+    $("#sumbit").submit(function() {
+      var form = $(this);
+      var mydata = new FormData(this);
+      $.ajax({
+        type: "POST",
+        url: form.attr("action"),
+        data: mydata,
+        cache: false,
+        contentType: false,
+        processData: false,
+        beforeSend: function() {
+          $(".btn-send").addClass("disabled").html("<i class='la la-spinner la-spin'></i>  Memperoses...").attr('disabled', true);
+          form.find(".show_error").slideUp().html("");
+        },
+
+        success: function(response, textStatus, xhr) {
+          var str = response;
+          if (str.indexOf("success") != -1) {
+            form.find(".show_error").hide().html(response).slideDown("fast");
+            setTimeout(function() {
+              window.location.href = "<?= base_url() ?>";
+            }, 1000);
+
+            $(".btn-send").removeClass("disabled").html('<i class="fa fa-save"></i> Save').attr('disabled', false);
+          } else {
+            form.find(".show_error").hide().html(response).slideDown("fast");
+            $(".btn-send").removeClass("disabled").html('<i class="fa fa-save"></i> Save').attr('disabled', false);
+          }
+        },
+        error: function(xhr, textStatus, errorThrown) {
+          console.log(xhr);
+          $(".btn-send").removeClass("disabled").html('<i class="fa fa-save"></i> Save').attr('disabled', false);
+          form.find(".show_error").hide().html(xhr).slideDown("fast");
+        }
+      });
+      return false;
+    });
+  });
+</script>
