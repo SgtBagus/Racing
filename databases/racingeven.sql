@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2019 at 11:12 AM
+-- Generation Time: Oct 02, 2019 at 05:08 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -636,7 +636,10 @@ CREATE TABLE `file` (
 INSERT INTO `file` (`id`, `name`, `mime`, `dir`, `table`, `table_id`, `status`, `url`, `created_at`, `updated_at`) VALUES
 (271, '6950c16c9bcc6995f376b297f163175942635.jpg', 'image/jpeg', 'webfiles/users/6950c16c9bcc6995f376b297f163175942635.jpg', 'user', 13, 'ENABLE', 'http://192.168.100.9:8080/webfiles/users/6950c16c9bcc6995f376b297f163175942635.jpg', '2019-10-02 09:46:54', '2019-10-02 09:58:43'),
 (272, '6950c16c9bcc6995f376b297f163175930376.jpg', 'image/jpeg', 'webfiles/users/6950c16c9bcc6995f376b297f163175930376.jpg', 'user', 14, 'ENABLE', 'http://192.168.100.9:8080/webfiles/users/6950c16c9bcc6995f376b297f163175930376.jpg', '2019-10-02 09:46:54', '2019-10-02 09:58:51'),
-(280, 'team_default.png', 'image/png', 'webfiles/team/team_default.png', 'tbl_team', 8, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/team_default.png', '2019-10-02 15:55:12', NULL);
+(280, 'team_default.png', 'image/png', 'webfiles/team/team_default.png', 'tbl_team', 8, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/team_default.png', '2019-10-02 15:55:12', NULL),
+(284, '6950c16c9bcc6995f376b297f163175989292.png', 'image/png', 'webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', 'tbl_manager', 5, 'ENABLE', 'http://192.168.100.9:8000/webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', '2019-10-02 20:27:08', NULL),
+(285, '6950c16c9bcc6995f376b297f163175933310.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', 'tbl_raider', 1, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', '2019-10-02 22:02:28', NULL),
+(287, '6950c16c9bcc6995f376b297f163175918963.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', 'tbl_raider', 3, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', '2019-10-02 22:06:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -799,7 +802,7 @@ INSERT INTO `menu_master` (`id`, `name`, `icon`, `link`, `urutan`, `parent`, `no
 (1, 'Dashboard', 'fa fa-dashboard', '/', '0', '0', '', 'ENABLE', '2019-01-17 14:33:33', '2019-10-02 08:10:30'),
 (37, 'Data', 'fa fa-check-square-o', '#', '1', '0', '', 'ENABLE', '2019-10-02 08:08:53', '2019-10-02 08:27:23'),
 (38, 'Team', 'fa fa-users', 'team', '0', '37', '', 'ENABLE', '2019-10-02 08:09:30', '2019-10-02 11:46:30'),
-(39, 'Raider', 'fa fa-motorcycle', 'raider', '1', '37', '', 'ENABLE', '2019-10-02 08:10:13', '2019-10-02 08:19:55'),
+(39, 'Raider', 'fa fa-motorcycle', 'raider', '2', '37', '', 'ENABLE', '2019-10-02 08:10:13', '2019-10-02 18:48:36'),
 (40, 'Event', 'fa fa-map-o', '#', '2', '0', '', 'ENABLE', '2019-10-02 08:20:54', NULL),
 (41, 'Manajement Event', 'fa fa-star', 'event', '0', '40', '', 'ENABLE', '2019-10-02 08:21:36', '2019-10-02 08:28:00'),
 (42, 'Pendaftar Event', 'fa fa-users', 'eventregistrar', '1', '40', '', 'ENABLE', '2019-10-02 08:24:04', NULL),
@@ -812,7 +815,8 @@ INSERT INTO `menu_master` (`id`, `name`, `icon`, `link`, `urutan`, `parent`, `no
 (49, 'Master', 'fa fa-database', '#', '7', '0', '', 'ENABLE', '2019-10-02 08:34:02', '2019-10-02 08:34:37'),
 (50, 'Pengaturan', 'fa fa-link', '#', '8', '0', '', 'ENABLE', '2019-10-02 08:35:08', '2019-10-02 08:35:33'),
 (51, 'Role Tim', 'fa fa-cog', 'master/timrole', '0', '49', '', 'ENABLE', '2019-10-02 10:29:24', '2019-10-02 10:30:48'),
-(52, 'Kota', 'fa fa-building', 'master/city', '1', '49', '', 'ENABLE', '2019-10-02 15:54:20', '2019-10-02 15:55:26');
+(52, 'Kota', 'fa fa-building', 'master/city', '1', '49', '', 'ENABLE', '2019-10-02 15:54:20', '2019-10-02 15:55:26'),
+(53, 'Manajer', 'fa fa-user', 'manager', '1', '37', '', 'ENABLE', '2019-10-02 18:47:27', '2019-10-02 18:48:27');
 
 -- --------------------------------------------------------
 
@@ -850,7 +854,56 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `role`, `status`, `menu`, `created_at`, `updated_at`) VALUES
-(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"51\",\"52\",\"50\"]', '2018-10-12 17:03:59', '2019-10-02 15:54:38');
+(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"53\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"51\",\"52\",\"50\"]', '2018-10-12 17:03:59', '2019-10-02 18:47:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_manager`
+--
+
+CREATE TABLE `tbl_manager` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) DEFAULT NULL,
+  `name` varchar(225) DEFAULT NULL,
+  `alamat` text,
+  `nowa` varchar(225) DEFAULT NULL,
+  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_manager`
+--
+
+INSERT INTO `tbl_manager` (`id`, `team_id`, `name`, `alamat`, `nowa`, `status`, `created_at`, `updated_at`) VALUES
+(5, 8, 'Manager', 'disana ', '(213) 123-1232', 'ENABLE', '2019-10-02 19:38:00', '2019-10-02 20:27:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_raider`
+--
+
+CREATE TABLE `tbl_raider` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) DEFAULT NULL,
+  `name` varchar(225) DEFAULT NULL,
+  `alamat` text,
+  `nowa` varchar(225) DEFAULT NULL,
+  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_raider`
+--
+
+INSERT INTO `tbl_raider` (`id`, `team_id`, `name`, `alamat`, `nowa`, `status`, `created_at`, `updated_at`) VALUES
+(1, 8, 'Raider 1', 'Alamat Raider', '(123) 123-1232', 'ENABLE', '2019-10-02 22:02:28', NULL),
+(3, 8, 'Raider 2', 'Alamat Raider ke 2', '(123) 123-2132', 'ENABLE', '2019-10-02 22:06:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -866,6 +919,7 @@ CREATE TABLE `tbl_team` (
   `alamat` text,
   `city_id` int(11) DEFAULT NULL,
   `nowa` varchar(225) DEFAULT NULL,
+  `verificacion` enum('ENABLE','DISABLE') NOT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -875,8 +929,8 @@ CREATE TABLE `tbl_team` (
 -- Dumping data for table `tbl_team`
 --
 
-INSERT INTO `tbl_team` (`id`, `name`, `email`, `password`, `alamat`, `city_id`, `nowa`, `status`, `created_at`, `updated_at`) VALUES
-(8, 'team satu', 'team@gmail.com', '7815696ecbf1c96e6894b779456d330e', 'disini', 1, '(123) 124-1232', 'ENABLE', '2019-10-02 15:55:12', NULL);
+INSERT INTO `tbl_team` (`id`, `name`, `email`, `password`, `alamat`, `city_id`, `nowa`, `verificacion`, `status`, `created_at`, `updated_at`) VALUES
+(8, 'team satu', 'team@gmail.com', '7815696ecbf1c96e6894b779456d330e', 'disini', 1, '(123) 124-1232', 'ENABLE', 'ENABLE', '2019-10-02 15:55:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -977,6 +1031,18 @@ ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_manager`
+--
+ALTER TABLE `tbl_manager`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_raider`
+--
+ALTER TABLE `tbl_raider`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
@@ -1008,7 +1074,7 @@ ALTER TABLE `access_control`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
 
 --
 -- AUTO_INCREMENT for table `grafik`
@@ -1044,7 +1110,7 @@ ALTER TABLE `master_city`
 -- AUTO_INCREMENT for table `menu_master`
 --
 ALTER TABLE `menu_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -1057,6 +1123,18 @@ ALTER TABLE `report`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tbl_manager`
+--
+ALTER TABLE `tbl_manager`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_raider`
+--
+ALTER TABLE `tbl_raider`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_team`
