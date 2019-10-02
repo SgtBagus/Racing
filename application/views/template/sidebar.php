@@ -1,9 +1,14 @@
 <aside id="sidebar" class="control-sidebar control-sidebar-light" style="display: none;">
     <section class="sidebar" style="height: auto;">
         <div class="user-panel">
-            <div class="row" align="center">
-                <img src="<?= base_url('assets/')?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" height="150px" width="150px">
-                <h2>Alexander Pierce  <i class="fa fa-check-circle" style="color: #3b8dbc"> </i> </h2>
+            <div class="row" align="center"> 
+                <?php 
+                $id_session = $this->session->userdata('id');
+                $team = $this->mymodel->selectDataone('tbl_team', array('id' => $id_session));
+                $photo = $this->mymodel->selectDataone('file', array('table' => 'tbl_team', 'table_id' => $team['id'])); 
+                ?>
+                <img src="<?= $photo['url'] ?>" class="img-circle" alt="User Image" height="150px" width="150px">
+                <h2><?= $team['name'] ?>  <i class="fa fa-check-circle" style="color: #3b8dbc"> </i> </h2>
             </div>
         </div>
         <ul class="sidebar-menu tree" data-widget="tree">
@@ -27,7 +32,7 @@
                         <a href="#"><i class="fa fa-motorcycle"></i> Pembalap</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-users"></i> Tim</a>
+                        <a href="<?= base_url('team') ?>"><i class="fa fa-users"></i> Team</a>
                     </li>
                 </ul>
             </li>

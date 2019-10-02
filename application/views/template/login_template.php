@@ -55,6 +55,9 @@
   <script src="<?= base_url('assets/') ?>dist/js/adminlte.min.js"></script>
   <script type="text/javascript">
     $('[data-mask]').inputmask()
+    $(function() {
+      $('.select2').select2()
+    });
   </script>
 </body>
 

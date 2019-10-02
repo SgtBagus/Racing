@@ -77,9 +77,9 @@ class Login extends MY_Controller
 				$dt['created_at'] = date('Y-m-d H:i:s');
 				$this->db->insert('tbl_team', $dt);
 
-				$file['name'] = 'team_detault.png';
+				$file['name'] = 'team_default.png';
 				$file['mime'] = 'image/png';
-				$file['dir'] = 'webfile/team/team_detault.png';
+				$file['dir'] = 'webfiles/team/team_default.png';
 				$file['table'] = 'tbl_team';
 				$file['table_id'] = $this->db->insert_id();
 				$file['url'] = base_url().$file['dir'];
@@ -98,5 +98,5 @@ class Login extends MY_Controller
 				$this->alert->alertsuccess('Akun Berhasil Terdaftar anda akan di arahkan ke halaman utama');
 			}
 		}
-	}
+	} 
 }

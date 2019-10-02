@@ -36,7 +36,15 @@
             </div>
             <div class="form-group">
               <label>Kota Tim</label>
-              <input type="password" name="dt[kota]" class="form-control">
+              <select class="form-control select2" name="dt[city_id]">
+                <option value="">--Pilih Kota--</option>
+                <?php
+                $master_city = $this->mymodel->selectData("master_city");
+                foreach ($master_city as $key => $value) {
+                  ?>
+                  <option value="<?= $value['id'] ?>"><?= $value['value'] ?></option>
+                <?php } ?>
+              </select>
             </div>
             <div class="form-group">
               <label>Nomor Wa</label>
