@@ -33,7 +33,7 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-5">
-                                        <img src="<?= $photo['url'] ?>" alt="Third slide" height="100%" width="100%" height="50px">
+                                        <img src="<?= $photo['url'] ?>" alt="Third slide" height="100px" width="100%" >
                                     </div>
                                     <div class="col-xs-7">
                                         <h4><?= $row['name'] ?> <?php if ($row['verificacion'] == 'ENABLE') {

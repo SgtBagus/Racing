@@ -12,7 +12,7 @@ class Manager extends MY_Controller
         if($_GET['name']){
             $data['manajer'] = $this->mymodel->selectWithQuery('SELECT * from tbl_manager WHERE team_id = '.$this->session->userdata('id').' AND name LIKE "%'.$_GET['name'].'%"');
         }else{
-            $data['manajer'] = $this->mymodel->selectData('tbl_manager', array('team_id' => $this->session->userdata('id')));
+            $data['manajer'] = $this->mymodel->selectWhere('tbl_manager', array('team_id' => $this->session->userdata('id')));
         }
         
         $this->template->load('template/template', 'manager/index', $data);

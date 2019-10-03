@@ -12,7 +12,7 @@ class Raider extends MY_Controller
         if($_GET['name']){
             $data['raider'] = $this->mymodel->selectWithQuery('SELECT * from tbl_raider WHERE team_id = '.$this->session->userdata('id').' AND name LIKE "%'.$_GET['name'].'%"');
         }else{
-            $data['raider'] = $this->mymodel->selectData('tbl_raider', array('team_id' => $this->session->userdata('id')));
+            $data['raider'] = $this->mymodel->selectWhere('tbl_raider', array('team_id' => $this->session->userdata('id')));
         }
         
         $this->template->load('template/template', 'raider/index', $data);
