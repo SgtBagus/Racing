@@ -1,10 +1,17 @@
+<?php
+if ($this->session->userdata('session_sop') == "") {
+  echo "<script type='text/javascript'>window.top.location='" . base_url('login') . "';</script>";
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Top Navigation</title>
+  <title>ENDURORALLY</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/font-awesome/css/font-awesome.min.css">
@@ -91,6 +98,8 @@
   <script src="<?= base_url('assets/') ?>plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/moment/min/moment.min.js"></script>
+  <script src="<?= base_url('assets/') ?>plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="<?= base_url('assets/') ?>plugins/input-mask/jquery.inputmask.extensions.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <script src="<?= base_url('assets/') ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
@@ -134,6 +143,7 @@
     $('#refresh').click(function() {
       location.reload();
     });
+    $('[data-mask]').inputmask()
   </script>
 </body>
 
