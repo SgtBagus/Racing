@@ -21,6 +21,7 @@ if ($this->session->userdata('session_sop') == "") {
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/morris.js/morris.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/iCheck/all.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/select2/dist/css/select2.min.css">
 
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
@@ -108,6 +109,7 @@ if ($this->session->userdata('session_sop') == "") {
   <script src="<?= base_url('assets/') ?>dist/js/adminlte.min.js"></script>
   <script src="<?= base_url('assets/') ?>dist/js/pages/dashboard.js"></script>
   <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
+  <script src="<?= base_url('assets/') ?>plugins/iCheck/icheck.min.js"></script>
   <script src="<?= base_url('assets/') ?>mobile/main.js"></script>
   <script src="<?= base_url('assets/') ?>mobile/jquery.mobile-1.4.5.min.js"></script>
   <script src="<?= base_url('assets/') ?>mobile/mobile_custom.js"></script>
@@ -143,7 +145,14 @@ if ($this->session->userdata('session_sop') == "") {
     $('#refresh').click(function() {
       location.reload();
     });
-    $('[data-mask]').inputmask()
+    $('[data-mask]').inputmask();
+
+
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    
   </script>
 </body>
 

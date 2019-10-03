@@ -3,17 +3,17 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Daftarkan Tim Anda</h3>
+          <h3 class="box-title">Daftarkan Team Anda</h3>
         </div>
         <div class="box-body">
           <form role="form" action="<?= base_url('login/actionRegister') ?>" method="POST" id="sumbit">
             <div class="show_error"></div>
             <div class="form-group">
-              <label>Nama Tim</label>
+              <label>Nama</label>
               <input type="text" name="dt[name]" class="form-control">
             </div>
             <div class="form-group">
-              <label>Email Tim</label>
+              <label>Email</label>
               <input type="email" name="dt[email]" class="form-control">
             </div>
             <div class="row">
@@ -31,20 +31,12 @@
               </div>
             </div>
             <div class="form-group">
-              <label>Alamat Tim</label>
+              <label>Alamat</label>
               <textarea name="dt[alamat]" class="form-control" rows="5"></textarea>
             </div>
             <div class="form-group">
-              <label>Kota Tim</label>
-              <select class="form-control select2" name="dt[city_id]">
-                <option value="">--Pilih Kota--</option>
-                <?php
-                $master_city = $this->mymodel->selectData("master_city");
-                foreach ($master_city as $key => $value) {
-                  ?>
-                  <option value="<?= $value['id'] ?>"><?= $value['value'] ?></option>
-                <?php } ?>
-              </select>
+              <label>Kota</label>
+              <input type="text" name="dt[kota]" class="form-control">
             </div>
             <div class="form-group">
               <label>Nomor Wa</label>

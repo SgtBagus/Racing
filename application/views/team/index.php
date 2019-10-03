@@ -32,15 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label>Kota Team</label>
-                            <select class="form-control select2" name="dt[city_id]">
-                                <option value="">--Pilih Kota--</option>
-                                <?php
-                                $master_city = $this->mymodel->selectData("master_city");
-                                foreach ($master_city as $key => $value) {
-                                    ?>
-                                    <option value="<?= $value['id'] ?>" <?php if($team['city_id'] == $value['id']) { echo "selected"; } ?> ><?= $value['value'] ?></option>
-                                <?php } ?>
-                            </select>
+                            <input type="text" name="dt[kota]" class="form-control" value="<?= $team['kota'] ?>">
                         </div>
                         <div class="form-group">
                             <label>Nomor Wa</label>

@@ -17,7 +17,7 @@ class Raider extends MY_Controller
         
         $this->template->load('template/template', 'raider/index', $data);
     }
-
+ 
     public function create()
     {
         $data['page'] = 'Raider';
@@ -37,7 +37,13 @@ class Raider extends MY_Controller
         $this->form_validation->set_error_delimiters('<li>', '</li>');
         $this->form_validation->set_rules('dt[name]', '<strong>Nama Tim</strong> Tidak Boleh Kosong', 'required');
         $this->form_validation->set_rules('dt[alamat]', '<strong>Alamat Tim</strong> Tidak Boleh Kosong', 'required');
+        $this->form_validation->set_rules('dt[kota]', '<strong>Kota</strong> Tidak Boleh Kosong', 'required');
+        $this->form_validation->set_rules('dt[tgllahir]', '<strong>Tanggal Lahir</strong> Tidak Boleh Kosong', 'required');
+        $this->form_validation->set_rules('dt[nostart]', '<strong>Nomor Start</strong> Tidak Boleh Kosong', 'required');
+        $this->form_validation->set_rules('dt[namajersey]', '<strong>Nama Di Jersey</strong> Tidak Boleh Kosong', 'required');
         $this->form_validation->set_rules('dt[nowa]', '<strong>Nomor Wa</strong> Tidak Boleh Kosong', 'required');
+        $this->form_validation->set_rules('dt[motor_id]', '<strong>Nama Motor</strong> Mohon Di Pilih', 'required');
+        $this->form_validation->set_rules('dt[goldarah]', '<strong>Golongan Darah</strong> Tidak Boleh Kosong', 'required');
 
         $supported_file = array(
             'jpg', 'jpeg', 'png'
@@ -64,9 +70,9 @@ class Raider extends MY_Controller
             $id = $this->session->userdata('id');
             $dt = $_POST['dt'];
             $dt['team_id'] = $id;
+            $dt['verificacion'] = 'DISABLE';
             $dt['status'] = 'ENABLE';
             $dt['created_at'] = date("Y-m-d H:i:s");
-            
             $this->mymodel->insertData('tbl_raider', $dt);
 
             $last_id = $this->db->insert_id();
@@ -164,5 +170,15 @@ class Raider extends MY_Controller
         $this->mymodel->deleteData('file',  array('id' => $file_dir['id']));
         $this->mymodel->deleteData('tbl_raider',  array('id' => $id));
         header('Location:'.base_url('raider'));
+    }
+
+    public function deleteapi($id)
+    {
+        $file_dir = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_raider'));
+        @unlink($file_dir['dir']);
+
+        $this->mymodel->deleteData('file',  array('id' => $file_dir['id']));
+        $this->mymodel->deleteData('tbl_raider',  array('id' => $id));
+        header('Location: http://192.168.100.9:8080/raider?delete=true');
     }
 }
