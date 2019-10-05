@@ -12,7 +12,7 @@
                             <label>Nama</label>
                             <input type="text" name="dt[name]" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"> 
                             <label>Alamat</label>
                             <textarea name="dt[alamat]" class="form-control" rows="5"></textarea>
                         </div>

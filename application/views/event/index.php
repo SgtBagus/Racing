@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="col-xs-7">
                                                 <h4><?= $row['title'] ?><br>
-                                                    <small><i class="fa fa-globe"></i><?= $row['kota'] ?>
+                                                    <small><i class="fa fa-globe"></i> <?= $row['kota'] ?>
                                                     <br>
                                                     <?= $row['alamat'] ?>
                                                 </small>
@@ -59,6 +59,12 @@
                                                 <i class="fa fa-motorcycle"></i> 154
                                                 <i class="fa fa-users"></i> 12
                                             </b>
+                                            <?php if($row['status'] == 'ENABLE'){
+                                                echo '<small class="label pull-right bg-green">Dibuka</small>';
+                                            }else{
+                                                echo '<small class="label pull-right bg-red">Ditutup</small>';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>

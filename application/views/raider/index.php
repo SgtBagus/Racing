@@ -49,7 +49,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <p>Sebanyak : <b>34</b> Event Telah Di Ikuti</p>
+                            <p>Sebanyak : <b><?= $row['eventikut'] ?></b> Event Telah Di Ikuti</p>
                             <br>
                             <div class="row" id="deleteForm_<?=$row['id']?>">
                                 <div class="col-xs-12 btnDelete_<?=$row['id']?>">

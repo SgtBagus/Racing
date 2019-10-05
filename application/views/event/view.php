@@ -9,10 +9,20 @@
                         <small>
                             <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
                         </small>
-                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat']?>">
+                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                         </a>
                     </h3>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php if ($tbl_event['status'] == 'ENABLE') {
+                                echo '<small class="label bg-green">Dibuka</small>';
+                            } else {
+                                echo '<small class="label bg-red">Ditutup</small>';
+                            }
+                            ?>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xs-6">
                             <b>
@@ -50,14 +60,14 @@
                             <td align="right">Raider per Team</td>
                             <td>:</td>
                             <td align="left">
-                                <b><?= $tbl_event['minraider']?> s/d <?= $tbl_event['maxraider'] ?></b>
+                                <b><?= $tbl_event['minraider'] ?> s/d <?= $tbl_event['maxraider'] ?></b>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="<?= base_url('event/register/').$tbl_event['id']?>">
-                        <button class="btn btn-sm btn-block btn-primary"> <i class="fa fa-users"></i> Daftarkan Tim</button>
+                    <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
+                        <button class="btn btn-sm btn-block btn-primary btn-daftar"> <i class="fa fa-users"></i> Daftarkan Tim</button>
                     </a>
                 </div>
             </div>
@@ -75,8 +85,8 @@
                             <?= $tbl_event['deskripsi'] ?>
                         </div>
                         <div class="box-footer">
-                            <a href="<?= base_url('event/register/').$tbl_event['id']?>">
-                                <button class="btn btn-sm btn-block btn-primary"> <i class="fa fa-users"></i> Daftarkan Tim</button>
+                            <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
+                                <button class="btn btn-sm btn-block btn-primary btn-daftar"> <i class="fa fa-users"></i> Daftarkan Tim</button>
                             </a>
                         </div>
                     </div>
@@ -85,3 +95,8 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    <?php if ($tbl_event['status'] == 'DISABLE') { ?>
+        $(".btn-daftar").attr("disabled", true);
+    <?php } ?>
+</script>

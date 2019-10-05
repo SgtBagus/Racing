@@ -46,7 +46,7 @@ if ($this->session->userdata('session_sop') == "") {
               <b>ENDURORALLY</b>
             </div>
           </a>
-          <a href="#" id="refresh">
+          <a href="#" onclick="reset()">
             <div class="col-xs-2 header-menu" align="center" style="margin-left: -5px">
               <i class="fa fa-refresh"></i>
             </div>
@@ -142,9 +142,10 @@ if ($this->session->userdata('session_sop') == "") {
       format: 'dd-mm-yyyy',
     });
 
-    $('#refresh').click(function() {
+    function reset() {
       location.reload();
-    });
+    }
+
     $('[data-mask]').inputmask();
 
 

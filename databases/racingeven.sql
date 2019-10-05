@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2019 at 05:08 PM
+-- Generation Time: Oct 05, 2019 at 11:30 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -639,7 +639,10 @@ INSERT INTO `file` (`id`, `name`, `mime`, `dir`, `table`, `table_id`, `status`, 
 (280, 'team_default.png', 'image/png', 'webfiles/team/team_default.png', 'tbl_team', 8, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/team_default.png', '2019-10-02 15:55:12', NULL),
 (284, '6950c16c9bcc6995f376b297f163175989292.png', 'image/png', 'webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', 'tbl_manager', 5, 'ENABLE', 'http://192.168.100.9:8000/webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', '2019-10-02 20:27:08', NULL),
 (285, '6950c16c9bcc6995f376b297f163175933310.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', 'tbl_raider', 1, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', '2019-10-02 22:02:28', NULL),
-(287, '6950c16c9bcc6995f376b297f163175918963.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', 'tbl_raider', 3, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', '2019-10-02 22:06:53', NULL);
+(287, '6950c16c9bcc6995f376b297f163175918963.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', 'tbl_raider', 3, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', '2019-10-02 22:06:53', NULL),
+(288, '6950c16c9bcc6995f376b297f163175995537.PNG', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', 'tbl_event', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', '2019-10-04 15:59:15', NULL),
+(289, '6950c16c9bcc6995f376b297f163175980245.jpg', 'image/jpeg', 'webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', 'tbl_event', 2, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', '2019-10-05 10:21:10', NULL),
+(290, '6950c16c9bcc6995f376b297f16317593914.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', 'tbl_raider', 4, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', '2019-10-05 10:35:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -755,25 +758,33 @@ CREATE TABLE `logs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_city`
+-- Table structure for table `master_motor`
 --
 
-CREATE TABLE `master_city` (
+CREATE TABLE `master_motor` (
   `id` int(11) NOT NULL,
   `value` varchar(225) DEFAULT NULL,
-  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `status` enum('ENABLE','DISABLED') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_city`
+-- Dumping data for table `master_motor`
 --
 
-INSERT INTO `master_city` (`id`, `value`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Malang', 'ENABLE', '2019-10-02 16:06:05', NULL),
-(2, 'Surabaya', 'ENABLE', '2019-10-02 16:06:14', NULL),
-(3, 'Solo', 'ENABLE', '2019-10-02 16:06:25', NULL);
+INSERT INTO `master_motor` (`id`, `value`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'KTM', 'ENABLE', '2019-10-03 18:54:57', NULL),
+(2, 'HUSQVARNA', 'ENABLE', '2019-10-03 18:55:18', NULL),
+(3, 'SHERCO', 'ENABLE', '2019-10-03 18:55:24', NULL),
+(4, 'GASGAS', 'ENABLE', '2019-10-03 18:55:29', NULL),
+(5, 'YAMAHA', 'ENABLE', '2019-10-03 18:55:33', NULL),
+(6, 'HONDA', 'ENABLE', '2019-10-03 18:55:37', NULL),
+(7, 'SUZUKI', 'ENABLE', '2019-10-03 18:55:41', NULL),
+(8, 'VIAR', 'ENABLE', '2019-10-03 18:55:45', NULL),
+(9, 'KAWASAKI', 'ENABLE', '2019-10-03 18:55:48', NULL),
+(10, 'CUSTOM', 'ENABLE', '2019-10-03 18:55:51', NULL),
+(11, 'NONE', 'ENABLE', '2019-10-03 18:55:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -783,16 +794,16 @@ INSERT INTO `master_city` (`id`, `value`, `status`, `created_at`, `updated_at`) 
 
 CREATE TABLE `menu_master` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `icon` varchar(255) DEFAULT NULL,
-  `link` varchar(255) DEFAULT NULL,
-  `urutan` varchar(255) DEFAULT NULL,
-  `parent` varchar(255) DEFAULT NULL,
-  `notif` varchar(255) DEFAULT NULL,
+  `name` varchar(225) DEFAULT NULL,
+  `icon` varchar(225) DEFAULT NULL,
+  `link` varchar(225) DEFAULT NULL,
+  `urutan` varchar(225) DEFAULT NULL,
+  `parent` varchar(225) DEFAULT NULL,
+  `notif` varchar(225) DEFAULT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `menu_master`
@@ -804,18 +815,17 @@ INSERT INTO `menu_master` (`id`, `name`, `icon`, `link`, `urutan`, `parent`, `no
 (38, 'Team', 'fa fa-users', 'team', '0', '37', '', 'ENABLE', '2019-10-02 08:09:30', '2019-10-02 11:46:30'),
 (39, 'Raider', 'fa fa-motorcycle', 'raider', '2', '37', '', 'ENABLE', '2019-10-02 08:10:13', '2019-10-02 18:48:36'),
 (40, 'Event', 'fa fa-map-o', '#', '2', '0', '', 'ENABLE', '2019-10-02 08:20:54', NULL),
-(41, 'Manajement Event', 'fa fa-star', 'event', '0', '40', '', 'ENABLE', '2019-10-02 08:21:36', '2019-10-02 08:28:00'),
-(42, 'Pendaftar Event', 'fa fa-users', 'eventregistrar', '1', '40', '', 'ENABLE', '2019-10-02 08:24:04', NULL),
+(41, 'Event', 'fa fa-star', 'event', '0', '40', '', 'ENABLE', '2019-10-02 08:21:36', '2019-10-02 08:28:00'),
+(42, 'Pendaftar Event', 'fa fa-users', 'eventregister', '1', '40', '', 'ENABLE', '2019-10-02 08:24:04', NULL),
 (43, 'Blog / Informasi', 'fa fa-newspaper-o', 'blog', '3', '0', '', 'ENABLE', '2019-10-02 08:25:20', NULL),
 (44, 'Gallery', 'fa fa-picture-o', 'gallery', '4', '0', '', 'ENABLE', '2019-10-02 08:25:46', NULL),
 (45, 'Merchandise', 'fa fa-cubes', '#', '5', '0', '', 'ENABLE', '2019-10-02 08:26:29', NULL),
-(46, 'Manajement Merchandise', 'fa fa-table', 'merchandise', '0', '45', '', 'ENABLE', '2019-10-02 08:29:00', NULL),
+(46, 'Merchandise', 'fa fa-table', 'merchandise', '0', '45', '', 'ENABLE', '2019-10-02 08:29:00', NULL),
 (47, 'Transaksi Merchandise', 'fa fa-money ', 'transaction', '1', '45', '', 'ENABLE', '2019-10-02 08:30:04', NULL),
 (48, 'Admin Users', 'fa fa-user', 'users', '6', '0', '', 'ENABLE', '2019-10-02 08:33:44', '2019-10-02 09:30:01'),
 (49, 'Master', 'fa fa-database', '#', '7', '0', '', 'ENABLE', '2019-10-02 08:34:02', '2019-10-02 08:34:37'),
 (50, 'Pengaturan', 'fa fa-link', '#', '8', '0', '', 'ENABLE', '2019-10-02 08:35:08', '2019-10-02 08:35:33'),
-(51, 'Role Tim', 'fa fa-cog', 'master/timrole', '0', '49', '', 'ENABLE', '2019-10-02 10:29:24', '2019-10-02 10:30:48'),
-(52, 'Kota', 'fa fa-building', 'master/city', '1', '49', '', 'ENABLE', '2019-10-02 15:54:20', '2019-10-02 15:55:26'),
+(52, 'Motor', 'fa fa-motorcycle', 'master/motor', '1', '49', '', 'ENABLE', '2019-10-02 15:54:20', '2019-10-02 15:55:26'),
 (53, 'Manajer', 'fa fa-user', 'manager', '1', '37', '', 'ENABLE', '2019-10-02 18:47:27', '2019-10-02 18:48:27');
 
 -- --------------------------------------------------------
@@ -854,7 +864,86 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `role`, `status`, `menu`, `created_at`, `updated_at`) VALUES
-(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"53\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"51\",\"52\",\"50\"]', '2018-10-12 17:03:59', '2019-10-02 18:47:47');
+(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"52\",\"50\"]', '2018-10-12 17:03:59', '2019-10-02 18:47:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_event`
+--
+
+CREATE TABLE `tbl_event` (
+  `id` int(11) NOT NULL,
+  `title` varchar(225) DEFAULT NULL,
+  `tglevent` date DEFAULT NULL,
+  `phone` varchar(225) DEFAULT NULL,
+  `deskripsi` text,
+  `kota` varchar(225) DEFAULT NULL,
+  `alamat` text,
+  `minraider` int(11) DEFAULT NULL,
+  `maxraider` int(11) DEFAULT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `public` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_event`
+--
+
+INSERT INTO `tbl_event` (`id`, `title`, `tglevent`, `phone`, `deskripsi`, `kota`, `alamat`, `minraider`, `maxraider`, `latitude`, `longitude`, `public`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Event 1', '2019-10-18', '(231) 231-2323', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, 0, 0, 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', NULL),
+(2, 'event ke 2', '2019-10-09', '(231) 231-2321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, 0, 0, 'ENABLE', 'DISABLE', '2019-10-05 10:21:10', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_event_register`
+--
+
+CREATE TABLE `tbl_event_register` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) DEFAULT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  `approve` enum('APPROVE','REJECT','WAITING','FINISH','CANCEL') DEFAULT NULL,
+  `note` text,
+  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_event_register`
+--
+
+INSERT INTO `tbl_event_register` (`id`, `team_id`, `event_id`, `approve`, `note`, `status`, `created_at`, `updated_at`) VALUES
+(3, 8, 1, 'FINISH', '', 'ENABLE', '2019-10-05 12:03:07', '2019-10-05 16:30:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_event_register_raider`
+--
+
+CREATE TABLE `tbl_event_register_raider` (
+  `id` int(11) NOT NULL,
+  `event_register_id` int(11) DEFAULT NULL,
+  `raider_id` int(11) DEFAULT NULL,
+  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_event_register_raider`
+--
+
+INSERT INTO `tbl_event_register_raider` (`id`, `event_register_id`, `raider_id`, `status`, `created_at`, `updated_at`) VALUES
+(3, 3, 3, 'ENABLE', '2019-10-05 12:03:07', NULL),
+(4, 3, 4, 'ENABLE', '2019-10-05 12:03:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -891,7 +980,17 @@ CREATE TABLE `tbl_raider` (
   `team_id` int(11) DEFAULT NULL,
   `name` varchar(225) DEFAULT NULL,
   `alamat` text,
+  `kota` varchar(225) DEFAULT NULL,
+  `tgllahir` date DEFAULT NULL,
+  `nostart` int(11) DEFAULT NULL,
+  `namajersey` varchar(225) DEFAULT NULL,
+  `ukuran_jersey` varchar(225) DEFAULT NULL,
+  `motor_id` int(11) DEFAULT NULL,
   `nowa` varchar(225) DEFAULT NULL,
+  `goldarah` varchar(225) DEFAULT NULL,
+  `verificacion` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `email` varchar(225) DEFAULT NULL,
+  `eventikut` int(11) DEFAULT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -901,9 +1000,10 @@ CREATE TABLE `tbl_raider` (
 -- Dumping data for table `tbl_raider`
 --
 
-INSERT INTO `tbl_raider` (`id`, `team_id`, `name`, `alamat`, `nowa`, `status`, `created_at`, `updated_at`) VALUES
-(1, 8, 'Raider 1', 'Alamat Raider', '(123) 123-1232', 'ENABLE', '2019-10-02 22:02:28', NULL),
-(3, 8, 'Raider 2', 'Alamat Raider ke 2', '(123) 123-2132', 'ENABLE', '2019-10-02 22:06:53', NULL);
+INSERT INTO `tbl_raider` (`id`, `team_id`, `name`, `alamat`, `kota`, `tgllahir`, `nostart`, `namajersey`, `ukuran_jersey`, `motor_id`, `nowa`, `goldarah`, `verificacion`, `email`, `eventikut`, `status`, `created_at`, `updated_at`) VALUES
+(1, 8, 'Raider 1', 'Alamat Raider', 'Malang', '2019-10-02', 2, 'Raider 1', '24', 2, '(123) 123-1232', 'B', 'ENABLE', NULL, 0, 'ENABLE', '2019-10-02 22:02:28', NULL),
+(3, 8, 'Raider 2', 'Alamat Raider ke 2', 'Malang', '2019-10-02', 1, 'AA', '23', 5, '(123) 123-2132', 'B', 'DISABLE', NULL, 1, 'ENABLE', '2019-10-02 22:06:53', NULL),
+(4, 8, 'raider ke 3', 'ada disni', 'Malang', '2019-10-11', 2, 'ddisini', 'L', 2, '(123) 123-1232', 'B', 'DISABLE', '', 1, 'ENABLE', '2019-10-05 10:35:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -917,7 +1017,7 @@ CREATE TABLE `tbl_team` (
   `email` varchar(225) DEFAULT NULL,
   `password` varchar(225) DEFAULT NULL,
   `alamat` text,
-  `city_id` int(11) DEFAULT NULL,
+  `kota` varchar(225) DEFAULT NULL,
   `nowa` varchar(225) DEFAULT NULL,
   `verificacion` enum('ENABLE','DISABLE') NOT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
@@ -929,8 +1029,8 @@ CREATE TABLE `tbl_team` (
 -- Dumping data for table `tbl_team`
 --
 
-INSERT INTO `tbl_team` (`id`, `name`, `email`, `password`, `alamat`, `city_id`, `nowa`, `verificacion`, `status`, `created_at`, `updated_at`) VALUES
-(8, 'team satu', 'team@gmail.com', '7815696ecbf1c96e6894b779456d330e', 'disini', 1, '(123) 124-1232', 'ENABLE', 'ENABLE', '2019-10-02 15:55:12', NULL);
+INSERT INTO `tbl_team` (`id`, `name`, `email`, `password`, `alamat`, `kota`, `nowa`, `verificacion`, `status`, `created_at`, `updated_at`) VALUES
+(8, 'team satu', 'team@gmail.com', '7815696ecbf1c96e6894b779456d330e', 'disini', 'Malang', '(123) 124-1232', 'ENABLE', 'ENABLE', '2019-10-02 15:55:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -1007,9 +1107,9 @@ ALTER TABLE `logs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_city`
+-- Indexes for table `master_motor`
 --
-ALTER TABLE `master_city`
+ALTER TABLE `master_motor`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1028,6 +1128,24 @@ ALTER TABLE `report`
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_event`
+--
+ALTER TABLE `tbl_event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_event_register`
+--
+ALTER TABLE `tbl_event_register`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_event_register_raider`
+--
+ALTER TABLE `tbl_event_register_raider`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1074,7 +1192,7 @@ ALTER TABLE `access_control`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
 -- AUTO_INCREMENT for table `grafik`
@@ -1101,10 +1219,10 @@ ALTER TABLE `logs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `master_city`
+-- AUTO_INCREMENT for table `master_motor`
 --
-ALTER TABLE `master_city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `master_motor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `menu_master`
@@ -1125,6 +1243,24 @@ ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT for table `tbl_event`
+--
+ALTER TABLE `tbl_event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_event_register`
+--
+ALTER TABLE `tbl_event_register`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_event_register_raider`
+--
+ALTER TABLE `tbl_event_register_raider`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `tbl_manager`
 --
 ALTER TABLE `tbl_manager`
@@ -1134,7 +1270,7 @@ ALTER TABLE `tbl_manager`
 -- AUTO_INCREMENT for table `tbl_raider`
 --
 ALTER TABLE `tbl_raider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_team`

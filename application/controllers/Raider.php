@@ -71,6 +71,7 @@ class Raider extends MY_Controller
             $dt = $_POST['dt'];
             $dt['team_id'] = $id;
             $dt['verificacion'] = 'DISABLE';
+            $dt['eventikut'] = 0;
             $dt['status'] = 'ENABLE';
             $dt['created_at'] = date("Y-m-d H:i:s");
             $this->mymodel->insertData('tbl_raider', $dt);
