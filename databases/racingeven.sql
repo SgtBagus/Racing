@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2019 at 10:10 AM
+-- Generation Time: Oct 06, 2019 at 11:35 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -636,16 +636,17 @@ CREATE TABLE `file` (
 INSERT INTO `file` (`id`, `name`, `mime`, `dir`, `table`, `table_id`, `status`, `url`, `created_at`, `updated_at`) VALUES
 (271, '6950c16c9bcc6995f376b297f163175942635.jpg', 'image/jpeg', 'webfiles/users/6950c16c9bcc6995f376b297f163175942635.jpg', 'user', 13, 'ENABLE', 'http://192.168.100.9:8080/webfiles/users/6950c16c9bcc6995f376b297f163175942635.jpg', '2019-10-02 09:46:54', '2019-10-02 09:58:43'),
 (272, '6950c16c9bcc6995f376b297f163175930376.jpg', 'image/jpeg', 'webfiles/users/6950c16c9bcc6995f376b297f163175930376.jpg', 'user', 14, 'ENABLE', 'http://192.168.100.9:8080/webfiles/users/6950c16c9bcc6995f376b297f163175930376.jpg', '2019-10-02 09:46:54', '2019-10-02 09:58:51'),
-(280, 'team_default.png', 'image/png', 'webfiles/team/team_default.png', 'tbl_team', 8, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/team_default.png', '2019-10-02 15:55:12', NULL),
+(280, '6950c16c9bcc6995f376b297f163175928889.jpeg', 'image/jpeg', 'webfiles/team/6950c16c9bcc6995f376b297f163175928889.jpeg', 'tbl_team', 8, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/6950c16c9bcc6995f376b297f163175928889.jpeg', '2019-10-06 16:18:51', NULL),
 (284, '6950c16c9bcc6995f376b297f163175989292.png', 'image/png', 'webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', 'tbl_manager', 5, 'ENABLE', 'http://192.168.100.9:8000/webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', '2019-10-02 20:27:08', NULL),
 (285, '6950c16c9bcc6995f376b297f163175933310.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', 'tbl_raider', 1, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', '2019-10-02 22:02:28', NULL),
 (287, '6950c16c9bcc6995f376b297f163175918963.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', 'tbl_raider', 3, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', '2019-10-02 22:06:53', NULL),
 (288, '6950c16c9bcc6995f376b297f163175995537.PNG', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', 'tbl_event', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', '2019-10-04 15:59:15', NULL),
 (289, '6950c16c9bcc6995f376b297f163175980245.jpg', 'image/jpeg', 'webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', 'tbl_event', 2, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', '2019-10-05 10:21:10', NULL),
 (290, '6950c16c9bcc6995f376b297f16317593914.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', 'tbl_raider', 4, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', '2019-10-05 10:35:10', NULL),
-(294, '6950c16c9bcc6995f376b297f163175962457.PNG', 'image/png', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175962457.PNG', 'tbl_gallery', 7, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175962457.PNG', '2019-10-06 12:23:44', NULL),
-(295, '6950c16c9bcc6995f376b297f1631759624571.PNG', 'image/png', 'webfiles/gallery/6950c16c9bcc6995f376b297f1631759624571.PNG', 'tbl_gallery', 8, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f1631759624571.PNG', '2019-10-06 12:23:45', NULL),
-(296, '6950c16c9bcc6995f376b297f1631759624572.PNG', 'image/png', 'webfiles/gallery/6950c16c9bcc6995f376b297f1631759624572.PNG', 'tbl_gallery', 9, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f1631759624572.PNG', '2019-10-06 12:23:45', NULL);
+(305, '6950c16c9bcc6995f376b297f16317593366.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f16317593366.jpeg', 'tbl_gallery', 23, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f16317593366.jpeg', '2019-10-06 15:53:34', NULL),
+(306, '6950c16c9bcc6995f376b297f163175933661.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175933661.jpeg', 'tbl_gallery', 24, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175933661.jpeg', '2019-10-06 15:53:34', NULL),
+(307, '6950c16c9bcc6995f376b297f163175933662.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175933662.jpeg', 'tbl_gallery', 25, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175933662.jpeg', '2019-10-06 15:53:34', NULL),
+(308, '6950c16c9bcc6995f376b297f163175989854.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175989854.jpeg', 'tbl_gallery', 26, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175989854.jpeg', '2019-10-06 15:53:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -778,9 +779,9 @@ CREATE TABLE `master_imagegroup` (
 --
 
 INSERT INTO `master_imagegroup` (`id`, `value`, `public`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Groub 1', 'ENABLE', 'ENABLE', '2019-10-06 11:27:57', NULL),
-(2, 'Groub 2', 'ENABLE', 'ENABLE', '2019-10-06 12:33:25', NULL),
-(3, 'Groub 3', 'ENABLE', 'ENABLE', '2019-10-06 12:43:25', NULL);
+(1, 'Mobile Sport', 'ENABLE', 'ENABLE', '2019-10-06 11:27:57', '2019-10-06 15:52:55'),
+(2, 'SUV', 'ENABLE', 'ENABLE', '2019-10-06 12:33:25', '2019-10-06 15:53:04'),
+(3, 'groub 3', 'ENABLE', 'ENABLE', '2019-10-06 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -994,9 +995,10 @@ CREATE TABLE `tbl_gallery` (
 --
 
 INSERT INTO `tbl_gallery` (`id`, `imagegroup_id`, `title`, `caption`, `status`, `created_at`, `updated_at`) VALUES
-(7, 1, 'asd1', 'asdas1', 'ENABLE', '2019-10-06 12:23:44', NULL),
-(8, 1, 'asd2', '', 'ENABLE', '2019-10-06 12:23:44', NULL),
-(9, 1, 'asd3', 'asda1213', 'ENABLE', '2019-10-06 12:23:45', NULL);
+(23, 1, 'AMG', '', 'ENABLE', '2019-10-06 15:53:33', NULL),
+(24, 1, 'AMG', '', 'ENABLE', '2019-10-06 15:53:34', NULL),
+(25, 1, 'Ferari', 'Ferari Merah', 'ENABLE', '2019-10-06 15:53:34', NULL),
+(26, 2, 'Big SUV', 'Big SUV mendaki gunung', 'ENABLE', '2019-10-06 15:53:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -1083,7 +1085,7 @@ CREATE TABLE `tbl_team` (
 --
 
 INSERT INTO `tbl_team` (`id`, `name`, `email`, `password`, `alamat`, `kota`, `nowa`, `verificacion`, `status`, `created_at`, `updated_at`) VALUES
-(8, 'team satu', 'team@gmail.com', '7815696ecbf1c96e6894b779456d330e', 'disini', 'Malang', '(123) 124-1232', 'ENABLE', 'ENABLE', '2019-10-02 15:55:12', NULL);
+(8, 'team satu', 'team@gmail.com', 'b3c9323ca84c0f3e6ea210cd31c9ea7a', 'disini', 'Malang', '(123) 124-1232', 'ENABLE', 'ENABLE', '2019-10-02 15:55:12', '2019-10-06 16:18:51');
 
 -- --------------------------------------------------------
 
@@ -1257,7 +1259,7 @@ ALTER TABLE `access_control`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=309;
 
 --
 -- AUTO_INCREMENT for table `grafik`
@@ -1335,7 +1337,7 @@ ALTER TABLE `tbl_event_register_raider`
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_manager`
