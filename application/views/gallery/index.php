@@ -5,9 +5,9 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-xs-12">
-                            <form role="form" action="<?= base_url('event') ?>" method="GET">
+                            <form role="form" action="<?= base_url('gallery') ?>" method="GET">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Judul Even</label>
+                                    <label for="exampleInputEmail1">Judul Group Gambar</label>
                                     <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
                                                                                                 echo 'value="' . $_GET['title'] . '"';
                                                                                             } ?>>
@@ -37,36 +37,27 @@
                     </div>
                 </div>
             </div>
-            <?php if ($tbl_event) { ?>
+            <?php if ($tbl_gallery) { ?>
                 <div class="row">
                     <div class="col-md-12">
-                        <?php foreach ($tbl_event as $row) {
-                                $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event')); ?>
-                            <a href="<?= base_url('event/view/') . $row['id'] ?>" class="a_black">
+                        <?php foreach ($tbl_gallery as $row) {
+                                $main_image = $this->db->limit(1)->order_by('id')->get_where('tbl_gallery', array('status' => 'ENABLE', 'imagegroup_id' => $row['id']))->result_array();
+                                $file =  $this->mymodel->selectDataOne('file', array('table_id' => $main_image[0]['id'], 'table' => 'tbl_gallery'));
+                                $imagecount = $this->mymodel->selectWithQuery('SELECT count(id) as imagecount from tbl_gallery WHERE status = "ENABLE" AND imagegroup_id = ' . $row['id']); ?>
+                            <a href="<?= base_url('gallery/view/') . $row['id'] ?>" class="a_black">
                                 <div class="box">
                                     <div class="box-body">
                                         <div class="row">
-                                            <div class="col-xs-5">
-                                                <img class="img-even" src="<?= $photo['url'] ?>" alt="Third slide">
+                                            <div class="col-xs-12">
+                                                <img class="img-gallery" src="<?= $file['url'] ?>" alt="Third slide">
                                             </div>
-                                            <div class="col-xs-7">
-                                                <h4><?= $row['title'] ?><br>
-                                                    <small><i class="fa fa-globe"></i> <?= $row['kota'] ?>
-                                                        <br>
-                                                        <?= $row['alamat'] ?>
-                                                    </small>
-                                                </h4>
-                                                <b>
-                                                    <i class="fa fa-calendar"><?= date('d-m-Y', strtotime($row['tglevent'])) ?></i>
-                                                    <i class="fa fa-motorcycle"></i> 154
-                                                    <i class="fa fa-users"></i> 12
-                                                </b>
-                                                <?php if ($row['status'] == 'ENABLE') {
-                                                            echo '<small class="label pull-right bg-green">Dibuka</small>';
-                                                        } else {
-                                                            echo '<small class="label pull-right bg-red">Ditutup</small>';
-                                                        }
-                                                        ?>
+                                            <div class="col-xs-12" align="center">
+                                                <h3><b><?= $row['value'] ?><b></h3>
+                                            </div>
+                                            <div class="col-xs-12" align="center">
+                                                <i class="fa fa-picture-o"></i> <b><?= $imagecount[0]['imagecount'] ?></b> Gambar
+                                                <br>
+                                                <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($row['created_at'])) ?>
                                             </div>
                                         </div>
                                     </div>

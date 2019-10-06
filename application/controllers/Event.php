@@ -6,8 +6,13 @@ class Event extends MY_Controller {
 
 	public function index(){
 		$data['page'] = 'Event';
-		$data['tbl_event'] = $this->mymodel->selectWhere('tbl_event',  array('public' => 'ENABLE'));
-		$this->template->load('template/template','event/index', $data); 
+        if($_GET['title']){
+            $data['tbl_event'] = $this->mymodel->selectWithQuery("SELECT * from tbl_event WHERE title LIKE '%".$_GET['title']."%' AND public = 'ENABLE'");
+        }else{
+			$data['tbl_event'] = $this->mymodel->selectWhere('tbl_event',  array('public' => 'ENABLE'));
+		}
+		
+		$this->template->load('template/template','event/index', $data);  
 	} 
 	
 	public function view($id){

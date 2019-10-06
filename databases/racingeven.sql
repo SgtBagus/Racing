@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2019 at 11:30 AM
+-- Generation Time: Oct 06, 2019 at 10:10 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -642,7 +642,10 @@ INSERT INTO `file` (`id`, `name`, `mime`, `dir`, `table`, `table_id`, `status`, 
 (287, '6950c16c9bcc6995f376b297f163175918963.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', 'tbl_raider', 3, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', '2019-10-02 22:06:53', NULL),
 (288, '6950c16c9bcc6995f376b297f163175995537.PNG', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', 'tbl_event', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', '2019-10-04 15:59:15', NULL),
 (289, '6950c16c9bcc6995f376b297f163175980245.jpg', 'image/jpeg', 'webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', 'tbl_event', 2, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', '2019-10-05 10:21:10', NULL),
-(290, '6950c16c9bcc6995f376b297f16317593914.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', 'tbl_raider', 4, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', '2019-10-05 10:35:10', NULL);
+(290, '6950c16c9bcc6995f376b297f16317593914.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', 'tbl_raider', 4, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', '2019-10-05 10:35:10', NULL),
+(294, '6950c16c9bcc6995f376b297f163175962457.PNG', 'image/png', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175962457.PNG', 'tbl_gallery', 7, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175962457.PNG', '2019-10-06 12:23:44', NULL),
+(295, '6950c16c9bcc6995f376b297f1631759624571.PNG', 'image/png', 'webfiles/gallery/6950c16c9bcc6995f376b297f1631759624571.PNG', 'tbl_gallery', 8, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f1631759624571.PNG', '2019-10-06 12:23:45', NULL),
+(296, '6950c16c9bcc6995f376b297f1631759624572.PNG', 'image/png', 'webfiles/gallery/6950c16c9bcc6995f376b297f1631759624572.PNG', 'tbl_gallery', 9, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f1631759624572.PNG', '2019-10-06 12:23:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -758,6 +761,30 @@ CREATE TABLE `logs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `master_imagegroup`
+--
+
+CREATE TABLE `master_imagegroup` (
+  `id` int(11) NOT NULL,
+  `value` varchar(225) DEFAULT NULL,
+  `public` enum('ENABLE','DISABLE') NOT NULL,
+  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `master_imagegroup`
+--
+
+INSERT INTO `master_imagegroup` (`id`, `value`, `public`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Groub 1', 'ENABLE', 'ENABLE', '2019-10-06 11:27:57', NULL),
+(2, 'Groub 2', 'ENABLE', 'ENABLE', '2019-10-06 12:33:25', NULL),
+(3, 'Groub 3', 'ENABLE', 'ENABLE', '2019-10-06 12:43:25', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `master_motor`
 --
 
@@ -826,7 +853,8 @@ INSERT INTO `menu_master` (`id`, `name`, `icon`, `link`, `urutan`, `parent`, `no
 (49, 'Master', 'fa fa-database', '#', '7', '0', '', 'ENABLE', '2019-10-02 08:34:02', '2019-10-02 08:34:37'),
 (50, 'Pengaturan', 'fa fa-link', '#', '8', '0', '', 'ENABLE', '2019-10-02 08:35:08', '2019-10-02 08:35:33'),
 (52, 'Motor', 'fa fa-motorcycle', 'master/motor', '1', '49', '', 'ENABLE', '2019-10-02 15:54:20', '2019-10-02 15:55:26'),
-(53, 'Manajer', 'fa fa-user', 'manager', '1', '37', '', 'ENABLE', '2019-10-02 18:47:27', '2019-10-02 18:48:27');
+(53, 'Manajer', 'fa fa-user', 'manager', '1', '37', '', 'ENABLE', '2019-10-02 18:47:27', '2019-10-02 18:48:27'),
+(54, 'Groub Gambar', 'fa fa-picture-o', 'master/imagegroup', '1', '49', NULL, 'ENABLE', '2019-10-06 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -864,7 +892,7 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `role`, `status`, `menu`, `created_at`, `updated_at`) VALUES
-(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"52\",\"50\"]', '2018-10-12 17:03:59', '2019-10-02 18:47:47');
+(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"52\",\"54\",\"50\"]', '2018-10-12 17:03:59', '2019-10-02 18:47:47');
 
 -- --------------------------------------------------------
 
@@ -896,7 +924,7 @@ CREATE TABLE `tbl_event` (
 
 INSERT INTO `tbl_event` (`id`, `title`, `tglevent`, `phone`, `deskripsi`, `kota`, `alamat`, `minraider`, `maxraider`, `latitude`, `longitude`, `public`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Event 1', '2019-10-18', '(231) 231-2323', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, 0, 0, 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', NULL),
-(2, 'event ke 2', '2019-10-09', '(231) 231-2321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, 0, 0, 'ENABLE', 'DISABLE', '2019-10-05 10:21:10', NULL);
+(2, 'event ke 2', '2019-10-09', '(231) 231-2321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, 0, 0, 'ENABLE', 'ENABLE', '2019-10-05 10:21:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -944,6 +972,31 @@ CREATE TABLE `tbl_event_register_raider` (
 INSERT INTO `tbl_event_register_raider` (`id`, `event_register_id`, `raider_id`, `status`, `created_at`, `updated_at`) VALUES
 (3, 3, 3, 'ENABLE', '2019-10-05 12:03:07', NULL),
 (4, 3, 4, 'ENABLE', '2019-10-05 12:03:07', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gallery`
+--
+
+CREATE TABLE `tbl_gallery` (
+  `id` int(11) NOT NULL,
+  `imagegroup_id` int(11) DEFAULT NULL,
+  `title` varchar(225) DEFAULT NULL,
+  `caption` text,
+  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_gallery`
+--
+
+INSERT INTO `tbl_gallery` (`id`, `imagegroup_id`, `title`, `caption`, `status`, `created_at`, `updated_at`) VALUES
+(7, 1, 'asd1', 'asdas1', 'ENABLE', '2019-10-06 12:23:44', NULL),
+(8, 1, 'asd2', '', 'ENABLE', '2019-10-06 12:23:44', NULL),
+(9, 1, 'asd3', 'asda1213', 'ENABLE', '2019-10-06 12:23:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -1107,6 +1160,12 @@ ALTER TABLE `logs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `master_imagegroup`
+--
+ALTER TABLE `master_imagegroup`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `master_motor`
 --
 ALTER TABLE `master_motor`
@@ -1146,6 +1205,12 @@ ALTER TABLE `tbl_event_register`
 -- Indexes for table `tbl_event_register_raider`
 --
 ALTER TABLE `tbl_event_register_raider`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_gallery`
+--
+ALTER TABLE `tbl_gallery`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1192,7 +1257,7 @@ ALTER TABLE `access_control`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
 
 --
 -- AUTO_INCREMENT for table `grafik`
@@ -1219,6 +1284,12 @@ ALTER TABLE `logs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `master_imagegroup`
+--
+ALTER TABLE `master_imagegroup`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `master_motor`
 --
 ALTER TABLE `master_motor`
@@ -1228,7 +1299,7 @@ ALTER TABLE `master_motor`
 -- AUTO_INCREMENT for table `menu_master`
 --
 ALTER TABLE `menu_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -1259,6 +1330,12 @@ ALTER TABLE `tbl_event_register`
 --
 ALTER TABLE `tbl_event_register_raider`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_gallery`
+--
+ALTER TABLE `tbl_gallery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_manager`

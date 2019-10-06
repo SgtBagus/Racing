@@ -71,7 +71,6 @@ class Team extends MY_Controller
                         'table' => 'tbl_team',
                         'table_id' => $this->session->userdata('id'),
                         'url' => base_url() . $dir . $file['file_name'],
-                        'verificacion' => 'DISABLE',
                         'status' => 'ENABLE',
                         'created_at' => date('Y-m-d H:i:s')
                     );

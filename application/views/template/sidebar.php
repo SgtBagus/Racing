@@ -79,7 +79,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= base_url('gallery') ?>">
                     <i class="fa fa-picture-o"></i>
                     <span>Gallery</span>
                 </a>
