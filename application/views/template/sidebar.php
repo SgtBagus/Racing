@@ -41,6 +41,9 @@
                     <li>
                         <a href="<?= base_url('team') ?>"><i class="fa fa-users"></i> Team</a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('password') ?>"><i class="fa fa-lock"></i> Ubah Passowrd</a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview">
