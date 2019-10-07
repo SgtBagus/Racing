@@ -2,9 +2,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Tambah Raider</h3>
-                </div>
                 <div class="box-body">
                     <form role="form" action="<?= base_url('raider/store') ?>" method="POST" id="sumbit">
                         <div class="show_error"></div>
@@ -102,7 +99,7 @@
                         <div class="form-group">
                             <label>Foto</label>
                             <div class="input-group" id="preview_image">
-                                <button type="button" class="btn btn-danger" id="btnFile">Pilih Gambar</button>
+                                <button type="button" class="btn btn-primary" id="btnFile">Pilih Gambar</button>
                                 <input name="file" type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
                             </div>
                             <p class="help-block">Foto yang diupload disarankan memiliki format PNG, JPG, atau JPEG</p>

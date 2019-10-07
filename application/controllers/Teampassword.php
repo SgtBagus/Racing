@@ -8,7 +8,7 @@ class Teampassword extends MY_Controller
 
     public function index()
     {
-        $data['page'] = 'Password';
+        $data['page'] = 'Team Password';
         $this->template->load('template/template', 'teampassword/index', $data);
     }
 

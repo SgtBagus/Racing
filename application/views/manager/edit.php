@@ -14,14 +14,12 @@
                             <input type="text" name="dt[name]" class="form-control" value="<?= $manajer['name'] ?>">
                         </div>
                         <div class="form-group">
-                            <label>Foto</label>
-                            <?php
-                                if($file){
-                                    echo '<img src="'.$file['url'].'" width="100%" style="margin-bottom: 10px" id="preview">';
-                                }
-                            ?>
+                            <label>Foto</label><br>
+                            <div align="center">
+                                <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
+                            </div>
                             <div class="input-group" id="preview_image">
-                                <button type="button" class="btn btn-danger" id="btnFile">Pilih Gambar</button>
+                                <button type="button" class="btn btn-primary" id="btnFile">Pilih Gambar</button>
                                 <input name="file" type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
                             </div>
                             <p class="help-block">Foto yang diupload disarankan memiliki format PNG, JPG, atau JPEG</p>

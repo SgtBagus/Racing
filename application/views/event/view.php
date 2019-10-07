@@ -9,6 +9,7 @@
                         <small>
                             <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
                         </small>
+                        <br>
                         <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                         </a>
@@ -25,15 +26,13 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <b>
-                                <i class="fa fa-calendar"> <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?></i>
-                            </b>
+                            <i class="fa fa-calendar"></i> <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?> <br>
                         </div>
                         <div class="col-xs-6" align="right">
-                            <b>
-                                <i class="fa fa-motorcycle"></i> 154
-                                <i class="fa fa-users"></i> 12
-                            </b>
+                            Pendaftar : 
+                            <br>
+                            <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
+                            <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
                         </div>
                     </div>
                 </div>

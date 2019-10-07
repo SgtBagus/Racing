@@ -11,6 +11,7 @@ class Team extends MY_Controller
         $data['page'] = 'Team';
         $data['team'] = $this->mymodel->selectDataone('tbl_team', array('id' => $this->session->userdata('id')));
         $data['file'] = $this->mymodel->selectDataone('file', array('table_id' => $data['team']['id'], 'table' => 'tbl_team'));
+        $data['subpage'] = '<b>'.$data['team']['name'].'</b>';
         $this->template->load('template/template', 'team/index', $data);
     }
 

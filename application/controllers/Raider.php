@@ -20,7 +20,8 @@ class Raider extends MY_Controller
  
     public function create()
     {
-        $data['page'] = 'Raider';
+        $data['page'] = 'Raider'; 
+        $data['subpage'] = 'Tambah Raider';
         $this->template->load('template/template', 'raider/create', $data);
     }
 
@@ -29,6 +30,7 @@ class Raider extends MY_Controller
         $data['page'] = 'Raider';
         $data['raider'] = $this->mymodel->selectDataone('tbl_raider', array('id' => $id));
         $data['file'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_raider'));
+        $data['subpage'] = 'Ubah - <b>'.$data['raider']['name'].'</b>';
         $this->template->load('template/template', 'raider/edit', $data);
     }
 

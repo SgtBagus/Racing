@@ -6,9 +6,9 @@ class Event extends MY_Controller {
 
 	public function index(){
 		$data['page'] = 'Event';
-        if($_GET['title']){
-            $data['tbl_event'] = $this->mymodel->selectWithQuery("SELECT * from tbl_event WHERE title LIKE '%".$_GET['title']."%' AND public = 'ENABLE'");
-        }else{
+		if($_GET['title']){
+			$data['tbl_event'] = $this->mymodel->selectWithQuery("SELECT * from tbl_event WHERE title LIKE '%".$_GET['title']."%' AND public = 'ENABLE'");
+		}else{
 			$data['tbl_event'] = $this->mymodel->selectWhere('tbl_event',  array('public' => 'ENABLE'));
 		}
 		
@@ -19,6 +19,14 @@ class Event extends MY_Controller {
 		$data['page'] = 'Event';
 		$data['tbl_event'] = $this->mymodel->selectDataone('tbl_event',  array('id' => $id));
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
+
+		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '".$data['tbl_event']['id']."'");
+
+		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id'])); 
+
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '".$data['register_id']['id']."'");
+
+        $data['subpage'] = '<b>'.$data['tbl_event']['title'].'</b>';
 		$this->template->load('template/template','event/view', $data); 
 	}
 
@@ -27,6 +35,14 @@ class Event extends MY_Controller {
 		$data['tbl_event'] = $this->mymodel->selectDataone('tbl_event',  array('id' => $id));
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
 		$data['raider'] = $this->mymodel->selectWhere('tbl_raider', array('team_id' => $this->session->userdata('id')));
+
+		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '".$data['tbl_event']['id']."'");
+
+		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id'])); 
+
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '".$data['register_id']['id']."'");
+
+        $data['subpage'] = 'Mendaftar Event : <b>'.$data['tbl_event']['title'].'</b>';
 		$this->template->load('template/template','event/register', $data); 
 	}
 

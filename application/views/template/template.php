@@ -41,11 +41,9 @@ if ($this->session->userdata('session_sop') == "") {
               <i class="fa fa-bars"></i>
             </a>
           </div>
-          <a href="#">
-            <div class="col-xs-8 header-menu" align="center">
-              <b>ENDURORALLY</b>
-            </div>
-          </a>
+          <div class="col-xs-8 header-menu" align="center">
+            <b>ENDURORALLY</b>
+          </div>
           <a href="#" onclick="reset()">
             <div class="col-xs-2 header-menu" align="center" style="margin-left: -5px">
               <i class="fa fa-refresh"></i>
@@ -56,6 +54,7 @@ if ($this->session->userdata('session_sop') == "") {
     </header>
     <div class="content-wrapper">
       <div class="container" style="margin-top: -25px;">
+        <h2 align="center"> <?= $page ?><br><small> <?= $subpage ?></small></h2>
         <?= $contents ?>
         <?php $this->load->view('template/sidebar') ?>
         <div class="fixed-footer"></div>
@@ -65,22 +64,22 @@ if ($this->session->userdata('session_sop') == "") {
       <div class="container">
         <div class="row" style="text-align: center;">
           <div class="col-xs-3">
-            <a href="#" class="menu-footer">
+            <a href="<?= base_url() ?>" class="menu-footer">
               <i class="fa fa-dashboard"></i>
             </a>
           </div>
           <div class="col-xs-3">
-            <a href="#" class="menu-footer">
-              <i class="fa fa-archive"></i>
+            <a href="<?= base_url('event') ?>" class="menu-footer">
+              <i class="fa fa-star"></i>
             </a>
           </div>
           <div class="col-xs-3">
-            <a href="#" class="menu-footer">
-              <i class="fa fa-table"></i>
+            <a href="<?= base_url('raider') ?>" class="menu-footer">
+              <i class="fa fa-motorcycle"></i>
             </a>
           </div>
           <div class="col-xs-3">
-            <a href="#" class="menu-footer">
+            <a href="<?= base_url('team') ?>" class="menu-footer">
               <i class="fa fa-user-circle"></i>
             </a>
           </div>
@@ -131,7 +130,10 @@ if ($this->session->userdata('session_sop') == "") {
         var reader = new FileReader();
 
         reader.onload = function(e) {
-          $('#preview_image').before('<img src="' + e.target.result + '" width="100%" style="margin-bottom: 10px" id="preview">');
+          $('#preview_image').before('<br>'+
+            '<div align="center">'+
+            '<img class="img-circle" alt="User Image" src="' + e.target.result + '" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">' +
+            '</div>');
         }
 
         reader.readAsDataURL(input.files[0]);
@@ -153,7 +155,7 @@ if ($this->session->userdata('session_sop') == "") {
       checkboxClass: 'icheckbox_minimal-blue',
       radioClass   : 'iradio_minimal-blue'
     })
-    
+
   </script>
 </body>
 

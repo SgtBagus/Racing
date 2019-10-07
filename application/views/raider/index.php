@@ -28,32 +28,33 @@
             <?php foreach ($raider as $row) {
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_raider')); ?>
                 <a href="<?= base_url('raider/edit/') . $row['id'] ?>" class="a_black">
-                    <div class="col-xs-12">
+                    <div class="col-xs-6">
                         <div class="box">
                             <div class="box-body">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <img src="<?= $photo['url'] ?>" alt="Third slide" height="100px" width="100%" >
+                                <div class="row" align="center">
+                                    <div class="col-xs-12">
+                                        <img class="img-circle" alt="User Image" src="<?= $photo['url'] ?>" alt="Third slide" height="150px" width="150px">
                                     </div>
-                                    <div class="col-xs-7">
+                                    <div class="col-xs-12">
                                         <h4><?= $row['name'] ?> <?php if ($row['verificacion'] == 'ENABLE') {
                                             echo '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
                                         } ?> <br>
-                                        <small><i class="fa fa-globe"></i> <?= $row['alamat'] ?></small>
+                                        <small><i class="fa fa-globe"></i> <?= $row['kota'] ?></small>
                                     </h4>
                                     <b>
+                                        <i class="fa fa-motorcycle"></i> <?= $motor['value'] ?>
+                                        <br>
                                         <i class="fa fa-phone"></i> <?= $row['nowa'] ?>
                                     </b>
                                     <a href="#">
-                                        <button class="btn btn-sm btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Melalui Whatsapp</button>
+                                        <button class="btn btn-sm btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Whatsapp</button>
                                     </a>
+                                    <p>Sebanyak : <b><?= $row['eventikut'] ?></b> Event Telah Di Ikuti</p>
                                 </div>
                             </div>
-                            <p>Sebanyak : <b><?= $row['eventikut'] ?></b> Event Telah Di Ikuti</p>
-                            <br>
                             <div class="row" id="deleteForm_<?=$row['id']?>">
                                 <div class="col-xs-12 btnDelete_<?=$row['id']?>">
-                                    <button class="btn btn-sm btn-block btn-danger" onclick="hapus(<?= $row['id'] ?>)"> <i class="fa fa-trash"></i> Hapus Manager</button>
+                                    <button class="btn btn-sm btn-block btn-danger" onclick="hapus(<?= $row['id'] ?>)"> <i class="fa fa-trash"></i> Hapus Anggota Tean</button>
                                 </div>
                             </div>
                         </div>

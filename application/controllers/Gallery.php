@@ -25,6 +25,7 @@ class Gallery extends MY_Controller {
             $data['tbl_gallery'] = $this->mymodel->selectWhere('tbl_gallery', array('imagegroup_id' => $id));
         }
         $data['id'] = $this->mymodel->selectDataone('master_imagegroup', array('id' => $id));
+        $data['subpage'] = '<b>'.$data['id']['value'].'</b>';
         $this->template->load('template/template','gallery/view', $data); 
 	}
 }

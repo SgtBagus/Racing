@@ -21,6 +21,7 @@ class Manager extends MY_Controller
     public function create()
     {
         $data['page'] = 'Manajer';
+        $data['subpage'] = 'Tambah Manajer';
         $this->template->load('template/template', 'manager/create', $data);
     }
 
@@ -29,6 +30,7 @@ class Manager extends MY_Controller
         $data['page'] = 'Manajer';
         $data['manajer'] = $this->mymodel->selectDataone('tbl_manager', array('id' => $id));
         $data['file'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_manager'));
+        $data['subpage'] = 'Ubah - <b>'.$data['manajer']['name'].'</b>';
         $this->template->load('template/template', 'manager/edit', $data);
     }
 

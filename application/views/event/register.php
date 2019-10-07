@@ -10,12 +10,11 @@
                             <small>
                                 <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
                             </small>
+                            <br>
                             <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                                 <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                             </a>
                         </h3>
-                        <input type="hidden" name="event_id" value="<?= $tbl_event['id'] ?>">
-                        <input type="hidden" name="team_id" value="<?= $this->session->userdata['id'] ?>">
                         <div class="row">
                             <div class="col-xs-12">
                                 <?php if ($tbl_event['status'] == 'ENABLE') {
@@ -28,15 +27,13 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <b>
-                                    <i class="fa fa-calendar"> <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?></i>
-                                </b>
+                                <i class="fa fa-calendar"></i> <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?> <br>
                             </div>
                             <div class="col-xs-6" align="right">
-                                <b>
-                                    <i class="fa fa-motorcycle"></i> 154
-                                    <i class="fa fa-users"></i> 12
-                                </b>
+                                Pendaftar : 
+                                <br>
+                                <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
+                                <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
                             </div>
                         </div>
                     </div>
@@ -95,7 +92,11 @@
             </div>
         </div>
         <div class="show_error"></div>
-        <button id="buttonSubmit" class="btn btn-block btn-primary btn-send"> Kirim Pendaftaran</button>
+        <?php if($tbl_event['status'] == 'ENABLE') {?>
+            <button id="buttonSubmit" class="btn btn-block btn-primary btn-send"> Kirim Pendaftaran</button>
+        <?php } else { ?>
+            <button class="btn btn-block btn-primary btn-send" disabled> Event ini telah di tutup</button>
+        <?php } ?>
     </form>
 </section>
 
@@ -165,7 +166,7 @@
 
     function addRaider(id, name, alamat, img_url) {
         var value_team = parseInt($('#teamvalue').val()) + 1;
-        
+
         $('#raiderList').append('<div class="box" id="raiderSelected_' + id + '">' +
             '<div class="box-body">' +
             '<div class="col-xs-5">' +
@@ -189,7 +190,7 @@
         if ($('#teamvalue').val() == <?= $tbl_event['maxraider'] ?>) {
             $("#raiderSelect").attr("disabled", true);
         }
-        
+
         if ($('#teamvalue').val() < <?= $tbl_event['minraider'] ?>) {
             $("#buttonSubmit").attr("disabled", true);
         }
@@ -210,7 +211,7 @@
         if ($('#teamvalue').val() == 0) {
             $("#buttonSubmit").attr("disabled", true);
         }
-        
+
         if ($('#teamvalue').val() < <?= $tbl_event['minraider'] ?>) {
             $("#buttonSubmit").attr("disabled", true);
         }

@@ -32,8 +32,8 @@
                         <div class="box">
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-xs-5">
-                                        <img src="<?= $photo['url'] ?>" alt="Third slide" height="100%" width="100%" height="50px">
+                                    <div class="col-xs-5" align="center">
+                                        <img class="img-circle" alt="User Image" src="<?= $photo['url'] ?>" alt="Third slide" height="150px" width="150px">
                                     </div>
                                     <div class="col-xs-7">
                                         <h4><?= $row['name'] ?><br>

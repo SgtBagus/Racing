@@ -33,7 +33,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="<?= base_url('raider') ?>"><i class="fa fa-motorcycle"></i> Pembalap</a>
+                        <a href="<?= base_url('raider') ?>"><i class="fa fa-motorcycle"></i> Raider</a>
                     </li>
                     <li>
                         <a href="<?= base_url('manager') ?>"><i class="fa fa-user"></i> Manajer</a>
@@ -42,7 +42,7 @@
                         <a href="<?= base_url('team') ?>"><i class="fa fa-users"></i> Team</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('password') ?>"><i class="fa fa-lock"></i> Ubah Passowrd</a>
+                        <a href="<?= base_url('teampassword') ?>"><i class="fa fa-lock"></i> Ubah Passowrd</a>
                     </li>
                 </ul>
             </li>
@@ -56,21 +56,25 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="<?= base_url('event') ?>"><i class="fa fa-star"></i> Cari Event</a>
+                        <a href="<?= base_url('event') ?>">
+                            <i class="fa fa-star"></i> Cari Event
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-television"></i> Monitoring Event</a>
+                        <a href="<?= base_url('monitorevent')?>">
+                            <i class="fa fa-television"></i> Monitoring Event
+                        </a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= base_url('verifteam') ?>">
                     <i class="fa fa-users"></i>
                     <span>Verified Team</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= base_url('verifraider') ?>">
                     <i class="fa fa-motorcycle"></i>
                     <span>Verified Rider</span>
                 </a>

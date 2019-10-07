@@ -18,8 +18,10 @@
                             <p class="help-block">Hubungi Admin untuk merubah Alamat Email Team Anda</p>
                         </div>
                         <div class="form-group">
-                            <label>Logo Team</label>
-                            <img src="<?= $file['url'] ?>" width="100%" style="margin-bottom: 10px" id="preview">
+                            <label>Logo Team</label><br>
+                            <div align="center">
+                                <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
+                            </div>
                             <div class="input-group" id="preview_image">
                                 <button type="button" class="btn btn-danger" id="btnFile">Pilih Gambar</button>
                                 <input name="file" type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
