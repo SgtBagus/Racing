@@ -1,16 +1,21 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            <img class="img-gallery" src="<?= $main_image['url'] ?>" alt="Third slide">
+            <div align="center">
+                <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($id['created_at'])) ?>
+            </div>
+            <br><br>
             <div class="box">
                 <div class="box-body">
                     <div class="row">
                         <div class="col-xs-12">
-                            <form role="form" action="<?= base_url('gallery/view/'.$id['id']) ?>" method="GET">
+                            <form role="form" action="<?= base_url('gallery/view/' . $id['id']) ?>" method="GET">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Judul Gambar</label>
                                     <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
-                                        echo 'value="' . $_GET['title'] . '"';
-                                    } ?>>
+                                                                                                echo 'value="' . $_GET['title'] . '"';
+                                                                                            } ?>>
                                 </div>
                                 <div class="form-group" align="center">
                                     <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
@@ -23,8 +28,8 @@
             <?php if ($tbl_gallery) { ?>
                 <div class="row">
                     <?php foreach ($tbl_gallery as $row) {
-                        $file =  $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'tbl_gallery'));
-                        ?>
+                            $file =  $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'tbl_gallery'));
+                            ?>
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-body">
@@ -34,16 +39,16 @@
                                         </div>
                                         <div class="col-xs-12" align="center">
                                             <h3><b><?= $row['title'] ?><b></h3>
-                                            </div>
-                                            <div class="col-xs-12" align="center">
-                                                <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($row['created_at'])) ?>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <p><?= $row['caption'] ?></p>
-                                            </div>
+                                        </div>
+                                        <div class="col-xs-12" align="center">
+                                            <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($row['created_at'])) ?>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p><?= $row['caption'] ?></p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </a>
                         </div>
                     <?php } ?>
@@ -59,11 +64,6 @@
                     </div>
                 </div>
             <?php } ?>
-            <div class="row">
-                <div class="col-xs-12" align="center">
-                    <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($row['created_at'])) ?>
-                </div>
-            </div>
         </div>
     </div>
 </section>

@@ -73,6 +73,7 @@ class Login extends MY_Controller
 			} else {
 				$dt = $_POST['dt'];
 				$dt['password'] = md5($_POST['password']);
+				$dt['verificacion'] = "DISABLE";
 				$dt['status'] = "ENABLE";
 				$dt['created_at'] = date('Y-m-d H:i:s');
 				$this->db->insert('tbl_team', $dt);
