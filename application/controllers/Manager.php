@@ -9,29 +9,9 @@ class Manager extends MY_Controller
     public function index()
     {
         $data['page'] = 'Manajer';
-        if($_GET['name']){
-            $data['manajer'] = $this->mymodel->selectWithQuery('SELECT * from tbl_manager WHERE team_id = '.$this->session->userdata('id').' AND name LIKE "%'.$_GET['name'].'%"');
-        }else{
-            $data['manajer'] = $this->mymodel->selectWhere('tbl_manager', array('team_id' => $this->session->userdata('id')));
-        }
-        
+        $data['manajer'] = $this->mymodel->selectDataone('tbl_manager', array('team_id' => $this->session->userdata('id')));
+        $data['file'] = $this->mymodel->selectDataone('file', array('table_id' => $data['manajer']['id'], 'table' => 'tbl_manager'));
         $this->template->load('template/template', 'manager/index', $data);
-    }
-
-    public function create()
-    {
-        $data['page'] = 'Manajer';
-        $data['subpage'] = 'Tambah Manajer';
-        $this->template->load('template/template', 'manager/create', $data);
-    }
-
-    public function edit($id)
-    {
-        $data['page'] = 'Manajer';
-        $data['manajer'] = $this->mymodel->selectDataone('tbl_manager', array('id' => $id));
-        $data['file'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_manager'));
-        $data['subpage'] = 'Ubah - <b>'.$data['manajer']['name'].'</b>';
-        $this->template->load('template/template', 'manager/edit', $data);
     }
 
     public function validate()
@@ -108,51 +88,6 @@ class Manager extends MY_Controller
                     'created_at' => date('Y-m-d H:i:s')
                 );
                 $this->mymodel->insertData('file', $data);
-            }
-            $this->alert->alertsuccess('Success Send Data');
-        }
-    }
-
-    public function update()
-    {
-        $this->validate();
-        if ($this->form_validation->run() == FALSE) {
-            $this->alert->alertdanger(validation_errors());
-        } else {
-            $id = $_POST['id'];
-            $dt = $_POST['dt'];
-            $dt['updated_at'] = date("Y-m-d H:i:s");
-            $this->mymodel->updateData('tbl_manager', $dt, array('id' => $id));
-
-            $last_id = $this->db->insert_id();
-            if (!empty($_FILES['file']['name'])) {
-                $dir  = "webfiles/manager/";
-                $config['upload_path']          = $dir;
-                $config['allowed_types']        = '*';
-                $config['file_name']           = md5('smartsoftstudio') . rand(1000, 100000);
-
-                $this->load->library('upload', $config);
-                if (!$this->upload->do_upload('file')) {
-                    $error = $this->upload->display_errors();
-                    $this->alert->alertdanger($error);
-                } else {
-                    $file = $this->upload->data();
-                    $data = array(
-                        'name' => $file['file_name'],
-                        'mime' => $file['file_type'],
-                        'dir' => $dir . $file['file_name'],
-                        'table' => 'tbl_manager',
-                        'table_id' =>  $id,
-                        'url' => base_url() . $dir . $file['file_name'],
-                        'status' => 'ENABLE',
-                        'created_at' => date('Y-m-d H:i:s')
-                    );
-                    $file = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_manager'));
-                    if ($file['name'] != "manager_default.png") {
-                        @unlink($file['dir']);
-                    }
-                    $this->mymodel->updateData('file', $data, array('table_id' =>  $id, 'table' => 'tbl_manager'));
-                }
             }
             $this->alert->alertsuccess('Success Send Data');
         }

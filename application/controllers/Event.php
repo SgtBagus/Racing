@@ -56,8 +56,9 @@ class Event extends MY_Controller {
 		$dt['event_id'] = $_POST['event_id'];
 		$dt['approve'] = 'WAITING';
 		$dt['note'] = '';
-		$dt['status'] = 'ENABLE';
+		$dt['status'] = 'ENABLE'; 
 		$dt['created_at'] = date("Y-m-d H:i:s");
+		
 		$this->mymodel->insertData('tbl_event_register', $dt);
 		$last_id = $this->db->insert_id();
 

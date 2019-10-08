@@ -1,5 +1,7 @@
 <section class="content">
     <form action="<?= base_url('event/addregister') ?>" method="POST" id="sumbit">
+        <input type="hidden" name="team_id" value='<?= $this->session->userdata['id'] ?>'>
+        <input type="hidden" name="event_id" value='<?= $tbl_event['id'] ?>'>
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
@@ -30,7 +32,7 @@
                                 <i class="fa fa-calendar"></i> <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?> <br>
                             </div>
                             <div class="col-xs-6" align="right">
-                                Pendaftar : 
+                                Pendaftar :
                                 <br>
                                 <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
                                 <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
@@ -92,7 +94,7 @@
             </div>
         </div>
         <div class="show_error"></div>
-        <?php if($tbl_event['status'] == 'ENABLE') {?>
+        <?php if ($tbl_event['status'] == 'ENABLE') { ?>
             <button id="buttonSubmit" class="btn btn-block btn-primary btn-send"> Kirim Pendaftaran</button>
         <?php } else { ?>
             <button class="btn btn-block btn-primary btn-send" disabled> Event ini telah di tutup</button>
@@ -181,7 +183,7 @@
             '</div>' +
             '</div>');
 
-        $('#buttonSubmit').before('<input type="hidden" id="raider_id-'+id+'" name="raiderarray['+value_team+']" value='+id+'>')
+        $('#buttonSubmit').before('<input type="hidden" id="raider_id-' + id + '" name="raiderarray[' + value_team + ']" value=' + id + '>')
         $("#buttonSubmit").attr("disabled", false);
 
         $("#raiderSelect option[value='" + id + "']").remove();
@@ -199,7 +201,7 @@
     function deleteRaider(value) {
         $("#raiderSelect").append("<option value='" + value + "'>" + value + "</option>");
         $("#raiderSelected_" + value).remove();
-        $("#raider_id-"+value).remove();
+        $("#raider_id-" + value).remove();
 
         var value_team = parseInt($('#teamvalue').val()) - 1;
         $('#teamvalue').val(value_team);

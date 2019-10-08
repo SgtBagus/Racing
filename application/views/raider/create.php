@@ -70,8 +70,7 @@
                             <div class="col-xs-6">           
                                 <div class="form-group">
                                     <label>Nama Motor</label>
-                                    <select class="form-control select2" name="dt[motor_id]">
-                                        <option value="">--Pilih Kota--</option>
+                                    <select class="form-control" name="dt[motor_id]">
                                         <?php
                                         $master_motor = $this->mymodel->selectData("master_motor");
                                         foreach ($master_motor as $key => $value) {
