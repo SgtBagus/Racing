@@ -38,7 +38,7 @@
                                             <img class="img-gallery" src="<?= $file['url'] ?>" alt="Third slide">
                                         </div>
                                         <div class="col-xs-12" align="center">
-                                            <h3><b><?= $row['title'] ?><b></h3>
+                                            <h3><b><?= $row['title'] ?></b></h3>
                                         </div>
                                         <div class="col-xs-12" align="center">
                                             <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($row['created_at'])) ?>

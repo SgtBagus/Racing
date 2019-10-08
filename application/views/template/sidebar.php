@@ -80,7 +80,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= base_url('blogs') ?>">
                     <i class="fa fa-newspaper-o"></i>
                     <span>Blog</span>
                 </a>
@@ -92,7 +92,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= base_url('merchandise') ?>">
                     <i class="fa fa-cubes"></i>
                     <span>Merchandise</span>
                 </a>

@@ -51,7 +51,7 @@
                                                 <img class="img-gallery" src="<?= $main_image['url'] ?>" alt="Third slide">
                                             </div>
                                             <div class="col-xs-12" align="center">
-                                                <h3><b><?= $row['value'] ?><b></h3>
+                                                <h3><b><?= $row['value'] ?></b></h3>
                                             </div>
                                             <div class="col-xs-12" align="center">
                                                 <i class="fa fa-picture-o"></i> <b><?= $imagecount[0]['imagecount'] ?></b> Gambar
