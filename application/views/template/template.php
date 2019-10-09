@@ -113,6 +113,17 @@ if ($this->session->userdata('session_sop') == "") {
   <script src="<?= base_url('assets/') ?>mobile/jquery.mobile-1.4.5.min.js"></script>
   <script src="<?= base_url('assets/') ?>mobile/mobile_custom.js"></script>
   <script type="text/javascript">
+    
+    function lazzy_loader(limit)
+    {
+      var output = '<div class="row">'+
+      '<div class="col-xs-12" align="center">'+
+      '<h4><i class="fa fa-fw fa-spinner fa-spin"></i> Memuat Data !</h4'+
+      '</div>'+
+      '</div>';
+      $('#load_data_message').html(output);
+    }
+
     $(function() {
       $('.select2').select2()
     });

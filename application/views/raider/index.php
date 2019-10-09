@@ -6,15 +6,16 @@
                     <h3 class="box-title">Cari Raider</h3>
                 </div>
                 <div class="box-body">
-                    <form role="form" action="<?= base_url('raider') ?>" method="GET">
+                    <form role="form" action="#" method="GET">
                         <div class="form-group">
                             <label>Nama Raider</label> 
-                            <input type="text" name="name" class="form-control" <?php if ($_GET['name']) {
+                            <input type="text" name="name" class="form-control" id="filter-search" <?php 
+                            if ($_GET['name']) {
                                 echo 'value="' . $_GET['name'] . '"';
-                            } ?>>
+                            } ?> >
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-md btn-block btn-primary">
+                            <button type="submit" class="btn btn-md btn-block btn-primary" id="btn-search">
                                 <i class="fa fa-search"></i> Cari
                             </button>
                         </div>
@@ -23,57 +24,11 @@
             </div>
         </div>
     </div>
-    <?php if ($raider) { ?>
-        <div class="row">
-            <?php foreach ($raider as $row) {
-                $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_raider')); ?>
-                <a href="<?= base_url('raider/edit/') . $row['id'] ?>" class="a_black">
-                    <div class="col-xs-6">
-                        <div class="box">
-                            <div class="box-body">
-                                <div class="row" align="center">
-                                    <div class="col-xs-12">
-                                        <img class="img-circle" alt="User Image" src="<?= $photo['url'] ?>" alt="Third slide" height="150px" width="150px">
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <h4><?= $row['name'] ?> <?php if ($row['verificacion'] == 'ENABLE') {
-                                            echo '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
-                                        } ?> <br>
-                                        <small><i class="fa fa-globe"></i> <?= $row['kota'] ?></small>
-                                    </h4>
-                                    <b>
-                                        <i class="fa fa-motorcycle"></i> <?= $motor['value'] ?>
-                                        <br>
-                                        <i class="fa fa-phone"></i> <?= $row['nowa'] ?>
-                                    </b>
-                                    <a href="#">
-                                        <button class="btn btn-sm btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Whatsapp</button>
-                                    </a>
-                                    <p>Sebanyak : <b><?= $row['eventikut'] ?></b> Event Telah Di Ikuti</p>
-                                </div>
-                            </div>
-                            <div class="row" id="deleteForm_<?=$row['id']?>">
-                                <div class="col-xs-12 btnDelete_<?=$row['id']?>">
-                                    <button class="btn btn-sm btn-block btn-danger" onclick="hapus(<?= $row['id'] ?>)"> <i class="fa fa-trash"></i> Hapus Anggota Tean</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        <?php } ?>
-    </div>
-<?php } else { ?>
     <div class="row">
-        <div class="col-md-12">
-            <div class="box box-primary">
-                <div class="box-header with-border" align="center">
-                    <h3 class="box-title">Tidak Ada Data</h3>
-                </div>
-            </div>
+        <div id="load_data">
         </div>
     </div>
-<?php } ?>
+    <div id="load_data_message"></div>
 </section>
 
 <a href="<?= base_url('raider/create') ?>" class="float">
@@ -106,4 +61,57 @@
     function confirmDelete(id){
         location.href = "<?= base_url('raider/delete/') ?>" + id;
     }
+
+
+    $(document).ready(function(){
+
+        var limit = 2;
+        var start = 0;
+        var action = 'inactive';
+        var search = 0;
+
+        function load_data(limit, start){
+            lazzy_loader(limit);
+            search = $('#filter-search').val();
+
+            $.ajax({
+                url:"<?= base_url(); ?>raider/fetch?name="+search,
+                method:"POST",
+                data:{limit:limit, start:start},
+                cache: false,
+                success:function(data)
+                {
+                    if(data == '')
+                    {
+                        $('#load_data_message').html("");
+                        action = 'active';
+                    }
+                    else
+                    {
+                        $('#load_data').append(data);
+                        $('#load_data_message').html("");
+                        action = 'inactive';
+                    }
+                }
+            })
+        }
+
+        if(action == 'inactive')
+        {
+            action = 'active';
+            load_data(limit, start);
+        }
+
+        $(window).scroll(function(){
+            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive')
+            {
+                lazzy_loader(limit);
+                action = 'active';
+                start = start + limit;
+                setTimeout(function(){
+                    load_data(limit, start);
+                }, 1000);
+            }
+        });
+    });
 </script>

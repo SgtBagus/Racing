@@ -8,16 +8,11 @@ class Raider extends MY_Controller
 
     public function index()
     {
-        $data['page'] = 'Raider';
-        if($_GET['name']){
-            $data['raider'] = $this->mymodel->selectWithQuery('SELECT * from tbl_raider WHERE team_id = '.$this->session->userdata('id').' AND name LIKE "%'.$_GET['name'].'%"');
-        }else{
-            $data['raider'] = $this->mymodel->selectWhere('tbl_raider', array('team_id' => $this->session->userdata('id')));
-        }
-        
+        $data['page'] = 'Raider'; 
+        $data['subpage'] = '';
         $this->template->load('template/template', 'raider/index', $data);
     }
- 
+    
     public function create()
     {
         $data['page'] = 'Raider'; 
@@ -61,6 +56,68 @@ class Raider extends MY_Controller
             }
         }
         $this->form_validation->set_message('required', '%s');
+    }
+
+    public function fetch() {
+        $output = '';
+
+        $search = $_GET['name'];
+        
+        if($search){
+            $raider = $this->mymodel->selectWithQuery("SELECT * FROM tbl_raider WHERE team_id = ".$this->session->userdata('id')." AND LOWER(name) like '%".$search."%' LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
+        }else{
+            $raider = $this->mymodel->selectWithQuery("SELECT * FROM tbl_raider WHERE team_id = ".$this->session->userdata('id')." LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
+        }
+
+        if($raider)
+        {
+            foreach($raider as $row)
+            {
+                $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_raider')); 
+                $motor = $this->mymodel->selectDataone('master_motor', array('id' => $row['motor_id']));
+
+                $verificacion = '';
+                if($row['verificacion'] == 'ENABLE'){
+                    $verificacion = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
+                }
+
+                $output .= '
+                <a href="'.base_url('raider/edit/').$row['id'].'" class="a_black">
+                <div class="col-xs-6">
+                <div class="box"> 
+                <div class="box-body">
+                <div class="row" align="center">
+                <div class="col-xs-12">
+                <img class="img-circle" alt="User Image" src="'.$photo['url'].'" alt="Third slide" height="150px" width="150px">
+                </div>
+                <div class="col-xs-12">
+                <h4>'.$row['name'].' '.$verificacion.'<br>
+                <small><i class="fa fa-globe"></i>'.$row['kota'].'</small>
+                </h4>
+                <b>
+                <i class="fa fa-motorcycle"></i>'.$motor['value'].'
+                <br>
+                <i class="fa fa-phone"></i>'.$row['nowa'].'
+                </b>
+                <a href="#">
+                <button class="btn btn-sm btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Whatsapp</button>
+                </a>
+                <p>Sebanyak : <b>'.$row['eventikut'].'</b> Event Telah Di Ikuti</p>
+                </div>
+                </div>
+                <div class="row" id="deleteForm_'.$row['id'].'">
+                <div class="col-xs-12 btnDelete_'.$row['id'].'">
+                <button class="btn btn-sm btn-block btn-danger" onclick="hapus('.$row['id'].')"> <i class="fa fa-trash"></i> Hapus Anggota Tean</button>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </a>
+                ';
+            }
+        }
+        echo $output;
     }
 
     public function store()
