@@ -1,80 +1,99 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Cari Event</h3>
-                </div>
+            <div class="box">
                 <div class="box-body">
-                    <form role="form" action="<?= base_url('verifteam') ?>" method="GET">
-                        <div class="form-group">
-                            <label>Nama Event</label>
-                            <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
-                                                                                    echo 'value="' . $_GET['title'] . '"';
-                                                                                } ?>>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-md btn-block btn-primary">
-                                <i class="fa fa-search"></i> Cari
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php if ($tbl_event_register) { ?>
-        <?php foreach ($tbl_event_register as $row) {
-                $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['event_id'], 'table' => 'tbl_event'));
-                $rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $row['event_register_id'] . "'"); ?>
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="<?= base_url('verifraider/view/') . $row['event_register_id'] ?>" class="a_black">
-                        <div class="box">
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <img class="img-even" src="<?= $photo['url'] ?>" alt="Third slide">
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <h4><?= $row['title'] ?>
-                                            <br>
-                                            <small>
-                                                <?php
-                                                        if ($row['approve'] == 'WAITING') {
-                                                            echo '<small class="label bg-yellow"><i class="fa fa-warning"> </i> Menunggu Dikonfirmasi </small>';
-                                                        } else if ($row['approve'] == "APPROVE") {
-                                                            echo '<small class="label bg-primary"><i class="fa fa-check"> </i> Pendaftaran Di Terima </small>';
-                                                        } else if ($row['approve'] == "REJECT") {
-                                                            echo '<small class="label bg-red"><i class="fa fa-ban"> </i> Pendaftaran Di Tolak </small>';
-                                                        } else if ($row['approve'] == "FINISH") {
-                                                            echo '<small class="label bg-green"><i class="fa fa-check"> </i> Event Selesai </small>';
-                                                        } else if ($row['approve'] == "CANCEL") {
-                                                            echo '<small class="label bg-red"><i class="fa fa-ban"> </i> Event Dibatalkan</small>';
-                                                        } ?>
-                                            </small>
-                                            <br>
-                                            <small><i class="fa fa-globe"></i> <?= $row['kota'] ?>
-                                            </small>
-                                        </h4>
-                                        <i class="fa fa-motorycycle"></i> Pendaftar : <b><?= $rowraider[0]['rowraider'] ?></b> Raider
-                                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form role="form" action="<?= base_url('verifraider') ?>" method="GET">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Judul Even</label>
+                                    <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
+                                        echo 'value="' . $_GET['title'] . '"';
+                                    } ?> id="filter-search">
                                 </div>
-                            </div>
+                                <div class="form-group" align="center">
+                                    <button type="submit" class="btn btn-block btn-primary">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                    <?php if ($_GET['title']) { ?>
+                                        <br>
+                                        <a href="<?=base_url('verifraider')?>">
+                                            <button type="button" class="btn btn-md btn-block btn-info">
+                                                <i class="fa fa-refresh"></i> Reset Pencarian
+                                            </button>
+                                        </a>
+                                    <?php } ?>
+                                </div>
+                            </form>
                         </div>
-                    </a>
-                </div>
-            </div>
-        <?php } ?>
-    <?php } else { ?>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border" align="center">
-                        <h3 class="box-title">Tidak Ada Data</h3>
                     </div>
                 </div>
             </div>
         </div>
-    <?php } ?>
+    </div>
+    <div class="row">
+        <div id="load_data">
+        </div>
+    </div>
+    <div id="load_data_message"></div>
 </section>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        var limit = 3;
+        var start = 0;
+        var action = 'inactive'; 
+        var search = 0;
+
+        function load_data(limit, start){
+            lazzy_loader(limit);
+            search = $('#filter-search').val();
+
+            $.ajax({
+                url:"<?= base_url(); ?>verifraider/fetchevent?title="+search,
+                method:"POST",
+                data:{limit:limit, start:start},
+                cache: false,
+                success:function(data)
+                {
+                    if(data == '') {
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Semua Event telah Ditampilkan'+
+                            '</div>'+
+                            '</div>');
+                        action = 'active';
+                    } else {
+                        $('#load_data').append(data);
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Tampilkan Lebih Banyak <br> <i class="fa fa-angle-down"></i>'+
+                            '</div>'+
+                            '</div>');
+                        action = 'inactive';
+                    }
+                }
+            })
+        }
+
+        if(action == 'inactive')
+        {
+            action = 'active';
+            load_data(limit, start);
+        }
+
+        $(window).scroll(function(){
+            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive')
+            {
+                lazzy_loader(limit);
+                action = 'active';
+                start = start + limit;
+                setTimeout(function(){
+                    load_data(limit, start);
+                }, 1000);
+            }
+        });
+    });
+</script>

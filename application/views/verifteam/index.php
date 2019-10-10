@@ -5,7 +5,7 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-xs-12">
-                            <form role="form" action="<?= base_url('event') ?>" method="GET">
+                            <form role="form" action="<?= base_url('verifteam') ?>" method="GET">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Judul Even</label>
                                     <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
@@ -18,7 +18,7 @@
                                     </button>
                                     <?php if ($_GET['title']) { ?>
                                         <br>
-                                        <a href="<?=base_url('event')?>">
+                                        <a href="<?=base_url('verifteam')?>">
                                             <button type="button" class="btn btn-md btn-block btn-info">
                                                 <i class="fa fa-refresh"></i> Reset Pencarian
                                             </button>

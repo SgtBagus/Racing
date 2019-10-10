@@ -75,7 +75,7 @@ class Verifteam extends MY_Controller
             }
         }
         echo $output;
-    }
+    } 
 
     public function view($id)
     {
