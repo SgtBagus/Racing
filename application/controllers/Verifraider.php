@@ -117,6 +117,7 @@ class Verifraider extends MY_Controller
         if ($tbl_raider) {
             foreach ($tbl_raider as $row) {
                 $raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['raider_id']));
+                $team = $this->mymodel->selectDataone('tbl_team', array('id' => $raider['team_id']));
                 $motor = $this->mymodel->selectDataone('master_motor', array('id' => $raider['motor_id']));
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $raider['id'], 'table' => 'tbl_raider'));
 
@@ -128,14 +129,17 @@ class Verifraider extends MY_Controller
                     <div class="box-body">
                         <div class="row" align="center">
                             <div class="col-xs-12">
-                                <img class="img-circle" alt="User Image" src="'.$photo['url'].'" alt="Third slide" height="150px" width="150px">
+                                <h3>Team<br><b>'.$team['name'].'</b></h3>
                             </div>
                             <div class="col-xs-12">
-                                <h4>'.$raider['name'].$verificacion.'<br>
-                                    <small><i class="fa fa-globe"></i> '.$raider['kota'].'</small>
+                                <img class="img-circle" alt="User Image" src="' . $photo['url'] . '" alt="Third slide" height="150px" width="150px">
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>' . $raider['name'] . $verificacion . '<br>
+                                    <small><i class="fa fa-globe"></i> ' . $raider['kota'] . '</small>
                                 </h4>
-                                <p>'.$raider['nostart'].'/'.$motor['value'].'/'.$raider['ukuran_jersey'].'</p>
-                                <p>Sebanyak : <b>'.$raider['eventikut'].'</b> Event Telah Di Ikuti</p>
+                                <p>' . $raider['nostart'] . '/' . $motor['value'] . '/' . $raider['ukuran_jersey'] . '</p>
+                                <p>Sebanyak : <b>' . $raider['eventikut'] . '</b> Event Telah Di Ikuti</p>
                             </div>
                         </div>
                     </div>
