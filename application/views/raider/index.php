@@ -18,6 +18,14 @@
                             <button type="submit" class="btn btn-md btn-block btn-primary" id="btn-search">
                                 <i class="fa fa-search"></i> Cari
                             </button>
+                            <?php if ($_GET['name']) { ?>
+                                <br>
+                                <a href="<?=base_url('raider')?>">
+                                    <button type="button" class="btn btn-md btn-block btn-info">
+                                        <i class="fa fa-refresh"></i> Reset Pencarian
+                                    </button>
+                                </a>
+                            <?php } ?> 
                         </div>
                     </form>
                 </div>
@@ -62,12 +70,11 @@
         location.href = "<?= base_url('raider/delete/') ?>" + id;
     }
 
-
     $(document).ready(function(){
 
         var limit = 2;
         var start = 0;
-        var action = 'inactive';
+        var action = 'inactive'; 
         var search = 0;
 
         function load_data(limit, start){
@@ -81,15 +88,20 @@
                 cache: false,
                 success:function(data)
                 {
-                    if(data == '')
-                    {
-                        $('#load_data_message').html("");
+                    if(data == '') {
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Semua Raider telah Ditampilkan'+
+                            '</div>'+
+                            '</div>');
                         action = 'active';
-                    }
-                    else
-                    {
+                    } else {
                         $('#load_data').append(data);
-                        $('#load_data_message').html("");
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Semua Data telah Ditampilkan'+
+                            '</div>'+
+                            '</div>');
                         action = 'inactive';
                     }
                 }

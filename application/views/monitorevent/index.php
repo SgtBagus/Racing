@@ -1,17 +1,17 @@
- <section class="content">
-     <div class="row">
-         <div class="col-md-12">
-             <div class="box">
-                 <div class="box-body">
-                     <div class="row">
-                         <div class="col-xs-12">
-                             <form role="form" action="<?= base_url('event') ?>" method="GET">
-                                 <div class="form-group">
-                                     <label for="exampleInputEmail1">Judul Even</label>
-                                     <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
-                                                                                                echo 'value="' . $_GET['title'] . '"';
-                                                                                            } ?>>
-                                 </div>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form role="form" action="<?= base_url('event') ?>" method="GET">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Judul Even</label>
+                                    <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
+                                        echo 'value="' . $_GET['title'] . '"';
+                                    } ?> id="filter-search">
+                                </div>
                                  <!-- <div class="row">
                                     <div class="col-xs-12">                      
                                         <label for="exampleInputEmail1">Rentang Tanggal</label>
@@ -29,69 +29,86 @@
                                         </div>
                                     </div>
                                 </div> -->
-                                 <div class="form-group" align="center">
-                                     <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
-                                 </div>
-                             </form>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             <?php if ($tbl_event_register) { ?>
-                 <div class="row">
-                     <div class="col-md-12">
-                         <?php foreach ($tbl_event_register as $row) {
-                                    $event = $this->mymodel->selectDataone('tbl_event', array('id' => $row['event_id']));
-                                    $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['event_id'], 'table' => 'tbl_event'));
-                                    $rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $row['id'] . "'"); ?>
-                             <a href="<?= base_url('monitorevent/view/') . $row['id'] ?>" class="a_black">
-                                 <div class="box">
-                                     <div class="box-body">
-                                         <div class="row">
-                                             <div class="col-xs-5">
-                                                 <img class="img-even" src="<?= $photo['url'] ?>" alt="Third slide">
-                                             </div>
-                                             <div class="col-xs-7">
-                                                 <h4><?= $event['title'] ?>
-                                                     <br>
-                                                     <?php
-                                                                if ($row['approve'] == 'WAITING') {
-                                                                    echo '<small class="label bg-yellow"><i class="fa fa-warning"> </i> Menunggu Dikonfirmasi </small>';
-                                                                } else if ($row['approve'] == "APPROVE") {
-                                                                    echo '<small class="label bg-green"><i class="fa fa-check"> </i> Pendaftaran Di Terima </small>';
-                                                                } else if ($row['approve'] == "REJECT") {
-                                                                    echo '<small class="label bg-red"><i class="fa fa-ban"> </i> Pendaftaran Di Tolak </small>';
-                                                                } else if ($row['approve'] == "FINISH") {
-                                                                    echo '<small class="label bg-green"><i class="fa fa-check"> </i> Event Selesai </small>';
-                                                                } else if ($row['approve'] == "CANCEL") {
-                                                                    echo '<small class="label bg-red"><i class="fa fa-ban"> </i> Event Dibatalkan</small>';
-                                                                } ?>
-                                                     <br>
-                                                     <small><i class="fa fa-globe"></i> <?= $event['kota'] ?>
-                                                     </small>
-                                                 </h4>
-                                                 <i class="fa fa-motorcycle"></i> Mendaftar dengan : <b><?= $rowraider[0]['rowraider'] ?></b> Raider
-                                                 <br>
-                                                 <i class="fa fa-calendar"></i> Mendaftar pada : <?= date('d-m-Y', strtotime($row['created_at'])) ?>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </a>
-                         <?php } ?>
-                     </div>
-                 </div>
-             <?php } else { ?>
-                 <div class="row">
-                     <div class="col-md-12">
-                         <div class="box box-primary">
-                             <div class="box-header with-border" align="center">
-                                 <h3 class="box-title">Tidak Ada Data</h3>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             <?php } ?>
-         </div>
-     </div>
- </section>
+                                <div class="form-group" align="center">
+                                    <button type="submit" class="btn btn-block btn-primary">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                    <?php if ($_GET['title']) { ?>
+                                        <br>
+                                        <a href="<?=base_url('raider')?>">
+                                            <button type="button" class="btn btn-md btn-block btn-info">
+                                                <i class="fa fa-refresh"></i> Reset Pencarian
+                                            </button>
+                                        </a>
+                                    <?php } ?> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="load_data">
+        </div>
+    </div>
+    <div id="load_data_message"></div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var limit = 3;
+        var start = 0;
+        var action = 'inactive'; 
+        var search = 0;
+
+        function load_data(limit, start){
+            lazzy_loader(limit);
+            search = $('#filter-search').val();
+
+            $.ajax({
+                url:"<?= base_url(); ?>monitorevent/fetch?title="+search,
+                method:"POST",
+                data:{limit:limit, start:start},
+                cache: false,
+                success:function(data)
+                {
+                    if(data == '') {
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Semua Data Monitor Event telah Ditampilkan'+
+                            '</div>'+
+                            '</div>');
+                        action = 'active';
+                    } else {
+                        $('#load_data').append(data);
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Tampilkan Lebih Banyak <br> <i class="fa fa-angle-down"></i>'+
+                            '</div>'+
+                            '</div>');
+                        action = 'inactive';
+                    }
+                }
+            })
+        }
+
+        if(action == 'inactive')
+        {
+            action = 'active';
+            load_data(limit, start);
+        }
+
+        $(window).scroll(function(){
+            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive')
+            {
+                lazzy_loader(limit);
+                action = 'active';
+                start = start + limit;
+                setTimeout(function(){
+                    load_data(limit, start);
+                }, 1000);
+            }
+        });
+    });
+</script>

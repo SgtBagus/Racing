@@ -17,8 +17,10 @@
                                 <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                             </a>
                         </h3>
-                        <div class="row">
-                            <div class="col-xs-12">
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <div class="row"> 
+                            <div class="col-xs-6">
+                                Event Dimulai : <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?><br>
                                 <?php if ($tbl_event['status'] == 'ENABLE') {
                                     echo '<small class="label bg-green">Dibuka</small>';
                                 } else {
@@ -26,16 +28,13 @@
                                 }
                                 ?>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <i class="fa fa-calendar"></i> <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?> <br>
-                            </div>
                             <div class="col-xs-6" align="right">
-                                Pendaftar :
+                                Pendaftar : 
                                 <br>
                                 <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
                                 <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
+                                <br>
+                                <small>Event Dibuat : <?= date('d-m-Y', strtotime($tbl_event['created_at'])) ?></small>
                             </div>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                 <div class="box">
                     <div class="box-body">
                         <div class="form-group">
-                            <label>Masukan Raider</label>
+                            <label>Pilih Raider</label>
                             <select class="form-control" data-placeholder="Select a State" style="width: 100%;" id="raiderSelect">
                                 <option value="0" selected="">Pilih Raider</option>
                                 <?php foreach ($raider as $key => $value) { ?>
@@ -95,7 +94,7 @@
         </div>
         <div class="show_error"></div>
         <?php if ($tbl_event['status'] == 'ENABLE') { ?>
-            <button id="buttonSubmit" class="btn btn-block btn-primary btn-send"> Kirim Pendaftaran</button>
+            <button id="buttonSubmit" class="btn btn-block btn-primary btn-send"><i class="fa fa-send"></i> Kirim Pendaftaran</button>
         <?php } else { ?>
             <button class="btn btn-block btn-primary btn-send" disabled> Event ini telah di tutup</button>
         <?php } ?>
@@ -172,7 +171,7 @@
         $('#raiderList').append('<div class="box" id="raiderSelected_' + id + '">' +
             '<div class="box-body">' +
             '<div class="col-xs-5">' +
-            '<img src="' + img_url + '" class="img-circle" alt="User Image" height="65px" width="65px">' +
+            '<img src="' + img_url + '" class="img-circle" alt="User Image" height="100px" width="100px">' +
             '</div>' +
             '<div class="col-xs-7">' +
             '<h4>' + name + '<br>' +

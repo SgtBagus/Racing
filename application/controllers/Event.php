@@ -6,12 +6,6 @@ class Event extends MY_Controller {
 
 	public function index(){
 		$data['page'] = 'Event';
-		if($_GET['title']){
-			$data['tbl_event'] = $this->mymodel->selectWithQuery("SELECT * from tbl_event WHERE title LIKE '%".$_GET['title']."%' AND public = 'ENABLE'");
-		}else{
-			$data['tbl_event'] = $this->mymodel->selectWhere('tbl_event',  array('public' => 'ENABLE'));
-		}
-		
 		$this->template->load('template/template','event/index', $data);  
 	} 
 	
@@ -26,7 +20,7 @@ class Event extends MY_Controller {
 
 		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '".$data['register_id']['id']."'");
 
-        $data['subpage'] = '<b>'.$data['tbl_event']['title'].'</b>';
+		$data['subpage'] = '<b>'.$data['tbl_event']['title'].'</b>';
 		$this->template->load('template/template','event/view', $data); 
 	}
 
@@ -42,7 +36,7 @@ class Event extends MY_Controller {
 
 		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '".$data['register_id']['id']."'");
 
-        $data['subpage'] = 'Mendaftar Event : <b>'.$data['tbl_event']['title'].'</b>';
+		$data['subpage'] = 'Mendaftar Event : <b>'.$data['tbl_event']['title'].'</b>';
 		$this->template->load('template/template','event/register', $data); 
 	}
 
@@ -71,5 +65,73 @@ class Event extends MY_Controller {
 			$this->mymodel->insertData('tbl_event_register_raider', $dtd);
 		}
 		$this->alert->alertsuccess('Success Send Data');
+	}
+
+	public function fetch() {
+		$output = '';
+
+		$search = $_GET['title'];
+
+		if($search){
+			$event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' AND LOWER(title) like '%".$search."%' ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
+		}else{
+			$event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
+		}
+		if($event)
+		{
+			foreach($event as $row)
+			{
+				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event')); 
+				$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '".$row['id']."'");
+				$register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $row['id'])); 
+				$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '".$register_id['id']."'");
+
+				if ($row['status'] == 'ENABLE') {
+					$status =  '<small class="label bg-green">Dibuka</small>';
+				} else {
+					$status = '<small class="label bg-red">Ditutup</small>';
+				}
+
+				$output .= '
+				<a href="'.base_url("event/view/").$row['id'].'" class="a_black">
+				<div class="col-md-12">
+					<div class="box">
+						<div class="box-body">
+							<div class="row">
+								<div class="col-xs-4">
+									<img class="img-even" src="'.$photo['url'].'" alt="Third slide">
+								</div>
+								<div class="col-xs-8">
+									<h4>'.$row['title'].'<br>
+										<small>
+											<i class="fa fa-globe"></i> '.$row['kota'].'<br>
+											'.$row['alamat'].'
+										</small>
+									</h4>
+									<hr style="margin-top:5px">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-6">
+								 Event Dimulai : '.date('d-m-Y', strtotime($row['tglevent'])).'<br>
+								'.$status.'
+								</div>
+								<div class="col-xs-6" align="right">
+									Pendaftar : 
+									<b>
+										<i class="fa fa-motorcycle"></i> '.$rowraider[0]['rowraider'].'
+										<i class="fa fa-users"></i> '.$rowteam[0]['rowteam'].'
+									</b>
+									<br>
+								 	<small>Event Dibuat : '.date('d-m-Y', strtotime($row['created_at'])).'</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</a>';
+			}
+		}
+		echo $output;
 	}
 }

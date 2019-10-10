@@ -64,9 +64,9 @@ class Raider extends MY_Controller
         $search = $_GET['name'];
         
         if($search){
-            $raider = $this->mymodel->selectWithQuery("SELECT * FROM tbl_raider WHERE team_id = ".$this->session->userdata('id')." AND LOWER(name) like '%".$search."%' LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
+            $raider = $this->mymodel->selectWithQuery("SELECT * FROM tbl_raider WHERE team_id = ".$this->session->userdata('id')." AND LOWER(name) like '%".$search."%' ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
         }else{
-            $raider = $this->mymodel->selectWithQuery("SELECT * FROM tbl_raider WHERE team_id = ".$this->session->userdata('id')." LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
+            $raider = $this->mymodel->selectWithQuery("SELECT * FROM tbl_raider WHERE team_id = ".$this->session->userdata('id')." ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));   
         }
 
         if($raider)
@@ -92,12 +92,12 @@ class Raider extends MY_Controller
                 </div>
                 <div class="col-xs-12">
                 <h4>'.$row['name'].' '.$verificacion.'<br>
-                <small><i class="fa fa-globe"></i>'.$row['kota'].'</small>
+                <small><i class="fa fa-globe"></i> '.$row['kota'].'</small> 
                 </h4>
                 <b>
-                <i class="fa fa-motorcycle"></i>'.$motor['value'].'
+                <i class="fa fa-motorcycle"></i> '.$motor['value'].'
                 <br>
-                <i class="fa fa-phone"></i>'.$row['nowa'].'
+                <i class="fa fa-phone"></i> '.$row['nowa'].'
                 </b>
                 <a href="#">
                 <button class="btn btn-sm btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Whatsapp</button>
@@ -107,7 +107,7 @@ class Raider extends MY_Controller
                 </div>
                 <div class="row" id="deleteForm_'.$row['id'].'">
                 <div class="col-xs-12 btnDelete_'.$row['id'].'">
-                <button class="btn btn-sm btn-block btn-danger" onclick="hapus('.$row['id'].')"> <i class="fa fa-trash"></i> Hapus Anggota Tean</button>
+                <button class="btn btn-sm btn-block btn-danger" onclick="hapus('.$row['id'].')"> <i class="fa fa-trash"></i> Hapus Anggota Team</button>
                 </div>
                 </div>
                 </div>
