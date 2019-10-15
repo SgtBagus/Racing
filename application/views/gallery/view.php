@@ -15,7 +15,7 @@
                                     <label for="exampleInputEmail1">Judul Gambar</label>
                                     <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
                                                                                                 echo 'value="' . $_GET['title'] . '"';
-                                                                                            } ?>>
+                                                                                            } ?> id="filter-search">
                                 </div>
                                 <div class="form-group" align="center">
                                     <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
@@ -25,45 +25,72 @@
                     </div>
                 </div>
             </div>
-            <?php if ($tbl_gallery) { ?>
-                <div class="row">
-                    <?php foreach ($tbl_gallery as $row) {
-                            $file =  $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'tbl_gallery'));
-                            ?>
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <img class="img-gallery" src="<?= $file['url'] ?>" alt="Third slide">
-                                        </div>
-                                        <div class="col-xs-12" align="center">
-                                            <h3><b><?= $row['title'] ?></b></h3>
-                                        </div>
-                                        <div class="col-xs-12" align="center">
-                                            <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($row['created_at'])) ?>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <p><?= $row['caption'] ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div>
-            <?php } else { ?>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="box box-primary">
-                            <div class="box-header with-border" align="center">
-                                <h3 class="box-title">Tidak Ada Data</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
         </div>
     </div>
+    <div class="row">
+        <div id="load_data">
+        </div>
+    </div>
+    <div id="load_data_message"></div>
 </section>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        var limit = 3;
+        var start = 0;
+        var action = 'inactive'; 
+        var search = 0;
+
+        function load_data(limit, start){
+            lazzy_loader(limit);
+            search = $('#filter-search').val();
+
+            $.ajax({
+                url:"<?= base_url(); ?>gallery/fetchview/<?=$id['id']?>?name="+search,
+                method:"POST",
+                data:{limit:limit, start:start},
+                cache: false,
+                success:function(data)
+                {
+                    if(data == '') {
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Semua Blog telah Ditampilkan'+
+                            '</div>'+
+                            '</div>');
+                        action = 'active';
+                    } else {
+                        $('#load_data').append(data);
+                        $('#load_data_message').html('<div class="row">'+
+                            '<div class="col-xs-12" align="center">'+
+                            'Semua Blog telah Ditampilkan'+
+                            '</div>'+
+                            '</div>');
+                        action = 'inactive';
+                    }
+                }
+            })
+        }
+
+        if(action == 'inactive')
+        {
+            action = 'active';
+            load_data(limit, start);
+        }
+
+        $(window).scroll(function(){
+            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive')
+            {
+                lazzy_loader(limit);
+                action = 'active';
+                start = start + limit;
+                setTimeout(function(){
+                    load_data(limit, start);
+                }, 1000);
+            }
+        });
+    });
+</script>
+
