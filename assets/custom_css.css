@@ -87,7 +87,7 @@ img {
 }
 
 .img-even {
-    height: 80px;
+    height: 180px;
     width: 100%;
     border-radius: 15px;
 }
@@ -118,14 +118,26 @@ a:focus  {
     color: #72c02c;
 }
 
-.main-footer-login {
-    background: #fff;
-    padding: 15px;
-    color: #444;
-    border-top: 1px solid #d2d6de;
+.a_black,
+.a_black:visited,
+.a_black:hover,
+.a_black:active,
+.a_black:focus  {
+    color: #000;
 }
 
-a.float {
+.main-footer-login {
+    background-color:#000; 
+    top:0; 
+    width:100%;                                                         
+    z-index:100; 
+    color: white;                                                                                                                                                                                                                                                                                                   
+    padding: 15px;                                              
+    border-color: #000;
+    margin-bottom: -1px;
+}
+
+a.float {                                       
     position: fixed;
     width: 50px;
     height: 50px;

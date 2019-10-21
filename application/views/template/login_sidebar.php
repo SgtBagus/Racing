@@ -1,7 +1,7 @@
 <aside id="sidebar" class="control-sidebar control-sidebar-light" style="display: none;">
     <section class="sidebar" style="height: auto;">
         <ul class="sidebar-menu tree" data-widget="tree">
-            <li class="header">Masuk</li>
+            <li class="header">MASUK</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login') ?>">
                     <i class="fa fa-lock"></i>

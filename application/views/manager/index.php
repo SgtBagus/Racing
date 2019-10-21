@@ -1,48 +1,46 @@
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-primary">
-                <div class="box-body">
-                    <form role="form" action="<?= base_url('manager/store') ?>" method="POST" id="sumbit">
-                        <div class="show_error"></div>
-                        <input type="hidden" name="id" class="form-control" value="<?= $manajer['id'] ?>">
-                        <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" name="dt[name]" class="form-control" value="<?= $manajer['name'] ?>">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <form role="form" action="<?= base_url('manager/store') ?>" method="POST" id="sumbit">
+                    <div class="show_error"></div>
+                    <input type="hidden" name="id" class="form-control" value="<?= $manajer['id'] ?>">
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" name="dt[name]" class="form-control" value="<?= $manajer['name'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Foto</label><br>
+                        <div align="center">
+                            <?php if ($file){ ?>
+                                <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
+                            <?php } ?>
                         </div>
-                        <div class="form-group">
-                            <label>Foto</label><br>
-                            <div align="center">
-                                <?php if ($file){ ?>
-                                    <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
-                                <?php } ?>
-                            </div>
-                            <div class="input-group" id="preview_image">
-                                <button type="button" class="btn btn-primary" id="btnFile">Pilih Gambar</button>
-                                <input name="file" type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
-                            </div>
-                            <p class="help-block">Foto yang diupload disarankan memiliki format PNG, JPG, atau JPEG</p>
+                        <div class="input-group" id="preview_image">
+                            <button type="button" class="btn btn-primary" id="btnFile">Pilih Gambar</button>
+                            <input name="file" type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
                         </div>
-                        <div class="form-group">
-                            <label>Alamat Team</label>
-                            <textarea name="dt[alamat]" class="form-control" rows="5"><?= $manajer['alamat'] ?></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Nomor Wa</label>
-                            <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="<?= $manajer['nowa'] ?>">
-                        </div>
-                        <div class="show_error"></div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
-                                <i class="fa fa-save"></i> Simpan
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                        <p class="help-block">Foto yang diupload disarankan memiliki format PNG, JPG, atau JPEG</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Team</label>
+                        <textarea name="dt[alamat]" class="form-control" rows="5"><?= $manajer['alamat'] ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor Wa</label>
+                        <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="<?= $manajer['nowa'] ?>">
+                    </div>
+                    <div class="show_error"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
+                            <i class="fa fa-save"></i> Simpan
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</section>
+</div>
 <script type="text/javascript">
     $(function() {
         $("#sumbit").submit(function() {

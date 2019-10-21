@@ -1,60 +1,41 @@
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <form role="form" action="<?= base_url('event') ?>" method="GET">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Judul Even</label>
-                                    <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
-                                        echo 'value="' . $_GET['title'] . '"';
-                                    } ?> id="filter-search">
-                                </div>
-                                 <!-- <div class="row">
-                                    <div class="col-xs-12">                      
-                                        <label for="exampleInputEmail1">Rentang Tanggal</label>
-                                    </div>
-                                    <div class="col-xs-6">                      
-                                        <div class="form-group">
-                                            <label>Tanggal awal</label>
-                                            <input type="date" name="dt[firstdate]" class="form-control">
-                                        </div>  
-                                    </div>
-                                    <div class="col-xs-6">                
-                                        <div class="form-group"> 
-                                            <label>Tanggal awal</label>
-                                            <input type="date" name="dt[enddate]" class="form-control">
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="form-group" align="center">
-                                    <button type="submit" class="btn btn-block btn-primary">
-                                        <i class="fa fa-search"></i> Cari
-                                    </button>
-                                    <?php if ($_GET['title']) { ?>
-                                        <br>
-                                        <a href="<?=base_url('raider')?>">
-                                            <button type="button" class="btn btn-md btn-block btn-info">
-                                                <i class="fa fa-refresh"></i> Reset Pencarian
-                                            </button>
-                                        </a>
-                                    <?php } ?> 
-                                </div>
-                            </form>
-                        </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form role="form" action="<?= base_url('event') ?>" method="GET">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Judul Even</label>
+                                <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
+                                    echo 'value="' . $_GET['title'] . '"';
+                                } ?> id="filter-search">
+                            </div>
+                            <div class="form-group" align="center">
+                                <button type="submit" class="btn btn-block btn-primary">
+                                    <i class="fa fa-search"></i> Cari
+                                </button>
+                                <?php if ($_GET['title']) { ?>
+                                    <br>
+                                    <a href="<?=base_url('raider')?>">
+                                        <button type="button" class="btn btn-md btn-block btn-info">
+                                            <i class="fa fa-refresh"></i> Reset Pencarian
+                                        </button>
+                                    </a>
+                                <?php } ?> 
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div id="load_data">
-        </div>
+</div>
+<div class="row">
+    <div id="load_data">
     </div>
-    <div id="load_data_message"></div>
-</section>
+</div>
+<div id="load_data_message"></div>
 <script type="text/javascript">
     $(document).ready(function(){
         var limit = 3;

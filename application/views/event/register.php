@@ -1,106 +1,104 @@
-<section class="content">
-    <form action="<?= base_url('event/addregister') ?>" method="POST" id="sumbit">
-        <input type="hidden" name="team_id" value='<?= $this->session->userdata['id'] ?>'>
-        <input type="hidden" name="event_id" value='<?= $tbl_event['id'] ?>'>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-body">
-                        <img src="<?= $file['url'] ?>" width="100%" height="230px">
-                        <h3>
-                            <?= $tbl_event['title'] ?><br>
-                            <small>
-                                <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
-                            </small>
-                            <br>
-                            <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
-                                <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                            </a>
-                        </h3>
-                        <hr style="margin-top:5px; margin-bottom: 5px">
-                        <div class="row"> 
-                            <div class="col-xs-6">
-                                Event Dimulai : <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?><br>
-                                <?php if ($tbl_event['status'] == 'ENABLE') {
-                                    echo '<small class="label bg-green">Dibuka</small>';
-                                } else {
-                                    echo '<small class="label bg-red">Ditutup</small>';
-                                }
-                                ?>
-                            </div>
-                            <div class="col-xs-6" align="right">
-                                Pendaftar : 
-                                <br>
-                                <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
-                                <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
-                                <br>
-                                <small>Event Dibuat : <?= date('d-m-Y', strtotime($tbl_event['created_at'])) ?></small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#>">
-                    <button class="btn btn-sm btn-block btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab</button>
-                </a>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Syarat Pendaftaran </h3>
-                    </div>
-                    <div class="box-body" align="center">
-                        <table style="width: 100%">
-                            <tr>
-                                <td align="right">Raider per Team</td>
-                                <td>:</td>
-                                <td align="left">
-                                    <b><?= $tbl_event['minraider'] ?> s/d <?= $tbl_event['maxraider'] ?></b>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label>Pilih Raider</label>
-                            <select class="form-control" data-placeholder="Select a State" style="width: 100%;" id="raiderSelect">
-                                <option value="0" selected="">Pilih Raider</option>
-                                <?php foreach ($raider as $key => $value) { ?>
-                                    <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" align="center" id="raiderList">
-                <p class="help-block" id="raiderEmpty">Silakan Memilih Radier yang ingin diikut sertakan</p>
-                <input type="hidden" id="teamvalue" value='0'>
-            </div>
-        </div>
-        <div class="show_error"></div>
-        <?php if ($tbl_event['status'] == 'ENABLE') { ?>
-            <button id="buttonSubmit" class="btn btn-block btn-primary btn-send"><i class="fa fa-send"></i> Kirim Pendaftaran</button>
-        <?php } else { ?>
-            <button class="btn btn-block btn-primary btn-send" disabled> Event ini telah di tutup</button>
-        <?php } ?>
-    </form>
-</section>
 
+<form action="<?= base_url('event/addregister') ?>" method="POST" id="sumbit">
+    <input type="hidden" name="team_id" value='<?= $this->session->userdata['id'] ?>'>
+    <input type="hidden" name="event_id" value='<?= $tbl_event['id'] ?>'>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-body">
+                    <img src="<?= $file['url'] ?>" width="100%" height="230px">
+                    <h3>
+                        <?= $tbl_event['title'] ?><br>
+                        <small>
+                            <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
+                        </small>
+                        <br>
+                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                            <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
+                        </a>
+                    </h3>
+                    <hr style="margin-top:5px; margin-bottom: 5px">
+                    <div class="row"> 
+                        <div class="col-xs-6">
+                            Event Dimulai : <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?><br>
+                            <?php if ($tbl_event['status'] == 'ENABLE') {
+                                echo '<small class="label bg-green">Dibuka</small>';
+                            } else {
+                                echo '<small class="label bg-red">Ditutup</small>';
+                            }
+                            ?>
+                        </div>
+                        <div class="col-xs-6" align="right">
+                            Pendaftar : 
+                            <br>
+                            <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
+                            <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
+                            <br>
+                            <small>Event Dibuat : <?= date('d-m-Y', strtotime($tbl_event['created_at'])) ?></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="#>">
+                <button class="btn btn-sm btn-block btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab</button>
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Syarat Pendaftaran </h3>
+                </div>
+                <div class="box-body" align="center">
+                    <table style="width: 100%">
+                        <tr>
+                            <td align="right">Raider per Team</td>
+                            <td>:</td>
+                            <td align="left">
+                                <b><?= $tbl_event['minraider'] ?> s/d <?= $tbl_event['maxraider'] ?></b>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label>Pilih Raider</label>
+                        <select class="form-control" data-placeholder="Select a State" style="width: 100%;" id="raiderSelect">
+                            <option value="0" selected="">Pilih Raider</option>
+                            <?php foreach ($raider as $key => $value) { ?>
+                                <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" align="center" id="raiderList">
+            <p class="help-block" id="raiderEmpty">Silakan Memilih Radier yang ingin diikut sertakan</p>
+            <input type="hidden" id="teamvalue" value='0'>
+        </div>
+    </div>
+    <div class="show_error"></div>
+    <?php if ($tbl_event['status'] == 'ENABLE') { ?>
+        <button id="buttonSubmit" class="btn btn-block btn-primary btn-send"><i class="fa fa-send"></i> Kirim Pendaftaran</button>
+    <?php } else { ?>
+        <button class="btn btn-block btn-primary btn-send" disabled> Event ini telah di tutup</button>
+    <?php } ?>
+</form>
 <script type="text/javascript">
     var array = 1;
 

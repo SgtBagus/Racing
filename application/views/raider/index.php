@@ -1,44 +1,41 @@
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Cari Raider</h3>
-                </div>
-                <div class="box-body">
-                    <form role="form" action="#" method="GET">
-                        <div class="form-group">
-                            <label>Nama Raider</label> 
-                            <input type="text" name="name" class="form-control" id="filter-search" <?php 
-                            if ($_GET['name']) {
-                                echo 'value="' . $_GET['name'] . '"';
-                            } ?> >
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-md btn-block btn-primary" id="btn-search">
-                                <i class="fa fa-search"></i> Cari
-                            </button>
-                            <?php if ($_GET['name']) { ?>
-                                <br>
-                                <a href="<?=base_url('raider')?>">
-                                    <button type="button" class="btn btn-md btn-block btn-info">
-                                        <i class="fa fa-refresh"></i> Reset Pencarian
-                                    </button>
-                                </a>
-                            <?php } ?> 
-                        </div>
-                    </form>
-                </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Cari Raider</h3>
+            </div>
+            <div class="box-body">
+                <form role="form" action="#" method="GET">
+                    <div class="form-group">
+                        <label>Nama Raider</label> 
+                        <input type="text" name="name" class="form-control" id="filter-search" <?php 
+                        if ($_GET['name']) {
+                            echo 'value="' . $_GET['name'] . '"';
+                        } ?> >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-md btn-block btn-primary" id="btn-search">
+                            <i class="fa fa-search"></i> Cari
+                        </button>
+                        <?php if ($_GET['name']) { ?>
+                            <br>
+                            <a href="<?=base_url('raider')?>">
+                                <button type="button" class="btn btn-md btn-block btn-info">
+                                    <i class="fa fa-refresh"></i> Reset Pencarian
+                                </button>
+                            </a>
+                        <?php } ?> 
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div id="load_data">
-        </div>
+</div>
+<div class="row">
+    <div id="load_data">
     </div>
-    <div id="load_data_message"></div>
-</section>
-
+</div>
+<div id="load_data_message"></div>
 <a href="<?= base_url('raider/create') ?>" class="float">
     <i class="fa fa-plus my-float"></i>
 </a>

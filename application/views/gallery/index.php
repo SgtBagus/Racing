@@ -1,33 +1,31 @@
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <form role="form" action="<?= base_url('gallery') ?>" method="GET">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Judul Group Gambar</label>
-                                    <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
-                                                                                                echo 'value="' . $_GET['title'] . '"';
-                                                                                            } ?> id="filter-search">
-                                </div>
-                                <div class="form-group" align="center">
-                                    <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
-                                </div>
-                            </form>
-                        </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form role="form" action="<?= base_url('gallery') ?>" method="GET">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Judul Group Gambar</label>
+                                <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
+                                    echo 'value="' . $_GET['title'] . '"';
+                                } ?> id="filter-search">
+                            </div>
+                            <div class="form-group" align="center">
+                                <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div id="load_data">
-        </div>
+</div>
+<div class="row">
+    <div id="load_data">
     </div>
-    <div id="load_data_message"></div>
-</section>
+</div>
+<div id="load_data_message"></div>
 <script type="text/javascript">
 
     $(document).ready(function(){

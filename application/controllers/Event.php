@@ -95,39 +95,39 @@ class Event extends MY_Controller {
 				$output .= '
 				<a href="'.base_url("event/view/").$row['id'].'" class="a_black">
 				<div class="col-md-12">
-					<div class="box">
-						<div class="box-body">
-							<div class="row">
-								<div class="col-xs-4">
-									<img class="img-even" src="'.$photo['url'].'" alt="Third slide">
-								</div>
-								<div class="col-xs-8">
-									<h4>'.$row['title'].'<br>
-										<small>
-											<i class="fa fa-globe"></i> '.$row['kota'].'<br>
-											'.$row['alamat'].'
-										</small>
-									</h4>
-									<hr style="margin-top:5px">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-6">
-								 Event Dimulai : '.date('d-m-Y', strtotime($row['tglevent'])).'<br>
-								'.$status.'
-								</div>
-								<div class="col-xs-6" align="right">
-									Pendaftar : 
-									<b>
-										<i class="fa fa-motorcycle"></i> '.$rowraider[0]['rowraider'].'
-										<i class="fa fa-users"></i> '.$rowteam[0]['rowteam'].'
-									</b>
-									<br>
-								 	<small>Event Dibuat : '.date('d-m-Y', strtotime($row['created_at'])).'</small>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="box">
+				<div class="box-body">
+				<div class="row">
+				<div class="col-xs-12">
+				<img class="img-even" src="'.$photo['url'].'" alt="Third slide">
+				</div>
+				<div class="col-xs-12">
+				<h4 align="center">'.$row['title'].'<br><small>'.$status.'</small></h4>
+				<small>
+				<i class="fa fa-globe"></i> '.$row['kota'].'<br>
+				'.$row['alamat'].'
+				</small>
+				<hr style="margin-top:5px">
+				</div>
+				</div>
+				<div class="row">
+				<div class="col-xs-6">
+				Event Dimulai : 
+				<br>
+				'.date('d-m', strtotime($row['tglevent'])).' sampai '.date('d-m', strtotime($row['tglevent'])).'
+				</div>
+				<div class="col-xs-6" align="right">
+				Pendaftar : 
+				<b>
+				<i class="fa fa-motorcycle"></i> '.$rowraider[0]['rowraider'].'
+				<i class="fa fa-users"></i> '.$rowteam[0]['rowteam'].'
+				</b>
+				<br>
+				<small>Event Dibuat : '.date('d-M-Y', strtotime($row['created_at'])).'</small>
+				</div>
+				</div>
+				</div>
+				</div>
 				</div>
 				</a>';
 			}
