@@ -1,17 +1,9 @@
-<?php
-if ($this->session->userdata('session_sop') == "") {
-  echo "<script type='text/javascript'>window.top.location='" . base_url('login') . "';</script>";
-  exit;
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ENDURORALLY</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/font-awesome/css/font-awesome.min.css">
@@ -21,6 +13,8 @@ if ($this->session->userdata('session_sop') == "") {
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/morris.js/morris.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>owl/docs/assets/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>owl/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/iCheck/all.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/select2/dist/css/select2.min.css">
 
@@ -29,12 +23,14 @@ if ($this->session->userdata('session_sop') == "") {
   <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>
+  <script src="<?= base_url('assets/') ?>owl/docs/assets/vendors/jquery.min.js"></script>
+  <script src="<?= base_url('assets/') ?>owl/docs/assets/owlcarousel/owl.carousel.js"></script>
 </head>
 
 <body class="layout-top-nav fixed skin-purple-light">
   <div class="wrapper">
     <header class="main-header">
-      <nav class="navbar">
+      <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100;">
         <div class="row">
           <div class="col-xs-2" align="center">
             <a href="#" id="sidebarButton" class="header-menu open-sidebar" data-toggle="control-sidebar">
@@ -42,10 +38,10 @@ if ($this->session->userdata('session_sop') == "") {
             </a>
           </div>
           <div class="col-xs-8 header-menu" align="center">
-            <b>ENDURORALLY</b>
+            <img style="height:40px" src="<?= base_url('assets/img/')?>logo2.jpg">
           </div>
           <a href="#" onclick="reset()">
-            <div class="col-xs-2 header-menu" align="center" style="margin-left: -5px">
+            <div class="col-xs-2 header-menu" align="center" style="margin-left: -10px">
               <i class="fa fa-refresh"></i>
             </div>
           </a>
@@ -53,39 +49,26 @@ if ($this->session->userdata('session_sop') == "") {
       </nav>
     </header>
     <div class="content-wrapper">
+      <?php
+      if ($this->session->userdata('session_sop') == "") {
+        $this->load->view('template/login_sidebar');
+      }else{
+        $this->load->view('template/sidebar');
+      }
+      ?>
       <div class="container" style="margin-top: -25px;">
         <h2 align="center"> <?= $page ?><br><small> <?= $subpage ?></small></h2>
         <?= $contents ?>
-        <?php $this->load->view('template/sidebar') ?>
         <div class="fixed-footer"></div>
       </div>
     </div>
-    <footer class="main-footer">
-      <div class="container">
-        <div class="row" style="text-align: center;">
-          <div class="col-xs-3">
-            <a href="<?= base_url() ?>" class="menu-footer">
-              <i class="fa fa-dashboard"></i>
-            </a>
-          </div>
-          <div class="col-xs-3">
-            <a href="<?= base_url('event') ?>" class="menu-footer">
-              <i class="fa fa-star"></i>
-            </a>
-          </div>
-          <div class="col-xs-3">
-            <a href="<?= base_url('raider') ?>" class="menu-footer">
-              <i class="fa fa-motorcycle"></i>
-            </a>
-          </div>
-          <div class="col-xs-3">
-            <a href="<?= base_url('team') ?>" class="menu-footer">
-              <i class="fa fa-user-circle"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php
+    if ($this->session->userdata('session_sop') == "") {
+      $this->load->view('template/login_footer');
+    }else{
+      $this->load->view('template/footer');
+    }
+    ?>
   </div>
   <script>
     $.widget.bridge('uibutton', $.ui.button);
@@ -109,11 +92,8 @@ if ($this->session->userdata('session_sop') == "") {
   <script src="<?= base_url('assets/') ?>dist/js/pages/dashboard.js"></script>
   <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
   <script src="<?= base_url('assets/') ?>plugins/iCheck/icheck.min.js"></script>
-  <script src="<?= base_url('assets/') ?>mobile/main.js"></script>
-  <script src="<?= base_url('assets/') ?>mobile/jquery.mobile-1.4.5.min.js"></script>
-  <script src="<?= base_url('assets/') ?>mobile/mobile_custom.js"></script>
   <script type="text/javascript">
-    
+
     function lazzy_loader(limit)
     {
       var output = '<div class="row">'+

@@ -17,7 +17,6 @@ h4 {
     float: left;
     padding: 15px 15px;
     font-size: 28px;
-    color: #fff;
 }
 
 .header-center {
@@ -111,21 +110,12 @@ img {
     border-bottom-right-radius: 15px;
 }
 
-.a_black,
-.a_black:hover,
-.a_black:active,
-.a_black:focus {
-    outline: none;
-    text-decoration: none;
-    color: #333;
-}
-
+a,
+a:visited,
 a:hover,
 a:active,
-a:focus {
-    outline: none;
-    text-decoration: none;
-    color: #ffffff;
+a:focus  {
+    color: #72c02c;
 }
 
 .main-footer-login {
@@ -142,7 +132,6 @@ a.float {
     bottom: 90px;
     right: 30px;
     background-color: #3c8dbc;
-    color: white;
     border-radius: 50px;
     text-align: center;
     font-size: 30px;
@@ -156,4 +145,26 @@ a.float:hover {
 
 .my-float {
     margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea.form-control,
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

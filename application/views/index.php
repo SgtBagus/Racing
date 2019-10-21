@@ -1,271 +1,215 @@
-<section class="content">
-  <div class="row">
-    <div class="col-lg-3 col-xs-6">
-      <div class="box small-box bg-aqua">
-        <div class="inner">
-          <h3>150</h3>
-          <p>New Orders</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="box small-box bg-green">
-        <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
-          <p>Bounce Rate</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-      <div class="box small-box bg-yellow">
-        <div class="inner">
-          <h3>44</h3>
-          <p>User Registrations</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-      <div class="box small-box bg-red">
-        <div class="inner">
-          <h3>65</h3>
-          <p>Unique Visitors</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <section class="col-xs-12 connectedSortable">
-      <div class="box box-solid bg-teal-gradient">
-        <div class="box-header">
-          <i class="fa fa-th"></i>
-          <h3 class="box-title">Sales Graph</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-            </button>
-          </div>
-        </div>
-        <div class="box-body border-radius-none">
-          <div class="chart" id="line-chart" style="height: 250px;"></div>
-        </div>
-        <div class="box-footer no-border">
-          <div class="row">
-            <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-              <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-              <div class="knob-label">Mail-Orders</div>
-            </div>
-            <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-              <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-              <div class="knob-label">Online</div>
-            </div>
-            <div class="col-xs-4 text-center">
-              <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-              <div class="knob-label">In-Store</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="col-xs-12">
-      <div class="box box-solid">
-        <div class="box-header with-border">
-          <h3 class="box-title">Even Terbaru</h3>
-        </div>
-        <div class="box-body">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="item active">
-                <img src="https://images.pexels.com/photos/2984347/pexels-photo-2984347.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="First slide" style="height: 250px; width: 100%">
-                <div class="carousel-caption">
-                  <h3>Lorem Ipsum</h3>
-                </div>
-              </div>
-              <div class="item">
-                <img src="https://images.pexels.com/photos/2911657/pexels-photo-2911657.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Second slide" style="height: 250px; width: 100%">
+<div class="row">
+	<div class="col-xs-6">
+		<h3>Event</h3>
+	</div>
+	<div class="col-xs-6" align="right">
+		<h3><a href="<?= base_url('event') ?>">All Event</a></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		<div class="owl-carousel owl-theme" id="owl-event">
+			<?php foreach ($tbl_event as $row) { 
+				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event')); 
+				$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '".$row['id']."'");
+				$register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $row['id'])); 
+				$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '".$register_id['id']."'");
+				?>
+				<a href="<?= base_url('event/view/').$row['id'] ?>">
+					<div class="col-xs-12 mb">
+						<div class="box">
+							<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:125px;background: url(<?= $photo['url']?>);width:100%;background-position: center;background-size: cover;">
+								<?php
+								if ($row['status'] == 'ENABLE') {
+									echo '<span class="label bg-green round right" style="margin-left:5px">Dibuka</span>';
+								} else {
+									echo '<span class="label bg-red round right" style="margin-left:5px">Ditutup</span>';
+								}
+								?>
+							</div>
+							<div class="cards-text text-center" style="color: black">
+								<p>
+									<b class="title"><?= $row['title'] ?></b>
+									<br>
+									<small><?=$row['kota']?> </small>
+									<br>
+									<small>
+										<?= date('d-M', strtotime($row['tglevent']))." s/d ".date('d-M', strtotime($row['tglevent'])) ?>
+									</small>
+								</p>
+							</div>
+							<div class="row">
+								<div class="col-xs-12" align="center" style="color: black">
+									<i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
+									<i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			<?php } ?>
+		</div>
+	</div>
+</div>
+<?php if($tbl_blog) { ?>
+	<div class="row">
+		<div class="col-xs-6">
+			<h3>Blogs And News</h3>
+		</div>
+		<div class="col-xs-6" align="right">
+			<h3><a href="<?= base_url('blogs') ?>">All Blogs And News</a></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			<div class="owl-carousel owl-theme" id="owl-news">
+				<?php foreach ($tbl_blog as $row) { 
+					$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_blog')); 
+					?>
+					<a href="<?= base_url('blogs/view/').$row['id'] ?>">
+						<div class="col-xs-12 mb">
+							<div class="box">
+								<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:125px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;"></div>
+								<div class="cards-text text-center" style="color: black">
+									<p>
+										<b class="title"><?= $row['title'] ?></b>
+										<br>
+										<small>
+											<?= date('d m y', strtotime($row['created_at']))?>
+										</small>
+									</p>
+								</div>
+							</div>
+						</div>
+					</a>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+<?php } ?>
+<?php if($tbl_gallery) { ?>
+	<div class="row">
+		<div class="col-xs-6">
+			<h3>Gallery</h3>
+		</div>
+		<div class="col-xs-6" align="right">
+			<h3><a href="<?= base_url('gallery') ?>">All Gallery</a></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			<div class="owl-carousel owl-theme" id="owl-gallery">
+				<?php foreach ($tbl_gallery as $row) { 
+					$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'master_gallery')); 
+					?>
+					<a href="<?= base_url('gallery/view/').$row['id'] ?>">
+						<div class="col-xs-12 mb">
+							<div class="box">
+								<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:225px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;"></div>
+								<div class="cards-text text-center" style="color: black">
+									<p>
+										<b class="title"><?= $row['value'] ?></b>
+										<br>
+										<small>
+											<?= date('d m y', strtotime($row['created_at']))?>
+										</small>
+									</p>
+								</div>
+							</div>
+						</div>
+					</a>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+<?php } ?>
+<div class="row">
+	<div class="col-xs-6">
+		<h3>Merch</h3>
+	</div>
+	<div class="col-xs-6" align="right">
+		<h3><a href="<?= base_url('merchandise') ?>">All Merch</a></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		<div class="owl-carousel owl-theme" id="owl-merchandise">
+			<?php foreach ($tbl_merchandise as $row) {
+				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_merchandise')); ?>
+				<a href="<?= base_url('merchandise/view/').$row['id'] ?>">
+					<div class="col-xs-12 mb">
+						<div class="box">
+							<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:125px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;">
+								<?php
+								if ($row['status'] == 'ENABLE') {
+									echo '<span class="label bg-green round right" style="margin-left:5px">Dibuka</span>';
+								} else {
+									echo '<span class="label bg-red round right" style="margin-left:5px">Ditutup</span>';
+								}
+								?>
+							</div>
+							<div class="cards-text text-center" style="color: black">
+								<p>
+									<b class="title"> <?= $row['title']?></b>
+									<br>
+									<span>Rp. <?=number_format($row['harga'],0,',','.')?></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			<?php } ?>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#owl-event').owlCarousel({
+			center: true,
+			items: 2,
+			loop: true,
+			margin: 10,
+			responsive: {
+				600: {
+					items: 4
+				}
+			}
+		})
 
-                <div class="carousel-caption">
-                  <h3>Lorem Ipsum</h3>
-                </div>
-              </div>
-              <div class="item">
-                <img src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide" style="height: 250px; width: 100%">
+		$('#owl-news').owlCarousel({
+			center: false,
+			items: 2,
+			loop: true,
+			margin: 10,
+			responsive: {
+				600: {
+					items: 4
+				}
+			}
+		})
 
-                <div class="carousel-caption">
-                  <h3>Lorem Ipsum</h3>
-                </div>
-              </div>
-            </div>
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-              <span class="fa fa-angle-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-              <span class="fa fa-angle-right"></span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12">
-      <div class="box">
-        <div class="box-body">
-          <h5 class="box-title" align="center"><b>3 List terbaru Event Yang Diikuti</b></h5>
-          <hr>
-          <div class="row" style="margin-bottom: 15px">
-            <div class="col-xs-5">
-              <img class="img-even" src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide">
-            </div>
-            <div class="col-xs-7">
-              <h4>Lorem Ipsum
-                <br>
-                <small>
-                  <i class="fa fa-globe"></i> Lorem Ipsum Ipsum Damet
-                  <br>
-                  <b>
-                    <i class="fa fa-motorcycle"></i> 154
-                    <i class="fa fa-users"></i> 12
-                  </b>
-                </small>
-              </h4>
-            </div>
-          </div>
-          <div class="row" style="margin-bottom: 15px">
-            <div class="col-xs-5">
-              <img class="img-even" src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide">
-            </div>
-            <div class="col-xs-7">
-              <h4>Lorem Ipsum
-                <br>
-                <small>
-                  <i class="fa fa-globe"></i> Lorem Ipsum Ipsum Damet
-                  <br>
-                  <b>
-                    <i class="fa fa-motorcycle"></i> 154
-                    <i class="fa fa-users"></i> 12
-                  </b>
-                </small>
-              </h4>
-            </div>
-          </div>
-          <div class="row" style="margin-bottom: 15px">
-            <div class="col-xs-5">
-              <img class="img-even" src="https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Third slide">
-            </div>
-            <div class="col-xs-7">
-              <h4>Lorem Ipsum
-                <br>
-                <small>
-                  <i class="fa fa-globe"></i> Lorem Ipsum Ipsum Damet
-                  <br>
-                  <b>
-                    <i class="fa fa-motorcycle"></i> 154
-                    <i class="fa fa-users"></i> 12
-                  </b>
-                </small>
-              </h4>
-            </div>
-          </div>
-          <hr>
-          <a href="<?= base_url('event') ?>">
-            <button class="btn btn-block btn-primary">
-              <i class="fa fa-plus"></i> Ikuti Even Lain
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12">
-      <div class="box">
-        <div class="box-body">
-          <h5 class="box-title" align="center"><b>6 Data Pembalap Terbaru</b></h5>
-          <hr>
-          <div class="row" style="margin-bottom: 15px" align="center">
-            <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
-              <h4>Alex Masion <br>
-                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
-              </h4>
-            </div>
-            <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
-              <h4>Alex Masion <br>
-                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
-              </h4>
-            </div>
-            <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
-              <h4>Alex Masion <br>
-                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
-              </h4>
-            </div>
-            <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
-              <h4>Alex Masion <br>
-                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
-              </h4>
-            </div>
-            <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
-              <h4>Alex Masion <br>
-                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
-              </h4>
-            </div>
-            <div class="col-xs-4">
-              <img src="<?= base_url('assets/') ?>dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" height="65px" width="65px">
-              <h4>Alex Masion <br>
-                <small> <i class="fa fa-calendar"></i> 27-02-2019</small>
-              </h4>
-            </div>
-          </div>
-          <button class="btn btn-block btn-primary">
-            <i class="fa fa-plus"></i> Tambah Pembalap
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12">
-      <div class="box">
-        <div class="box-body">
-          <h5 class="box-title" align="center"><b>3 Galery Terbaru</b></h5>
-          <hr>
-          <div class="row" style="margin-bottom: 15px" align="center">
-            <div class="col-xs-12">
-              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" height="230px" width="100%">
-              <h4>Campbell Boulanger<br>
-                <small> <i class="fa fa-camera"></i><b> Photographer : Alex</b></small>
-              </h4>
-            </div>
-          </div>
-          <div class="row" style="margin-bottom: 15px" align="center">
-            <div class="col-xs-12">
-              <img src="https://images.unsplash.com/photo-1490641815614-b45106d6dd04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" height="230px" width="100%">
-              <h4>Serge Kutuzov<br>
-                <small> <i class="fa fa-camera"></i><b> Photographer : Alex</b></small>
-              </h4>
-            </div>
-          </div>
-          <div class="row" style="margin-bottom: 15px" align="center">
-            <div class="col-xs-12">
-              <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" height="230px" width="100%">
-              <h4>Lance Asper<br>
-                <small> <i class="fa fa-camera"></i><b> Photographer : Alex</b></small>
-              </h4>
-            </div>
-          </div>
-          <hr>
-          <a href="#">
-            <button class="btn btn-block btn-primary">
-              <i class="fa fa-plus"></i> Lihat Semua Galery
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+		$('#owl-gallery').owlCarousel({
+			center: false,
+			items: 1,
+			loop: true,
+			margin: 10,
+			responsive: {
+				600: {
+					items: 4
+				}
+			}
+		})
+
+		$('#owl-merchandise').owlCarousel({
+			center: true,
+			items: 2,
+			loop: true,
+			margin: 10,
+			responsive: {
+				600: {
+					items: 4
+				}
+			}
+		})
+	})
+</script>

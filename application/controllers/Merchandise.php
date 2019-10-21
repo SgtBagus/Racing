@@ -6,12 +6,6 @@ class Merchandise extends MY_Controller {
 
 	public function index(){
 		$data['page'] = 'Merchandise';
-		if($_GET['title']){
-			$data['tbl_merchandise'] = $this->mymodel->selectWithQuery("SELECT * from tbl_merchandise WHERE title LIKE '%".$_GET['title']."%' AND status = 'ENABLE'");
-		}else{
-			$data['tbl_merchandise'] = $this->mymodel->selectWhere('tbl_merchandise',  array('status' => 'ENABLE'));
-		}
-		
 		$this->template->load('template/template','merchandise/index', $data);  
 	} 
 	

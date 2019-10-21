@@ -1,0 +1,13 @@
+.owl-carousel.owl-loaded {
+	display: inline-block;
+}
+.img-wrap {
+	background-size: cover;
+    background-position: bottom;
+	height: 300px;
+    width: 300px;
+
+    img {
+        visibility: hidden;
+    }
+}

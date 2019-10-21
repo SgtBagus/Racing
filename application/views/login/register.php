@@ -1,60 +1,52 @@
-<section class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Daftarkan Team Anda</h3>
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="box-title">Daftarkan Team Anda</h3>
+    <form role="form" action="<?= base_url('login/actionRegister') ?>" method="POST" id="sumbit">
+      <div class="show_error"></div>
+      <div class="form-group">
+        <label>Nama</label>
+        <input type="text" name="dt[name]" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="dt[email]" class="form-control">
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control">
+          </div>
         </div>
-        <div class="box-body">
-          <form role="form" action="<?= base_url('login/actionRegister') ?>" method="POST" id="sumbit">
-            <div class="show_error"></div>
-            <div class="form-group">
-              <label>Nama</label>
-              <input type="text" name="dt[name]" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="dt[email]" class="form-control">
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label>Password</label>
-                  <input type="password" name="password" class="form-control">
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label>Konfirmasi Password</label>
-                  <input type="password" name="confirmpassword" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Alamat</label>
-              <textarea name="dt[alamat]" class="form-control" rows="5"></textarea>
-            </div>
-            <div class="form-group">
-              <label>Kota</label>
-              <input type="text" name="dt[kota]" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Nomor Wa</label>
-              <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-            </div>
-            <div class="show_error"></div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
-                <i class="fa fa-send"></i> Submit
-              </button>
-              <p class="help-block pull-right">Sudah Punya Akun ? <a href="<?= base_url('login') ?>">Login Disini </a></p>
-            </div>
-          </form>
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label>Konfirmasi Password</label>
+            <input type="password" name="confirmpassword" class="form-control">
+          </div>
         </div>
       </div>
-    </div>
+      <div class="form-group">
+        <label>Alamat</label>
+        <textarea name="dt[alamat]" class="form-control" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Kota</label>
+        <input type="text" name="dt[kota]" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Nomor Wa</label>
+        <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+      </div>
+      <div class="show_error"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
+          <i class="fa fa-send"></i> Submit
+        </button>
+        <p class="help-block pull-right">Sudah Punya Akun ? <a href="<?= base_url('login') ?>">Login Disini </a></p>
+      </div>
+    </form>
   </div>
-</section>
+</div>
 <script type="text/javascript">
   $(function() {
     $("#sumbit").submit(function() {

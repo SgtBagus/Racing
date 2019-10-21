@@ -20,8 +20,8 @@
             <li class="header">MENU</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url() ?>">
-                    <i class="fa fa-bar-chart"></i>
-                    <span>Statistik</span>
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;" class="treeview">
@@ -83,7 +83,7 @@
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('blogs') ?>">
                     <i class="fa fa-newspaper-o"></i>
-                    <span>Blog</span>
+                    <span>News/Blogs</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
