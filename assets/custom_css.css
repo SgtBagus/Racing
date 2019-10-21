@@ -89,7 +89,8 @@ img {
 .img-even {
     height: 180px;
     width: 100%;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .img-gallery {

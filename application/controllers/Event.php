@@ -96,11 +96,9 @@ class Event extends MY_Controller {
 				<a href="'.base_url("event/view/").$row['id'].'" class="a_black">
 				<div class="col-md-12">
 				<div class="box">
+				<img class="img-even" src="'.$photo['url'].'">
 				<div class="box-body">
 				<div class="row">
-				<div class="col-xs-12">
-				<img class="img-even" src="'.$photo['url'].'" alt="Third slide">
-				</div>
 				<div class="col-xs-12">
 				<h4 align="center">'.$row['title'].'<br><small>'.$status.'</small></h4>
 				<small>

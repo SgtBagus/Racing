@@ -1,37 +1,45 @@
-
 <div class="row">
     <div class="col-md-12">
         <div class="box">
+            <img class="img-even" src="<?= $file['url'] ?>">
             <div class="box-body">
-                <img src="<?= $file['url'] ?>" width="100%" height="230px">
-                <h3>
-                    <?= $tbl_event['title'] ?><br>
-                    <small>
-                        <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
-                    </small>
-                    <br>
-                    <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
-                        <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                    </a>
-                </h3>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 align="center"><?= $tbl_event['title']?></h4>
+                        <div class="row" align="center">
+                            <?php if ($tbl_event['status'] == 'ENABLE') {
+                                echo '<small class="label bg-green">Dibuka</small>';
+                            } else {
+                                echo '<small class="label bg-red">Ditutup</small>';
+                            }
+                            ?>
+                        </div>
+                        <p>
+                            <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
+                            <?= $tbl_event['alamat'] ?>
+                        </p>
+                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                            <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
+                        </a>
+                    </div>
+                </div>
                 <hr style="margin-top:5px; margin-bottom: 5px">
-                <div class="row"> 
+                <div class="row">
                     <div class="col-xs-6">
-                        Event Dimulai : <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?><br>
-                        <?php if ($tbl_event['status'] == 'ENABLE') {
-                            echo '<small class="label bg-green">Dibuka</small>';
-                        } else {
-                            echo '<small class="label bg-red">Ditutup</small>';
-                        }
-                        ?>
+                        Event Dimulai : 
+                        <br>
+                        <?= date('d-m', strtotime($tbl_event['tglevent'])) ?> 
+                        sampai 
+                        <?= date('d-m', strtotime($tbl_event['tglevent']))?>
                     </div>
                     <div class="col-xs-6" align="right">
                         Pendaftar : 
+                        <b>
+                            <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
+                            <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+                        </b>
                         <br>
-                        <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
-                        <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
-                        <br>
-                        <small>Event Dibuat : <?= date('d-m-Y', strtotime($tbl_event['created_at'])) ?></small>
+                        <small>Event Dibuat : <?= date('d-M-Y', strtotime($row['created_at'])) ?></small>
                     </div>
                 </div>
             </div>
@@ -41,7 +49,7 @@
 <div class="row">
     <div class="col-md-12">
         <a href="#>">
-            <button class="btn btn-sm btn-block btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab</button>
+            <button class="btn btn-lg btn-block btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab</button>
         </a>
     </div>
 </div>
@@ -63,11 +71,6 @@
                     </tr>
                 </table>
             </div>
-            <div class="box-footer">
-                <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
-                    <button class="btn btn-sm btn-block btn-primary btn-daftar"> <i class="fa fa-users"></i> Daftarkan Tim</button>
-                </a>
-            </div>
         </div>
     </div>
 </div>
@@ -82,14 +85,49 @@
                     <div class="box-body">
                         <?= $tbl_event['deskripsi'] ?>
                     </div>
-                    <div class="box-footer">
-                        <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
-                            <button class="btn btn-sm btn-block btn-primary btn-daftar"> <i class="fa fa-users"></i> Daftarkan Tim</button>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
+            <button class="btn btn-lg btn-block btn-primary btn-daftar" style="margin-bottom: 15px"> 
+                <i class="fa fa-users"></i> Daftarkan Tim
+            </button>
+        </a>
+        <a href="<?= base_url('event/rank/') . $tbl_event['id'] ?>">
+            <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px"> 
+                <i class="fa fa-user"></i> Juara Raider
+            </button>
+        </a>
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="<?= base_url('event/verifteam/') . $tbl_event['id'] ?>">
+                    <button class="btn btn-lg btn-block btn-warning btn-daftar" style="margin-bottom: 15px"> 
+                        <i class="fa fa-users"></i> Verifited Team
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-6">
+                <a href="<?= base_url('event/verifraider/') . $tbl_event['id'] ?>">
+                    <button class="btn btn-lg btn-block btn-warning btn-daftar" style="margin-bottom: 15px"> 
+                        <i class="fa fa-motorcycle"></i> Verifited Raider
+                    </button>
+                </a>
+            </div>
+        </div>
+        <a href="<?= base_url('event/gallery/') . $tbl_event['id'] ?>">
+            <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px"> 
+                <i class="fa fa-picture-o"></i> Dokumentasi
+            </button>
+        </a>
+        <a href="#">
+            <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px"> 
+                <i class="fa fa-camera"></i> Live Event
+            </button>
+        </a>
     </div>
 </div>
 <script type="text/javascript">
