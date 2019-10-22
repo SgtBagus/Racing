@@ -51,7 +51,7 @@
 <div class="row">
     <div class="col-md-12">
         <a href="#>">
-            <button class="btn btn-sm btn-block btn-success"> <i class="fa fa-whatsapp"></i>Hubungi Petanggung Jawab</button>
+            <button class="btn btn-lg btn-block btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab</button>
         </a>
     </div>
 </div>
