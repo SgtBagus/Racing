@@ -35,12 +35,8 @@ class Monitorevent extends MY_Controller {
 					$approve = '<small class="label bg-green"><i class="fa fa-check"> </i> Pendaftaran Di Terima </small>';
 				} else if ($row['approve'] == "REJECT") {
 					$approve = '<small class="label bg-red"><i class="fa fa-ban"> </i> Pendaftaran Di Tolak </small>';
-				} else if ($row['approve'] == "FINISH") {
-					$approve = '<small class="label bg-green"><i class="fa fa-check"> </i> Event Selesai </small>';
-				} else if ($row['approve'] == "CANCEL") {
-					$approve = '<small class="label bg-red"><i class="fa fa-ban"> </i> Event Dibatalkan</small>';
-				}
-
+				} 
+				
 				$output .= '
 				<a href="'.base_url('monitorevent/view/').$row['id'].'" class="a_black">
 				<div class="col-md-12">
