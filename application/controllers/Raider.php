@@ -82,14 +82,14 @@ class Raider extends MY_Controller
 
                 $output .= '
                 <a href="' . base_url('raider/edit/') . $row['id'] . '" class="a_black">
-                <div class="col-xs-6">
+                <div class="col-xs-12">
                 <div class="box"> 
                 <div class="box-body">
                 <div class="row" align="center">
-                <div class="col-xs-12">
+                <div class="col-xs-6">
                 <img class="img-circle" alt="User Image" src="' . $photo['url'] . '" alt="Third slide" height="150px" width="150px">
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-6">
                 <h4>' . $row['name'] . ' ' . $verificacion . '<br>
                 <small><i class="fa fa-globe"></i> ' . $row['kota'] . '</small> 
                 </h4>
@@ -98,12 +98,10 @@ class Raider extends MY_Controller
                 <br>
                 <i class="fa fa-phone"></i> ' . $row['nowa'] . '
                 </b>
-                <a href="#">
-                <button class="btn btn-sm btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Whatsapp</button>
-                </a>
                 <p>Sebanyak : <b>' . $row['eventikut'] . '</b> Event Telah Di Ikuti</p>
                 </div>
                 </div>
+                <br>
                 <div class="row" id="deleteForm_' . $row['id'] . '">
                 <div class="col-xs-12 btnDelete_' . $row['id'] . '">
                 <button class="btn btn-sm btn-block btn-danger" onclick="hapus(' . $row['id'] . ')"> <i class="fa fa-trash"></i> Hapus Anggota Team</button>

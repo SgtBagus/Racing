@@ -29,9 +29,9 @@ class Gallery extends MY_Controller
         $search = $_GET['title'];
 
         if ($search) {
-            $tbl_gallery = $this->mymodel->selectWithQuery("SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = 'ENABLE' AND a.value LIKE '%" . $_GET['title'] . "%' GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));
+            $tbl_gallery = $this->mymodel->selectWithQuery("SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = 'ENABLE' AND a.value LIKE '%" . $_GET['title'] . "%' GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $tbl_gallery = $this->mymodel->selectWithQuery('SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = "ENABLE" GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT '.$this->input->post('limit').' OFFSET '.$this->input->post('start'));
+            $tbl_gallery = $this->mymodel->selectWithQuery('SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = "ENABLE" GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT ' . $this->input->post('limit') . ' OFFSET ' . $this->input->post('start'));
         }
         if ($tbl_gallery) {
             foreach ($tbl_gallery as $row) {
@@ -42,11 +42,9 @@ class Gallery extends MY_Controller
                 <div class="col-md-12">
                     <a href="' . base_url('gallery/view/') . $row['id'] . '" class="a_black">
                         <div class="box">
+                        <img class="img-even" src="' . $main_image['url'] . '">
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        <img class="img-gallery" src="' . $main_image['url'] . '" alt="Third slide">
-                                    </div>
                                     <div class="col-xs-12" align="center">
                                         <h3><b>' . $row['value'] . '</b></h3>
                                     </div>
@@ -72,9 +70,9 @@ class Gallery extends MY_Controller
         $search = $_GET['title'];
 
         if ($search) {
-            $tbl_gallery = $this->mymodel->selectWithQuery("SELECT * FROM tbl_gallery WHERE imagegroup_id = '" . $id . "' AND title LIKE '%" . $_GET['title'] . "%' ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));
+            $tbl_gallery = $this->mymodel->selectWithQuery("SELECT * FROM tbl_gallery WHERE imagegroup_id = '" . $id . "' AND title LIKE '%" . $_GET['title'] . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $tbl_gallery = $this->mymodel->selectWithQuery('SELECT * FROM tbl_gallery WHERE imagegroup_id = '.$id.' ORDER BY id DESC LIMIT '.$this->input->post('limit').' OFFSET '.$this->input->post('start'));
+            $tbl_gallery = $this->mymodel->selectWithQuery('SELECT * FROM tbl_gallery WHERE imagegroup_id = ' . $id . ' ORDER BY id DESC LIMIT ' . $this->input->post('limit') . ' OFFSET ' . $this->input->post('start'));
         }
         if ($tbl_gallery) {
             foreach ($tbl_gallery as $row) {
@@ -83,19 +81,17 @@ class Gallery extends MY_Controller
                 $output .= '
                 <div class="col-xs-12">
                     <div class="box">
+                    <img class="img-even" src="' . $file['url'] . '">
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <img class="img-gallery" src="'.$file['url'].'" alt="Third slide">
+                                <div class="col-xs-12" align="center">
+                                    <h3><b>' . $row['title'] . '</b></h3>
                                 </div>
                                 <div class="col-xs-12" align="center">
-                                    <h3><b>'.$row['title'].'</b></h3>
-                                </div>
-                                <div class="col-xs-12" align="center">
-                                    <i class="fa fa-calendar"></i> Dibuat pada tgl : '.date('d-m-Y', strtotime($row['created_at'])).'
+                                    <i class="fa fa-calendar"></i> Dibuat pada tgl : ' . date('d-m-Y', strtotime($row['created_at'])) . '
                                 </div>
                                 <div class="col-xs-12">
-                                    <p>'.$row['caption'].'</p>
+                                    <p>' . $row['caption'] . '</p>
                                 </div>
                             </div>
                         </div>

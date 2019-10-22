@@ -63,7 +63,7 @@
                         <div class="col-xs-6">           
                             <div class="form-group">
                                 <label>Nomor Wa</label>
-                                <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                                <input type="text" name="dt[nowa]" class="form-control">
                             </div>
                         </div>
                         <div class="col-xs-6">           

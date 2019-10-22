@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label>Nomor Wa</label>
-                        <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="<?= $team['nowa'] ?>">
+                        <input type="text" name="dt[nowa]" class="form-control" value="<?= $team['nowa'] ?>">
                     </div>
                     <div class="show_error"></div>
                     <div class="form-group">

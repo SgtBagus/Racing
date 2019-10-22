@@ -47,10 +47,10 @@ class Monitorevent extends MY_Controller {
 				<div class="box">
 				<div class="box-body">
 				<div class="row">
-				<div class="col-xs-5">
+				<div class="col-xs-12">
 				<img class="img-even" src="'.$photo['url'].'" alt="Third slide">
 				</div>
-				<div class="col-xs-7">
+				<div class="col-xs-12">
 				<h4>'.$event['title'].'<br>
 				<small>
 				<i class="fa fa-globe"></i> '.$event['kota'].'<br>
@@ -69,7 +69,7 @@ class Monitorevent extends MY_Controller {
 				<i class="fa fa-motorcycle"></i> <b>'.$rowraider[0]['rowraider'].'</b> Raider
 				</div>
 				<div class="col-xs-6" align="right">
-				Mendaftar pada : <br>'.date('d-m-Y', strtotime($row['created_at'])).'
+				Mendaftar pada : <br>'.date('d M Y', strtotime($row['created_at'])).'
 				</div>
 				</div>
 				</div>

@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/select2/dist/css/select2.min.css">
 
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
-  <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>

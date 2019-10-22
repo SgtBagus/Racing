@@ -1,18 +1,49 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box">
+            <img class="img-even" src="<?= $filegambar['url'] ?>">
             <div class="box-body">
-                <img src="<?= $filegambar['url'] ?>" width="100%" height="230px">
-                <h3>
-                    <?= $tbl_event['title'] ?><br>
-                    <small>
-                        <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
-                    </small>
-                    <br>
-                    <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
-                        <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                    </a>
-                </h3>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 align="center"><?= $tbl_event['title'] ?></h4>
+                        <div class="row" align="center">
+                            <?php if ($tbl_event['status'] == 'ENABLE') {
+                                echo '<small class="label bg-green">Dibuka</small>';
+                            } else {
+                                echo '<small class="label bg-red">Ditutup</small>';
+                            }
+                            ?>
+                        </div>
+                        <p>
+                            <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
+                            <?= $tbl_event['alamat'] ?>
+                        </p>
+                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                            <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
+                        </a>
+                    </div>
+                </div>
+                <hr style="margin-top:5px; margin-bottom: 5px">
+                <div class="row">
+                    <div class="col-xs-6">
+                        Event Dimulai :
+                        <br>
+                        <small>
+                            <?= date('d-M', strtotime($tbl_event['tgleventStart'])) ?>
+                            <b>s/d</b>
+                            <?= date('d-M', strtotime($tbl_event['tgleventEnd'])) ?>
+                        </small>
+                    </div>
+                    <div class="col-xs-6" align="right">
+                        Pendaftar :
+                        <b>
+                            <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
+                            <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+                        </b>
+                        <br>
+                        <small>Event Dibuat : <?= date('d M y', strtotime($row['created_at'])) ?></small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -28,38 +59,35 @@
 <?php if ($raideregister) { ?>
     <div class="row">
         <?php foreach ($raideregister as $row) {
-            $raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['raider_id']));
-            $motor = $this->mymodel->selectDataone('master_motor', array('id' => $raider['motor_id']));
-            $photo = $this->mymodel->selectDataone('file', array('table_id' => $raider['id'], 'table' => 'tbl_raider')); ?>
+                $raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['raider_id']));
+                $motor = $this->mymodel->selectDataone('master_motor', array('id' => $raider['motor_id']));
+                $photo = $this->mymodel->selectDataone('file', array('table_id' => $raider['id'], 'table' => 'tbl_raider')); ?>
             <div class="col-xs-6">
                 <div class="box">
                     <div class="box-body">
                         <div class="row" align="center">
                             <div class="col-xs-12">
-                                <img class="img-circle" alt="User Image" src="<?= $photo['url'] ?>" alt="Third slide" height="150px" width="150px">
+                                <img class="img-circle" alt="User Image" src="<?= $photo['url'] ?>" alt="Third slide" height="100px" width="100px">
                             </div>
                             <div class="col-xs-12">
                                 <h4><?= $raider['name'] ?> <?php if ($raider['verificacion'] == 'ENABLE') {
-                                    echo '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
-                                } ?> <br>
-                                <small><i class="fa fa-globe"></i> <?= $raider['kota'] ?></small>
-                            </h4>
-                            <b>
-                                <i class="fa fa-motorcycle"></i> <?= $motor['value'] ?>
-                                <br>
-                                <i class="fa fa-phone"></i> <?= $raider['nowa'] ?>
-                            </b>
-                            <a href="#">
-                                <button class="btn btn-sm btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Whatsapp</button>
-                            </a>
-                            <p>Sebanyak : <b><?= $raider['eventikut'] ?></b> Event Telah Di Ikuti</p>
+                                                                        echo '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
+                                                                    } ?> <br>
+                                    <small><i class="fa fa-globe"></i> <?= $raider['kota'] ?></small>
+                                </h4>
+                                <b>
+                                    <i class="fa fa-motorcycle"></i> <?= $motor['value'] ?>
+                                    <br>
+                                    <i class="fa fa-phone"></i> <?= $raider['nowa'] ?>
+                                </b>
+                                <p>Sebanyak : <b><?= $raider['eventikut'] ?></b> Event Telah Di Ikuti</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <?php } ?>
-</div>
+        <?php } ?>
+    </div>
 <?php } else { ?>
     <div class="row">
         <div class="col-md-12">
@@ -70,4 +98,4 @@
             </div>
         </div>
     </div>
-    <?php } ?>
+<?php } ?>

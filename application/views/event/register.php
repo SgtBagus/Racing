@@ -1,4 +1,3 @@
-
 <form action="<?= base_url('event/addregister') ?>" method="POST" id="sumbit">
     <input type="hidden" name="team_id" value='<?= $this->session->userdata['id'] ?>'>
     <input type="hidden" name="event_id" value='<?= $tbl_event['id'] ?>'>

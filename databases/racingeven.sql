@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2019 at 09:12 AM
+-- Generation Time: Oct 22, 2019 at 02:41 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -640,27 +640,24 @@ INSERT INTO `file` (`id`, `name`, `mime`, `dir`, `table`, `table_id`, `status`, 
 (284, '6950c16c9bcc6995f376b297f163175989292.png', 'image/png', 'webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', 'tbl_manager', 5, 'ENABLE', 'http://192.168.100.9:8000/webfiles/manager/6950c16c9bcc6995f376b297f163175989292.png', '2019-10-02 20:27:08', NULL),
 (285, '6950c16c9bcc6995f376b297f163175933310.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', 'tbl_raider', 1, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175933310.png', '2019-10-02 22:02:28', NULL),
 (287, '6950c16c9bcc6995f376b297f163175918963.png', 'image/png', 'webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', 'tbl_raider', 3, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175918963.png', '2019-10-02 22:06:53', NULL),
-(288, '6950c16c9bcc6995f376b297f163175995537.PNG', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', 'tbl_event', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175995537.PNG', '2019-10-04 15:59:15', NULL),
-(289, '6950c16c9bcc6995f376b297f163175980245.jpg', 'image/jpeg', 'webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', 'tbl_event', 2, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175980245.jpg', '2019-10-05 10:21:10', NULL),
+(288, '6950c16c9bcc6995f376b297f163175953404.jpg', 'image/jpeg', 'webfiles/event/6950c16c9bcc6995f376b297f163175953404.jpg', 'tbl_event', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175953404.jpg', '2019-10-22 08:54:43', NULL),
+(289, '6950c16c9bcc6995f376b297f163175979188.jpg', 'image/jpeg', 'webfiles/event/6950c16c9bcc6995f376b297f163175979188.jpg', 'tbl_event', 2, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175979188.jpg', '2019-10-22 08:55:46', NULL),
 (290, '6950c16c9bcc6995f376b297f16317593914.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', 'tbl_raider', 4, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f16317593914.jpg', '2019-10-05 10:35:10', NULL),
 (305, '6950c16c9bcc6995f376b297f16317593366.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f16317593366.jpeg', 'tbl_gallery', 23, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f16317593366.jpeg', '2019-10-06 15:53:34', NULL),
 (306, '6950c16c9bcc6995f376b297f163175933661.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175933661.jpeg', 'tbl_gallery', 24, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175933661.jpeg', '2019-10-06 15:53:34', NULL),
 (307, '6950c16c9bcc6995f376b297f163175933662.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175933662.jpeg', 'tbl_gallery', 25, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175933662.jpeg', '2019-10-06 15:53:34', NULL),
 (308, '6950c16c9bcc6995f376b297f163175989854.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175989854.jpeg', 'tbl_gallery', 26, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175989854.jpeg', '2019-10-06 15:53:53', NULL),
-(309, '6950c16c9bcc6995f376b297f16317593366.jpeg', 'image/jpeg', 'webfiles/covergallery/6950c16c9bcc6995f376b297f16317593366.jpeg', 'master_gallery', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/6950c16c9bcc6995f376b297f16317593366.jpeg', '2019-10-07 00:00:00', NULL),
-(310, '6950c16c9bcc6995f376b297f163175946464.jpg', 'image/jpeg', 'webfiles/covergallery/6950c16c9bcc6995f376b297f163175946464.jpg', 'master_gallery', 2, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/6950c16c9bcc6995f376b297f163175946464.jpg', '2019-10-07 19:55:20', NULL),
-(311, '6950c16c9bcc6995f376b297f163175933661.jpeg', 'image/jpeg', 'webfiles/covergallery/6950c16c9bcc6995f376b297f163175933661.jpeg', 'master_gallery', 3, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/6950c16c9bcc6995f376b297f163175933661.jpeg', '2019-10-07 00:00:00', NULL),
-(312, 'gallery_default.jpg', 'image/jpg', 'webfiles/covergallery/gallery_default.jpg', 'master_gallery', 4, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/gallery_default.jpg', '2019-10-07 19:38:59', NULL),
-(313, '6950c16c9bcc6995f376b297f163175939900.jpg', 'image/jpeg', 'webfiles/covergallery/6950c16c9bcc6995f376b297f163175939900.jpg', 'master_gallery', 5, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/6950c16c9bcc6995f376b297f163175939900.jpg', '2019-10-07 19:55:33', NULL),
-(314, 'team_default.png', 'image/png', 'webfiles/team/team_default.png', 'tbl_team', 9, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/team_default.png', '2019-10-08 08:31:52', NULL),
-(315, '6950c16c9bcc6995f376b297f163175947244.jpg', 'image/jpeg', 'webfiles/manager/6950c16c9bcc6995f376b297f163175947244.jpg', 'tbl_manager', 6, 'ENABLE', 'http://192.168.100.9:8000/webfiles/manager/6950c16c9bcc6995f376b297f163175947244.jpg', '2019-10-08 08:37:55', NULL),
-(316, '6950c16c9bcc6995f376b297f163175921102.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f163175921102.jpg', 'tbl_raider', 5, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175921102.jpg', '2019-10-08 08:39:31', NULL),
-(317, '6950c16c9bcc6995f376b297f163175989663.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f163175989663.jpg', 'tbl_raider', 6, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175989663.jpg', '2019-10-08 08:48:32', NULL),
-(318, 'raider_default.png', 'image/png', 'webfiles/raider/raider_default.png', 'tbl_raider', 7, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/raider_default.png', '2019-10-08 08:49:06', NULL),
-(319, 'raider_default.png', 'image/png', 'webfiles/raider/raider_default.png', 'tbl_raider', 8, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/raider_default.png', '2019-10-08 08:50:02', NULL),
-(320, '6950c16c9bcc6995f376b297f163175932102.jpg', 'image/jpeg', 'webfiles/event/6950c16c9bcc6995f376b297f163175932102.jpg', 'tbl_event', 3, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175932102.jpg', '2019-10-08 09:04:45', NULL),
-(321, '6950c16c9bcc6995f376b297f163175917707.jpg', 'image/jpeg', 'webfiles/blogs/6950c16c9bcc6995f376b297f163175917707.jpg', 'tbl_blog', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/blogs/6950c16c9bcc6995f376b297f163175917707.jpg', '2019-10-08 13:29:00', NULL),
-(322, '6950c16c9bcc6995f376b297f16317596314.jpg', 'image/jpeg', 'webfiles/merchandise/6950c16c9bcc6995f376b297f16317596314.jpg', 'tbl_merchandise', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/merchandise/6950c16c9bcc6995f376b297f16317596314.jpg', '2019-10-08 13:32:54', NULL);
+(309, 'team_default.png', 'image/png', 'webfiles/team/team_default.png', 'tbl_team', 9, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/team_default.png', '2019-10-07 16:08:57', NULL),
+(310, '6950c16c9bcc6995f376b297f163175982672.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f163175982672.jpg', 'tbl_raider', 5, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175982672.jpg', '2019-10-07 16:27:51', NULL),
+(311, '6950c16c9bcc6995f376b297f163175938611.png', 'image/png', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175938611.png', 'tbl_gallery', 27, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175938611.png', '2019-10-07 16:41:36', NULL),
+(312, '6950c16c9bcc6995f376b297f163175938611.jpeg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f163175938611.jpeg', 'tbl_gallery', 28, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f163175938611.jpeg', '2019-10-07 16:41:36', NULL),
+(313, '6950c16c9bcc6995f376b297f163175979711.jpg', 'image/jpeg', 'webfiles/covergallery/6950c16c9bcc6995f376b297f163175979711.jpg', 'master_gallery', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/6950c16c9bcc6995f376b297f163175979711.jpg', '2019-10-22 08:59:58', NULL),
+(314, '6950c16c9bcc6995f376b297f163175933661.jpeg', 'image/jpeg', 'webfiles/covergallery/6950c16c9bcc6995f376b297f163175933661.jpeg', 'master_gallery', 2, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/6950c16c9bcc6995f376b297f163175933661.jpeg', '2019-10-07 00:00:00', NULL),
+(315, 'gallery_default.jpg', 'image/jpg', 'webfiles/covergallery/gallery_default.jpg', 'master_gallery', 3, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/gallery_default.jpg', '2019-10-07 00:00:00', NULL),
+(316, 'team_default.png', 'image/png', 'webfiles/team/team_default.png', 'tbl_team', 10, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/team_default.png', '2019-10-20 12:16:20', NULL),
+(317, '6950c16c9bcc6995f376b297f163175965742.jpg', 'image/jpeg', 'webfiles/raider/6950c16c9bcc6995f376b297f163175965742.jpg', 'tbl_raider', 6, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/6950c16c9bcc6995f376b297f163175965742.jpg', '2019-10-20 12:22:49', NULL),
+(318, '6950c16c9bcc6995f376b297f163175966430.jpg', 'image/jpeg', 'webfiles/blogs/6950c16c9bcc6995f376b297f163175966430.jpg', 'tbl_blog', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/blogs/6950c16c9bcc6995f376b297f163175966430.jpg', '2019-10-22 08:58:12', NULL),
+(319, '6950c16c9bcc6995f376b297f163175935615.jpg', 'image/jpeg', 'webfiles/merchandise/6950c16c9bcc6995f376b297f163175935615.jpg', 'tbl_merchandise', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/merchandise/6950c16c9bcc6995f376b297f163175935615.jpg', '2019-10-22 09:01:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -781,6 +778,7 @@ CREATE TABLE `logs` (
 
 CREATE TABLE `master_imagegroup` (
   `id` int(11) NOT NULL,
+  `id_event` int(11) DEFAULT NULL,
   `value` varchar(225) DEFAULT NULL,
   `public` enum('ENABLE','DISABLE') NOT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
@@ -792,12 +790,11 @@ CREATE TABLE `master_imagegroup` (
 -- Dumping data for table `master_imagegroup`
 --
 
-INSERT INTO `master_imagegroup` (`id`, `value`, `public`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Mobile Sport', 'ENABLE', 'ENABLE', '2019-10-06 11:27:57', '2019-10-06 15:52:55'),
-(2, 'SUV', 'ENABLE', 'ENABLE', '2019-10-06 12:33:25', '2019-10-07 19:55:20'),
-(3, 'groub 3', 'ENABLE', 'ENABLE', '2019-10-06 00:00:00', NULL),
-(4, 'groub ke 4', 'ENABLE', 'ENABLE', '2019-10-07 19:38:59', NULL),
-(5, 'Groub 5', 'ENABLE', 'ENABLE', '2019-10-07 19:55:33', NULL);
+INSERT INTO `master_imagegroup` (`id`, `id_event`, `value`, `public`, `status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Pembukaan Indonesia Enduro Rally Championship 2019', 'ENABLE', 'ENABLE', '2019-10-06 11:27:57', '2019-10-22 08:59:58'),
+(2, NULL, 'SUV', 'DISABLE', 'DISABLE', '2019-10-06 12:33:25', '2019-10-06 15:53:04'),
+(3, NULL, 'groub 3', 'DISABLE', 'DISABLE', '2019-10-06 00:00:00', NULL),
+(4, NULL, 'Ululu.', 'ENABLE', 'DISABLE', '2019-10-16 18:32:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -868,9 +865,10 @@ INSERT INTO `menu_master` (`id`, `name`, `icon`, `link`, `urutan`, `parent`, `no
 (47, 'Transaksi Merchandise', 'fa fa-money ', 'transaction', '1', '45', '', 'DISABLE', '2019-10-02 08:30:04', NULL),
 (48, 'Admin Users', 'fa fa-user', 'users', '6', '0', '', 'ENABLE', '2019-10-02 08:33:44', '2019-10-02 09:30:01'),
 (49, 'Master', 'fa fa-database', '#', '7', '0', '', 'ENABLE', '2019-10-02 08:34:02', '2019-10-02 08:34:37'),
+(50, 'Pengaturan', 'fa fa-link', '#', '8', '0', '', 'DISABLE', '2019-10-02 08:35:08', '2019-10-02 08:35:33'),
 (52, 'Motor', 'fa fa-motorcycle', 'master/motor', '1', '49', '', 'ENABLE', '2019-10-02 15:54:20', '2019-10-02 15:55:26'),
 (53, 'Manajer', 'fa fa-user', 'manager', '1', '37', '', 'ENABLE', '2019-10-02 18:47:27', '2019-10-02 18:48:27'),
-(54, 'Kategori Gambar', 'fa fa-picture-o', 'master/imagegroup', '1', '49', NULL, 'ENABLE', '2019-10-06 00:00:00', NULL);
+(54, 'Groub Gambar', 'fa fa-picture-o', 'master/imagegroup', '1', '49', NULL, 'ENABLE', '2019-10-06 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -908,7 +906,7 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `role`, `status`, `menu`, `created_at`, `updated_at`) VALUES
-(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"52\",\"54\"]', '2018-10-12 17:03:59', '2019-10-02 18:47:47');
+(17, 'Admin', 'ENABLE', '[\"1\",\"37\",\"38\",\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"52\",\"54\",\"50\"]', '2018-10-12 17:03:59', '2019-10-02 18:47:47');
 
 -- --------------------------------------------------------
 
@@ -930,7 +928,7 @@ CREATE TABLE `tbl_blog` (
 --
 
 INSERT INTO `tbl_blog` (`id`, `title`, `deskripsi`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Merchandise 2', '<p>asd</p>', 'ENABLE', '2019-10-08 12:59:28', '2019-10-08 13:32:17');
+(1, 'Prepare Your Engine! Ayo Serbu Gisting 360', '<p>Prepare Your Engine! Ayo Serbu Gisting 360<br></p>', 'ENABLE', '2019-10-22 08:58:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -941,15 +939,18 @@ INSERT INTO `tbl_blog` (`id`, `title`, `deskripsi`, `status`, `created_at`, `upd
 CREATE TABLE `tbl_event` (
   `id` int(11) NOT NULL,
   `title` varchar(225) DEFAULT NULL,
-  `tglevent` date DEFAULT NULL,
+  `tgleventStart` datetime DEFAULT NULL,
+  `tgleventEnd` datetime DEFAULT NULL,
   `phone` varchar(225) DEFAULT NULL,
   `deskripsi` text,
   `kota` varchar(225) DEFAULT NULL,
   `alamat` text,
   `minraider` int(11) DEFAULT NULL,
   `maxraider` int(11) DEFAULT NULL,
+  `live_url` int(11) DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
+  `statusEvent` enum('STARTED','BERJALAN','SELESAI','BATAL') NOT NULL,
   `public` enum('ENABLE','DISABLE') DEFAULT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -960,10 +961,9 @@ CREATE TABLE `tbl_event` (
 -- Dumping data for table `tbl_event`
 --
 
-INSERT INTO `tbl_event` (`id`, `title`, `tglevent`, `phone`, `deskripsi`, `kota`, `alamat`, `minraider`, `maxraider`, `latitude`, `longitude`, `public`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Event 1', '2019-10-18', '(231) 231-2323', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, 0, 0, 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', NULL),
-(2, 'event ke 2', '2019-10-09', '(231) 231-2321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, 0, 0, 'ENABLE', 'ENABLE', '2019-10-05 10:21:10', NULL),
-(3, 'Event War Thunder', '2019-10-23', '(231) 231-2323', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>\r\n\r\n<br>\r\n\r\n</p>', 'Malang', 'Alun Alun Malang', 1, 2, 0, 0, 'ENABLE', 'ENABLE', '2019-10-08 09:04:44', NULL);
+INSERT INTO `tbl_event` (`id`, `title`, `tgleventStart`, `tgleventEnd`, `phone`, `deskripsi`, `kota`, `alamat`, `minraider`, `maxraider`, `live_url`, `latitude`, `longitude`, `statusEvent`, `public`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Malang Adcenture Trail', '2019-10-22 00:00:00', '2019-10-24 00:00:00', '2312312323', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, NULL, 0, 0, '', 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', '2019-10-22 08:55:15'),
+(2, 'GISTING 360 Adventure Trail', '2019-10-23 00:00:00', '2019-10-24 00:00:00', '2312312321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, NULL, 0, 0, '', 'ENABLE', 'ENABLE', '2019-10-05 10:21:10', '2019-10-22 08:55:46');
 
 -- --------------------------------------------------------
 
@@ -975,7 +975,7 @@ CREATE TABLE `tbl_event_register` (
   `id` int(11) NOT NULL,
   `team_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
-  `approve` enum('APPROVE','REJECT','WAITING','FINISH','CANCEL') DEFAULT NULL,
+  `approve` enum('APPROVE','REJECT') DEFAULT NULL,
   `note` text,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -988,7 +988,8 @@ CREATE TABLE `tbl_event_register` (
 
 INSERT INTO `tbl_event_register` (`id`, `team_id`, `event_id`, `approve`, `note`, `status`, `created_at`, `updated_at`) VALUES
 (3, 8, 1, 'APPROVE', '', 'ENABLE', '2019-10-05 12:03:07', '2019-10-05 16:30:19'),
-(6, 9, 3, 'WAITING', '', 'ENABLE', '2019-10-08 09:23:36', NULL);
+(4, 10, 2, '', '', 'ENABLE', '2019-10-20 12:23:09', NULL),
+(5, 10, 2, '', '', 'ENABLE', '2019-10-20 12:23:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -1012,8 +1013,7 @@ CREATE TABLE `tbl_event_register_raider` (
 INSERT INTO `tbl_event_register_raider` (`id`, `event_register_id`, `raider_id`, `status`, `created_at`, `updated_at`) VALUES
 (3, 3, 3, 'ENABLE', '2019-10-05 12:03:07', NULL),
 (4, 3, 4, 'ENABLE', '2019-10-05 12:03:07', NULL),
-(15, 6, 7, 'ENABLE', '2019-10-08 09:23:36', NULL),
-(16, 6, 8, 'ENABLE', '2019-10-08 09:23:36', NULL);
+(5, 5, 6, 'ENABLE', '2019-10-20 12:23:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -1023,6 +1023,7 @@ INSERT INTO `tbl_event_register_raider` (`id`, `event_register_id`, `raider_id`,
 
 CREATE TABLE `tbl_gallery` (
   `id` int(11) NOT NULL,
+  `id_event` int(11) DEFAULT NULL,
   `imagegroup_id` int(11) DEFAULT NULL,
   `title` varchar(225) DEFAULT NULL,
   `caption` text,
@@ -1035,11 +1036,13 @@ CREATE TABLE `tbl_gallery` (
 -- Dumping data for table `tbl_gallery`
 --
 
-INSERT INTO `tbl_gallery` (`id`, `imagegroup_id`, `title`, `caption`, `status`, `created_at`, `updated_at`) VALUES
-(23, 1, 'AMG', '', 'ENABLE', '2019-10-06 15:53:33', NULL),
-(24, 1, 'AMG', '', 'ENABLE', '2019-10-06 15:53:34', NULL),
-(25, 1, 'Ferari', 'Ferari Merah', 'ENABLE', '2019-10-06 15:53:34', NULL),
-(26, 2, 'Big SUV', 'Big SUV mendaki gunung', 'ENABLE', '2019-10-06 15:53:53', NULL);
+INSERT INTO `tbl_gallery` (`id`, `id_event`, `imagegroup_id`, `title`, `caption`, `status`, `created_at`, `updated_at`) VALUES
+(23, NULL, 2, 'AMG', '', 'ENABLE', '2019-10-06 15:53:33', '2019-10-07 11:20:18'),
+(24, NULL, 1, 'AMG', '', 'ENABLE', '2019-10-06 15:53:34', '2019-10-07 11:21:45'),
+(25, NULL, 2, 'Ferari', 'Ferari Merah', 'ENABLE', '2019-10-06 15:53:34', '2019-10-07 11:20:18'),
+(26, NULL, 1, 'Big SUV', 'Big SUV mendaki gunung', 'ENABLE', '2019-10-06 15:53:53', '2019-10-07 16:38:56'),
+(27, NULL, 3, 'motor', 'motor hitam', 'ENABLE', '2019-10-07 16:41:36', NULL),
+(28, NULL, 3, 'ayam', '', 'ENABLE', '2019-10-07 16:41:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -1063,8 +1066,7 @@ CREATE TABLE `tbl_manager` (
 --
 
 INSERT INTO `tbl_manager` (`id`, `team_id`, `name`, `alamat`, `nowa`, `status`, `created_at`, `updated_at`) VALUES
-(5, 8, 'Manager', 'disana ', '(213) 123-1232', 'ENABLE', '2019-10-02 19:38:00', '2019-10-02 20:27:08'),
-(6, 9, 'manager clound 9 ', 'Disana', '(123) 123-1232', 'ENABLE', '2019-10-08 08:37:55', NULL);
+(5, 8, 'Manager', 'disana ', '2131231232', 'ENABLE', '2019-10-02 19:38:00', '2019-10-02 20:27:08');
 
 -- --------------------------------------------------------
 
@@ -1076,7 +1078,7 @@ CREATE TABLE `tbl_merchandise` (
   `id` int(11) NOT NULL,
   `title` varchar(225) DEFAULT NULL,
   `deskripsi` text,
-  `harga` varchar(225) DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL,
   `phone` varchar(225) DEFAULT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -1088,7 +1090,7 @@ CREATE TABLE `tbl_merchandise` (
 --
 
 INSERT INTO `tbl_merchandise` (`id`, `title`, `deskripsi`, `harga`, `phone`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Merchandise 2', '<p>asd</p>', '2000', '(082) 123-9123', 'ENABLE', '2019-10-08 13:28:13', '2019-10-08 14:10:41');
+(1, 'Helm KYT-028 Terbaru', '<p>Helm KYT-028 Terbaru<br></p>', 35000, '(123) 123-1232', 'ENABLE', '2019-10-22 09:01:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -1122,13 +1124,11 @@ CREATE TABLE `tbl_raider` (
 --
 
 INSERT INTO `tbl_raider` (`id`, `team_id`, `name`, `alamat`, `kota`, `tgllahir`, `nostart`, `namajersey`, `ukuran_jersey`, `motor_id`, `nowa`, `goldarah`, `verificacion`, `email`, `eventikut`, `status`, `created_at`, `updated_at`) VALUES
-(1, 8, 'Raider 1', 'Alamat Raider', 'Malang', '2019-10-02', 2, 'Raider 1', '24', 2, '(123) 123-1232', 'B', 'ENABLE', NULL, 0, 'ENABLE', '2019-10-02 22:02:28', NULL),
-(3, 8, 'Raider 2', 'Alamat Raider ke 2', 'Malang', '2019-10-02', 1, 'AA', '23', 5, '(123) 123-2132', 'B', 'DISABLE', NULL, 1, 'ENABLE', '2019-10-02 22:06:53', NULL),
-(4, 8, 'raider ke 3', 'ada disni', 'Malang', '2019-10-11', 2, 'ddisini', 'L', 2, '(123) 123-1232', 'B', 'DISABLE', '', 1, 'ENABLE', '2019-10-05 10:35:10', NULL),
-(5, 9, 'Clound 9 Raider 1', 'Disana', 'Malang', '1991-02-07', 9, 'Clund 9', 'XL', 3, '(213) 123-1232', 'B', 'DISABLE', 'clound9@gmail.com', 0, 'ENABLE', '2019-10-08 08:39:31', NULL),
-(6, 9, 'Clound 9 Raider 2 ', 'Disana', 'Malang', '2019-10-03', 5, 'Clound 9', 'XXL', 4, '(123) 123-1232', 'B', 'DISABLE', '', 0, 'ENABLE', '2019-10-08 08:48:32', NULL),
-(7, 9, 'Clound 9 ', 'Disana ', 'Malang', '2019-10-11', 2, 'Clound 9', 'S', 6, '(123) 123-1232', 'B', 'DISABLE', '', 0, 'ENABLE', '2019-10-08 08:49:06', NULL),
-(8, 9, 'Clound 9 5', 'Disana awan', 'Malang', '2019-10-04', 2, 'Clound 9 5', 'S', 3, '(123) 123-1232', 'B', 'DISABLE', '', 0, 'ENABLE', '2019-10-08 08:50:02', NULL);
+(1, 8, 'Raider 1', 'Alamat Raider', 'Malang', '2019-10-02', 2, 'Raider 1', '24', 2, '1231231232', 'B', 'ENABLE', NULL, 0, 'ENABLE', '2019-10-02 22:02:28', NULL),
+(3, 8, 'Raider 2', 'Alamat Raider ke 2', 'Malang', '2019-10-02', 1, 'AA', '23', 5, '1231232132', 'B', 'DISABLE', NULL, 1, 'ENABLE', '2019-10-02 22:06:53', NULL),
+(4, 8, 'raider ke 3', 'ada disni', 'Malang', '2019-10-11', 2, 'ddisini', 'L', 2, '1231231232', 'B', 'DISABLE', '', 1, 'ENABLE', '2019-10-05 10:35:10', NULL),
+(5, 9, 'Bagus', 'Disini', 'Malang', '2019-10-08', 5, 'Bagus', 'L', 3, '0812637383', 'B', 'DISABLE', 'bgus@gmail.xom', 0, 'ENABLE', '2019-10-07 16:27:51', NULL),
+(6, 10, 'Rudi Handoko', '-', 'Malang', '2019-10-20', 55, 'Rudi', 'L', 10, '0855273638', 'A', 'DISABLE', 'amjdjd@gmail.com', 0, 'ENABLE', '2019-10-20 12:22:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -1155,8 +1155,9 @@ CREATE TABLE `tbl_team` (
 --
 
 INSERT INTO `tbl_team` (`id`, `name`, `email`, `password`, `alamat`, `kota`, `nowa`, `verificacion`, `status`, `created_at`, `updated_at`) VALUES
-(8, 'team satu', 'team@gmail.com', 'b3c9323ca84c0f3e6ea210cd31c9ea7a', 'disini', 'Malang', '(123) 124-1232', 'ENABLE', 'ENABLE', '2019-10-02 15:55:12', '2019-10-06 16:18:51'),
-(9, 'Clound 9', 'awan@gmail.com', 'b3c9323ca84c0f3e6ea210cd31c9ea7a', 'diawanb', 'Awan', '(123) 129-8371', 'DISABLE', 'ENABLE', '2019-10-08 08:31:52', NULL);
+(8, 'Team Satu', 'team@gmail.com', 'b3c9323ca84c0f3e6ea210cd31c9ea7a', 'disini', 'Malang', '1231241232', 'ENABLE', 'ENABLE', '2019-10-02 15:55:12', '2019-10-16 18:47:17'),
+(9, 'Clound9', 'awan@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Diatas awan', 'Surabaya', '0817236182', 'ENABLE', 'ENABLE', '2019-10-07 16:08:57', NULL),
+(10, 'Aang', 'amuammarzein@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '-', 'Malang', '0855262501', 'DISABLE', 'ENABLE', '2019-10-20 12:16:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -1342,7 +1343,7 @@ ALTER TABLE `access_control`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=320;
 
 --
 -- AUTO_INCREMENT for table `grafik`
@@ -1372,7 +1373,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `master_imagegroup`
 --
 ALTER TABLE `master_imagegroup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `master_motor`
@@ -1408,31 +1409,31 @@ ALTER TABLE `tbl_blog`
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_event_register`
 --
 ALTER TABLE `tbl_event_register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_event_register_raider`
 --
 ALTER TABLE `tbl_event_register_raider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_manager`
 --
 ALTER TABLE `tbl_manager`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_merchandise`
@@ -1444,13 +1445,13 @@ ALTER TABLE `tbl_merchandise`
 -- AUTO_INCREMENT for table `tbl_raider`
 --
 ALTER TABLE `tbl_raider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`

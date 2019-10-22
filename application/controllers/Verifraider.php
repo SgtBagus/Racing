@@ -24,15 +24,7 @@ class Verifraider extends MY_Controller
         $data['page'] = 'Verified Raider';
         $data['tbl_event'] = $this->mymodel->selectDataone('tbl_event', array('id' => $id));
         $data['file_event'] = $this->mymodel->selectDataone('file', array('table_id' => $data['tbl_event']['id'], 'table' => 'tbl_event'));
-
         $data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = " . $id);
-
-        // if($_GET['name']){
-        //     $data['raideregister'] = $this->mymodel->selectWithQuery("SELECT a.raider_id as raider_id, b.name from tbl_event_register_raider a INNER JOIN tbl_raider b on a.raider_id = b.id WHERE event_register_id = ".$id." AND b.name LIKE '%".$_GET['name']."%'");
-        // }else{
-        //     $data['raideregister'] = $this->mymodel->selectWithQuery("SELECT raider_id from tbl_event_register_raider WHERE event_register_id = ".$id);
-        // }
-
         $data['subpage'] = $data['tbl_event']['title'];
         $this->template->load('template/template', 'verifraider/view', $data);
     }
@@ -67,10 +59,10 @@ class Verifraider extends MY_Controller
                 <div class="box">
                 <div class="box-body">
                 <div class="row">
-                <div class="col-xs-4">
+                <div class="col-xs-12">
                 <img class="img-even" src="' . $photo['url'] . '" alt="Third slide">
                 </div>
-                <div class="col-xs-8">
+                <div class="col-xs-12">
                 <h4>' . $row['title'] . '<br>
                 <small>
                 <i class="fa fa-globe"></i> ' . $row['kota'] . '<br>
@@ -132,7 +124,7 @@ class Verifraider extends MY_Controller
                                 <h3>Team<br><b>'.$team['name'].'</b></h3>
                             </div>
                             <div class="col-xs-12">
-                                <img class="img-circle" alt="User Image" src="' . $photo['url'] . '" alt="Third slide" height="150px" width="150px">
+                                <img class="img-circle" alt="User Image" src="' . $photo['url'] . '" alt="Third slide" height="100px" width="100px">
                             </div>
                             <div class="col-xs-12">
                                 <h4>' . $raider['name'] . $verificacion . '<br>

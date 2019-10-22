@@ -57,28 +57,28 @@
                 </a>
                 <ul class="treeview-menu">
                     <li style="margin-bottom: 5px;">
+                        <a href="<?= base_url('monitorevent') ?>">
+                            <i class="fa fa-television"></i> Monitoring Event
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('event') ?>">
                             <i class="fa fa-star"></i> Cari Event
                         </a>
                     </li>
                     <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('monitorevent')?>">
-                            <i class="fa fa-television"></i> Monitoring Event
+                        <a href="<?= base_url('verifteam') ?>">
+                            <i class="fa fa-users"></i>
+                            <span>Verified Team</span>
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 5px;">
+                        <a href="<?= base_url('verifraider') ?>">
+                            <i class="fa fa-motorcycle"></i>
+                            <span>Verified Rider</span>
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li style="margin-bottom: 5px;">
-                <a href="<?= base_url('verifteam') ?>">
-                    <i class="fa fa-users"></i>
-                    <span>Verified Team</span>
-                </a>
-            </li>
-            <li style="margin-bottom: 5px;">
-                <a href="<?= base_url('verifraider') ?>">
-                    <i class="fa fa-motorcycle"></i>
-                    <span>Verified Rider</span>
-                </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('blogs') ?>">

@@ -17,21 +17,18 @@ class Blogs extends MY_Controller
 		$data['page'] = 'Blogs';
 		$data['tbl_blog'] = $this->mymodel->selectDataone('tbl_blog',  array('id' => $id));
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_blog'));
-		$data['subpage'] = '<b>' . $data['tbl_blog']['title'] . '</b>';
 		$this->template->load('template/template', 'blog/view', $data);
 	}
 
 	public function fetch()
 	{
 		$output = '';
-
 		$search = $_GET['title'];
-
 		if ($search) {
-			$tbl_blog = $this->mymodel->selectWithQuery("SELECT * from tbl_blog WHERE title LIKE '%" . $_GET['title'] . "%' AND status = 'ENABLE' ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));
+			$tbl_blog = $this->mymodel->selectWithQuery("SELECT * from tbl_blog WHERE title LIKE '%" . $_GET['title'] . "%' AND status = 'ENABLE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
 		} else {
-			$tbl_blog = $this->mymodel->selectWithQuery("SELECT * FROM tbl_blog WHERE status = 'ENABLE' ORDER BY id DESC LIMIT ".$this->input->post('limit')." OFFSET ".$this->input->post('start'));
-		} 
+			$tbl_blog = $this->mymodel->selectWithQuery("SELECT * FROM tbl_blog WHERE status = 'ENABLE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+		}
 		if ($tbl_blog) {
 			foreach ($tbl_blog as $row) {
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_blog'));
@@ -42,11 +39,9 @@ class Blogs extends MY_Controller
 				<div class="col-md-12">
 					<a href="' . base_url('blogs/view/') . $row['id'] . '" class="a_black">
 						<div class="box">
+                        <img class="img-even" src="' . $photo['url'] . '">
                             <div class="box-body">
                                 <div class="row">
-                                	<div class="col-xs-12">
-                                        <img class="img-gallery" src="' . $photo['url'] . '" alt="Third slide">
-                                    </div>
                                     <div class="col-xs-12" align="center">
                                         <h3><b>' . $row['title'] . '</b></h3>
                                     </div>
