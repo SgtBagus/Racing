@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2019 at 02:41 PM
+-- Generation Time: Oct 22, 2019 at 03:43 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -947,7 +947,7 @@ CREATE TABLE `tbl_event` (
   `alamat` text,
   `minraider` int(11) DEFAULT NULL,
   `maxraider` int(11) DEFAULT NULL,
-  `live_url` int(11) DEFAULT NULL,
+  `live_url` text,
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
   `statusEvent` enum('STARTED','BERJALAN','SELESAI','BATAL') NOT NULL,
@@ -962,8 +962,8 @@ CREATE TABLE `tbl_event` (
 --
 
 INSERT INTO `tbl_event` (`id`, `title`, `tgleventStart`, `tgleventEnd`, `phone`, `deskripsi`, `kota`, `alamat`, `minraider`, `maxraider`, `live_url`, `latitude`, `longitude`, `statusEvent`, `public`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Malang Adcenture Trail', '2019-10-22 00:00:00', '2019-10-24 00:00:00', '2312312323', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, NULL, 0, 0, '', 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', '2019-10-22 08:55:15'),
-(2, 'GISTING 360 Adventure Trail', '2019-10-23 00:00:00', '2019-10-24 00:00:00', '2312312321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, NULL, 0, 0, '', 'ENABLE', 'ENABLE', '2019-10-05 10:21:10', '2019-10-22 08:55:46');
+(1, 'Malang Adcenture Trail', '2019-10-22 00:00:00', '2019-10-24 00:00:00', '2312312323', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, NULL, 0, 0, 'STARTED', 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', '2019-10-22 20:41:42'),
+(2, 'GISTING 360 Adventure Trail', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2312312321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, NULL, 0, 0, 'STARTED', 'ENABLE', 'ENABLE', '2019-10-05 10:21:10', '2019-10-22 20:39:31');
 
 -- --------------------------------------------------------
 
@@ -975,7 +975,7 @@ CREATE TABLE `tbl_event_register` (
   `id` int(11) NOT NULL,
   `team_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
-  `approve` enum('APPROVE','REJECT') DEFAULT NULL,
+  `approve` enum('APPROVE','REJECT','WAITING') DEFAULT NULL,
   `note` text,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -988,8 +988,8 @@ CREATE TABLE `tbl_event_register` (
 
 INSERT INTO `tbl_event_register` (`id`, `team_id`, `event_id`, `approve`, `note`, `status`, `created_at`, `updated_at`) VALUES
 (3, 8, 1, 'APPROVE', '', 'ENABLE', '2019-10-05 12:03:07', '2019-10-05 16:30:19'),
-(4, 10, 2, '', '', 'ENABLE', '2019-10-20 12:23:09', NULL),
-(5, 10, 2, '', '', 'ENABLE', '2019-10-20 12:23:35', NULL);
+(4, 10, 2, 'WAITING', '', 'ENABLE', '2019-10-20 12:23:09', NULL),
+(5, 10, 2, 'WAITING', '', 'ENABLE', '2019-10-20 12:23:35', NULL);
 
 -- --------------------------------------------------------
 
