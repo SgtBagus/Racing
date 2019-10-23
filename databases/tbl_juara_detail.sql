@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2019 at 10:49 AM
+-- Generation Time: Oct 23, 2019 at 01:50 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -33,6 +33,7 @@ CREATE TABLE `tbl_juara_detail` (
   `id_juara` int(11) DEFAULT NULL,
   `id_event` int(11) NOT NULL,
   `id_raider` int(11) DEFAULT NULL,
+  `juara` int(11) NOT NULL,
   `point` float DEFAULT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -57,7 +58,7 @@ ALTER TABLE `tbl_juara_detail`
 -- AUTO_INCREMENT for table `tbl_juara_detail`
 --
 ALTER TABLE `tbl_juara_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
