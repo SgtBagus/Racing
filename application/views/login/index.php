@@ -10,7 +10,7 @@
       <div class="form-group">
         <label>Password</label>
         <input type="password" name="password" class="form-control">
-        <p class="help-block"><a href="<?= base_url('login/password') ?>"> Lupa Password ? </a></p>
+        <!-- <p class="help-block"><a href="<?= base_url('login/password') ?>"> Lupa Password ? </a></p> -->
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-block btn-primary">

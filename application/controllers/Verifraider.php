@@ -56,12 +56,10 @@ class Verifraider extends MY_Controller
                 $output .= '
                 <a href="' . base_url("verifraider/view/") . $row['id'] . '" class="a_black">
                 <div class="col-md-12">
+                <img class="img-even" src="' . $photo['url'] . '" alt="Third slide">
                 <div class="box">
                 <div class="box-body">
                 <div class="row">
-                <div class="col-xs-12">
-                <img class="img-even" src="' . $photo['url'] . '" alt="Third slide">
-                </div>
                 <div class="col-xs-12">
                 <h4>' . $row['title'] . '<br>
                 <small>
@@ -77,7 +75,7 @@ class Verifraider extends MY_Controller
 				Event Dimulai : 
 				<br>
 				<small>
-				'.date('d M Y', strtotime($row['tgleventStart'])).' - '.date('d M Y', strtotime($row['tgleventEnd'])).'
+				' . date('d M Y', strtotime($row['tgleventStart'])) . ' - ' . date('d M Y', strtotime($row['tgleventEnd'])) . '
 				</small>
 				</div>
                 <div class="col-xs-6" align="right">
@@ -110,37 +108,39 @@ class Verifraider extends MY_Controller
         }
 
         if ($tbl_raider) {
+            $i = 1;
             foreach ($tbl_raider as $row) {
                 $raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['raider_id']));
                 $team = $this->mymodel->selectDataone('tbl_team', array('id' => $raider['team_id']));
                 $motor = $this->mymodel->selectDataone('master_motor', array('id' => $raider['motor_id']));
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $raider['id'], 'table' => 'tbl_raider'));
+                
+                $photo_team = $this->mymodel->selectDataone('file', array('table_id' => $raider['team_id'], 'table' => 'tbl_team'));
 
                 if ($raider['verificacion'] == 'ENABLE') {
                     $verificacion  = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
                 }
                 $output .= '<div class="col-xs-6">
+				<img class="img-even" src="' . $photo['url'] . '" style="height: 100px;">
                 <div class="box">
                     <div class="box-body">
                         <div class="row" align="center">
-                            <div class="col-xs-12">
-                                <h3>Team<br><b>'.$team['name'].'</b></h3>
-                            </div>
-                            <div class="col-xs-12">
-                                <img class="img-circle" alt="User Image" src="' . $photo['url'] . '" alt="Third slide" height="100px" width="100px">
-                            </div>
-                            <div class="col-xs-12">
-                                <h4>' . $raider['name'] . $verificacion . '<br>
-                                    <small><i class="fa fa-globe"></i> ' . $raider['kota'] . '</small>
-                                </h4>
-                                <p>' . $raider['nostart'] . '/' . $motor['value'] . '/' . $raider['ukuran_jersey'] . '</p>
-                                <p>Sebanyak : <b>' . $raider['eventikut'] . '</b> Event Telah Di Ikuti</p>
-                            </div>
+                        <div class="col-xs-12">
+                            Raider '.$i.'<br>
+                            <b>' . $raider['name'] .' '. $verificacion . '</b>
+                            <br>
+                            <small>' . $raider['kota'] . '</small>
+                            <br><br>
+                            Team : <br>
+                            <img class="img-circle" alt="User Image" src="' . $photo_team['url'] . '" alt="Third slide" height="50px" width="50px">
+                        </div>
+                        <br>
+                        <p>Number : <b>' . $raider['nostart'] . '</b></p>
                         </div>
                     </div>
                 </div>
             </div>';
-            }
+            $i++;}
         }
         echo $output;
     }

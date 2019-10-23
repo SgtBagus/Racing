@@ -35,7 +35,7 @@
       </div>
       <div class="form-group">
         <label>Nomor Wa</label>
-        <input type="text" name="dt[nowa]" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+        <input type="text" name="dt[nowa]" class="form-control">
       </div>
       <div class="show_error"></div>
       <div class="form-group">

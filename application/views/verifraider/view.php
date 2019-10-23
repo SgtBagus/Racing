@@ -18,9 +18,9 @@
                             <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
                             <?= $tbl_event['alamat'] ?>
                         </p>
-                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <hr style="margin-top:5px; margin-bottom: 5px">
@@ -58,7 +58,7 @@
 <br>
 <div class="row">
     <div class="col-md-12" align="center">
-        Raider Pendaftar <b> <?= $rowraider[0]['rowraider'] ?></b>:
+        Rider Pendaftar <b> <?= $rowraider[0]['rowraider'] ?></b>:
     </div>
 </div>
 <br>
@@ -66,7 +66,7 @@
     <div class="col-md-12">
         <form role="form" action="<?= base_url('verifraider/view/' . $tbl_event['id']) ?>" method="GET">
             <div class="form-group">
-                <label>Nama Raider</label>
+                <label>Nama Rider</label>
                 <input type="text" name="name" class="form-control" <?php if ($_GET['name']) {
                                                                         echo 'value="' . $_GET['name'] . '"';
                                                                     } ?> id="filter-search">
