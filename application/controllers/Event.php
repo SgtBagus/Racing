@@ -112,7 +112,9 @@ class Event extends MY_Controller {
 				<div class="col-xs-6">
 				Event Dimulai : 
 				<br>
-				'.date('d-m', strtotime($row['tglevent'])).' sampai '.date('d-m', strtotime($row['tglevent'])).'
+				<small>
+				'.date('d M Y', strtotime($row['tgleventStart'])).' - '.date('d M Y', strtotime($row['tgleventEnd'])).'
+				</small>
 				</div>
 				<div class="col-xs-6" align="right">
 				Pendaftar : 
@@ -121,7 +123,7 @@ class Event extends MY_Controller {
 				<i class="fa fa-users"></i> '.$rowteam[0]['rowteam'].'
 				</b>
 				<br>
-				<small>Event Dibuat : '.date('d-M-Y', strtotime($row['created_at'])).'</small>
+				<small>Dibuat : '.date('d M Y', strtotime($row['created_at'])).'</small>
 				</div>
 				</div>
 				</div>

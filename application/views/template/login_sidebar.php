@@ -50,6 +50,12 @@
                 </ul>
             </li>
             <li style="margin-bottom: 5px;">
+                <a href="<?= base_url('wisata') ?>">
+                    <i class="fa fa-star"></i>
+                    <span>Wisata</span>
+                </a>
+            </li>
+            <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('blogs') ?>">
                     <i class="fa fa-newspaper-o"></i>
                     <span>News/Blogs</span>
