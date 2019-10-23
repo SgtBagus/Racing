@@ -114,25 +114,28 @@ class Verifraider extends MY_Controller
                 $team = $this->mymodel->selectDataone('tbl_team', array('id' => $raider['team_id']));
                 $motor = $this->mymodel->selectDataone('master_motor', array('id' => $raider['motor_id']));
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $raider['id'], 'table' => 'tbl_raider'));
-                
+
                 $photo_team = $this->mymodel->selectDataone('file', array('table_id' => $raider['team_id'], 'table' => 'tbl_team'));
 
                 if ($raider['verificacion'] == 'ENABLE') {
                     $verificacion  = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
                 }
                 $output .= '<div class="col-xs-6">
-				<img class="img-even" src="' . $photo['url'] . '" style="height: 100px;">
                 <div class="box">
+				<img class="img-even" src="' . $photo['url'] . '" style="height: 100px;">
                     <div class="box-body">
                         <div class="row" align="center">
                         <div class="col-xs-12">
-                            Raider '.$i.'<br>
-                            <b>' . $raider['name'] .' '. $verificacion . '</b>
+                            <b>'.$team['name'].'</b>
                             <br>
-                            <small>' . $raider['kota'] . '</small>
-                            <br><br>
-                            Team : <br>
-                            <img class="img-circle" alt="User Image" src="' . $photo_team['url'] . '" alt="Third slide" height="50px" width="50px">
+                            <br>
+                            ' . $raider['name'] . ' ' . $verificacion . '
+                            <br>
+                            <br>
+                            ' . $raider['kota'] . '
+                            <br>
+                            <br>
+                            <img alt="User Image" src="' . $photo_team['url'] . '" alt="Third slide" height="50px" width="90px">
                         </div>
                         <br>
                         <p>Number : <b>' . $raider['nostart'] . '</b></p>
@@ -140,7 +143,8 @@ class Verifraider extends MY_Controller
                     </div>
                 </div>
             </div>';
-            $i++;}
+                $i++;
+            }
         }
         echo $output;
     }
