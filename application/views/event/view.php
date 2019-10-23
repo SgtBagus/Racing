@@ -18,9 +18,9 @@
                             <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
                             <?= $tbl_event['alamat'] ?>
                         </p>
-                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <hr style="margin-top:5px; margin-bottom: 5px">
@@ -65,7 +65,7 @@
             <div class="box-body" align="center">
                 <table style="width: 100%">
                     <tr>
-                        <td align="right">Raider per Team</td>
+                        <td align="right">Rider per Team</td>
                         <td>:</td>
                         <td align="left">
                             <b><?= $tbl_event['minraider'] ?> s/d <?= $tbl_event['maxraider'] ?></b>
@@ -108,7 +108,7 @@
             <div class="col-xs-6">
                 <a href="<?= base_url('verifraider/view/') . $tbl_event['id'] ?>">
                     <button class="btn btn-lg btn-block btn-warning btn-daftar" style="margin-bottom: 15px">
-                        <i class="fa fa-motorcycle"></i> Raider
+                        <i class="fa fa-motorcycle"></i> Rider
                     </button>
                 </a>
             </div>
@@ -116,7 +116,7 @@
         <?php if ($tbl_event['statusEvent'] == 'BERJALAN' || $tbl_event['statusEvent'] == 'SELESAI') { ?>
             <a href="<?= base_url('event/rank/') . $tbl_event['id'] ?>">
                 <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
-                    <i class="fa fa-user"></i> Juara Raider
+                    <i class="fa fa-user"></i> Juara Rider
                 </button>
             </a>
             <?php if ($tbl_event['live_url']) { ?>
@@ -132,7 +132,7 @@
                 <i class="fa fa-picture-o"></i> Dokumentasi
             </button>
         </a>
-        <?php if ($tbl_event['statusEvent'] == 'REGISTER') { ?>
+        <?php if ($tbl_event['statusEvent'] == 'STARTED') { ?>
             <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
                 <button class="btn btn-lg btn-block btn-primary btn-daftar" style="margin-bottom: 15px">
                     <i class="fa fa-users"></i> Daftarkan Tim

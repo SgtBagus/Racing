@@ -58,7 +58,6 @@
       }
       ?>
       <div class="container" style="margin-top: -25px;">
-        <h2 align="center"> <?= $page ?><br><small> <?= $subpage ?></small></h2>
         <?= $contents ?>
         <div class="fixed-footer"></div>
       </div>

@@ -4,36 +4,47 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
+                <img class="img-even" src="<?= $file['url'] ?>">
                 <div class="box-body">
-                    <img src="<?= $file['url'] ?>" width="100%" height="230px">
-                    <h3>
-                        <?= $tbl_event['title'] ?><br>
-                        <small>
-                            <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?> - <?= $tbl_event['alamat'] ?>
-                        </small>
-                        <br>
-                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
-                            <button class="btn btn-sm btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                        </a>
-                    </h3>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 align="center"><?= $tbl_event['title'] ?></h4>
+                            <div class="row" align="center">
+                                <?php if ($tbl_event['status'] == 'ENABLE') {
+                                    echo '<small class="label bg-green">Dibuka</small>';
+                                } else {
+                                    echo '<small class="label bg-red">Ditutup</small>';
+                                }
+                                ?>
+                            </div>
+                            <p>
+                                <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
+                                <?= $tbl_event['alamat'] ?>
+                            </p>
+                            <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                            <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
+                        </a> -->
+                        </div>
+                    </div>
                     <hr style="margin-top:5px; margin-bottom: 5px">
-                    <div class="row"> 
+                    <div class="row">
                         <div class="col-xs-6">
-                            Event Dimulai : <?= date('d-m-Y', strtotime($tbl_event['tglevent'])) ?><br>
-                            <?php if ($tbl_event['status'] == 'ENABLE') {
-                                echo '<small class="label bg-green">Dibuka</small>';
-                            } else {
-                                echo '<small class="label bg-red">Ditutup</small>';
-                            }
-                            ?>
+                            Event Dimulai :
+                            <br>
+                            <small>
+                                <?= date('d-M', strtotime($tbl_event['tgleventStart'])) ?>
+                                <b>s/d</b>
+                                <?= date('d-M', strtotime($tbl_event['tgleventEnd'])) ?>
+                            </small>
                         </div>
                         <div class="col-xs-6" align="right">
-                            Pendaftar : 
+                            Pendaftar :
+                            <b>
+                                <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
+                                <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+                            </b>
                             <br>
-                            <i class="fa fa-motorcycle"></i><b> <?= $rowraider[0]['rowraider'] ?></b> Raider
-                            <i class="fa fa-users"></i><b><?= $rowteam[0]['rowteam'] ?></b> Team
-                            <br>
-                            <small>Event Dibuat : <?= date('d-m-Y', strtotime($tbl_event['created_at'])) ?></small>
+                            <small>Event Dibuat : <?= date('d M y', strtotime($row['created_at'])) ?></small>
                         </div>
                     </div>
                 </div>
@@ -57,7 +68,7 @@
                 <div class="box-body" align="center">
                     <table style="width: 100%">
                         <tr>
-                            <td align="right">Raider per Team</td>
+                            <td align="right">Rider per Team</td>
                             <td>:</td>
                             <td align="left">
                                 <b><?= $tbl_event['minraider'] ?> s/d <?= $tbl_event['maxraider'] ?></b>
@@ -73,9 +84,9 @@
             <div class="box">
                 <div class="box-body">
                     <div class="form-group">
-                        <label>Pilih Raider</label>
+                        <label>Pilih Rider</label>
                         <select class="form-control" data-placeholder="Select a State" style="width: 100%;" id="raiderSelect">
-                            <option value="0" selected="">Pilih Raider</option>
+                            <option value="0" selected="">Pilih Rider</option>
                             <?php foreach ($raider as $key => $value) { ?>
                                 <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
                             <?php } ?>

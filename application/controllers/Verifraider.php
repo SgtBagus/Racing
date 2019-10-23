@@ -73,14 +73,17 @@ class Verifraider extends MY_Controller
                 </div>
                 </div>
                 <div class="row">
-                <div class="col-xs-6">
-                Event Dimulai : ' . date('d-m-Y', strtotime($row['tglevent'])) . '<br>
-                ' . $status . '
-                </div>
+				<div class="col-xs-6">
+				Event Dimulai : 
+				<br>
+				<small>
+				'.date('d M Y', strtotime($row['tgleventStart'])).' - '.date('d M Y', strtotime($row['tgleventEnd'])).'
+				</small>
+				</div>
                 <div class="col-xs-6" align="right">
                 Pendaftar : 
                 <b>
-                <i class="fa fa-motorcycle"></i> <b>' . $rowraider[0]['rowraider'] . '</b> Raider
+                <i class="fa fa-motorcycle"></i> <b>' . $rowraider[0]['rowraider'] . '</b> Rider
                 </b>
                 <br>
                 <small>Event Dibuat : ' . date('d-m-Y', strtotime($row['created_at'])) . '</small>

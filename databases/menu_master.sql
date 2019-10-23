@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 23, 2019 at 05:33 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1
+-- Generation Time: Oct 23, 2019 at 10:53 AM
+-- Server version: 10.1.39-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `racingEven`
+-- Database: `racingeven`
 --
 
 -- --------------------------------------------------------
@@ -49,7 +49,7 @@ INSERT INTO `menu_master` (`id`, `name`, `icon`, `link`, `urutan`, `parent`, `no
 (1, 'Dashboard', 'fa fa-dashboard', '/', '0', '0', '', 'ENABLE', '2019-01-17 14:33:33', '2019-10-02 08:10:30'),
 (37, 'Data', 'fa fa-check-square-o', '#', '1', '0', '', 'ENABLE', '2019-10-02 08:08:53', '2019-10-02 08:27:23'),
 (38, 'Team', 'fa fa-users', 'team', '0', '37', '', 'ENABLE', '2019-10-02 08:09:30', '2019-10-02 11:46:30'),
-(39, 'Raider', 'fa fa-motorcycle', 'raider', '2', '37', '', 'ENABLE', '2019-10-02 08:10:13', '2019-10-02 18:48:36'),
+(39, 'Rider', 'fa fa-motorcycle', 'rider', '2', '37', '', 'ENABLE', '2019-10-02 08:10:13', '2019-10-02 18:48:36'),
 (40, 'Event', 'fa fa-map-o', '#', '2', '0', '', 'ENABLE', '2019-10-02 08:20:54', NULL),
 (41, 'Event', 'fa fa-star', 'event', '0', '40', '', 'ENABLE', '2019-10-02 08:21:36', '2019-10-02 08:28:00'),
 (42, 'Pendaftar Event', 'fa fa-users', 'eventregister', '1', '40', '', 'ENABLE', '2019-10-02 08:24:04', NULL),
@@ -66,7 +66,7 @@ INSERT INTO `menu_master` (`id`, `name`, `icon`, `link`, `urutan`, `parent`, `no
 (54, 'Groub Gambar', 'fa fa-picture-o', 'master/imagegroup', '1', '49', NULL, 'ENABLE', '2019-10-06 00:00:00', NULL),
 (55, 'Wisata', 'fa fa-star', '#', '3', '0', '', 'ENABLE', '2019-10-23 09:36:26', '2019-10-23 09:42:41'),
 (56, 'Data Juara', 'fa fa-star', 'juara', '2', '40', '', 'ENABLE', '2019-10-23 09:38:23', NULL),
-(57, 'Dokumentasi', 'fa fa-picture-o', 'dokumentasi', '3', '40', '', 'ENABLE', '2019-10-23 09:38:52', NULL),
+(57, 'Dokumentasi', 'fa fa-picture-o', '#', '3', '40', '', 'ENABLE', '2019-10-23 09:38:52', NULL),
 (60, 'Wisata', 'fa fa-star', 'wisata', '0', '55', '', 'ENABLE', '2019-10-23 09:45:58', NULL),
 (61, 'Wisata Dokumentasi', 'fa fa-picture-o', 'wisatadokumentasi', '1', '55', '', 'ENABLE', '2019-10-23 09:46:14', NULL);
 

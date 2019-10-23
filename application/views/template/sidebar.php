@@ -34,7 +34,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('raider') ?>"><i class="fa fa-motorcycle"></i> Raider</a>
+                        <a href="<?= base_url('raider') ?>"><i class="fa fa-motorcycle"></i> Rider</a>
                     </li>
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('manager') ?>"><i class="fa fa-user"></i> Manajer</a>

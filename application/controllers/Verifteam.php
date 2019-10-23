@@ -55,7 +55,9 @@ class Verifteam extends MY_Controller
 				<div class="col-xs-6">
 				Event Dimulai : 
 				<br>
-				'.date('d-m', strtotime($row['tglevent'])).' sampai '.date('d-m', strtotime($row['tglevent'])).'
+				<small>
+				'.date('d M Y', strtotime($row['tgleventStart'])).' - '.date('d M Y', strtotime($row['tgleventEnd'])).'
+				</small>
 				</div>
 				<div class="col-xs-6" align="right">
 				Pendaftar : 

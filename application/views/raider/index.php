@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Cari Raider</h3>
+        <h3 class="box-title">Cari Rider</h3>
         <form role="form" action="#" method="GET">
             <div class="form-group">
-                <label>Nama Raider</label>
+                <label>Nama Rider</label>
                 <input type="text" name="name" class="form-control" id="filter-search" <?php
                                                                                         if ($_GET['name']) {
                                                                                             echo 'value="' . $_GET['name'] . '"';

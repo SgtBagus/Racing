@@ -18,9 +18,9 @@
                             <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
                             <?= $tbl_event['alamat'] ?>
                         </p>
-                        <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <hr style="margin-top:5px; margin-bottom: 5px">
@@ -51,7 +51,7 @@
 <div class="row">
     <div class="col-md-12">
         <a href="#>">
-            <button class="btn btn-sm btn-block btn-success"> <i class="fa fa-whatsapp"></i>Hubungi Petanggung Jawab</button>
+            <button class="btn btn-sm btn-block btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab</button>
         </a>
     </div>
 </div>
