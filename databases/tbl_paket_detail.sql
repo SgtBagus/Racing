@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2019 at 01:50 PM
+-- Generation Time: Oct 24, 2019 at 08:26 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -25,29 +25,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_juara_detail`
+-- Table structure for table `tbl_paket_detail`
 --
 
-CREATE TABLE `tbl_juara_detail` (
+CREATE TABLE `tbl_paket_detail` (
   `id` int(11) NOT NULL,
-  `id_juara` int(11) DEFAULT NULL,
-  `id_event` int(11) NOT NULL,
+  `id_paket` int(11) DEFAULT NULL,
+  `id_team` int(11) DEFAULT NULL,
   `id_raider` int(11) DEFAULT NULL,
-  `juara` int(11) NOT NULL,
-  `point` float DEFAULT NULL,
-  `status` enum('ENABLE','DISABLE') DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
+  `keterangan` text,
+  `status` enum('"ENABLE"','"DISABLE"') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_paket_detail`
+--
+
+INSERT INTO `tbl_paket_detail` (`id`, `id_paket`, `id_team`, `id_raider`, `number`, `keterangan`, `status`, `created_at`, `updated_at`) VALUES
+(1, 4, 8, 1, 1, 'Dia Juara nomor 1\r\n        ', '', '2019-10-24 12:57:50', '2019-10-24 13:16:41'),
+(3, 4, 9, 5, 2, 'asd\r\n        ', '', '2019-10-24 13:18:38', NULL),
+(4, 5, 8, 4, 1, 'Dia juara Umum', '', '2019-10-24 13:19:19', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_juara_detail`
+-- Indexes for table `tbl_paket_detail`
 --
-ALTER TABLE `tbl_juara_detail`
+ALTER TABLE `tbl_paket_detail`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -55,10 +64,10 @@ ALTER TABLE `tbl_juara_detail`
 --
 
 --
--- AUTO_INCREMENT for table `tbl_juara_detail`
+-- AUTO_INCREMENT for table `tbl_paket_detail`
 --
-ALTER TABLE `tbl_juara_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `tbl_paket_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
