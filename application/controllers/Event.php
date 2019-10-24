@@ -226,16 +226,25 @@ class Event extends MY_Controller
 				
 				$tbl_paket_detail = $this->db->order_by('number', 'ASC')->get_where('tbl_paket_detail', array('id_paket' => $row['id']))->result_array();
 
-				foreach($tbl_paket_detail as $row_detail){
-					$team = $this->mymodel->selectDataone('tbl_team', array('id' => $row_detail['id_team']));
-					$rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row_detail['id_raider']));
-					$rankDetail .= '<tr>
+                if ($tbl_paket_detail) {
+                    foreach ($tbl_paket_detail as $row_detail) {
+                        $team = $this->mymodel->selectDataone('tbl_team', array('id' => $row_detail['id_team']));
+                        $fileteam = $this->mymodel->selectDataone('file', array('table_id' => $team['id'], 'table' => 'tbl_team'));
+                        $rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row_detail['id_raider']));
+                        $filerider = $this->mymodel->selectDataone('file', array('table_id' => $rider['id'], 'table' => 'tbl_raider'));
+
+                        $rankDetail .= '<tr>
 					<td>'.$row_detail['number'].'</td>
-					<td>'.$team['name'].'</td>
-					<td>'.$rider['name'].'</td>
+					<td align="center"><img src="'.$fileteam['url'].'" width="50px" height="50px" style="border-radius:5px"><br>'.$team['name'].'</td>
+					<td align="center"><img src="'.$filerider['url'].'" width="50px" height="50px" style="border-radius:5px"><br>'.$rider['name'].'</td>
 					<td>'.$row_detail['keterangan'].'</td>
 					</tr>';
-				};
+                    }
+                } else {
+					$rankDetail .= '<tr>
+					<td colspan="4" align="center">Tidak ada Data</td>
+					</tr>';
+				}
 
 				$output .= '
                 <div class="col-md-12">
