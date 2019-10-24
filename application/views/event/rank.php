@@ -18,9 +18,6 @@
                             <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
                             <?= $tbl_event['alamat'] ?>
                         </p>
-                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
-                            <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                        </a> -->
                     </div>
                 </div>
                 <hr style="margin-top:5px; margin-bottom: 5px">

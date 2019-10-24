@@ -57,7 +57,8 @@
         $this->load->view('template/sidebar');
       }
       ?>
-      <div class="container" style="margin-top: -25px;">
+      <div class="container" style="margin-top: -15px;">
+        <!-- <h3 align="center"> <?= $page ?><br><small> <?= $subpage ?></small></h3> -->
         <?= $contents ?>
         <div class="fixed-footer"></div>
       </div>

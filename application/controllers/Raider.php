@@ -8,21 +8,21 @@ class Raider extends MY_Controller
 
     public function index()
     {
-        $data['page'] = 'Raider';
+        $data['page'] = 'Rider';
         $data['subpage'] = '';
         $this->template->load('template/template', 'raider/index', $data);
     }
 
     public function create()
     {
-        $data['page'] = 'Raider';
-        $data['subpage'] = 'Tambah Raider';
+        $data['page'] = 'Rider';
+        $data['subpage'] = 'Tambah Rider';
         $this->template->load('template/template', 'raider/create', $data);
     }
 
     public function edit($id)
     {
-        $data['page'] = 'Raider';
+        $data['page'] = 'Rider';
         $data['raider'] = $this->mymodel->selectDataone('tbl_raider', array('id' => $id));
         $data['file'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_raider'));
         $data['subpage'] = 'Ubah - <b>' . $data['raider']['name'] . '</b>';
@@ -104,7 +104,7 @@ class Raider extends MY_Controller
                 <br>
                 <div class="row" id="deleteForm_' . $row['id'] . '">
                 <div class="col-xs-12 btnDelete_' . $row['id'] . '">
-                <button class="btn btn-sm btn-block btn-danger" onclick="hapus(' . $row['id'] . ')"> <i class="fa fa-trash"></i> Hapus Anggota Team</button>
+                <button class="btn btn-lg btn-block btn-danger" onclick="hapus(' . $row['id'] . ')"> <i class="fa fa-trash"></i> Hapus Anggota Team</button>
                 </div>
                 </div>
                 </div>

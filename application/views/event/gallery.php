@@ -67,7 +67,7 @@
                                                                         } ?> id="filter-search">
             </div>
             <div class="form-group" align="center">
-                <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
+                <button type="submit" class="btn btn-lg btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
             </div>
         </form>
     </div>

@@ -24,7 +24,8 @@ class Verifraider extends MY_Controller
         $data['page'] = 'Verified Raider';
         $data['tbl_event'] = $this->mymodel->selectDataone('tbl_event', array('id' => $id));
         $data['file_event'] = $this->mymodel->selectDataone('file', array('table_id' => $data['tbl_event']['id'], 'table' => 'tbl_event'));
-        $data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = " . $id);
+        $data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
+        
         $data['subpage'] = $data['tbl_event']['title'];
         $this->template->load('template/template', 'verifraider/view', $data);
     }
@@ -100,11 +101,13 @@ class Verifraider extends MY_Controller
     {
         $output = '';
         $search = $_GET['name'];
+
         $event_register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $id, 'approve' => 'APPROVE'));
+
         if ($search) {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = 1 AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = 1 AND c.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT raider_id from tbl_event_register_raider WHERE event_register_id = '" . $event_register_id['id'] . "'  ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT a.raider_id, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON b.id = a.event_register_id WHERE a.event_register_id = '" . $event_register_id['id'] . "' AND b.approve = 'APPROVE' ORDER BY a.id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
 
         if ($tbl_raider) {

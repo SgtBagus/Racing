@@ -18,9 +18,6 @@
                             <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
                             <?= $tbl_event['alamat'] ?>
                         </p>
-                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
-                            <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
-                        </a> -->
                     </div>
                 </div>
                 <hr style="margin-top:5px; margin-bottom: 5px">
@@ -48,13 +45,6 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <a href="#>">
-            <button class="btn btn-sm btn-block btn-success"> <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab</button>
-        </a>
-    </div>
-</div>
 <br>
 <div class="row">
     <div class="col-md-12" align="center">
@@ -72,13 +62,13 @@
                                                                     } ?> id="filter-search">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-md btn-block btn-primary">
+                <button type="submit" class="btn btn-lg btn-block btn-primary">
                     <i class="fa fa-search"></i> Cari
                 </button>
                 <?php if ($_GET['name']) { ?>
                     <br>
                     <a href="<?= base_url('verifteam/view/' . $tbl_event['id']) ?>">
-                        <button type="button" class="btn btn-md btn-block btn-info">
+                        <button type="button" class="btn btn-lg btn-block btn-info">
                             <i class="fa fa-refresh"></i> Reset Pencarian
                         </button>
                     </a>

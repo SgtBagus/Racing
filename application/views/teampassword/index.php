@@ -1,33 +1,26 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Ubah Password Login</h3>
+        <form role="form" action="<?= base_url('teampassword/update') ?>" method="POST" id="sumbit">
+            <div class="show_error"></div>
+            <div class="form-group">
+                <label>Password Baru</label>
+                <input type="password" name="newpassword" class="form-control">
             </div>
-            <div class="box-body">
-                <form role="form" action="<?= base_url('teampassword/update') ?>" method="POST" id="sumbit">
-                    <div class="show_error"></div>
-                    <div class="form-group">
-                        <label>Password Baru</label>
-                        <input type="password" name="newpassword" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Konfrimasi Password Baru</label>
-                        <input type="password" name="conf_newpassword" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Konfirmasi Password Lama</label>
-                        <input type="password" name="lastpassword" class="form-control">
-                    </div>
-                    <div class="show_error"></div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
-                            <i class="fa fa-save"></i> Simpan
-                        </button>
-                    </div>
-                </form>
+            <div class="form-group">
+                <label>Konfrimasi Password Baru</label>
+                <input type="password" name="conf_newpassword" class="form-control">
             </div>
-        </div>
+            <div class="form-group">
+                <label>Konfirmasi Password Lama</label>
+                <input type="password" name="lastpassword" class="form-control">
+            </div>
+            <div class="show_error"></div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-send btn-lg btn-block btn-primary">
+                    <i class="fa fa-save"></i> Simpan
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 <script type="text/javascript">

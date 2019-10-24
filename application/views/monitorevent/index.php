@@ -8,13 +8,13 @@
                                                                         } ?> id="filter-search">
             </div>
             <div class="form-group" align="center">
-                <button type="submit" class="btn btn-block btn-primary">
+                <button type="submit" class="btn btn-lg btn-block btn-primary">
                     <i class="fa fa-search"></i> Cari
                 </button>
                 <?php if ($_GET['title']) { ?>
                     <br>
                     <a href="<?= base_url('raider') ?>">
-                        <button type="button" class="btn btn-md btn-block btn-info">
+                        <button type="button" class="btn btn-lg btn-block btn-info">
                             <i class="fa fa-refresh"></i> Reset Pencarian
                         </button>
                     </a>

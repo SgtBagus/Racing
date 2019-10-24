@@ -1,53 +1,46 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Manajement Team</h3>
+        <form role="form" action="<?= base_url('team/update') ?>" method="POST" id="sumbit">
+            <div class="show_error"></div>
+            <div class="form-group">
+                <label>Nama Team</label>
+                <input type="text" name="dt[name]" class="form-control" value="<?= $team['name'] ?>">
             </div>
-            <div class="box-body">
-                <form role="form" action="<?= base_url('team/update') ?>" method="POST" id="sumbit">
-                    <div class="show_error"></div>
-                    <div class="form-group">
-                        <label>Nama Team</label>
-                        <input type="text" name="dt[name]" class="form-control" value="<?= $team['name'] ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Team</label>
-                        <input type="email" name="dt[email]" class="form-control" value="<?= $team['email'] ?>" readonly>
-                        <p class="help-block">Hubungi Admin untuk merubah Alamat Email Team Anda</p>
-                    </div>
-                    <div class="form-group">
-                        <label>Logo Team</label><br>
-                        <div align="center">
-                            <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
-                        </div>
-                        <div class="input-group" id="preview_image">
-                            <button type="button" class="btn btn-danger" id="btnFile">Pilih Gambar</button>
-                            <input name="file" type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
-                        </div>
-                        <p class="help-block">Foto yang diupload disarankan berukuran 70px x 70px dan memiliki format PNG, JPG, atau JPEG</p>
-                    </div>
-                    <div class="form-group">
-                        <label>Alamat Team</label>
-                        <textarea name="dt[alamat]" class="form-control" rows="5"><?= $team['alamat'] ?></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Kota Team</label>
-                        <input type="text" name="dt[kota]" class="form-control" value="<?= $team['kota'] ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Nomor Wa</label>
-                        <input type="text" name="dt[nowa]" class="form-control" value="<?= $team['nowa'] ?>">
-                    </div>
-                    <div class="show_error"></div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
-                            <i class="fa fa-save"></i> Simpan
-                        </button>
-                    </div>
-                </form>
+            <div class="form-group">
+                <label>Email Team</label>
+                <input type="email" name="dt[email]" class="form-control" value="<?= $team['email'] ?>" readonly>
+                <p class="help-block">Hubungi Admin untuk merubah Alamat Email Team Anda</p>
             </div>
-        </div>
+            <div class="form-group">
+                <label>Logo Team</label><br>
+                <div align="center">
+                    <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
+                </div>
+                <div class="input-group" id="preview_image">
+                    <button type="button" class="btn btn-lg btn-primary" id="btnFile">Pilih Gambar</button>
+                    <input name="file" type="file" class="file" id="imageFile" style="display: none;" name="file" accept="image/x-png,image/jpeg,image/jpg" />
+                </div>
+                <p class="help-block">Foto yang diupload disarankan berukuran 70px x 70px dan memiliki format PNG, JPG, atau JPEG</p>
+            </div>
+            <div class="form-group">
+                <label>Alamat Team</label>
+                <textarea name="dt[alamat]" class="form-control" rows="5"><?= $team['alamat'] ?></textarea>
+            </div>
+            <div class="form-group">
+                <label>Kota Team</label>
+                <input type="text" name="dt[kota]" class="form-control" value="<?= $team['kota'] ?>">
+            </div>
+            <div class="form-group">
+                <label>Nomor Wa</label>
+                <input type="text" name="dt[nowa]" class="form-control" value="<?= $team['nowa'] ?>">
+            </div>
+            <div class="show_error"></div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-send btn-lg btn-block btn-primary">
+                    <i class="fa fa-save"></i> Simpan
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 <script type="text/javascript">

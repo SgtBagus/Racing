@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Cari Wisata</h3>
         <form role="form" action="<?= base_url('wisata') ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Judul Wisata</label>
@@ -8,7 +9,7 @@
                                                                         } ?> id="filter-search">
             </div>
             <div class="form-group" align="center">
-                <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
+                <button type="submit" class="btn btn-lg btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
             </div>
         </form>
     </div>

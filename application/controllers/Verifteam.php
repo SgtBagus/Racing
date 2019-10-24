@@ -119,9 +119,6 @@ class Verifteam extends MY_Controller
                 <h4>'.$team['name'].' '.$verificacion.'<br>
                 <small><i class="fa fa-globe"></i> '.$team['kota'].'</small>
                 </h4>
-                <b>
-                <i class="fa fa-phone"></i> '.$team['nowa'].'
-                </b>
                 </div>
                 </div>
                 </div>

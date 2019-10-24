@@ -10,13 +10,13 @@
                                                                                         } ?>>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-md btn-block btn-primary" id="btn-search">
+                <button type="submit" class="btn btn-lg btn-block btn-primary" id="btn-search">
                     <i class="fa fa-search"></i> Cari
                 </button>
                 <?php if ($_GET['name']) { ?>
                     <br>
                     <a href="<?= base_url('raider') ?>">
-                        <button type="button" class="btn btn-md btn-block btn-info">
+                        <button type="button" class="btn btn-lg btn-block btn-info">
                             <i class="fa fa-refresh"></i> Reset Pencarian
                         </button>
                     </a>
@@ -30,7 +30,7 @@
     </div>
 </div>
 <div id="load_data_message"></div>
-<a href="<?= base_url('raider/create') ?>" class="float">
+<a href="<?= base_url('raider/create') ?>" class="float" style="color:white">
     <i class="fa fa-plus my-float"></i>
 </a>
 

@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Cari Event</h3>
         <form role="form" action="<?= base_url('event') ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Judul Even</label>
@@ -8,13 +9,13 @@
                 } ?> id="filter-search">
             </div>
             <div class="form-group" align="center">
-                <button type="submit" class="btn btn-block btn-primary">
+                <button type="submit" class="btn btn-lg btn-block btn-primary">
                     <i class="fa fa-search"></i> Cari
                 </button>
                 <?php if ($_GET['title']) { ?>
                     <br>
                     <a href="<?=base_url('event')?>">
-                        <button type="button" class="btn btn-md btn-block btn-info">
+                        <button type="button" class="btn btn-lg btn-block btn-info">
                             <i class="fa fa-refresh"></i> Reset Pencarian
                         </button>
                     </a>
