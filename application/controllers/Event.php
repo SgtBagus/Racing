@@ -166,7 +166,7 @@ class Event extends MY_Controller
 		if ($search) {
 			$tbl_gallery = $this->mymodel->selectWithQuery("SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = 'ENABLE' AND a.id_event = '.$event_id.' AND a.value LIKE '%" . $_GET['title'] . "%' GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
 		} else {
-			$tbl_gallery = $this->mymodel->selectWithQuery('SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = "ENABLE" AND a.id_event = '.$event_id.' GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT ' . $this->input->post('limit') . ' OFFSET ' . $this->input->post('start'));
+			$tbl_gallery = $this->mymodel->selectWithQuery('SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = "ENABLE" AND a.id_event = ' . $event_id . ' GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT ' . $this->input->post('limit') . ' OFFSET ' . $this->input->post('start'));
 		}
 		if ($tbl_gallery) {
 			foreach ($tbl_gallery as $row) {
@@ -192,6 +192,73 @@ class Event extends MY_Controller
                             </div>
                         </div>
                     </a>
+                </div>';
+			}
+		}
+		echo $output;
+	}
+
+	public function rank($id)
+	{
+		$data['page'] = 'Event';
+		$data['tbl_event'] = $this->mymodel->selectDataone('tbl_event',  array('id' => $id));
+		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
+
+		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $data['tbl_event']['id'] . "'");
+
+		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
+
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $data['register_id']['id'] . "'");
+
+
+		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
+		$this->template->load('template/template', 'event/rank', $data);
+	}
+
+	public function rankfetch($id)
+	{
+		$output = '';
+
+		$tbl_paket = $this->mymodel->selectWithQuery('SELECT * FROM tbl_paket WHERE id_event = ' . $id . ' ORDER BY id DESC LIMIT ' . $this->input->post('limit') . ' OFFSET ' . $this->input->post('start'));
+		if ($tbl_paket) {
+			foreach ($tbl_paket as $row) {
+				$rankDetail = '';
+				
+				$tbl_paket_detail = $this->db->order_by('number', 'ASC')->get_where('tbl_paket_detail', array('id_paket' => $row['id']))->result_array();
+
+				foreach($tbl_paket_detail as $row_detail){
+					$team = $this->mymodel->selectDataone('tbl_team', array('id' => $row_detail['id_team']));
+					$rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row_detail['id_raider']));
+					$rankDetail .= '<tr>
+					<td>'.$row_detail['number'].'</td>
+					<td>'.$team['name'].'</td>
+					<td>'.$rider['name'].'</td>
+					<td>'.$row_detail['keterangan'].'</td>
+					</tr>';
+				};
+
+				$output .= '
+                <div class="col-md-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <div class="row">
+									<div class="col-xs-12" align="center">
+									<h4><b>' . $row['title'] . '</b></h4>
+									<table class="table table-hover">
+										<thead>
+											<th>Juara</th>
+											<th>Team</th>
+											<th>Rider</th>
+											<th>Keterangan</th>
+										</thead>
+										<tbody>
+											'.$rankDetail.'
+										</tbody>
+									</table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>';
 			}
 		}

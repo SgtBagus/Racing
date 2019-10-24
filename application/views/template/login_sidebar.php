@@ -8,12 +8,12 @@
                     <span>Login</span>
                 </a>
             </li>
-            <li style="margin-bottom: 5px;">
+            <!-- <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login/register') ?>">
                     <i class="fa fa-user"></i>
                     <span>Register</span>
                 </a>
-            </li>
+            </li> -->
             <li class="header">MENU</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url() ?>">
