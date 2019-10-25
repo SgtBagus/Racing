@@ -174,6 +174,7 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#back").remove();
 		$('#owl-event').owlCarousel({
 			center: true,
 			items: 2,

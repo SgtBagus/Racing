@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box">
-            <img class="img-even" src="<?= $file['url'] ?>">
+            <img class="img-detail" src="<?= $file['url'] ?>">
             <div class="box-body" align="center">
                 <h3><?= $tbl_merchandise['title'] ?><br></h3>
                 Dibuat pada : <?= date('d-m-Y', strtotime($tbl_merchandise['created_at'])) ?> <br>

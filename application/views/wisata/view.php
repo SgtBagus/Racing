@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box">
-            <img class="img-even" src="<?= $file['url'] ?>">
+            <img class="img-detail" src="<?= $file['url'] ?>">
             <div class="box-body" >
                 <h3 align="center">
                     <?= $tbl_wisata['title'] ?>
@@ -9,14 +9,14 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <small>
-                            Wisata Dimulai : 
+                            Wisata Dimulai :
                             <br>
                             <?= date('d M Y', strtotime($tbl_wisata['tglwisataStart'])).' - '.date('d M Y', strtotime($tbl_wisata['tglwisataEnd'])) ?>
                         </small>
                     </div>
                     <div class="col-xs-6" align="right">
                         <small>
-                            Dibuat pada: 
+                            Dibuat pada:
                             <br>
                             <?= date('d M Y', strtotime($tbl_wisata['created_at']))?>
                         </small>

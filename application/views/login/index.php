@@ -17,7 +17,7 @@
           <i class="fa fa-sign-in"></i> Masuk Login
         </button>
       </div>
-      <!-- <a class="help-block pull-right">Tidak Punya Akun ? <a href="<?= base_url('login/register') ?>">Daftar Disini </a></p> -->
+      <a class="help-block pull-right">Tidak Punya Akun ? <a href="<?= base_url('login/register') ?>">Daftar Disini </a></p>
     </form>
   </div>
 </div>

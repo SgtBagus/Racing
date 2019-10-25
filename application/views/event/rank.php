@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box">
-            <img class="img-even" src="<?= $file['url'] ?>">
+            <img class="img-detail" src="<?= $file['url'] ?>">
             <div class="box-body">
                 <div class="row">
                     <div class="col-xs-12">

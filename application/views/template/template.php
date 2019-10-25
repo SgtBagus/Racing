@@ -27,6 +27,14 @@
   <!-- <script src="<?= base_url('assets/') ?>owl/docs/assets/vendors/jquery.min.js"></script> -->
   <script src="<?= base_url('assets/') ?>owl/docs/assets/owlcarousel/owl.carousel.js"></script>
 </head>
+<?php
+if ($this->session->userdata('session_sop') == "") {
+  $this->load->view('template/login_sidebar');
+} else {
+  $this->load->view('template/sidebar');
+}
+?>
+<div id="bodyBlock"></div>
 
 <body class="layout-top-nav fixed skin-purple-light">
   <div class="wrapper">
@@ -34,39 +42,33 @@
       <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100;">
         <div class="row">
           <div class="col-xs-2" align="center">
-            <a href="#" id="sidebarButton" class="header-menu open-sidebar" data-toggle="control-sidebar">
-              <i class="fa fa-bars"></i>
+            <a href="#" id="back" class="header-menu" onclick="back()">
+              <i class="fa fa-arrow-left"></i>
             </a>
           </div>
           <div class="col-xs-8 header-menu" align="center">
-            <img style="height:40px" src="<?= base_url('assets/img/')?>logo2.jpg">
+            <img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg">
           </div>
-          <a href="#" onclick="reset()">
-            <div class="col-xs-2 header-menu" align="center" style="margin-left: -10px">
-              <i class="fa fa-refresh"></i>
+          <a href="#" id="open-sidebar">
+            <div class="col-xs-2 header-menu" align="center" data-toggle="control-sidebar" style="margin-left: -10px">
+              <i class="fa fa-bars"></i>
             </div>
           </a>
         </div>
       </nav>
     </header>
     <div class="content-wrapper">
-      <?php
-      if ($this->session->userdata('session_sop') == "") {
-        $this->load->view('template/login_sidebar');
-      }else{
-        $this->load->view('template/sidebar');
-      }
-      ?>
       <div class="container" style="margin-top: -15px;">
         <!-- <h3 align="center"> <?= $page ?><br><small> <?= $subpage ?></small></h3> -->
         <?= $contents ?>
         <div class="fixed-footer"></div>
+        <marquee><?= MARQUEE ?></marquee>
       </div>
     </div>
     <?php
     if ($this->session->userdata('session_sop') == "") {
       $this->load->view('template/login_footer');
-    }else{
+    } else {
       $this->load->view('template/footer');
     }
     ?>
@@ -94,14 +96,12 @@
   <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
   <script src="<?= base_url('assets/') ?>plugins/iCheck/icheck.min.js"></script>
   <script type="text/javascript">
-
-    function lazzy_loader(limit)
-    {
-      var output = '<div class="row">'+
-      '<div class="col-xs-12" align="center">'+
-      '<h4><i class="fa fa-fw fa-spinner fa-spin"></i> Memuat Data !</h4'+
-      '</div>'+
-      '</div>';
+    function lazzy_loader(limit) {
+      var output = '<div class="row">' +
+        '<div class="col-xs-12" align="center">' +
+        '<h4><i class="fa fa-fw fa-spinner fa-spin"></i> Memuat Data !</h4' +
+        '</div>' +
+        '</div>';
       $('#load_data_message').html(output);
     }
 
@@ -122,8 +122,8 @@
         var reader = new FileReader();
 
         reader.onload = function(e) {
-          $('#preview_image').before('<br>'+
-            '<div align="center">'+
+          $('#preview_image').before('<br>' +
+            '<div align="center">' +
             '<img class="img-circle" alt="User Image" src="' + e.target.result + '" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">' +
             '</div>');
         }
@@ -136,8 +136,8 @@
       format: 'dd-mm-yyyy',
     });
 
-    function reset() {
-      location.reload();
+    function back() {
+      window.history.back();
     }
 
     $('[data-mask]').inputmask();
@@ -145,9 +145,35 @@
 
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
       checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
+      radioClass: 'iradio_minimal-blue'
     })
 
+    function opensidebar() {
+      $('#open-sidebar').addClass('tutup');
+      $('#bodyBlock').addClass('mobile-body-overly');
+      $('body').css('overflow', 'hidden');
+      $('.tutup').click(function() {
+        closesidebar()
+      });
+    };
+
+    function closesidebar() {
+      $('#open-sidebar').removeClass('tutup');
+      $('#bodyBlock').removeClass('mobile-body-overly');
+      $('body').attr('style', '');
+
+      $('#open-sidebar').click(function() {
+        opensidebar();
+      });
+    };
+
+    $('#open-sidebar').click(function() {
+      opensidebar();
+    });
+
+    $('.tutup').click(function() {
+      closesidebar()
+    });
   </script>
 </body>
 

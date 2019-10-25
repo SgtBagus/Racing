@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <h3><?= $subpage ?></h3>
-        <img class="img-gallery" src="<?= $main_image['url'] ?>" alt="Third slide">
+        <img class="img-detail" src="<?= $main_image['url'] ?>" alt="Third slide">
         <div align="center">
             <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($id['created_at'])) ?>
         </div>
