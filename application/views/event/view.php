@@ -106,6 +106,13 @@
                 </a>
             </div>
         </div>
+        <?php if ($rule) { ?>
+            <a href="<?= base_url('download/downloadPDFEvent/') . $rule['id'] ?>">
+                <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
+                    <i class="fa fa-download"></i> Download Pertauran Event
+                </button>
+            </a>
+        <?php } ?>
         <?php if ($tbl_event['statusEvent'] == 'BERJALAN' || $tbl_event['statusEvent'] == 'SELESAI') { ?>
             <a href="<?= base_url('event/rank/') . $tbl_event['id'] ?>">
                 <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">

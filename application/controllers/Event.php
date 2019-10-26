@@ -17,6 +17,7 @@ class Event extends MY_Controller
 		$data['page'] = 'Event';
 		$data['tbl_event'] = $this->mymodel->selectDataone('tbl_event',  array('id' => $id));
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
+		$data['rule'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'event_rule'));
 
 		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $data['tbl_event']['id'] . "'");
 
@@ -219,33 +220,43 @@ class Event extends MY_Controller
 	{
 		$output = '';
 
-		$tbl_paket = $this->mymodel->selectWithQuery('SELECT * FROM tbl_paket WHERE id_event = ' . $id . ' ORDER BY id DESC LIMIT ' . $this->input->post('limit') . ' OFFSET ' . $this->input->post('start'));
+		$tbl_paket = $this->mymodel->selectWithQuery('SELECT * FROM tbl_paket WHERE id_event = ' . $id . ' ORDER BY id LIMIT ' . $this->input->post('limit') . ' OFFSET ' . $this->input->post('start'));
 		if ($tbl_paket) {
 			foreach ($tbl_paket as $row) {
 				$rankDetail = '';
-				
+				$fileRank = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'paket_file'));
 				$tbl_paket_detail = $this->db->order_by('number', 'ASC')->get_where('tbl_paket_detail', array('id_paket' => $row['id']))->result_array();
 
-                if ($tbl_paket_detail) {
-                    foreach ($tbl_paket_detail as $row_detail) {
-                        $team = $this->mymodel->selectDataone('tbl_team', array('id' => $row_detail['id_team']));
-                        $fileteam = $this->mymodel->selectDataone('file', array('table_id' => $team['id'], 'table' => 'tbl_team'));
-                        $rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row_detail['id_raider']));
-                        $filerider = $this->mymodel->selectDataone('file', array('table_id' => $rider['id'], 'table' => 'tbl_raider'));
+				if ($tbl_paket_detail) {
+					foreach ($tbl_paket_detail as $row_detail) {
+						$team = $this->mymodel->selectDataone('tbl_team', array('id' => $row_detail['id_team']));
+						$fileteam = $this->mymodel->selectDataone('file', array('table_id' => $team['id'], 'table' => 'tbl_team'));
+						$rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row_detail['id_raider']));
+						$filerider = $this->mymodel->selectDataone('file', array('table_id' => $rider['id'], 'table' => 'tbl_raider'));
 
-                        $rankDetail .= '<tr>
-					<td>'.$row_detail['number'].'</td>
-					<td align="center"><img src="'.$fileteam['url'].'" width="50px" height="50px" style="border-radius:5px"><br>'.$team['name'].'</td>
-					<td align="center"><img src="'.$filerider['url'].'" width="50px" height="50px" style="border-radius:5px"><br>'.$rider['name'].'</td>
-					<td>'.$row_detail['keterangan'].'</td>
+						$rankDetail .= '<tr>
+					<td>' . $row_detail['number'] . '</td>
+					<td align="center"><img src="' . $fileteam['url'] . '" width="50px" height="50px" style="border-radius:5px"><br>' . $team['name'] . '</td>
+					<td align="center"><img src="' . $filerider['url'] . '" width="50px" height="50px" style="border-radius:5px"><br>' . $rider['name'] . '</td>
+					<td>' . $row_detail['keterangan'] . '</td>
 					</tr>';
-                    }
-                } else {
+					}
+				} else {
 					$rankDetail .= '<tr>
 					<td colspan="4" align="center">Tidak ada Data</td>
 					</tr>';
 				}
 
+				$filedownload = '';
+
+				if($fileRank){
+					$filedownload = '<a href="'.base_url('download/downloadPDFPaket/').$fileRank['id'].'">
+						<button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
+							<i class="fa fa-download"></i> '.$row['title'].'
+						</button>
+					</a>';
+				}
+				
 				$output .= '
                 <div class="col-md-12">
                         <div class="box">
@@ -261,13 +272,15 @@ class Event extends MY_Controller
 											<th>Keterangan</th>
 										</thead>
 										<tbody>
-											'.$rankDetail.'
+											' . $rankDetail . '
 										</tbody>
 									</table>
                                     </div>
-                                </div>
+								</div>
+								<br>
+								'.$filedownload.'
                             </div>
-                        </div>
+						</div>
                 </div>';
 			}
 		}

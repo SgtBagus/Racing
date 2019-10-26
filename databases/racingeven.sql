@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2019 at 04:13 PM
+-- Generation Time: Oct 26, 2019 at 10:06 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -659,7 +659,15 @@ INSERT INTO `file` (`id`, `name`, `mime`, `dir`, `table`, `table_id`, `status`, 
 (318, '6950c16c9bcc6995f376b297f163175966430.jpg', 'image/jpeg', 'webfiles/blogs/6950c16c9bcc6995f376b297f163175966430.jpg', 'tbl_blog', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/blogs/6950c16c9bcc6995f376b297f163175966430.jpg', '2019-10-22 08:58:12', NULL),
 (319, '6950c16c9bcc6995f376b297f163175935615.jpg', 'image/jpeg', 'webfiles/merchandise/6950c16c9bcc6995f376b297f163175935615.jpg', 'tbl_merchandise', 1, 'ENABLE', 'http://192.168.100.9:8080/webfiles/merchandise/6950c16c9bcc6995f376b297f163175935615.jpg', '2019-10-22 09:01:17', NULL),
 (327, '6950c16c9bcc6995f376b297f163175997351.jpg', 'image/jpeg', 'webfiles/covergallery/6950c16c9bcc6995f376b297f163175997351.jpg', 'master_gallery', 12, 'ENABLE', 'http://192.168.100.9:8080/webfiles/covergallery/6950c16c9bcc6995f376b297f163175997351.jpg', '2019-10-24 08:37:01', NULL),
-(328, '6950c16c9bcc6995f376b297f16317599920.jpg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f16317599920.jpg', 'tbl_gallery', 29, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f16317599920.jpg', '2019-10-24 09:00:13', NULL);
+(328, '6950c16c9bcc6995f376b297f16317599920.jpg', 'image/jpeg', 'webfiles/gallery/6950c16c9bcc6995f376b297f16317599920.jpg', 'tbl_gallery', 29, 'ENABLE', 'http://192.168.100.9:8080/webfiles/gallery/6950c16c9bcc6995f376b297f16317599920.jpg', '2019-10-24 09:00:13', NULL),
+(329, '6950c16c9bcc6995f376b297f163175998729.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175998729.png', 'tbl_event', 3, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175998729.png', '2019-10-26 11:46:59', NULL),
+(331, '6950c16c9bcc6995f376b297f16317594402.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f16317594402.png', 'tbl_event', 4, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f16317594402.png', '2019-10-26 11:50:58', NULL),
+(333, '6950c16c9bcc6995f376b297f163175939838.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175939838.png', 'tbl_event', 5, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175939838.png', '2019-10-26 11:51:48', NULL),
+(335, '6950c16c9bcc6995f376b297f163175996272.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175996272.png', 'tbl_event', 6, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175996272.png', '2019-10-26 11:52:49', NULL),
+(337, '6950c16c9bcc6995f376b297f163175956090.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175956090.png', 'tbl_event', 7, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175956090.png', '2019-10-26 11:53:47', NULL),
+(339, '6950c16c9bcc6995f376b297f163175960795.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175960795.png', 'tbl_event', 8, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175960795.png', '2019-10-26 11:54:59', NULL),
+(342, '6950c16c9bcc6995f376b297f16317595221.pdf', 'application/pdf', 'webfiles/juara/6950c16c9bcc6995f376b297f16317595221.pdf', 'paket_file', 4, 'ENABLE', 'http://192.168.100.9:8080/webfiles/juara/6950c16c9bcc6995f376b297f16317595221.pdf', '2019-10-26 14:51:20', NULL),
+(343, '6950c16c9bcc6995f376b297f163175910787.pdf', 'application/pdf', 'webfiles/event/6950c16c9bcc6995f376b297f163175910787.pdf', 'event_rule', 8, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175910787.pdf', '2019-10-26 14:57:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -953,6 +961,7 @@ CREATE TABLE `tbl_event` (
   `tgleventStart` datetime DEFAULT NULL,
   `tgleventEnd` datetime DEFAULT NULL,
   `phone` varchar(225) DEFAULT NULL,
+  `harga` varchar(225) DEFAULT NULL,
   `deskripsi` text,
   `kota` varchar(225) DEFAULT NULL,
   `alamat` text,
@@ -972,9 +981,10 @@ CREATE TABLE `tbl_event` (
 -- Dumping data for table `tbl_event`
 --
 
-INSERT INTO `tbl_event` (`id`, `title`, `tgleventStart`, `tgleventEnd`, `phone`, `deskripsi`, `kota`, `alamat`, `minraider`, `maxraider`, `live_url`, `latitude`, `longitude`, `statusEvent`, `public`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Malang Adcenture Trail', '2019-10-22 00:00:00', '2019-10-24 00:00:00', '2312312323', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, NULL, 0, 0, 'BERJALAN', 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', '2019-10-22 20:41:42'),
-(2, 'GISTING 360 Adventure Trail', '2019-08-10 00:00:00', '2019-08-10 00:00:00', '2312312321', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, '', 0, 0, 'STARTED', 'ENABLE', 'ENABLE', '2019-10-05 10:21:10', '2019-10-23 10:14:22');
+INSERT INTO `tbl_event` (`id`, `title`, `tgleventStart`, `tgleventEnd`, `phone`, `harga`, `deskripsi`, `kota`, `alamat`, `minraider`, `maxraider`, `live_url`, `latitude`, `longitude`, `statusEvent`, `public`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Malang Adcenture Trail', '2019-10-22 00:00:00', '2019-10-24 00:00:00', '2312312323', '25000', '<p>ini deskripsi</p>', 'Malang', 'Sengkaling', 2, 3, '', 0, 0, 'BERJALAN', 'ENABLE', 'ENABLE', '2019-10-04 15:59:15', '2019-10-26 11:43:07'),
+(2, 'GISTING 360 Adventure Trail', '2019-08-10 00:00:00', '2019-08-10 00:00:00', '2312312321', '50000', '<p>dasdqwe123123</p>', 'Malang', 'Alun alun', 1, 3, '', 0, 0, 'STARTED', 'ENABLE', 'ENABLE', '2019-10-05 10:21:10', '2019-10-23 10:14:22'),
+(8, 'Tambah Peraturan', '2019-10-08 00:00:00', '2019-10-11 00:00:00', '2312412323', '500000', '<p>asd</p>', 'Malang', 'Disana', 1, 3, '', 0, 0, 'STARTED', 'ENABLE', 'ENABLE', '2019-10-26 11:54:59', '2019-10-26 14:57:44');
 
 -- --------------------------------------------------------
 
@@ -1123,7 +1133,7 @@ CREATE TABLE `tbl_paket` (
 --
 
 INSERT INTO `tbl_paket` (`id`, `id_event`, `title`, `status`, `created_at`, `updated_at`) VALUES
-(4, 1, 'Paket Juara pertama', 'ENABLE', '2019-10-24 12:05:47', NULL),
+(4, 1, 'Paket Juara pertama', 'ENABLE', '2019-10-24 12:05:47', '2019-10-26 14:51:20'),
 (5, 1, 'Juara Umum', 'ENABLE', '2019-10-24 13:19:04', NULL),
 (6, 2, 'ini punya event ke 2', 'ENABLE', '2019-10-24 13:24:23', NULL);
 
@@ -1440,7 +1450,7 @@ ALTER TABLE `access_control`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 
 --
 -- AUTO_INCREMENT for table `grafik`
@@ -1506,7 +1516,7 @@ ALTER TABLE `tbl_blog`
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_event_register`
@@ -1542,7 +1552,7 @@ ALTER TABLE `tbl_merchandise`
 -- AUTO_INCREMENT for table `tbl_paket`
 --
 ALTER TABLE `tbl_paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_paket_detail`
