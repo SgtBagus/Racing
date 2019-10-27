@@ -121,8 +121,9 @@ class Event extends MY_Controller
 	{	
 
 		$tbl_event = $this->mymodel->selectDataone('tbl_event', array('id' => $idevent));
+		$tbl_raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $this->session->userdata('id')));
 
-		$dt['team_id'] = 0;
+		$dt['team_id'] = $tbl_raider['team_id'];
 		$dt['event_id'] = $idevent;
 		$dt['approve'] = 'WAITING';
 		$dt['note'] = '';
@@ -133,7 +134,7 @@ class Event extends MY_Controller
 		$last_id = $this->db->insert_id();
 
 		$dtd['event_register_id'] = $last_id;
-		$dtd['raider_id'] = $this->session->userdata('id');
+		$dtd['raider_id'] = $tbl_raider['id'];
 		$dtd['status'] = 'ENABLE';
 		$dtd['created_at'] = date("Y-m-d H:i:s");
 		$this->mymodel->insertData('tbl_event_register_raider', $dtd);

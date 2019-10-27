@@ -7,9 +7,15 @@
                 <hr style="margin-top:5px; margin-bottom: 5px">
                 <div class="row">
                     <div class="col-xs-12">
-                        <a href="<?= base_url('monitorevent') ?>">
-                            <button class="btn btn-lg btn-block btn-info"> <i class="fa fa-television"></i> Monitoring Event </button>
-                        </a>
+                        <?php if ($this->session->userdata('role') == 'Team') { ?>
+                            <a href="<?= base_url('monitorevent') ?>">
+                                <button class="btn btn-lg btn-block btn-info"> <i class="fa fa-television"></i> Monitoring Event </button>
+                            </a>
+                        <?php } else { ?>
+                            <a href="<?= base_url('monitoreventrider') ?>">
+                                <button class="btn btn-lg btn-block btn-info"> <i class="fa fa-television"></i> Monitoring Event </button>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="col-xs-12" align="center">
                         <h3>Data Verifired!</h3>
