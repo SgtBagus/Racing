@@ -32,9 +32,7 @@ class Wisata extends MY_Controller
 		if ($tbl_wisata) {
 			foreach ($tbl_wisata as $row) {
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_wisata'));
-
-				$desktpsi = strlen($row["desk"]) > 50 ? substr($row["desk"], 0, 50) . "..." : $row["desk"];
-
+				
 				$output .= '
 				<div class="col-md-12">
 				<a href="' . base_url('wisata/view/') . $row['id'] . '" class="a_black">
@@ -44,9 +42,6 @@ class Wisata extends MY_Controller
 				<div class="row">
 				<div class="col-xs-12" align="center">
 				<h3><b>' . $row['title'] . '</b></h3>
-				</div>
-				<div class="col-xs-12" align="center">
-				' . $desktpsi . '
 				</div>
 				</div>
 				<div class="row">

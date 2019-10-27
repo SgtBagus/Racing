@@ -8,30 +8,32 @@
                         <h4 align="center"><?= $tbl_event['title'] ?></h4>
                         <div class="row" align="center">
                             <?php if ($tbl_event['status'] == 'ENABLE') {
-                                echo '<small class="label bg-green">Dibuka</small>';
+                               	echo '<span class="label bg-green round right" style="margin-left:5px">Masih Dibuka</span>';
                             } else {
-                                echo '<small class="label bg-red">Ditutup</small>';
+                               	echo '<span class="label bg-red round right" style="margin-left:5px">Sudah Ditutup</span>';
                             }
                             ?>
                         </div>
-                        <p>
-                            <i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>
+                        <div class="col-md-12" style="padding:0px 10px;">
+                        <p style="text-align:center;">
+                            <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
                             <?= $tbl_event['alamat'] ?>
                         </p>
                         <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                         </a> -->
+                        </div>
                     </div>
                 </div>
-                <hr style="margin-top:5px; margin-bottom: 5px">
+                <hr style="margin-top:5px; margin-bottom: 5px;">
                 <div class="row">
                     <div class="col-xs-6">
-                        Event Dimulai :
+                        Tanggal Event :
                         <br>
                         <small>
-                            <?= date('d-M', strtotime($tbl_event['tgleventStart'])) ?>
+                            <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
                             <b>s/d</b>
-                            <?= date('d-M', strtotime($tbl_event['tgleventEnd'])) ?>
+                            <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
                         </small>
                     </div>
                     <div class="col-xs-6" align="right">
@@ -41,7 +43,7 @@
                             <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
                         </b>
                         <br>
-                        <small>Event Dibuat : <?= date('d M y', strtotime($row['created_at'])) ?></small>
+                        <small>Event Dibuat : <?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
                     </div>
                 </div>
             </div>
@@ -50,7 +52,7 @@
 </div>
 <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-        <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab Event
+        <i class="fa fa-whatsapp"></i> Hubungi Admin
     </button>
 </a>
 <div class="row">
@@ -100,7 +102,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-xs-12" align="center">
-                <h3>Data Verifired </h3>
+                <h3>Data Event </h3>
             </div>
             <div class="col-xs-6">
                 <a href="<?= base_url('verifteam/view/') . $tbl_event['id'] ?>">
@@ -127,7 +129,7 @@
         <?php if ($tbl_event['statusEvent'] == 'BERJALAN' || $tbl_event['statusEvent'] == 'SELESAI') { ?>
             <a href="<?= base_url('event/rank/') . $tbl_event['id'] ?>">
                 <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
-                    <i class="fa fa-user"></i> Juara Rider
+                    <i class="fa fa-user"></i> Data Juara
                 </button>
             </a>
             <?php if ($tbl_event['live_url']) { ?>

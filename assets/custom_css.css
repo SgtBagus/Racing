@@ -206,3 +206,69 @@ select.form-control:focus {
     position: fixed;
     background: rgba(0, 0, 0, 0.7);
 }
+
+.btn {
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 21px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, .28);
+    -moz-box-shadow: 0 0 40px 0 rgba(0, 0, 0, .28);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .22);
+}
+
+.cards {
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, .28);
+    -moz-box-shadow: 0 0 40px 0 rgba(0, 0, 0, .28);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .22);
+}
+
+.mb {
+    margin-bottom: 15px;
+}
+
+.cards {
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+}
+
+.title {
+    background-color: #fff;
+    font-size: 13px;
+    margin: 2px 1px;
+    padding: 2px 1px;
+}
+
+p {
+    margin: 2px 1px;
+    padding: 2px 1px;
+}
+
+.round {
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.red {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.blue {
+    background: #3498db;
+    color: #fff;
+}
+
+.green {
+    background: #2ecc71;
+    color: #fff;
+}
+
+.label {
+    border-radius: 15px;
+}

@@ -104,7 +104,7 @@ class Event extends MY_Controller
 		$this->email->set_mailtype("html");
 		$this->email->set_newline("\r\n");
 
-		$name = "Team - ".$this->session->userdata("name");
+		$name = "Team - " . $this->session->userdata("name");
 		$toemail = $this->session->userdata("email");
 		$fromemail = 'nso@dev.karyastudio.com';
 		$fromname = 'Never Say Old - Admin';
@@ -113,12 +113,12 @@ class Event extends MY_Controller
 		$wa = $tbl_event['phone'];
 		$this->sendemail->addEvent($name, $toemail, $fromemail, $fromname, $subjectemail, $wa, $harga);
 
-		header('Location: '.base_url('event/resultregister'));
+		header('Location: ' . base_url('event/resultregister'));
 	}
 
 
 	public function registerrider($idevent)
-	{	
+	{
 
 		$tbl_event = $this->mymodel->selectDataone('tbl_event', array('id' => $idevent));
 		$tbl_raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $this->session->userdata('id')));
@@ -153,7 +153,7 @@ class Event extends MY_Controller
 		$this->email->set_mailtype("html");
 		$this->email->set_newline("\r\n");
 
-		$name = "Rider - ".$this->session->userdata("name");
+		$name = "Rider - " . $this->session->userdata("name");
 		$toemail = $this->session->userdata("email");
 		$fromemail = 'nso@dev.karyastudio.com';
 		$fromname = 'Never Say Old - Admin';
@@ -162,7 +162,7 @@ class Event extends MY_Controller
 		$wa = $tbl_event['phone'];
 		$this->sendemail->addEvent($name, $toemail, $fromemail, $fromname, $subjectemail, $wa, $harga);
 
-		header('Location: '.base_url('event/resultregister'));
+		header('Location: ' . base_url('event/resultregister'));
 	}
 
 	public function fetch()
@@ -184,48 +184,54 @@ class Event extends MY_Controller
 				$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $register_id['id'] . "'");
 
 				if ($row['status'] == 'ENABLE') {
-					$status =  '<small class="label bg-green">Dibuka</small>';
+					$status =  '<span class="label bg-green round right" style="margin-left:5px">Masih Dibuka</span>';
 				} else {
-					$status = '<small class="label bg-red">Ditutup</small>';
+					$status = '<span class="label bg-red round right" style="margin-left:5px">Sudah Ditutup</span>';
 				}
 
 				$output .= '
 				<a href="' . base_url("event/view/") . $row['id'] . '" class="a_black">
 				<div class="col-md-12">
 				<div class="box">
-				<img class="img-even" src="' . $photo['url'] . '">
-				<div class="box-body">
-				<div class="row">
-				<div class="col-xs-12">
-				<h4 align="center">' . $row['title'] . '<br><small>' . $status . '</small></h4>
-				<small>
-				<i class="fa fa-globe"></i> ' . $row['kota'] . '<br>
-				' . $row['alamat'] . '
-				</small>
-				<hr style="margin-top:5px">
+					<img class="img-even" src="' . $photo['url'] . '">
+					<div class="box-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4 align="center">' . $row['title'] . '</h4>
+								<div class="row" align="center">
+								' . $status . '
+								</div>
+								<div class="col-md-12" style="padding:0px 10px;">
+								<p style="text-align:center;">
+								' . $row['alamat'] . '
+								</p>
+								</div>
+							</div>
+						</div>
+						<hr style="margin-top:5px; margin-bottom: 5px;">
+						<div class="row">
+							<div class="col-xs-6">
+								Tanggal Event :
+								<br>
+								<small>
+								' . date('d M Y', strtotime($row['tgleventStart'])) . '
+									<b>s/d</b>
+									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
+								</small>
+							</div>
+							<div class="col-xs-6" align="right">
+								Pendaftar :
+								<b>
+									<i class="fa fa-motorcycle"></i>' . $rowraider[0]['rowraider'] . '
+									<i class="fa fa-users"></i>' . $rowteam[0]['rowteam'] . '
+								</b>
+								<br>
+								<small>Event Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
+							</div>
+						</div>
+					</div>
 				</div>
-				</div>
-				<div class="row">
-				<div class="col-xs-6">
-				Event Dimulai : 
-				<br>
-				<small>
-				' . date('d M Y', strtotime($row['tgleventStart'])) . ' - ' . date('d M Y', strtotime($row['tgleventEnd'])) . '
-				</small>
-				</div>
-				<div class="col-xs-6" align="right">
-				Pendaftar : 
-				<b>
-				<i class="fa fa-motorcycle"></i> ' . $rowraider[0]['rowraider'] . '
-				<i class="fa fa-users"></i> ' . $rowteam[0]['rowteam'] . '
-				</b>
-				<br>
-				<small>Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
+			</div>
 				</a>';
 			}
 		}
