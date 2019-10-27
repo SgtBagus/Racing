@@ -28,22 +28,20 @@
       <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100;">
         <div class="row">
           <div class="col-xs-2" align="center">
-            <a href="#" id="sidebarButton" class="header-menu open-sidebar" data-toggle="control-sidebar">
-              <i class="fa fa-bars"></i>
-            </a>
+            
           </div>
           <div class="col-xs-8 header-menu" align="center">
-            <img style="height:40px" src="<?= base_url('assets/img/')?>logo2.jpg">
+            <img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg">
           </div>
-          <a href="#" onclick="reset()">
-            <div class="col-xs-2 header-menu" align="center" style="margin-left: -10px">
-              <i class="fa fa-refresh"></i>
+          <a href="#" id="open-sidebar">
+            <div class="col-xs-2 header-menu" align="center" data-toggle="control-sidebar" style="margin-left: -10px">
+              <i class="fa fa-bars"></i>
             </div>
           </a>
         </div>
       </nav>
     </header>
-    <div class="content-wrapper" style="margin-top: -25px">
+    <div class="content-wrapper" style="margin-top: -15px">
       <?php $this->load->view('template/login_sidebar'); ?>
       <div class="container">
         <?= $contents ?>

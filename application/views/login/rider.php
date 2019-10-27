@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <form action="<?= base_url('login/act_login') ?>" method="POST" id="login_form">
-      <h3 align="center">Silakan Login Sebagai Tim</h3>
+    <form action="<?= base_url('login/act_login_rider') ?>" method="POST" id="login_form">
+      <h3 align="center">Silakan Login Sebagai Rider</h3>
       <div class="show_error" id="error_input"></div>
       <div class="form-group">
         <label>Email</label>
@@ -10,14 +10,13 @@
       <div class="form-group">
         <label>Password</label>
         <input type="password" name="password" class="form-control">
-        <!-- <p class="help-block"><a href="<?= base_url('login/password') ?>"> Lupa Password ? </a></p> -->
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-block btn-primary">
           <i class="fa fa-sign-in"></i> Masuk Login
         </button>
       </div>
-      <a class="help-block pull-right">Tidak Punya Akun ? <a href="<?= base_url('login/register') ?>">Daftar Disini </a></p>
+      <a class="help-block pull-right">Tidak Punya Akun Rider ? <a href="<?= base_url('login/registerrider') ?>">Daftar Disini </a></p>
     </form>
   </div>
 </div>

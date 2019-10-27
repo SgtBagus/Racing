@@ -48,7 +48,11 @@
             </div>
         </div>
     </div>
-    <br>
+    <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
+        <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
+            <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab Event
+        </button>
+    </a>
     <div class="row">
         <div class="col-md-12">
             <div class="box">
@@ -57,6 +61,13 @@
                 </div>
                 <div class="box-body" align="center">
                     <table style="width: 100%">
+                        <tr>
+                            <td align="right">Harga Pendaftaran</td>
+                            <td>:</td>
+                            <td align="left">
+                                <b>Rp. <?= number_format($tbl_event['harga'], 0, ',', '.') ?>,- </b>
+                            </td>
+                        </tr>
                         <tr>
                             <td align="right">Rider per Team</td>
                             <td>:</td>
@@ -122,7 +133,7 @@
                     var str = response;
                     if (str.indexOf("success") != -1) {
                         form.find(".show_error").hide().html(response).slideDown("fast");
-                        location.href = '<?= base_url("monitorevent") ?>';
+                        // location.href = '<?= base_url("monitorevent") ?>';
                         $(".btn-send").removeClass("disabled").html('Kirim Pendaftaran').attr('disabled', false);
                     } else {
                         form.find(".show_error").hide().html(response).slideDown("fast");

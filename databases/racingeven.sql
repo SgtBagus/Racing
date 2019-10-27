@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2019 at 10:06 AM
+-- Generation Time: Oct 27, 2019 at 06:02 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -667,7 +667,10 @@ INSERT INTO `file` (`id`, `name`, `mime`, `dir`, `table`, `table_id`, `status`, 
 (337, '6950c16c9bcc6995f376b297f163175956090.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175956090.png', 'tbl_event', 7, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175956090.png', '2019-10-26 11:53:47', NULL),
 (339, '6950c16c9bcc6995f376b297f163175960795.png', 'image/png', 'webfiles/event/6950c16c9bcc6995f376b297f163175960795.png', 'tbl_event', 8, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175960795.png', '2019-10-26 11:54:59', NULL),
 (342, '6950c16c9bcc6995f376b297f16317595221.pdf', 'application/pdf', 'webfiles/juara/6950c16c9bcc6995f376b297f16317595221.pdf', 'paket_file', 4, 'ENABLE', 'http://192.168.100.9:8080/webfiles/juara/6950c16c9bcc6995f376b297f16317595221.pdf', '2019-10-26 14:51:20', NULL),
-(343, '6950c16c9bcc6995f376b297f163175910787.pdf', 'application/pdf', 'webfiles/event/6950c16c9bcc6995f376b297f163175910787.pdf', 'event_rule', 8, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175910787.pdf', '2019-10-26 14:57:44', NULL);
+(343, '6950c16c9bcc6995f376b297f163175910787.pdf', 'application/pdf', 'webfiles/event/6950c16c9bcc6995f376b297f163175910787.pdf', 'event_rule', 8, 'ENABLE', 'http://192.168.100.9:8080/webfiles/event/6950c16c9bcc6995f376b297f163175910787.pdf', '2019-10-26 14:57:44', NULL),
+(344, 'raider_default.png', 'image/png', 'webfiles/team/raider_default.png', 'tbl_raider', 7, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/raider_default.png', '2019-10-27 08:38:55', NULL),
+(345, 'raider_default.png', 'image/png', 'webfiles/team/raider_default.png', 'tbl_raider', 8, 'ENABLE', 'http://192.168.100.9:8000/webfiles/team/raider_default.png', '2019-10-27 08:41:13', NULL),
+(346, 'raider_default.png', 'image/png', 'webfiles/raider/raider_default.png', 'tbl_raider', 9, 'ENABLE', 'http://192.168.100.9:8000/webfiles/raider/raider_default.png', '2019-10-27 08:47:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -1010,7 +1013,8 @@ CREATE TABLE `tbl_event_register` (
 INSERT INTO `tbl_event_register` (`id`, `team_id`, `event_id`, `approve`, `note`, `status`, `created_at`, `updated_at`) VALUES
 (3, 8, 1, 'APPROVE', '', 'ENABLE', '2019-10-05 12:03:07', '2019-10-05 16:30:19'),
 (4, 10, 2, 'WAITING', '', 'ENABLE', '2019-10-20 12:23:09', NULL),
-(5, 10, 2, 'APPROVE', '', 'ENABLE', '2019-10-20 12:23:35', NULL);
+(5, 10, 2, 'APPROVE', '', 'ENABLE', '2019-10-20 12:23:35', NULL),
+(6, 0, 8, 'WAITING', '', 'ENABLE', '2019-10-27 09:27:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -1034,7 +1038,8 @@ CREATE TABLE `tbl_event_register_raider` (
 INSERT INTO `tbl_event_register_raider` (`id`, `event_register_id`, `raider_id`, `status`, `created_at`, `updated_at`) VALUES
 (3, 3, 3, 'ENABLE', '2019-10-05 12:03:07', NULL),
 (4, 3, 4, 'ENABLE', '2019-10-05 12:03:07', NULL),
-(5, 5, 6, 'ENABLE', '2019-10-20 12:23:35', NULL);
+(5, 5, 6, 'ENABLE', '2019-10-20 12:23:35', NULL),
+(6, 6, 9, 'ENABLE', '2019-10-27 09:27:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -1185,6 +1190,7 @@ CREATE TABLE `tbl_raider` (
   `goldarah` varchar(225) DEFAULT NULL,
   `verificacion` enum('ENABLE','DISABLE') DEFAULT NULL,
   `email` varchar(225) DEFAULT NULL,
+  `password` text,
   `eventikut` int(11) DEFAULT NULL,
   `status` enum('ENABLE','DISABLE') DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -1195,12 +1201,12 @@ CREATE TABLE `tbl_raider` (
 -- Dumping data for table `tbl_raider`
 --
 
-INSERT INTO `tbl_raider` (`id`, `team_id`, `name`, `alamat`, `kota`, `tgllahir`, `nostart`, `namajersey`, `ukuran_jersey`, `motor_id`, `nowa`, `goldarah`, `verificacion`, `email`, `eventikut`, `status`, `created_at`, `updated_at`) VALUES
-(1, 8, 'Raider 1', 'Alamat Raider', 'Malang', '2019-10-02', 2, 'Raider 1', '24', 2, '1231231232', 'B', 'ENABLE', NULL, 0, 'ENABLE', '2019-10-02 22:02:28', NULL),
-(3, 8, 'Raider 2', 'Alamat Raider ke 2', 'Malang', '2019-10-02', 1, 'AA', '23', 5, '1231232132', 'B', 'ENABLE', '', 1, 'ENABLE', '2019-10-02 22:06:53', '2019-10-24 15:39:14'),
-(4, 8, 'raider ke 3', 'ada disni', 'Malang', '2019-10-11', 2, 'ddisini', 'L', 2, '1231231232', 'B', 'DISABLE', '', 1, 'ENABLE', '2019-10-05 10:35:10', NULL),
-(5, 9, 'Bagus', 'Disini', 'Malang', '2019-10-08', 5, 'Bagus', 'L', 3, '0812637383', 'B', 'DISABLE', 'bgus@gmail.xom', 0, 'ENABLE', '2019-10-07 16:27:51', NULL),
-(6, 10, 'Rudi Handoko', '-', 'Malang', '2019-10-20', 55, 'Rudi', 'L', 10, '0855273638', 'A', 'DISABLE', 'amjdjd@gmail.com', 0, 'ENABLE', '2019-10-20 12:22:49', NULL);
+INSERT INTO `tbl_raider` (`id`, `team_id`, `name`, `alamat`, `kota`, `tgllahir`, `nostart`, `namajersey`, `ukuran_jersey`, `motor_id`, `nowa`, `goldarah`, `verificacion`, `email`, `password`, `eventikut`, `status`, `created_at`, `updated_at`) VALUES
+(1, 8, 'Raider 1', 'Alamat Raider', 'Malang', '2019-10-02', 2, 'Raider 1', '24', 2, '1231231232', 'B', 'ENABLE', NULL, NULL, 0, 'ENABLE', '2019-10-02 22:02:28', NULL),
+(3, 8, 'Raider 2', 'Alamat Raider ke 2', 'Malang', '2019-10-02', 1, 'AA', '23', 5, '1231232132', 'B', 'ENABLE', '', NULL, 1, 'ENABLE', '2019-10-02 22:06:53', '2019-10-24 15:39:14'),
+(4, 8, 'raider ke 3', 'ada disni', 'Malang', '2019-10-11', 2, 'ddisini', 'L', 2, '1231231232', 'B', 'DISABLE', '', NULL, 1, 'ENABLE', '2019-10-05 10:35:10', NULL),
+(5, 9, 'Bagus', 'disini', 'disana', '2019-10-04', 213, '123123', 'XL', 9, '123', 'B', 'DISABLE', 'procw57@gmail.com', 'b3c9323ca84c0f3e6ea210cd31c9ea7a', 0, 'ENABLE', '2019-10-07 16:27:51', '2019-10-27 08:41:13'),
+(9, 0, 'Rider Pendaftar Perorangan', 'disana', 'disana', '2019-10-10', 232, 'Disini', 'XL', 9, '123213', 'B', 'DISABLE', 'rider1@gmail.com', '8cc8c70aa3011732ee45b6d026ef2fcb', 0, 'ENABLE', '2019-10-27 08:47:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -1212,7 +1218,7 @@ CREATE TABLE `tbl_team` (
   `id` int(11) NOT NULL,
   `name` varchar(225) DEFAULT NULL,
   `email` varchar(225) DEFAULT NULL,
-  `password` varchar(225) DEFAULT NULL,
+  `password` text,
   `alamat` text,
   `kota` varchar(225) DEFAULT NULL,
   `nowa` varchar(225) DEFAULT NULL,
@@ -1450,7 +1456,7 @@ ALTER TABLE `access_control`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=347;
 
 --
 -- AUTO_INCREMENT for table `grafik`
@@ -1522,13 +1528,13 @@ ALTER TABLE `tbl_event`
 -- AUTO_INCREMENT for table `tbl_event_register`
 --
 ALTER TABLE `tbl_event_register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_event_register_raider`
 --
 ALTER TABLE `tbl_event_register_raider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
@@ -1552,7 +1558,7 @@ ALTER TABLE `tbl_merchandise`
 -- AUTO_INCREMENT for table `tbl_paket`
 --
 ALTER TABLE `tbl_paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_paket_detail`
@@ -1564,7 +1570,7 @@ ALTER TABLE `tbl_paket_detail`
 -- AUTO_INCREMENT for table `tbl_raider`
 --
 ALTER TABLE `tbl_raider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_team`

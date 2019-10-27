@@ -13,6 +13,11 @@ class Mlogin extends CI_Model {
     return $user;
   }
 
+  public function loginrider($email, $pass){
+    $user = $this->mymodel->selectDataone('tbl_raider', array('email'=>$email, 'password' => $pass, 'status' => 'ENABLE'));
+    return $user;
+  }
+
   // public function googleLogin($email){ 
   //   $user = $this->mymodel->selectDataone('tbl_investor', array('email'=>$email));
   //   return $user;

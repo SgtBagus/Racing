@@ -31,7 +31,11 @@
 if ($this->session->userdata('session_sop') == "") {
   $this->load->view('template/login_sidebar');
 } else {
-  $this->load->view('template/sidebar');
+  if ($this->session->userdata('role') == 'Team') {
+    $this->load->view('template/sidebar');
+  } else {
+    $this->load->view('template/sidebarrider');
+  }
 }
 ?>
 <div id="bodyBlock"></div>
@@ -61,7 +65,6 @@ if ($this->session->userdata('session_sop') == "") {
       <div class="container" style="margin-top: -15px;">
         <!-- <h3 align="center"> <?= $page ?><br><small> <?= $subpage ?></small></h3> -->
         <?= $contents ?>
-        <div class="fixed-footer"></div>
         <marquee><?= MARQUEE ?></marquee>
       </div>
     </div>
@@ -69,7 +72,11 @@ if ($this->session->userdata('session_sop') == "") {
     if ($this->session->userdata('session_sop') == "") {
       $this->load->view('template/login_footer');
     } else {
-      $this->load->view('template/footer');
+      if ($this->session->userdata('role') == 'Team') {
+        $this->load->view('template/footer');
+      } else {
+        $this->load->view('template/footer_rider');
+      }
     }
     ?>
   </div>

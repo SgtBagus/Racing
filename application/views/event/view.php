@@ -48,7 +48,11 @@
         </div>
     </div>
 </div>
-<br>
+<a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
+    <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
+        <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab Event
+    </button>
+</a>
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -57,6 +61,13 @@
             </div>
             <div class="box-body" align="center">
                 <table style="width: 100%">
+                    <tr>
+                        <td align="right">Harga Pendaftaran</td>
+                        <td>:</td>
+                        <td align="left">
+                            <b>Rp. <?= number_format($tbl_event['harga'], 0, ',', '.') ?>,- </b>
+                        </td>
+                    </tr>
                     <tr>
                         <td align="right">Rider per Team</td>
                         <td>:</td>
@@ -93,14 +104,14 @@
             </div>
             <div class="col-xs-6">
                 <a href="<?= base_url('verifteam/view/') . $tbl_event['id'] ?>">
-                    <button class="btn btn-lg btn-block btn-warning btn-daftar" style="margin-bottom: 15px">
+                    <button class="btn btn-lg btn-block btn-warning" style="margin-bottom: 15px">
                         <i class="fa fa-users"></i> Team
                     </button>
                 </a>
             </div>
             <div class="col-xs-6">
                 <a href="<?= base_url('verifraider/view/') . $tbl_event['id'] ?>">
-                    <button class="btn btn-lg btn-block btn-warning btn-daftar" style="margin-bottom: 15px">
+                    <button class="btn btn-lg btn-block btn-warning" style="margin-bottom: 15px">
                         <i class="fa fa-motorcycle"></i> Rider
                     </button>
                 </a>
@@ -108,36 +119,48 @@
         </div>
         <?php if ($rule) { ?>
             <a href="<?= base_url('download/downloadPDFEvent/') . $rule['id'] ?>">
-                <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
+                <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
                     <i class="fa fa-download"></i> Download Pertauran Event
                 </button>
             </a>
         <?php } ?>
         <?php if ($tbl_event['statusEvent'] == 'BERJALAN' || $tbl_event['statusEvent'] == 'SELESAI') { ?>
             <a href="<?= base_url('event/rank/') . $tbl_event['id'] ?>">
-                <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
+                <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
                     <i class="fa fa-user"></i> Juara Rider
                 </button>
             </a>
             <?php if ($tbl_event['live_url']) { ?>
                 <a href="<?= $tbl_event['live_url'] ?>">
-                    <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
+                    <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
                         <i class="fa fa-camera"></i> Live Event
                     </button>
                 </a>
             <?php } ?>
         <?php } ?>
         <a href="<?= base_url('event/gallery/') . $tbl_event['id'] ?>">
-            <button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
+            <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
                 <i class="fa fa-picture-o"></i> Dokumentasi
             </button>
         </a>
-        <?php if ($tbl_event['statusEvent'] == 'STARTED') { ?>
-            <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
-                <button class="btn btn-lg btn-block btn-primary btn-daftar" style="margin-bottom: 15px">
-                    <i class="fa fa-users"></i> Daftarkan Tim
-                </button>
-            </a>
+        <?php if ($tbl_event['statusEvent'] == 'STARTED') {
+            if ($this->session->userdata('id')) {
+                if ($this->session->userdata('role') == 'Team') { ?>
+                    <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
+                        <button class="btn btn-lg btn-block btn-primary" style="margin-bottom: 15px">
+                            <i class="fa fa-users"></i> Daftarkan Tim
+                        </button>
+                    </a>
+                <?php } else { ?>
+                    <a href="<?= base_url('event/registerrider/') . $tbl_event['id'] ?>">
+                        <button class="btn btn-lg btn-block btn-primary" style="margin-bottom: 15px">
+                            <i class="fa fa-check"></i> Ikuti Event
+                        </button>
+                    </a>
+                <?php }
+                    } else { ?>
+                <h4 class="help-block" align="center">Silakan Login Terlebih Dahulu untuk melakukan Pendaftaran</h4>
+            <?php } ?>
         <?php } else if ($tbl_event['statusEvent'] == 'BERJALAN') { ?>
             <h4 class="help-block" align="center">Event Telah Berjalan!</h4>
         <?php } else if ($tbl_event['statusEvent'] == 'SELESAI') { ?>
@@ -148,8 +171,3 @@
         <?php } ?>
     </div>
 </div>
-<script type="text/javascript">
-    <?php if ($tbl_event['status'] == 'DISABLE') { ?>
-        $(".btn-daftar").attr("disabled", true);
-    <?php } ?>
-</script>

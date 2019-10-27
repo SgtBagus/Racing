@@ -70,6 +70,8 @@ class Event extends MY_Controller
 
 	public function addregister()
 	{
+		$tbl_event = $this->mymodel->selectDataone('tbl_event', array('id' => $_POST['event_id']));
+
 		$dt['team_id'] = $_POST['team_id'];
 		$dt['event_id'] = $_POST['event_id'];
 		$dt['approve'] = 'WAITING';
@@ -88,7 +90,78 @@ class Event extends MY_Controller
 			$dtd['created_at'] = date("Y-m-d H:i:s");
 			$this->mymodel->insertData('tbl_event_register_raider', $dtd);
 		}
-		$this->alert->alertsuccess('Success Send Data');
+		$this->load->library('email');
+		$config = array(
+			'protocol'  => 'smtp',
+			'smtp_host' => 'ssl://dev.karyastudio.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'nso@dev.karyastudio.com',
+			'smtp_pass' => 'u4s@,$VJij3s',
+			'charset' => 'iso-8859-1',
+			'wordwrap' => TRUE
+		);
+		$this->email->initialize($config);
+		$this->email->set_mailtype("html");
+		$this->email->set_newline("\r\n");
+
+		$name = "Team - ".$this->session->userdata("name");
+		$toemail = $this->session->userdata("email");
+		$fromemail = 'nso@dev.karyastudio.com';
+		$fromname = 'Never Say Old - Admin';
+		$subjectemail = 'Terima Kasih Telah Ikut Serta Di Event Kami';
+		$harga = $tbl_event['harga'];
+		$wa = $tbl_event['phone'];
+		$this->sendemail->addEvent($name, $toemail, $fromemail, $fromname, $subjectemail, $wa, $harga);
+
+		header('Location: '.base_url('event/resultregister'));
+	}
+
+
+	public function registerrider($idevent)
+	{	
+
+		$tbl_event = $this->mymodel->selectDataone('tbl_event', array('id' => $idevent));
+
+		$dt['team_id'] = 0;
+		$dt['event_id'] = $idevent;
+		$dt['approve'] = 'WAITING';
+		$dt['note'] = '';
+		$dt['status'] = 'ENABLE';
+		$dt['created_at'] = date("Y-m-d H:i:s");
+
+		$this->mymodel->insertData('tbl_event_register', $dt);
+		$last_id = $this->db->insert_id();
+
+		$dtd['event_register_id'] = $last_id;
+		$dtd['raider_id'] = $this->session->userdata('id');
+		$dtd['status'] = 'ENABLE';
+		$dtd['created_at'] = date("Y-m-d H:i:s");
+		$this->mymodel->insertData('tbl_event_register_raider', $dtd);
+
+		$this->load->library('email');
+		$config = array(
+			'protocol'  => 'smtp',
+			'smtp_host' => 'ssl://dev.karyastudio.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'nso@dev.karyastudio.com',
+			'smtp_pass' => 'u4s@,$VJij3s',
+			'charset' => 'iso-8859-1',
+			'wordwrap' => TRUE
+		);
+		$this->email->initialize($config);
+		$this->email->set_mailtype("html");
+		$this->email->set_newline("\r\n");
+
+		$name = "Rider - ".$this->session->userdata("name");
+		$toemail = $this->session->userdata("email");
+		$fromemail = 'nso@dev.karyastudio.com';
+		$fromname = 'Never Say Old - Admin';
+		$subjectemail = 'Terima Kasih Telah Ikut Serta Di Event Kami';
+		$harga = $tbl_event['harga'];
+		$wa = $tbl_event['phone'];
+		$this->sendemail->addEvent($name, $toemail, $fromemail, $fromname, $subjectemail, $wa, $harga);
+
+		header('Location: '.base_url('event/resultregister'));
 	}
 
 	public function fetch()
@@ -249,14 +322,14 @@ class Event extends MY_Controller
 
 				$filedownload = '';
 
-				if($fileRank){
-					$filedownload = '<a href="'.base_url('download/downloadPDFPaket/').$fileRank['id'].'">
+				if ($fileRank) {
+					$filedownload = '<a href="' . base_url('download/downloadPDFPaket/') . $fileRank['id'] . '">
 						<button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
-							<i class="fa fa-download"></i> '.$row['title'].'
+							<i class="fa fa-download"></i> ' . $row['title'] . '
 						</button>
 					</a>';
 				}
-				
+
 				$output .= '
                 <div class="col-md-12">
                         <div class="box">
@@ -278,12 +351,18 @@ class Event extends MY_Controller
                                     </div>
 								</div>
 								<br>
-								'.$filedownload.'
+								' . $filedownload . '
                             </div>
 						</div>
                 </div>';
 			}
 		}
 		echo $output;
+	}
+
+	public function resultregister()
+	{
+		$data['page'] = 'Event';
+		$this->template->load('template/template', 'event/resultregister', $data);
 	}
 }
