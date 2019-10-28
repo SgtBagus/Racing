@@ -25,7 +25,7 @@ class Verifraider extends MY_Controller
         $data['tbl_event'] = $this->mymodel->selectDataone('tbl_event', array('id' => $id));
         $data['file_event'] = $this->mymodel->selectDataone('file', array('table_id' => $data['tbl_event']['id'], 'table' => 'tbl_event'));
         $data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
-        
+
         $data['subpage'] = $data['tbl_event']['title'];
         $this->template->load('template/template', 'verifraider/view', $data);
     }
@@ -57,39 +57,44 @@ class Verifraider extends MY_Controller
                 $output .= '
                 <a href="' . base_url("verifraider/view/") . $row['id'] . '" class="a_black">
                 <div class="col-md-12">
-                <img class="img-even" src="' . $photo['url'] . '" alt="Third slide">
-                <div class="box">
-                <div class="box-body">
-                <div class="row">
-                <div class="col-xs-12">
-                <h4>' . $row['title'] . '<br>
-                <small>
-                <i class="fa fa-globe"></i> ' . $row['kota'] . '<br>
-                ' . $row['alamat'] . '
-                </small>
-                </h4>
-                <hr style="margin-top:5px">
-                </div>
-                </div>
-                <div class="row">
-				<div class="col-xs-6">
-				Event Dimulai : 
-				<br>
-				<small>
-				' . date('d M Y', strtotime($row['tgleventStart'])) . ' - ' . date('d M Y', strtotime($row['tgleventEnd'])) . '
-				</small>
+				<div class="box">
+					<img class="img-even" src="' . $photo['url'] . '">
+					<div class="box-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4 align="center">' . $row['title'] . '</h4>
+								<div class="row" align="center">
+								' . $status . '
+								</div>
+								<div class="col-md-12" style="padding:0px 10px;">
+								<p style="text-align:center;">
+								' . $row['alamat'] . '
+								</p>
+								</div>
+							</div>
+						</div>
+						<hr style="margin-top:5px; margin-bottom: 5px;">
+						<div class="row">
+							<div class="col-xs-6">
+								Tanggal Event :
+								<br>
+								<small>
+								' . date('d M Y', strtotime($row['tgleventStart'])) . '
+									<b>s/d</b>
+									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
+								</small>
+							</div>
+							<div class="col-xs-6" align="right">
+								Pendaftar :
+								<b>
+									<i class="fa fa-motorcycle"></i>' . $rowraider[0]['rowraider'] . '
+								</b>
+								<br>
+								<small>Event Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
+							</div>
+						</div>
+					</div>
 				</div>
-                <div class="col-xs-6" align="right">
-                Pendaftar : 
-                <b>
-                <i class="fa fa-motorcycle"></i> <b>' . $rowraider[0]['rowraider'] . '</b> Rider
-                </b>
-                <br>
-                <small>Event Dibuat : ' . date('d-m-Y', strtotime($row['created_at'])) . '</small>
-                </div>
-                </div>
-                </div>
-                </div>
                 </div>
                 </a>';
             }
@@ -129,7 +134,7 @@ class Verifraider extends MY_Controller
                     <div class="box-body">
                         <div class="row" align="center">
                         <div class="col-xs-12">
-                            <b>'.$team['name'].'</b>
+                            <b>' . $team['name'] . '</b>
                             <br>
                             <br>
                             ' . $raider['name'] . ' ' . $verificacion . '

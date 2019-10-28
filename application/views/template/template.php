@@ -67,6 +67,7 @@ if ($this->session->userdata('session_sop') == "") {
         <?= $contents ?>
         <marquee><?= MARQUEE ?></marquee>
       </div>
+      <div class="fixed-footer"></div>
     </div>
     <?php
     if ($this->session->userdata('session_sop') == "") {

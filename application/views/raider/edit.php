@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Ubah Rider</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <form role="form" action="<?= base_url('raider/update') ?>" method="POST" id="sumbit">
             <div class="show_error"></div>
             <input type="hidden" name="id" class="form-control" value="<?= $raider['id'] ?>">

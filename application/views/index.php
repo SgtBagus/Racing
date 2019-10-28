@@ -1,4 +1,9 @@
 <div class="row">
+	<div class="col-xs-12">
+		<h3 class="box-title">Home</h3>
+	</div>
+</div>
+<div class="row">
 	<div class="col-xs-6">
 		<h3>Event</h3>
 	</div>

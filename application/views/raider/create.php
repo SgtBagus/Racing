@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Tambah Rider</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <form role="form" action="<?= base_url('raider/store') ?>" method="POST" id="sumbit">
             <div class="show_error"></div>
             <div class="form-group">

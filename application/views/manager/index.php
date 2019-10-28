@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Manajer</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <form role="form" action="<?= base_url('manager/store') ?>" method="POST" id="sumbit">
             <div class="show_error"></div>
             <input type="hidden" name="id" class="form-control" value="<?= $manajer['id'] ?>">

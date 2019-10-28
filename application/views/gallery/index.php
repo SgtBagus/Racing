@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Cari Gallery</h3>
+        <h3 class="box-title">Gallery</h3>
         <form role="form" action="<?= base_url('gallery') ?>" method="GET">
             <div class="form-group">
+                <label>Cari Gallery</label>
                 <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
                                                                             echo 'value="' . $_GET['title'] . '"';
                                                                         } ?> id="filter-search">

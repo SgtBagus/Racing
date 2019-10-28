@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Event</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <div class="box">
             <img class="img-detail" src="<?= $file['url'] ?>">
             <div class="box-body">
@@ -50,7 +55,7 @@
         </div>
     </div>
 </div>
-<a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
+<a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
         <i class="fa fa-whatsapp"></i> Hubungi Admin
     </button>

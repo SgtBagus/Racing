@@ -1,8 +1,13 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Verifired Team</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <form role="form" action="<?= base_url('verifteam') ?>" method="GET">
             <div class="form-group">
-                <label for="exampleInputEmail1">Judul Even</label>
+                <label for="exampleInputEmail1">Cari Even</label>
                 <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
                                                                             echo 'value="' . $_GET['title'] . '"';
                                                                         } ?> id="filter-search">

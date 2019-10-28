@@ -46,16 +46,16 @@
                                 <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
                             </b>
                             <br>
-                            <small>Event Dibuat : <?= date('d-M-Y', strtotime($tbl_event['created_at'])) ?></small>
+                            <small>Event Dibuat : <?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
+    <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
         <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-            <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab Event
+            <i class="fa fa-whatsapp"></i> Hubungi Admin
         </button>
     </a>
     <div class="row">

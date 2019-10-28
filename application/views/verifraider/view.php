@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Verifired Rider</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <div class="box">
             <img class="img-detail" src="<?= $file_event['url'] ?>">
             <div class="box-body">

@@ -27,6 +27,7 @@ class Monitorevent extends MY_Controller {
 
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['event_id'], 'table' => 'tbl_event'));
 
+				$rowteam = $this->mymodel->selectWithQuery("SELECT count(id) as rowteam from tbl_event_register WHERE team_id NOT LIKE '0' "); 
 				$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $row['id'] . "'"); 
 
 				if ($row['approve'] == 'WAITING') {
@@ -38,40 +39,47 @@ class Monitorevent extends MY_Controller {
 				} 
 				
 				$output .= '
-				<a href="'.base_url('monitorevent/view/').$row['id'].'" class="a_black">
 				<div class="col-md-12">
-				<img class="img-even" src="'.$photo['url'].'" alt="Third slide">
 				<div class="box">
-				<div class="box-body">
-				<div class="row">
-				<div class="col-xs-12">
+					<img class="img-even" src="' . $photo['url'] . '">
+					<div class="box-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4 align="center">' . $event['title'] . '</h4>
+								<div class="row" align="center">
+								' . $approve . '
+								</div>
+								<div class="col-md-12" style="padding:0px 10px;">
+								<p style="text-align:center;">
+								' . $event['alamat'] . '
+								</p>
+								</div>
+							</div>
+						</div>
+						<hr style="margin-top:5px; margin-bottom: 5px;">
+						<div class="row">
+							<div class="col-xs-6">
+								Tanggal Event :
+								<br>
+								<small>
+								' . date('d M Y', strtotime($event['tgleventStart'])) . '
+									<b>s/d</b>
+									' . date('d M Y', strtotime($event['tgleventEnd'])) . '
+								</small>
+							</div>
+							<div class="col-xs-6" align="right">
+								Pendaftar :
+								<b>
+									<i class="fa fa-motorcycle"></i>' . $rowraider[0]['rowraider'] . '
+									<i class="fa fa-users"></i>' . $rowteam[0]['rowteam'] . '
+								</b>
+								<br>
+								<small>Event Dibuat : ' . date('d M Y', strtotime($event['created_at'])) . '</small>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="col-xs-12">
-				<h4>'.$event['title'].'<br>
-				<small>
-				<i class="fa fa-globe"></i> '.$event['kota'].'<br>
-				'.$event['alamat'].'
-				</small>
-				</h4>
-				</div>
-				</div>
-				<hr style="margin-top:5px; margin-bottom: 5px">
-				<div class="row">
-				<div class="col-xs-12">
-				'.$approve.'
-				</div>
-				<div class="col-xs-6">
-				Mendaftar dengan : <br> 
-				<i class="fa fa-motorcycle"></i> <b>'.$rowraider[0]['rowraider'].'</b> Raider
-				</div>
-				<div class="col-xs-6" align="right">
-				Mendaftar pada : <br>'.date('d M Y', strtotime($row['created_at'])).'
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
-				</a>';
+				</div>';
 			}
 		}
 		echo $output;

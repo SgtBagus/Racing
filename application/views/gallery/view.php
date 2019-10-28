@@ -1,6 +1,11 @@
 <div class="row">
     <div class="col-md-12">
-        <h3><?= $subpage ?></h3>
+        <h3 class="box-title">Gallery</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4 align="center"><?= $subpage ?></h4><br>
         <img class="img-detail" src="<?= $main_image['url'] ?>" alt="Third slide">
         <div align="center">
             <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($id['created_at'])) ?>
@@ -8,7 +13,7 @@
         <br><br>
         <form role="form" action="<?= base_url('gallery/view/' . $id['id']) ?>" method="GET">
             <div class="form-group">
-                <label for="exampleInputEmail1">Judul Gambar</label>
+                <label for="exampleInputEmail1">Cari Gambar</label>
                 <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
                                                                             echo 'value="' . $_GET['title'] . '"';
                                                                         } ?> id="filter-search">
@@ -49,7 +54,7 @@
                     if (data == '') {
                         $('#load_data_message').html('<div class="row">' +
                             '<div class="col-xs-12" align="center">' +
-                            'Semua Blog telah Ditampilkan' +
+                            'Semua Gambar telah Ditampilkan' +
                             '</div>' +
                             '</div>');
                         action = 'active';
@@ -57,7 +62,7 @@
                         $('#load_data').append(data);
                         $('#load_data_message').html('<div class="row">' +
                             '<div class="col-xs-12" align="center">' +
-                            'Semua Blog telah Ditampilkan' +
+                            'Semua Gambar telah Ditampilkan' +
                             '</div>' +
                             '</div>');
                         action = 'inactive';

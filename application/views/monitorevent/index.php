@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title">Monitoring Event</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <form role="form" action="<?= base_url('event') ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Judul Even</label>
