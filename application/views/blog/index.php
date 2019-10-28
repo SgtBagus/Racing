@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">News/Blogs</h3>
-        <form role="form" action="<?= base_url('event') ?>" method="GET">
+        <h3 class="box-title" align="center">News/Blogs</h3>
+        <form role="form" action="<?= base_url('blogs') ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Cari News/Blogs</label>
                 <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
@@ -32,7 +32,7 @@
             search = $('#filter-search').val();
 
             $.ajax({
-                url: "<?= base_url(); ?>blogs/fetch?name=" + search,
+                url: "<?= base_url(); ?>blogs/fetch?title=" + search,
                 method: "POST",
                 data: {
                     limit: limit,

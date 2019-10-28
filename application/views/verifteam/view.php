@@ -1,9 +1,8 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Verifired Team</h3>
+        <h3 class="box-title" align="center">Verified Team</h3>
     </div>
-</div>
-<div class="row">
+</div><div class="row">
     <div class="col-md-12">
         <div class="box">
             <img class="img-detail" src="<?= $file_event['url'] ?>">
@@ -42,18 +41,17 @@
                         <br>
                         <small>
                             <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
-                            <b>s/d</b>
+                            <br>SAMPAI</br>
                             <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
                         </small>
                     </div>
                     <div class="col-xs-6" align="right">
                         Pendaftar :
                         <b>
-                            <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
                             <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
                         </b>
                         <br>
-                        <small>Event Dibuat : <?= date('d-M-Y', strtotime($tbl_event['created_at'])) ?></small>
+                        <small>Event Dibuat : <br><?= date('d-M-Y', strtotime($tbl_event['created_at'])) ?></small>
                     </div>
                 </div>
             </div>

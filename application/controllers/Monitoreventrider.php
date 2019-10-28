@@ -6,7 +6,7 @@ class Monitoreventrider extends MY_Controller {
 
 	public function index(){
 		$data['page'] = 'Monitoring Event';
-		$this->template->load('template/template','Monitoreventrider/index', $data); 
+		$this->template->load('template/template','monitoreventrider/index', $data); 
 	}
 
 	public function fetch(){
@@ -39,6 +39,7 @@ class Monitoreventrider extends MY_Controller {
 				
 				$output .= '
 				
+				<div class="col-md-12">
 				<div class="box">
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
@@ -75,6 +76,7 @@ class Monitoreventrider extends MY_Controller {
 								<small>Event Dibuat : ' . date('d M Y', strtotime($event['created_at'])) . '</small>
 							</div>
 						</div>
+					</div>
 					</div>
 				</div>';
 			}

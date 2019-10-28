@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-md-12">
+        <h3 class="box-title" align="center">Daftar Sebagai Rider</h3>
         <form role="form" action="<?= base_url('login/actionRegisterRider') ?>" method="POST" id="sumbit">
             <div class="show_error"></div>
             <div class="form-group">
@@ -19,7 +20,7 @@
                 </div>
                 <div class="col-xs-6">
                     <div class="form-group">
-                        <label>Konfirmasi Password</label>
+                        <label>Konfirm Password</label>
                         <input type="password" name="confirmpassword" class="form-control">
                     </div>
                 </div>

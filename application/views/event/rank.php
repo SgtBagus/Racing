@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Event</h3>
+        <h3 class="box-title" align="center">Event</h3>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -14,13 +15,13 @@
                         <div class="row" align="center">
                             <?php
                             if ($tbl_event['statusEvent'] == 'BERJALAN') {
-                                $status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                                 echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
                             } else if ($tbl_event['statusEvent'] == 'SELESAI') {
-                                $status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                                echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
                             } else if ($tbl_event['statusEvent'] == 'BATAL') {
-                                $status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+                               echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                             } else {
-                                $status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
+                                echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                             }
                             ?>
                         </div>
@@ -42,18 +43,21 @@
                         <br>
                         <small>
                             <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
-                            <b>s/d</b>
+                            <br>
+                            <b>SAMPAI</b>
+                            <br>
                             <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
                         </small>
                     </div>
                     <div class="col-xs-6" align="right">
                         Pendaftar :
+                        <br>
                         <b>
                             <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
                             <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
                         </b>
                         <br>
-                        <small>Event Dibuat : <?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
+                        <small>Event Dibuat : <br><?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
                     </div>
                 </div>
             </div>

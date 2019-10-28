@@ -85,13 +85,15 @@ class Team extends MY_Controller
             $this->alert->alertsuccess('Success Send Data');
         }
     }
-
+    
     public function delete($id)
     {
-        $file_dir = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_team'));
-        @unlink($file_dir['dir']);
-
-        $this->mymodel->deleteData('file',  array('id' => $file_dir['id']));
+        $file = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_team'));
+        if ($file['name'] != "team_default.png") {
+            @unlink($file['dir']);
+        }
+        
+        $this->mymodel->deleteData('file',  array('id' => $file['id']));
         $this->mymodel->deleteData('tbl_team',  array('id' => $id));
         header('Location: http://192.168.100.9:8080/team?delete=true');
     }

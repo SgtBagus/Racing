@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Wisata</h3>
+        <h3 class="box-title" align="center">Wisata</h3>
         <form role="form" action="<?= base_url('wisata') ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Cari Wisata</label>
@@ -32,7 +32,7 @@
             search = $('#filter-search').val();
 
             $.ajax({
-                url: "<?= base_url(); ?>wisata/fetch?name=" + search,
+                url: "<?= base_url(); ?>wisata/fetch?title=" + search,
                 method: "POST",
                 data: {
                     limit: limit,

@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/select2/dist/css/select2.min.css">
 
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
-  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
   <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -46,9 +46,11 @@ if ($this->session->userdata('session_sop') == "") {
       <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100;">
         <div class="row">
           <div class="col-xs-2" align="center">
+            <?php if($page != "Home") {?>
             <a href="#" id="back" class="header-menu" onclick="back()">
               <i class="fa fa-arrow-left"></i>
             </a>
+            <?php } ?>
           </div>
           <div class="col-xs-8 header-menu" align="center">
             <img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg">
@@ -132,7 +134,7 @@ if ($this->session->userdata('session_sop') == "") {
         reader.onload = function(e) {
           $('#preview_image').before('<br>' +
             '<div align="center">' +
-            '<img class="img-circle" alt="User Image" src="' + e.target.result + '" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">' +
+            '<img class="img-circle" alt="User Image" src="' + e.target.result + '" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">' +
             '</div>');
         }
 

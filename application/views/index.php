@@ -6,51 +6,58 @@
 	<div class="col-xs-12" align="center">
 		<h3 class="box-title">Home</h3>
 	</div>
-	<br>
+</div>
+<div class="row"  align="center">
 	<a href="<?= base_url('event') ?>" class="a_black">
-		<div class="col-xs-6">
-			<div class="box">
-				<div class="box-body" align="center">
-					<i class="fa fa-star" style="font-size: 60px;"></i><br>
-					<b>
-						<h5 class="box-title" style="font-size: 15px;">Event</h5>
-					</b>
+		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+			<div class="box" style=" width: 100px; height: 100px;">
+				<div class="box-body" align="center">			
+                    <img src="<?= base_url('assets/flaticon/event.png')?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
 	</a>
 	<a href="<?= base_url('wisata') ?>" class="a_black">
-		<div class="col-xs-6">
-			<div class="box">
+		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-					<i class="fa fa-picture-o" style="font-size: 60px;"></i><br>
-					<b>
-						<h5 class="box-title" style="font-size: 15px;">Wisata</h5>
-					</b>
+                    <img src="<?= base_url('assets/flaticon/picture.png')?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
 	</a>
 	<a href="<?= base_url('blogs') ?>" class="a_black">
-		<div class="col-xs-6">
-			<div class="box">
+		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-					<i class="fa fa-newspaper-o" style="font-size: 60px;"></i><br>
-					<b>
-						<h5 class="box-title" style="font-size: 15px;">Blogs/News</h5>
-					</b>
+                    <img src="<?= base_url('assets/flaticon/text-lines.png')?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
 	</a>
 	<a href="<?= base_url('merchandise') ?>" class="a_black">
-		<div class="col-xs-6">
-			<div class="box">
+		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-					<i class="fa fa-cubes" style="font-size: 60px;"></i><br>
-					<b>
-						<h5 class="box-title" style="font-size: 15px;">Merchandise</h5>
-					</b>
+                    <img src="<?= base_url('assets/flaticon/box.png')?>" style=" width: 80px; height: 80px; ">
+				</div>
+			</div>
+		</div>
+	</a>
+	<a href="<?= base_url('verifteam') ?>" class="a_black">
+		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+			<div class="box" style=" width: 100px; height: 100px;">
+				<div class="box-body" align="center">
+                    <img src="<?= base_url('assets/flaticon/team.png')?>" style=" width: 80px; height: 80px; ">
+				</div>
+			</div>
+		</div>
+	</a>
+	<a href="<?= base_url('verifraider') ?>" class="a_black">
+		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+			<div class="box" style=" width: 100px; height: 100px;">
+				<div class="box-body" align="center">
+                    <img src="<?= base_url('assets/flaticon/rider.png')?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -58,7 +65,7 @@
 </div>
 <div class="row">
 	<div class="col-xs-6">
-		<h3>Event</h3>
+		<h3 class="box-title">Event</h3>
 	</div>
 	<div class="col-xs-6" align="right">
 		<h3><a href="<?= base_url('event') ?>">All Event</a></h3>
@@ -77,22 +84,26 @@
 							<div class="index-event mb">
 								<div class="box">
 									<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:125px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;">
-										<?php
-											if ($row['status'] == 'ENABLE') {
-												echo '<span class="label bg-green round right" style="margin-left:5px">Masih Dibuka</span>';
-											} else {
-												echo '<span class="label bg-red round right" style="margin-left:5px">Sudah Ditutup</span>';
-											}
-											?>
+                            <?php
+                            if ($row['statusEvent'] == 'BERJALAN') {
+                                 echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                            } else if ($row['statusEvent'] == 'SELESAI') {
+                                echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                            } else if ($row['statusEvent'] == 'BATAL') {
+                               echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+                            } else {
+                                echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
+                            }
+                            ?>
 									</div>
 									<div class="cards-text text-center" style="color: black">
 										<p>
-											<b class="title"><?= strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"] ?></b>
+											<b class="title"><?= strlen($row["title"]) > 10 ? substr($row["title"], 0, 10) . "..." : $row["title"] ?></b>
 											<br>
 											<small> <?= $row['alamat'] ?></small>
 											<br>
 											<small>
-												<?= date('d-M-Y', strtotime($row['tgleventStart'])) . " s/d " . date('d-M-Y', strtotime($row['tgleventEnd'])) ?>
+												<?= date('d M', strtotime($row['tgleventStart'])) . " s/d " . date('d M', strtotime($row['tgleventEnd'])) ?>
 											</small>
 										</p>
 									</div>
@@ -112,7 +123,7 @@
 	</section>
 	<?php if ($tbl_blog) { ?>
 		<div class="col-xs-6">
-			<h3>News</h3>
+			<h3 class="box-title" >News</h3>
 		</div>
 		<div class="col-xs-6" align="right">
 			<h3><a href="<?= base_url('blogs') ?>">All News</a></h3>
@@ -148,7 +159,7 @@
 	<?php } ?>
 	<?php if ($tbl_gallery) { ?>
 		<div class="col-xs-6">
-			<h3>Gallery</h3>
+			<h3 class="box-title" >Gallery</h3>
 		</div>
 		<div class="col-xs-6" align="right">
 			<h3><a href="<?= base_url('gallery') ?>">All Gallery</a></h3>
@@ -183,7 +194,7 @@
 		</section>
 	<?php } ?>
 	<div class="col-xs-6">
-		<h3>Merch</h3>
+		<h3 class="box-title" >Merch</h3>
 	</div>
 	<div class="col-xs-6" align="right">
 		<h3><a href="<?= base_url('merchandise') ?>">All Merch</a></h3>
@@ -224,7 +235,6 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#back").remove();
 		$('#owl-event').owlCarousel({
 			center: false,
 			items: 2,

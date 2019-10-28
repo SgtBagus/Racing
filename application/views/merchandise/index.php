@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Merchandise</h3>
+        <h3 class="box-title" align="center">Merchandise</h3>
         <form role="form" action="<?= base_url('event') ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Cari Merchandise</label>

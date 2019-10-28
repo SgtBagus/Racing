@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Event</h3>
+        <h3 class="box-title" align="center">Event</h3>
     </div>
 </div>
 <div class="row">
@@ -14,13 +14,13 @@
                         <div class="row" align="center">
                             <?php
                             if ($tbl_event['statusEvent'] == 'BERJALAN') {
-                                $status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                                 echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
                             } else if ($tbl_event['statusEvent'] == 'SELESAI') {
-                                $status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                                echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
                             } else if ($tbl_event['statusEvent'] == 'BATAL') {
-                                $status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+                               echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                             } else {
-                                $status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
+                                echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                             }
                             ?>
                         </div>
@@ -42,18 +42,21 @@
                         <br>
                         <small>
                             <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
-                            <b>s/d</b>
+                            <br>
+                            <b>SAMPAI</b>
+                            <br>
                             <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
                         </small>
                     </div>
                     <div class="col-xs-6" align="right">
                         Pendaftar :
+                        <br>
                         <b>
                             <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
                             <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
                         </b>
                         <br>
-                        <small>Event Dibuat : <?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
+                        <small>Event Dibuat : <br><?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
                     </div>
                 </div>
             </div>
@@ -106,7 +109,7 @@
                         <?php if ($rule) { ?>
                             <a href="<?= base_url('download/downloadPDFEvent/') . $rule['id'] ?>">
                                 <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
-                                    <i class="fa fa-download"></i> Download Pertauran Event
+                                    <i class="fa fa-download"></i> Download Peraturan Event
                                 </button>
                             </a>
                         <?php } ?>
@@ -157,7 +160,7 @@
             </button>
         </a>
         <?php if ($tbl_event['statusEvent'] == 'STARTED') {
-            if ($this->session->userdata('id')) {
+            if ($this->session->userdata('id') != NULL) {
                 if ($this->session->userdata('role') == 'Team') { ?>
                     <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
                         <button class="btn btn-lg btn-block btn-primary" style="margin-bottom: 15px">
@@ -172,7 +175,11 @@
                     </a>
                 <?php }
                     } else { ?>
-                <h4 class="help-block" align="center">Silakan Login Terlebih Dahulu untuk melakukan Pendaftaran</h4>
+                    <a href="<?= base_url('login/rider/')?>">
+                        <button class="btn btn-lg btn-block btn-primary" style="margin-bottom: 15px">
+                            <i class="fa fa-check"></i> Ikuti Event
+                        </button>
+                    </a>
             <?php } ?>
         <?php } else if ($tbl_event['statusEvent'] == 'BERJALAN') { ?>
             <h4 class="help-block" align="center">Event Telah Berjalan!</h4>

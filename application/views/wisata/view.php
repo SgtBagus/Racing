@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Wisata</h3>
+        <h3 class="box-title" align="center">Wisata</h3>
     </div>
 </div>
 <div class="row">
@@ -13,18 +13,18 @@
                 </h3>
                 <div class="row">
                     <div class="col-xs-6">
-                        <small>
+                        <p>
                             Wisata Dimulai :
                             <br>
-                            <?= date('d M Y', strtotime($tbl_wisata['tglwisataStart'])) . ' - ' . date('d M Y', strtotime($tbl_wisata['tglwisataEnd'])) ?>
-                        </small>
+                            <?= date('d M', strtotime($tbl_wisata['tglwisataStart'])) . ' - ' . date('d M', strtotime($tbl_wisata['tglwisataEnd'])) ?>
+                        </p>
                     </div>
                     <div class="col-xs-6" align="right">
-                        <small>
+                        <p>
                             Dibuat pada:
                             <br>
                             <?= date('d M Y', strtotime($tbl_wisata['created_at'])) ?>
-                        </small>
+                        </p>
                     </div>
                 </div>
             </div>

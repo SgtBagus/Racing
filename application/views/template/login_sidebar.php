@@ -26,6 +26,12 @@
                     <span>Register Team</span>
                 </a>
             </li> -->
+            <li style="margin-bottom: 5px;">
+                <a href="<?= base_url('kebijakanprivasi') ?>">
+                    <i class="fa fa-list"></i>
+                    <span>Kebijakan & Privasi</span>
+                </a>
+            </li>
             <li class="header">MENU</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url() ?>">

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Ubah Rider</h3>
+        <h3 class="box-title" align="center">Ubah Rider</h3>
     </div>
 </div>
 <div class="row">
@@ -113,7 +113,7 @@
             <div class="form-group">
                 <label>Foto</label><br>
                 <div align="center">
-                    <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
+                    <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
                 </div>
                 <div class="input-group" id="preview_image">
                     <button type="button" class="btn btn-primary" id="btnFile">Pilih Gambar</button>

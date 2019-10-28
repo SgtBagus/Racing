@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title">Rider</h3>
+        <h3 class="box-title" align="center">Rider</h3>
         <form role="form" action="#" method="GET">
             <div class="form-group">
                 <label>Cari Rider</label>

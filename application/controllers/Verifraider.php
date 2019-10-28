@@ -107,14 +107,11 @@ class Verifraider extends MY_Controller
         $output = '';
         $search = $_GET['name'];
 
-        $event_register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $id, 'approve' => 'APPROVE'));
-
         if ($search) {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = 1 AND c.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT a.raider_id, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON b.id = a.event_register_id WHERE a.event_register_id = '" . $event_register_id['id'] . "' AND b.approve = 'APPROVE' ORDER BY a.id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.event_register_id, a.raider_id FROM tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' ORDER BY a.id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
-
         if ($tbl_raider) {
             $i = 1;
             foreach ($tbl_raider as $row) {
@@ -128,22 +125,32 @@ class Verifraider extends MY_Controller
                 if ($raider['verificacion'] == 'ENABLE') {
                     $verificacion  = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
                 }
+                
+                $teamPhoto = '';
+                if($photo_team['url']){
+                    $teamPhoto = '<img alt="User Image" src="' . $photo_team['url'] . '" alt="Third slide" height="50px" width="90px">';
+                }
+                
+                $teamvalue = '<p class="help-block pull-right">Rider Peorangan!</p>';
+                if($team['name']){
+                    $teamvalue = '<b><h4>' . $team['name'] . '</h4></b>';
+                }
+                
+                $raiderValue = strlen($raider["name"]) > 13 ? substr($raider["name"], 0, 13) . "..." : $raider["name"];
+                
                 $output .= '<div class="col-xs-6">
                 <div class="box">
 				<img class="img-even" src="' . $photo['url'] . '" style="height: 100px;">
                     <div class="box-body">
                         <div class="row" align="center">
                         <div class="col-xs-12">
-                            <b>' . $team['name'] . '</b>
+                            '.$teamvalue.'
                             <br>
-                            <br>
-                            ' . $raider['name'] . ' ' . $verificacion . '
-                            <br>
+                            <b>' . $raiderValue . '</b> ' . $verificacion . '
                             <br>
                             ' . $raider['kota'] . '
                             <br>
-                            <br>
-                            <img alt="User Image" src="' . $photo_team['url'] . '" alt="Third slide" height="50px" width="90px">
+                            '.$teamPhoto.'
                         </div>
                         <br>
                         <p>Number : <b>' . $raider['nostart'] . '</b></p>

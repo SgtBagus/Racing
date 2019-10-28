@@ -87,7 +87,7 @@ class Verifteam extends MY_Controller
         $data['page'] = 'Verified Team';
         $data['tbl_event'] = $this->mymodel->selectDataone('tbl_event', array('id' => $id));
         $data['file_event'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'tbl_event'));
-        $data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE'");
+        $data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND team_id NOT LIKE 0 AND approve = 'APPROVE'");
 
         $data['subpage'] = $data['tbl_event']['title'];
         $this->template->load('template/template', 'verifteam/view', $data);
@@ -100,9 +100,9 @@ class Verifteam extends MY_Controller
         $search = $_GET['name'];
 
         if ($search) {
-            $team = $this->mymodel->selectWithQuery("SELECT a.team_id as team_id, b.name from tbl_event_register a INNER JOIN tbl_team b on a.team_id = b.id WHERE event_id = '" . $id . "' AND b.name LIKE '%" . $_GET['name'] . "%' AND approve = 'APPROVE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $team = $this->mymodel->selectWithQuery("SELECT a.team_id as team_id, b.name from tbl_event_register a INNER JOIN tbl_team b on a.team_id = b.id WHERE event_id = '" . $id . "' AND team_id NOT LIKE 0 AND b.name LIKE '%" . $_GET['name'] . "%' AND approve = 'APPROVE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $team = $this->mymodel->selectWithQuery("SELECT team_id from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $team = $this->mymodel->selectWithQuery("SELECT team_id from tbl_event_register WHERE event_id = '" . $id . "' AND team_id NOT LIKE 0 AND approve = 'APPROVE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
 
         if ($team) {
