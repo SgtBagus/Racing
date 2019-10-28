@@ -272,3 +272,11 @@ p {
 .label {
     border-radius: 15px;
 }
+
+.img-detail-preview {
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+    height: 85px;
+}

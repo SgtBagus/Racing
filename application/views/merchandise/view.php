@@ -6,7 +6,20 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box">
-            <img class="img-detail" src="<?= $file['url'] ?>">
+            <img class="img-detail" src="<?= $file['url'] ?>" id="main_image">
+
+            <?php
+            if ($file_detail) {
+                $i = 1;
+                foreach ($file_detail as $img) {
+                    ?>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <img src="<?= $img['url'] ?>" id="detail_image-<?= $i ?>" class="img-detail-preview">
+                    </div>
+            <?php
+                    $i++;
+                }
+            } ?>
             <div class="box-body" align="center">
                 <h3><?= $tbl_merchandise['title'] ?><br></h3>
                 Dibuat pada : <?= date('d-m-Y', strtotime($tbl_merchandise['created_at'])) ?> <br>
@@ -41,3 +54,23 @@
         </a>
     </div>
 </div>
+
+<script type="text/javascript">
+    <?php
+    if ($file_detail) {
+        $i = 1;
+        foreach ($file_detail as $img) {
+            ?>
+
+            $('#detail_image-<?= $i ?>').click(function() {
+                var main_src = $('#main_image').attr('src');
+                var detail_src = $('#detail_image-<?= $i ?>').attr('src');
+
+                $('#detail_image-<?= $i ?>').attr('src', main_src);
+                $('#main_image').attr('src', detail_src);
+            });
+    <?php $i++;
+        }
+    }
+    ?>
+</script>

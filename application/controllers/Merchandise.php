@@ -17,6 +17,7 @@ class Merchandise extends MY_Controller
 		$data['page'] = 'Merchandise';
 		$data['tbl_merchandise'] = $this->mymodel->selectDataone('tbl_merchandise',  array('id' => $id));
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_merchandise'));
+		$data['file_detail'] = $this->mymodel->selectWhere('file',array('table_id'=>$id,'table'=>'tbl_merchandise_detail'));
 		$data['subpage'] = '<b>' . $data['tbl_merchandise']['title'] . '</b>';
 		$this->template->load('template/template', 'merchandise/view', $data);
 	}
