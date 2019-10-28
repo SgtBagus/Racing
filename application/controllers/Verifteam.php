@@ -100,9 +100,9 @@ class Verifteam extends MY_Controller
         $search = $_GET['name'];
 
         if ($search) {
-            $team = $this->mymodel->selectWithQuery("SELECT a.team_id as team_id, b.name from tbl_event_register a INNER JOIN tbl_team b on a.team_id = b.id WHERE event_id = '" . $id . "' AND team_id NOT LIKE 0 AND b.name LIKE '%" . $_GET['name'] . "%' AND approve = 'APPROVE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $team = $this->mymodel->selectWithQuery("SELECT a.team_id as team_id, b.name from tbl_event_register a INNER JOIN tbl_team b on a.team_id = b.id WHERE event_id = '" . $id . "' AND team_id NOT LIKE 0 AND b.name LIKE '%" . $_GET['name'] . "%' AND approve = 'APPROVE' ORDER BY b.name ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $team = $this->mymodel->selectWithQuery("SELECT team_id from tbl_event_register WHERE event_id = '" . $id . "' AND team_id NOT LIKE 0 AND approve = 'APPROVE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $team = $this->mymodel->selectWithQuery("SELECT a.team_id as team_id from tbl_event_register a INNER JOIN tbl_team b ON a.team_id = b.id WHERE a.event_id = '" . $id . "' AND a.team_id NOT LIKE 0 AND a.approve = 'APPROVE' ORDER BY b.name ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
 
         if ($team) {
@@ -121,6 +121,12 @@ class Verifteam extends MY_Controller
 
                 $nameteam = strlen($team["name"]) > 10 ? substr($team["name"], 0, 10) . "..." : $team["name"];
                 
+                $kota = '-';
+                if($team['kota'])
+                {
+                    $kota = $team['kota'];
+                }
+
                 $output .= '<div class="col-xs-6">
                 <div class="box">
                 <div class="box-body">
@@ -130,7 +136,7 @@ class Verifteam extends MY_Controller
                 </div>
                 <div class="col-xs-12">
                 <p>' . $nameteam . ' ' . $verificacion . '<br>
-                <small>' . $team['kota'] . '</small>
+                <small>' . $kota . '</small>
                 </p>
                 </div>
                 </div>

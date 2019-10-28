@@ -6,11 +6,18 @@
 <div class="row">
     <div class="col-md-12">
         <h4 align="center"><?= $subpage ?></h4><br>
-        <img class="img-detail" src="<?= $main_image['url'] ?>" alt="Third slide">
-        <div align="center">
-            <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($id['created_at'])) ?>
+        <div class="box">
+            <img class="img-even" src="<?= $main_image['url'] ?>" alt="Third slide">
+            <div class="box-body">
+                <div align="center">
+                    <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($id['created_at'])) ?>
+                </div>
+            </div>
         </div>
-        <br><br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <form role="form" action="<?= base_url('gallery/view/' . $id['id']) ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Cari Gambar</label>

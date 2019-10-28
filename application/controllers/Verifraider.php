@@ -45,8 +45,7 @@ class Verifraider extends MY_Controller
             foreach ($event as $row) {
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event'));
 
-                $event_register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $row['id'], 'approve' => 'APPROVE'));
-                $rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $event_register_id['id'] . "'");
+                $rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id  WHERE b.event_id = '" . $row['id'] . "'  AND b.approve = 'APPROVE'");
 
                 if ($row['status'] == 'ENABLE') {
                     $status =  '<small class="label bg-green">Dibuka</small>';
@@ -108,9 +107,9 @@ class Verifraider extends MY_Controller
         $search = $_GET['name'];
 
         if ($search) {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY a.id, b.team_id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY c.name ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.event_register_id, a.raider_id FROM tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' ORDER BY a.id, b.team_id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.event_register_id, a.raider_id, c.name FROM tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' ORDER BY c.name ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
         if ($tbl_raider) {
             $i = 1;
