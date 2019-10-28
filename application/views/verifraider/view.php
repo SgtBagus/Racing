@@ -64,13 +64,6 @@
         <i class="fa fa-whatsapp"></i> Hubungi Admin
     </button>
 </a>
-<br>
-<div class="row">
-    <div class="col-md-12" align="center">
-        Rider Pendaftar <b> <?= $rowraider[0]['rowraider'] ?></b>:
-    </div>
-</div>
-<br>
 <div class="row">
     <div class="col-md-12">
         <form role="form" action="<?= base_url('verifraider/view/' . $tbl_event['id']) ?>" method="GET">

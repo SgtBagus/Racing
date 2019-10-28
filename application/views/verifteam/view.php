@@ -58,18 +58,11 @@
         </div>
     </div>
 </div>
-<br>
-<div class="row">
-    <div class="col-md-12" align="center">
-        Team Pendaftar <b> <?= $rowteam[0]['rowteam'] ?></b>:
-    </div>
-</div>
 <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
         <i class="fa fa-whatsapp"></i> Hubungi Admin
     </button>
 </a>
-<br>
 <div class="row">
     <div class="col-md-12">
         <form role="form" action="<?= base_url('verifteam/view/' . $tbl_event['id']) ?>" method="GET">

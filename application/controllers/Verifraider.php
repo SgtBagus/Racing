@@ -108,9 +108,9 @@ class Verifraider extends MY_Controller
         $search = $_GET['name'];
 
         if ($search) {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY a.id, b.team_id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.event_register_id, a.raider_id FROM tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' ORDER BY a.id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.event_register_id, a.raider_id FROM tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' ORDER BY a.id, b.team_id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
         if ($tbl_raider) {
             $i = 1;
@@ -124,21 +124,22 @@ class Verifraider extends MY_Controller
                 if ($raider['verificacion'] == 'ENABLE') {
                     $verificacion  = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
                 }
-                
+
                 $teamPhoto = '';
-                if($photo_team['url']){
+                if ($photo_team['url']) {
                     $teamPhoto = '<img alt="User Image" src="' . $photo_team['url'] . '" alt="Third slide" height="50px" width="90px">';
                 }
-                
+
                 $teamvalue = '<p class="help-block pull-right">Rider Peorangan!</p>';
-                if($team['name']){
-                    $teamvalue = '<b><h4>' . $team['name'] . '</h4></b>';
+                if ($team['name']) {
+                    $singkatTeam = strlen($team["name"]) > 10 ? substr($team["name"], 0, 10) . "..." : $team["name"];
+                    $teamvalue = '<p>' . $singkatTeam . '</p>';
                 }
-                
+
                 $raiderValue = strlen($raider["name"]) > 13 ? substr($raider["name"], 0, 13) . "..." : $raider["name"];
-                
+
                 $photoUrl = base_url('webfiles/raider/raider_default.png');
-                if ($photo['url'] != NULL) { 
+                if ($photo['url'] != NULL) {
                     $photoUrl = $photo['url'];
                 }
 
@@ -148,15 +149,11 @@ class Verifraider extends MY_Controller
                     <div class="box-body">
                         <div class="row" align="center">
                         <div class="col-xs-12">
-                            '.$teamvalue.'
+                        <p>' . $raiderValue . ' ' . $verificacion . '</p>
+                            ' . $teamvalue . '
                             <br>
-                            <b>' . $raiderValue . '</b> ' . $verificacion . '
-                            <br>
-                            ' . $raider['kota'] . '
-                            <br>
-                            '.$teamPhoto.'
+                            ' . $teamPhoto . '
                         </div>
-                        <br>
                         <p>Number : <b>' . $raider['nostart'] . '</b></p>
                         </div>
                     </div>
