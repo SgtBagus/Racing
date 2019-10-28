@@ -88,49 +88,11 @@ class Sendemail extends CI_Model {
         <tr>
         <td align="center" valign="top">
         <table cellpadding="0" cellspacing="0" border="0" width="78%" style="min-width: 300px;">
-        <tr>
-        <td align="center" valign="top" width="23%">                                             
-        <a href="#" target="_blank" style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">
-        <font face="Source Sans Pro, sans-serif" color="#1a1a1a" style="font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">
-        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">HELP&nbsp;CENTER</span>
-        </font>
-        </a>
-        </td>
-        <td align="center" valign="top" width="10%">
-        <font face="Source Sans Pro, sans-serif" color="#1a1a1a" style="font-size: 17px; line-height: 17px; font-weight: bold;">
-        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 17px; font-weight: bold;">&bull;</span>
-        </font>
-        </td>
-        <td align="center" valign="top" width="23%">
-        <a href="#" target="_blank" style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">
-        <font face="Source Sans Pro, sans-serif" color="#1a1a1a" style="font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">
-        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">SUPPORT&nbsp;24/7</span>
-        </font>
-        </a>
-        </td>
-        <td align="center" valign="top" width="10%">
-        <font face="Source Sans Pro, sans-serif" color="#1a1a1a" style="font-size: 17px; line-height: 17px; font-weight: bold;">
-        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 17px; font-weight: bold;">&bull;</span>
-        </font>
-        </td>
-        <td align="center" valign="top" width="23%">
-        <a href="#" target="_blank" style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">
-        <font face="Source Sans Pro, sans-serif" color="#1a1a1a" style="font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">
-        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 14px; line-height: 20px; text-decoration: none; white-space: nowrap; font-weight: bold;">ACCOUNT</span>
-        </font>
-        </a>
-        </td>
-        </tr>
         </table>
         <div style="height: 34px; line-height: 34px; font-size: 32px;">&nbsp;</div>
         <font face="Source Sans Pro, sans-serif" color="#868686" style="font-size: 17px; line-height: 20px;">
-        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;">Copyright &copy; 2017 Mailto. All&nbsp;Rights&nbsp;Reserved. We&nbsp;appreciate&nbsp;you!</span>
+        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;">Copyright &copy; '.date('Y').' Never Say Old. All&nbsp;Rights&nbsp;Reserved.</span>
         </font>
-        <div style="height: 3px; line-height: 3px; font-size: 1px;">&nbsp;</div>
-        <font face="Source Sans Pro, sans-serif" color="#1a1a1a" style="font-size: 17px; line-height: 20px;">
-        <span style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px;"><a href="#" target="_blank" style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;">help@mailto.com</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="#" target="_blank" style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;">1(800)232-90-26</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="#" target="_blank" style="font-family: Source Sans Pro, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;">Unsubscribe</a></span>
-        </font>
-        <div style="height: 35px; line-height: 35px; font-size: 33px;">&nbsp;</div>
         </td>
         </tr>
         </table>

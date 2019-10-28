@@ -49,7 +49,7 @@
     <div class="col-md-12">
         <a href="https://api.whatsapp.com/send?phone=<?= $tbl_merchandise['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
             <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-                <i class="fa fa-whatsapp"></i> Hubungi Penjual
+                <i class="fa fa-whatsapp"></i> Hubungi Admin
             </button>
         </a>
     </div>

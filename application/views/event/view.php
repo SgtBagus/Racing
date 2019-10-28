@@ -12,19 +12,24 @@
                     <div class="col-xs-12">
                         <h4 align="center"><?= $tbl_event['title'] ?></h4>
                         <div class="row" align="center">
-                            <?php if ($tbl_event['status'] == 'ENABLE') {
-                               	echo '<span class="label bg-green round right" style="margin-left:5px">Masih Dibuka</span>';
+                            <?php
+                            if ($tbl_event['statusEvent'] == 'BERJALAN') {
+                                $status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                            } else if ($tbl_event['statusEvent'] == 'SELESAI') {
+                                $status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                            } else if ($tbl_event['statusEvent'] == 'BATAL') {
+                                $status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                             } else {
-                               	echo '<span class="label bg-red round right" style="margin-left:5px">Sudah Ditutup</span>';
+                                $status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                             }
                             ?>
                         </div>
                         <div class="col-md-12" style="padding:0px 10px;">
-                        <p style="text-align:center;">
-                            <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
-                            <?= $tbl_event['alamat'] ?>
-                        </p>
-                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                            <p style="text-align:center;">
+                                <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
+                                <?= $tbl_event['alamat'] ?>
+                            </p>
+                            <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                         </a> -->
                         </div>
@@ -97,6 +102,14 @@
                     </div>
                     <div class="box-body">
                         <?= $tbl_event['deskripsi'] ?>
+                        <br>
+                        <?php if ($rule) { ?>
+                            <a href="<?= base_url('download/downloadPDFEvent/') . $rule['id'] ?>">
+                                <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
+                                    <i class="fa fa-download"></i> Download Pertauran Event
+                                </button>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -124,13 +137,6 @@
                 </a>
             </div>
         </div>
-        <?php if ($rule) { ?>
-            <a href="<?= base_url('download/downloadPDFEvent/') . $rule['id'] ?>">
-                <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
-                    <i class="fa fa-download"></i> Download Pertauran Event
-                </button>
-            </a>
-        <?php } ?>
         <?php if ($tbl_event['statusEvent'] == 'BERJALAN' || $tbl_event['statusEvent'] == 'SELESAI') { ?>
             <a href="<?= base_url('event/rank/') . $tbl_event['id'] ?>">
                 <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
@@ -172,7 +178,6 @@
             <h4 class="help-block" align="center">Event Telah Berjalan!</h4>
         <?php } else if ($tbl_event['statusEvent'] == 'SELESAI') { ?>
             <h4 class="help-block" align="center">Event Telah Selesai!</h4>
-            <p class="help-block">Event Telah Selesai!</p>
         <?php } else if ($tbl_event['statusEvent'] == 'BATAL') { ?>
             <h4 class="help-block" align="center">Event Dibatlkan!</h4>
         <?php } ?>

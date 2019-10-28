@@ -12,19 +12,24 @@
                     <div class="col-xs-12">
                         <h4 align="center"><?= $tbl_event['title'] ?></h4>
                         <div class="row" align="center">
-                            <?php if ($tbl_event['status'] == 'ENABLE') {
-                               	echo '<span class="label bg-green round right" style="margin-left:5px">Masih Dibuka</span>';
+                            <?php
+                            if ($tbl_event['statusEvent'] == 'BERJALAN') {
+                                $status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                            } else if ($tbl_event['statusEvent'] == 'SELESAI') {
+                                $status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                            } else if ($tbl_event['statusEvent'] == 'BATAL') {
+                                $status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                             } else {
-                               	echo '<span class="label bg-red round right" style="margin-left:5px">Sudah Ditutup</span>';
+                                $status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                             }
                             ?>
                         </div>
                         <div class="col-md-12" style="padding:0px 10px;">
-                        <p style="text-align:center;">
-                            <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
-                            <?= $tbl_event['alamat'] ?>
-                        </p>
-                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                            <p style="text-align:center;">
+                                <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
+                                <?= $tbl_event['alamat'] ?>
+                            </p>
+                            <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                         </a> -->
                         </div>
@@ -55,9 +60,9 @@
         </div>
     </div>
 </div>
-<a href="https://api.whatsapp.com/send?phone=<?=$tbl_event['phone']?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
+<a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-        <i class="fa fa-whatsapp"></i> Hubungi Petanggung Jawab Event
+        <i class="fa fa-whatsapp"></i> Hubungi Admin
     </button>
 </a>
 <br>

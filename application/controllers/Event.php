@@ -183,10 +183,14 @@ class Event extends MY_Controller
 				$register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $row['id']));
 				$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $register_id['id'] . "'");
 
-				if ($row['status'] == 'ENABLE') {
-					$status =  '<span class="label bg-green round right" style="margin-left:5px">Masih Dibuka</span>';
-				} else {
-					$status = '<span class="label bg-red round right" style="margin-left:5px">Sudah Ditutup</span>';
+				if ($row['statusEvent'] == 'BERJALAN') {
+					$status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+				}else if ($row['statusEvent'] == 'SELESAI') {
+					$status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+				}else if ($row['statusEvent'] == 'BATAL') {
+					$status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+				}else {
+					$status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
 				}
 
 				$output .= '
@@ -332,7 +336,7 @@ class Event extends MY_Controller
 				if ($fileRank) {
 					$filedownload = '<a href="' . base_url('download/downloadPDFPaket/') . $fileRank['id'] . '">
 						<button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
-							<i class="fa fa-download"></i> ' . $row['title'] . '
+							<i class="fa fa-download"></i> Download
 						</button>
 					</a>';
 				}
@@ -355,10 +359,9 @@ class Event extends MY_Controller
 											' . $rankDetail . '
 										</tbody>
 									</table>
+									' . $filedownload . '
                                     </div>
 								</div>
-								<br>
-								' . $filedownload . '
                             </div>
 						</div>
                 </div>';

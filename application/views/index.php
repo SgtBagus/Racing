@@ -1,7 +1,60 @@
 <div class="row">
-	<div class="col-xs-12">
+	<div class="cover">
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12" align="center">
 		<h3 class="box-title">Home</h3>
 	</div>
+	<br>
+	<a href="<?= base_url('event') ?>" class="a_black">
+		<div class="col-xs-6">
+			<div class="box">
+				<div class="box-body" align="center">
+					<i class="fa fa-star" style="font-size: 60px;"></i><br>
+					<b>
+						<h5 class="box-title" style="font-size: 15px;">Event</h5>
+					</b>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a href="<?= base_url('wisata') ?>" class="a_black">
+		<div class="col-xs-6">
+			<div class="box">
+				<div class="box-body" align="center">
+					<i class="fa fa-picture-o" style="font-size: 60px;"></i><br>
+					<b>
+						<h5 class="box-title" style="font-size: 15px;">Wisata</h5>
+					</b>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a href="<?= base_url('blogs') ?>" class="a_black">
+		<div class="col-xs-6">
+			<div class="box">
+				<div class="box-body" align="center">
+					<i class="fa fa-newspaper-o" style="font-size: 60px;"></i><br>
+					<b>
+						<h5 class="box-title" style="font-size: 15px;">Blogs/News</h5>
+					</b>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a href="<?= base_url('merchandise') ?>" class="a_black">
+		<div class="col-xs-6">
+			<div class="box">
+				<div class="box-body" align="center">
+					<i class="fa fa-cubes" style="font-size: 60px;"></i><br>
+					<b>
+						<h5 class="box-title" style="font-size: 15px;">Merchandise</h5>
+					</b>
+				</div>
+			</div>
+		</div>
+	</a>
 </div>
 <div class="row">
 	<div class="col-xs-6">
@@ -74,7 +127,7 @@
 							<a href="<?= base_url('blogs/view/') . $row['id'] ?>">
 								<div class="index-event mb">
 									<div class="box">
-										<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:125px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;"></div>
+										<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:225px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;"></div>
 										<div class="cards-text text-center" style="color: black">
 											<p>
 												<b class="title"><?= $row['title'] ?></b>
@@ -173,21 +226,21 @@
 	$(document).ready(function() {
 		$("#back").remove();
 		$('#owl-event').owlCarousel({
-			center: true,
+			center: false,
 			items: 2,
-			loop: true,
+			loop: false,
 			margin: 10,
 			responsive: {
 				600: {
-					items: 4
+					items: 5
 				}
 			}
 		})
 
 		$('#owl-news').owlCarousel({
 			center: false,
-			items: 2,
-			loop: true,
+			items: 1,
+			loop: false,
 			margin: 10,
 			responsive: {
 				600: {
@@ -199,23 +252,23 @@
 		$('#owl-gallery').owlCarousel({
 			center: false,
 			items: 1,
-			loop: true,
+			loop: false,
 			margin: 10,
 			responsive: {
 				600: {
-					items: 4
+					items: 5
 				}
 			}
 		})
 
 		$('#owl-merchandise').owlCarousel({
-			center: true,
+			center: false,
 			items: 2,
-			loop: true,
+			loop: false,
 			margin: 10,
 			responsive: {
 				600: {
-					items: 4
+					items: 5
 				}
 			}
 		})

@@ -150,7 +150,11 @@
                     var str = response;
                     if (str.indexOf("success") != -1) {
                         form.find(".show_error").hide().html(response).slideDown("fast");
-                        location.href = '<?= base_url("raider") ?>';
+                        <?php if ($this->session->userdata('role') == "Team") { ?>
+                            location.href = '<?= base_url("raider") ?>';
+                        <?php } else { ?>
+                            location.href = '<?= base_url("raider/edit/").$raider['id'] ?>';
+                        <?php } ?>
                         $(".btn-send").removeClass("disabled").html('<i class="fa fa-save"></i> Simpan').attr('disabled', false);
                     } else {
                         form.find(".show_error").hide().html(response).slideDown("fast");

@@ -12,19 +12,24 @@
                     <div class="col-xs-12">
                         <h4 align="center"><?= $tbl_event['title'] ?></h4>
                         <div class="row" align="center">
-                            <?php if ($tbl_event['status'] == 'ENABLE') {
-                               	echo '<span class="label bg-green round right" style="margin-left:5px">Masih Dibuka</span>';
+                            <?php
+                            if ($tbl_event['statusEvent'] == 'BERJALAN') {
+                                $status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                            } else if ($tbl_event['statusEvent'] == 'SELESAI') {
+                                $status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                            } else if ($tbl_event['statusEvent'] == 'BATAL') {
+                                $status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                             } else {
-                               	echo '<span class="label bg-red round right" style="margin-left:5px">Sudah Ditutup</span>';
+                                $status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                             }
                             ?>
                         </div>
                         <div class="col-md-12" style="padding:0px 10px;">
-                        <p style="text-align:center;">
-                            <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
-                            <?= $tbl_event['alamat'] ?>
-                        </p>
-                        <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+                            <p style="text-align:center;">
+                                <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
+                                <?= $tbl_event['alamat'] ?>
+                            </p>
+                            <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                         </a> -->
                         </div>
@@ -71,7 +76,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <form role="form" action="<?= base_url('event/gallery/').$tbl_event['id'] ?>" method="GET">
+        <form role="form" action="<?= base_url('event/gallery/') . $tbl_event['id'] ?>" method="GET">
             <div class="form-group">
                 <label for="exampleInputEmail1">Cari Dokumentasi</label>
                 <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
@@ -102,7 +107,7 @@
             search = $('#filter-search').val();
 
             $.ajax({
-                url: "<?= base_url(); ?>event/galleryfetch/<?=$tbl_event['id']?>/?name=" + search,
+                url: "<?= base_url(); ?>event/galleryfetch/<?= $tbl_event['id'] ?>/?name=" + search,
                 method: "POST",
                 data: {
                     limit: limit,

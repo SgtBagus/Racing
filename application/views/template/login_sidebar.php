@@ -8,24 +8,24 @@
                     <span>Login Rider</span>
                 </a>
             </li>
-            <li style="margin-bottom: 5px;">
+            <!-- <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login') ?>">
                     <i class="fa fa-lock"></i>
                     <span>Login Team</span>
                 </a>
-            </li>
+            </li> -->
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login/registerrider') ?>">
                     <i class="fa fa-user"></i>
                     <span>Register Rider</span>
                 </a>
             </li>
-            <li style="margin-bottom: 5px;">
+            <!-- <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login/register') ?>">
                     <i class="fa fa-user"></i>
                     <span>Register Team</span>
                 </a>
-            </li>
+            </li> -->
             <li class="header">MENU</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url() ?>">

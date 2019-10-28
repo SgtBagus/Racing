@@ -220,7 +220,7 @@ class Login extends MY_Controller
 					$subjectemail = 'Terima Kasih Telah Mendaftar Di Never Say Old!';
 					$this->sendemail->register($name, $toemail, $fromemail, $fromname, $subjectemail);	
 
-					$session     = $this->mlogin->login($_POST['dt']['email'], md5($_POST['password']));
+					$session     = $this->mlogin->loginrider($_POST['dt']['email'], md5($_POST['password']));
 					$this->session->set_userdata('session_sop', true);
 					$this->session->set_userdata('id', $session['id']);
 					$this->session->set_userdata('email', $session['email']);
@@ -274,7 +274,7 @@ class Login extends MY_Controller
 				$this->sendemail->register($name, $toemail, $fromemail, $fromname, $subjectemail);	
 
 
-				$session     = $this->mlogin->login($_POST['dt']['email'], md5($_POST['password']));
+				$session     = $this->mlogin->loginrider($_POST['dt']['email'], md5($_POST['password']));
 				$this->session->set_userdata('session_sop', true);
 				$this->session->set_userdata('id', $session['id']);
 				$this->session->set_userdata('email', $session['email']);

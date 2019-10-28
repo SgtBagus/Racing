@@ -16,7 +16,7 @@
           <i class="fa fa-sign-in"></i> Masuk Login
         </button>
       </div>
-      <a class="help-block pull-right">Tidak Punya Akun Rider ? <a href="<?= base_url('login/registerrider') ?>">Daftar Disini </a></p>
+      <p class="help-block pull-right">Tidak Punya Akun Rider ? <a href="<?= base_url('login/registerrider') ?>">Daftar Disini </a></p>
     </form>
   </div>
 </div>
