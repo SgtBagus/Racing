@@ -75,6 +75,12 @@ class Raider extends MY_Controller
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_raider'));
                 $motor = $this->mymodel->selectDataone('master_motor', array('id' => $row['motor_id']));
 
+                $gambar_raider = base_url('webfiles/raider/raider_default.png');
+                if($photo != NULL) 
+                {
+                    $gambar_raider = $photo['url'];
+                }
+
                 $verificacion = '';
                 if ($row['verificacion'] == 'ENABLE') {
                     $verificacion = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
@@ -87,7 +93,7 @@ class Raider extends MY_Controller
                 <div class="box-body">
                 <div class="row" align="center">
                 <div class="col-xs-6">
-                <img class="img-circle" alt="User Image" src="' . $photo['url'] . '" alt="Third slide" height="150px" width="150px">
+                <img class="img-circle" alt="User Image" src="' . $gambar_raider . '" alt="Third slide" height="150px" width="150px">
                 </div>
                 <div class="col-xs-6">
                 <h4>' . $row['name'] . ' ' . $verificacion . '<br>
@@ -212,7 +218,12 @@ class Raider extends MY_Controller
                     if ($file['name'] != "raider_default.png") {
                         @unlink($file['dir']);
                     }
-                    $this->mymodel->updateData('file', $data, array('table_id' =>  $id, 'table' => 'tbl_raider'));
+                    
+                    if($file != NULL){
+                        $this->mymodel->updateData('file', $data, array('table_id' =>  $id, 'table' => 'tbl_raider'));
+                    }else {
+                        $this->mymodel->insertData('file', $data);
+                    }
                 }
             }
             $this->alert->alertsuccess('Success Send Data');

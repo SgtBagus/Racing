@@ -15,8 +15,10 @@
             <div class="form-group">
                 <label>Foto</label><br>
                 <div align="center">
-                    <?php if ($file) { ?>
-                        <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
+                    <?php if ($file != NULL) { ?>
+                        <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
+                    <?php } else { ?>
+                        <img class="img-circle" alt="User Image" src="<?= base_url('webfiles/manager/manager_default.png') ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
                     <?php } ?>
                 </div>
                 <div class="input-group" id="preview_image">

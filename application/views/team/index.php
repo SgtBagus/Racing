@@ -19,7 +19,11 @@
             <div class="form-group">
                 <label>Logo Team</label><br>
                 <div align="center">
-                    <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="300px" width="300px" style="margin-bottom: 10px" id="preview">
+                    <?php if ($file != NULL) { ?>
+                        <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
+                    <?php } else { ?>
+                        <img class="img-circle" alt="User Image" src="<?= base_url('webfiles/team/team_default.png') ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
+                    <?php } ?>
                 </div>
                 <div class="input-group" id="preview_image">
                     <button type="button" class="btn btn-lg btn-primary" id="btnFile">Pilih Gambar</button>

@@ -117,7 +117,6 @@ class Verifraider extends MY_Controller
             foreach ($tbl_raider as $row) {
                 $raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['raider_id']));
                 $team = $this->mymodel->selectDataone('tbl_team', array('id' => $raider['team_id']));
-                $motor = $this->mymodel->selectDataone('master_motor', array('id' => $raider['motor_id']));
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $raider['id'], 'table' => 'tbl_raider'));
 
                 $photo_team = $this->mymodel->selectDataone('file', array('table_id' => $raider['team_id'], 'table' => 'tbl_team'));
@@ -138,9 +137,14 @@ class Verifraider extends MY_Controller
                 
                 $raiderValue = strlen($raider["name"]) > 13 ? substr($raider["name"], 0, 13) . "..." : $raider["name"];
                 
+                $photoUrl = base_url('webfiles/raider/raider_default.png');
+                if ($photo['url'] != NULL) { 
+                    $photoUrl = $photo['url'];
+                }
+
                 $output .= '<div class="col-xs-6">
                 <div class="box">
-				<img class="img-even" src="' . $photo['url'] . '" style="height: 100px;">
+				<img class="img-even" src="' . $photoUrl . '" style="height: 100px;">
                     <div class="box-body">
                         <div class="row" align="center">
                         <div class="col-xs-12">

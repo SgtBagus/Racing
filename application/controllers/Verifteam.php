@@ -114,17 +114,24 @@ class Verifteam extends MY_Controller
                     $verificacion  = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
                 }
 
+                $photoUrl = base_url('webfiles/team/team_default.png');
+                if ($photo['url'] != NULL) { 
+                    $photoUrl = $photo['url'];
+                }
+
+                $nameteam = strlen($team["name"]) > 10 ? substr($team["name"], 0, 10) . "..." : $team["name"];
+                
                 $output .= '<div class="col-xs-6">
                 <div class="box">
                 <div class="box-body">
                 <div class="row" align="center">
                 <div class="col-xs-12">
-                <img class="img-circle" alt="User Image" src="' . $photo['url'] . '" alt="Third slide" height="100px" width="100px">
+                <img class="img-circle" alt="User Image" src="' . $photoUrl . '" alt="Third slide" height="100px" width="100px">
                 </div>
                 <div class="col-xs-12">
-                <h4>' . $team['name'] . ' ' . $verificacion . '<br>
-                <small><i class="fa fa-globe"></i> ' . $team['kota'] . '</small>
-                </h4>
+                <p>' . $nameteam . ' ' . $verificacion . '<br>
+                <small>' . $team['kota'] . '</small>
+                </p>
                 </div>
                 </div>
                 </div>

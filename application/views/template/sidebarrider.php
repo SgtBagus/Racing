@@ -7,7 +7,12 @@
                 $rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $id_session));
                 $photo = $this->mymodel->selectDataone('file', array('table' => 'tbl_raider', 'table_id' => $rider['id']));
                 ?>
-                <img src="<?= $photo['url'] ?>" class="img-circle" alt="User Image" height="150px" width="150px">
+                <?php if ($photo != null) { ?>
+                    <img src="<?= $photo['url'] ?>" class="img-circle" alt="User Image" height="150px" width="150px">
+                <?php } else { ?>
+                    <img src="<?= base_url('webfiles/raider/raider_default.png') ?>" class="img-circle" alt="User Image" height="150px" width="150px">
+                <?php } ?>
+
                 <h2>
                     <?= $rider['name'] ?>
                     <?php if ($rider['verificacion'] == 'ENABLE') {
@@ -34,7 +39,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('raider/edit/'.$this->session->userdata('id')) ?>"><i class="fa fa-motorcycle"></i> Akun Saya</a>
+                        <a href="<?= base_url('raider/edit/' . $this->session->userdata('id')) ?>"><i class="fa fa-motorcycle"></i> Akun Saya</a>
                     </li>
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('riderpassword') ?>"><i class="fa fa-lock"></i> Ubah Passowrd</a>

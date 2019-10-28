@@ -113,7 +113,11 @@
             <div class="form-group">
                 <label>Foto</label><br>
                 <div align="center">
-                    <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
+                    <?php if ($file != NULL) { ?>
+                        <img class="img-circle" alt="User Image" src="<?= $file['url'] ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
+                    <?php } else { ?>
+                        <img class="img-circle" alt="User Image" src="<?= base_url('webfiles/raider/raider_default.png') ?>" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">
+                    <?php } ?>
                 </div>
                 <div class="input-group" id="preview_image">
                     <button type="button" class="btn btn-primary" id="btnFile">Pilih Gambar</button>
@@ -153,7 +157,7 @@
                         <?php if ($this->session->userdata('role') == "Team") { ?>
                             location.href = '<?= base_url("raider") ?>';
                         <?php } else { ?>
-                            location.href = '<?= base_url("raider/edit/").$raider['id'] ?>';
+                            location.href = '<?= base_url("raider/edit/") . $raider['id'] ?>';
                         <?php } ?>
                         $(".btn-send").removeClass("disabled").html('<i class="fa fa-save"></i> Simpan').attr('disabled', false);
                     } else {

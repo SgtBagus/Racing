@@ -7,7 +7,11 @@
                 $team = $this->mymodel->selectDataone('tbl_team', array('id' => $id_session));
                 $photo = $this->mymodel->selectDataone('file', array('table' => 'tbl_team', 'table_id' => $team['id']));
                 ?>
-                <img src="<?= $photo['url'] ?>" class="img-circle" alt="User Image" height="150px" width="150px">
+                <?php if($photo != null){ ?>
+                    <img src="<?= $photo['url'] ?>" class="img-circle" alt="User Image" height="150px" width="150px">
+                <?php } else {?>
+                    <img src="<?= base_url('webfiles/team/team_default.png') ?>" class="img-circle" alt="User Image" height="150px" width="150px">
+                <?php } ?>
                 <h2>
                     <?= $team['name'] ?>
                     <?php if ($team['verificacion'] == 'ENABLE') {

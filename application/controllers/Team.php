@@ -79,7 +79,12 @@ class Team extends MY_Controller
                     if ($file['name'] != "team_default.png") {
                         @unlink($file['dir']);
                     }
-                    $this->mymodel->updateData('file', $data, array('table_id' => $this->session->userdata('id'), 'table' => 'tbl_team'));
+                    
+                    if($file != NULL){
+                        $this->mymodel->updateData('file', $data, array('table_id' => $this->session->userdata('id'), 'table' => 'tbl_team'));
+                    }else {
+                        $this->mymodel->insertData('file', $data);
+                    }
                 }
             }
             $this->alert->alertsuccess('Success Send Data');
