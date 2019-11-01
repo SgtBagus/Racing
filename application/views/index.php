@@ -144,10 +144,6 @@
 										<div class="cards-text text-center" style="color: black">
 											<p>
 												<b class="title"><?= $row['title'] ?></b>
-												<br>
-												<small>
-													<?= date('d M Y', strtotime($row['created_at'])) ?>
-												</small>
 											</p>
 										</div>
 									</div>
@@ -180,10 +176,6 @@
 										<div class="cards-text text-center" style="color: black">
 											<p>
 												<b class="title"><?= $row['value'] ?></b>
-												<br>
-												<small>
-													<?= date('d M Y', strtotime($row['created_at'])) ?>
-												</small>
 											</p>
 										</div>
 									</div>

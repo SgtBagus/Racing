@@ -38,21 +38,20 @@ class Monitorevent extends MY_Controller {
 					$approve = '<small class="label bg-red"><i class="fa fa-ban"> </i> Pendaftaran Di Tolak </small>';
 				} 
 				
+				$title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
+
 				$output .= '
 				<div class="col-xs-6">
 				<div class="box">
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
 						<div class="row">
-							<div class="col-xs-12">
-								<h4 align="center">' . $event['title'] . '</h4>
+							<div class="col-xs-12" align="center">
+								<b style="font-size:15px">' . $title . '</b><br>
 								<div class="row" align="center">
 								' . $approve . '
 								</div>
 								<div class="col-md-12" style="padding:0px 10px;">
-								<p style="text-align:center;">
-								' . $event['alamat'] . '
-								</p>
 								</div>
 							</div>
 						</div>
@@ -62,19 +61,16 @@ class Monitorevent extends MY_Controller {
 								Tanggal Event :
 								<br>
 								<small>
-								' . date('d M Y', strtotime($event['tgleventStart'])) . '
-								    <b> s/d </b>
-									' . date('d M Y', strtotime($event['tgleventEnd'])) . '
+								' . date('d M Y', strtotime($row['tgleventStart'])) . '<b> s/d </b>
+									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
 								</small>
 							</div>
 							<div class="col-xs-12" align="center">
 								Pendaftar :
 								<b>
-								<img src="'.base_url('assets/flaticon/icon_team.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />'.$rowteam[0]['rowteam'].'
-								<img src="'.base_url('assets/flaticon/icon_rider.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />'.$rowraider[0]['rowraider'].'
+								<img src="' . base_url('assets/flaticon/icon_rider.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowraider[0]['rowraider'] . '
+								<img src="' . base_url('assets/flaticon/icon_team.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowteam[0]['rowteam'] . '
 								</b>
-								<br>
-								<small>Event Dibuat : ' . date('d M Y', strtotime($event['created_at'])) . '</small>
 							</div>
 						</div>
 					</div>

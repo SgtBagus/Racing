@@ -35,7 +35,7 @@ class Blogs extends MY_Controller
 
 				// $desktpsi = strlen($row["deskripsi"]) > 50 ? substr($row["deskripsi"], 0, 50) . "..." : $row["deskripsi"];
 				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
-				
+
 				$output .= '
 				<div class="col-xs-6">
 					<a href="' . base_url('blogs/view/') . $row['id'] . '" class="a_black">
@@ -44,7 +44,7 @@ class Blogs extends MY_Controller
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12" align="center">
-                                        <h4><b>' . $title . '</b></h4>
+										<b style="font-size:15px">' . $title . '</b><br>
                                     </div>
                                 </div>
                             </div>

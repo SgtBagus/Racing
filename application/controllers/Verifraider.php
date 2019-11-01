@@ -60,14 +60,14 @@ class Verifraider extends MY_Controller
                 $title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
 
                 $output .= '
-                <a href="' . base_url("verifraider/view/") . $row['id'] . '" class="a_black">
-                <div class="col-xs-6">
+				<a href="' . base_url("verifteam/view/") . $row['id'] . '" class="a_black">
+				<div class="col-xs-6">
 				<div class="box">
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
 						<div class="row">
-							<div class="col-xs-12">
-                            <h4 align="center">' . $title . '</h4>
+                        <div class="col-xs-12" align="center">
+                                <b style="font-size:15px">' . $title . '</b><br>
 								<div class="row" align="center">
 								' . $status . '
 								</div>
@@ -94,8 +94,6 @@ class Verifraider extends MY_Controller
 								<b>
                                 <img src="' . base_url('assets/flaticon/icon_rider.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' . $rowraider[0]['rowraider'] . '
 								</b>
-								<br>
-								<small>Event Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
 							</div>
 						</div>
 					</div>

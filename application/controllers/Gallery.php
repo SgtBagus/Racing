@@ -48,7 +48,7 @@ class Gallery extends MY_Controller
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12" align="center">
-                                        <h4><b>' . $value . '</b></h4>
+                                        <b style="font-size:15px">' . $value . '</b><br>
                                     </div>
                                     <div class="col-xs-12" align="center">
 									    Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="'.base_url('assets/flaticon/sidebar_picture.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar

@@ -49,7 +49,7 @@ class Merchandise extends MY_Controller
                                     <div class="col-xs-12">
                                     </div>
                                     <div class="col-xs-12" align="center">
-                                        <h4><b>' . $title . '</b><br></h4>
+                                        <b style="font-size:11px">' . $title . '</b><br>
                                         <small><b>Rp. ' . number_format($row['harga'], 0, ',', '.') . ',- </b></small>
                                     </div>
                                 </div>

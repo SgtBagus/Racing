@@ -50,8 +50,6 @@
                         <b>
                             <img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px; margin-right: 3px" /><?= $rowteam[0]['rowteam'] ?>
                         </b>
-                        <br>
-                        <small>Event Dibuat : <br><?= date('d-M-Y', strtotime($tbl_event['created_at'])) ?></small>
                     </div>
                 </div>
             </div>

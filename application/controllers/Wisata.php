@@ -33,6 +33,8 @@ class Wisata extends MY_Controller
 			foreach ($tbl_wisata as $row) {
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_wisata'));
 				
+				$title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
+				
 				$output .= '
 				<div class="col-xs-6">
 				<a href="' . base_url('wisata/view/') . $row['id'] . '" class="a_black">
@@ -41,7 +43,7 @@ class Wisata extends MY_Controller
 				<div class="box-body">
 				<div class="row">
 				<div class="col-xs-12" align="center">
-				<h3><b>' . $row['title'] . '</b></h3>
+				<b style="font-size:15px">' . $title . '</b><br>
 				</div>
 				</div>
 				<div class="row">

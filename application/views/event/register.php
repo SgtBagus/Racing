@@ -56,8 +56,6 @@
                                 <img src="<?= base_url('assets/flaticon/icon_rider.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowraider[0]['rowraider'] ?>
                                 <img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowteam[0]['rowteam'] ?>
                             </b>
-                            <br>
-                            <small>Event Dibuat : <?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
                         </div>
                     </div>
                 </div>
@@ -200,7 +198,7 @@
             '</div>' +
             '<div class="col-xs-7">' +
             '<h4>' + name + '<br>' +
-            '<small><img src="<?= base_url('assets/flaticon/worldwide.png')?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' + alamat + '</small>' +
+            '<small><img src="<?= base_url('assets/flaticon/worldwide.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' + alamat + '</small>' +
             '</h4>' +
             // '<button type="button" class="btn btn-sm btn-block btn-danger" onclick="deleteRaider(' + id + ')"> Hapus</button>' +
             '</div>' +

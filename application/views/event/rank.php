@@ -3,7 +3,6 @@
         <h3 class="box-title" align="center">Event</h3>
     </div>
 </div>
-
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -15,11 +14,11 @@
                         <div class="row" align="center">
                             <?php
                             if ($tbl_event['statusEvent'] == 'BERJALAN') {
-                                 echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                                echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
                             } else if ($tbl_event['statusEvent'] == 'SELESAI') {
                                 echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
                             } else if ($tbl_event['statusEvent'] == 'BATAL') {
-                               echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+                                echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                             } else {
                                 echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                             }
@@ -54,8 +53,6 @@
                             <img src="<?= base_url('assets/flaticon/icon_rider.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowraider[0]['rowraider'] ?>
                             <img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowteam[0]['rowteam'] ?>
                         </b>
-                        <br>
-                        <small>Event Dibuat : <br><?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
                     </div>
                 </div>
             </div>

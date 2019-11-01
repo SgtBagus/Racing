@@ -47,8 +47,8 @@ class Verifteam extends MY_Controller
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
 						<div class="row">
-							<div class="col-xs-12">
-								<h4 align="center">' . $title. '</h4>
+							<div class="col-xs-12" align="center">
+                                <b style="font-size:15px">' . $title . '</b><br>
 								<div class="row" align="center">
 								' . $status . '
 								</div>
@@ -74,8 +74,6 @@ class Verifteam extends MY_Controller
 								Pendaftar :
 								<b>
                                 <img src="' . base_url('assets/flaticon/icon_team.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' . $rowteam[0]['rowteam'] . '</b>
-								<br>
-								<small>Event Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
 							</div>
 						</div>
 					</div>

@@ -193,7 +193,7 @@ class Event extends MY_Controller
 					$status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
 				}
 				
-                $title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
+				$title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
 
 				$output .= '
 				<a href="' . base_url("event/view/") . $row['id'] . '" class="a_black">
@@ -202,15 +202,12 @@ class Event extends MY_Controller
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
 						<div class="row">
-							<div class="col-xs-12">
-								<h4 align="center">' . $title . '</h4>
+							<div class="col-xs-12" align="center">
+								<b style="font-size:15px">' . $title . '</b><br>
 								<div class="row" align="center">
 								' . $status . '
 								</div>
 								<div class="col-md-12" style="padding:0px 10px;">
-								<p style="text-align:center;">
-								' . $row['alamat'] . '
-								</p>
 								</div>
 							</div>
 						</div>
@@ -230,8 +227,6 @@ class Event extends MY_Controller
 								<img src="' . base_url('assets/flaticon/icon_rider.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowraider[0]['rowraider'] . '
 								<img src="' . base_url('assets/flaticon/icon_team.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowteam[0]['rowteam'] . '
 								</b>
-								<br>
-								<small>Event Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
 							</div>
 						</div>
 					</div>
@@ -259,7 +254,7 @@ class Event extends MY_Controller
 				$main_image = $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'master_gallery'));
 				$imagecount = $this->mymodel->selectWithQuery('SELECT count(id) as imagecount from tbl_gallery WHERE status = "ENABLE" AND imagegroup_id = ' . $row['id']);
 
-				$value = strlen($row["value"]) > 15 ? substr($row["value"], 0, 15) . "..." : $row["value"];
+				$value = strlen($row["value"]) > 20 ? substr($row["value"], 0, 20) . "..." : $row["value"];
 
 				$output .= '
                 <div class="col-xs-6">
@@ -269,7 +264,7 @@ class Event extends MY_Controller
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12" align="center">
-                                        <h3><b>' . $value . '</b></h3>
+										<b style="font-size:15px">' . $value . '</b><br>
                                     </div>
                                     <div class="col-xs-12" align="center">
 									Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="'.base_url('assets/flaticon/sidebar_picture.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar

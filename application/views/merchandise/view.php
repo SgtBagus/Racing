@@ -7,25 +7,26 @@
     <div class="col-md-12">
         <div class="box">
             <img class="img-detail" src="<?= $file['url'] ?>" id="main_image">
-            <div class="box-body" align="center" style="margin-top: -15px;">
-                <div class="row">   
-                    <?php
-                    if ($file_detail) {
-                        $i = 1;
-                        foreach ($file_detail as $img) {
-                            ?>
+            <?php
+            if ($file_detail) {
+                ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                            $i = 1;
+                            foreach ($file_detail as $img) {
+                                ?>
                             <div class="col-md-2 col-sm-3 col-xs-4">
                                 <img src="<?= $img['url'] ?>" id="detail_image-<?= $i ?>" class="img-detail-preview">
                             </div>
-                    <?php
-                            $i++;
-                        }
-                    } ?>
+                        <?php
+                                $i++;
+                            } ?>
+                    </div>
                 </div>
+            <?php } ?>
+            <div class="box-body" align="center">
                 <h4><b><?= $tbl_merchandise['title'] ?></b></h4>
-                <small>
-                Dibuat pada : <?= date('d M Y', strtotime($tbl_merchandise['created_at'])) ?>
-                </small>
             </div>
         </div>
     </div>
