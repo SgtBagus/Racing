@@ -23,7 +23,7 @@ class Event extends MY_Controller
 
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $data['register_id']['id'] . "'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/view', $data);
@@ -39,7 +39,7 @@ class Event extends MY_Controller
 
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $data['register_id']['id'] . "'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/gallery', $data);
@@ -56,7 +56,7 @@ class Event extends MY_Controller
 
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $data['register_id']['id'] . "'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
 
 		$data['subpage'] = 'Mendaftar Event : <b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/register', $data);
@@ -172,36 +172,38 @@ class Event extends MY_Controller
 		$search = $_GET['title'];
 
 		if ($search) {
-			$event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' AND LOWER(title) like '%" . $search . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+			$event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' AND LOWER(title) like '%" . $search . "%' ORDER BY tgleventStart DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
 		} else {
-			$event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+			$event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' ORDER BY tgleventStart DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
 		}
 		if ($event) {
 			foreach ($event as $row) {
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event'));
 				$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "'");
-				$register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $row['id']));
-				$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $register_id['id'] . "'");
+
+				$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']);
 
 				if ($row['statusEvent'] == 'BERJALAN') {
 					$status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
-				}else if ($row['statusEvent'] == 'SELESAI') {
+				} else if ($row['statusEvent'] == 'SELESAI') {
 					$status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
-				}else if ($row['statusEvent'] == 'BATAL') {
+				} else if ($row['statusEvent'] == 'BATAL') {
 					$status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
-				}else {
+				} else {
 					$status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
 				}
+				
+                $title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
 
 				$output .= '
 				<a href="' . base_url("event/view/") . $row['id'] . '" class="a_black">
-				<div class="col-md-12">
+				<div class="col-xs-6">
 				<div class="box">
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
 						<div class="row">
 							<div class="col-xs-12">
-								<h4 align="center">' . $row['title'] . '</h4>
+								<h4 align="center">' . $title . '</h4>
 								<div class="row" align="center">
 								' . $status . '
 								</div>
@@ -214,20 +216,19 @@ class Event extends MY_Controller
 						</div>
 						<hr style="margin-top:5px; margin-bottom: 5px;">
 						<div class="row">
-							<div class="col-xs-6">
+							<div class="col-xs-12" align="center">
 								Tanggal Event :
 								<br>
 								<small>
-								' . date('d M Y', strtotime($row['tgleventStart'])) . '
-									<b>s/d</b>
+								' . date('d M Y', strtotime($row['tgleventStart'])) . '<b> s/d </b>
 									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
 								</small>
 							</div>
-							<div class="col-xs-6" align="right">
+							<div class="col-xs-12" align="center">
 								Pendaftar :
 								<b>
-									<i class="fa fa-motorcycle"></i>' . $rowraider[0]['rowraider'] . '
-									<i class="fa fa-users"></i>' . $rowteam[0]['rowteam'] . '
+								<img src="' . base_url('assets/flaticon/icon_rider.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowraider[0]['rowraider'] . '
+								<img src="' . base_url('assets/flaticon/icon_team.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowteam[0]['rowteam'] . '
 								</b>
 								<br>
 								<small>Event Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
@@ -258,20 +259,20 @@ class Event extends MY_Controller
 				$main_image = $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'master_gallery'));
 				$imagecount = $this->mymodel->selectWithQuery('SELECT count(id) as imagecount from tbl_gallery WHERE status = "ENABLE" AND imagegroup_id = ' . $row['id']);
 
+				$value = strlen($row["value"]) > 15 ? substr($row["value"], 0, 15) . "..." : $row["value"];
+
 				$output .= '
-                <div class="col-md-12">
+                <div class="col-xs-6">
                     <a href="' . base_url('gallery/view/') . $row['id'] . '" class="a_black">
                         <div class="box">
                         <img class="img-even" src="' . $main_image['url'] . '">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12" align="center">
-                                        <h3><b>' . $row['value'] . '</b></h3>
+                                        <h3><b>' . $value . '</b></h3>
                                     </div>
                                     <div class="col-xs-12" align="center">
-                                        <i class="fa fa-picture-o"></i> <b>' . $imagecount[0]['imagecount'] . '</b> Gambar
-                                        <br>
-                                        <i class="fa fa-calendar"></i> Dibuat pada tgl : ' . date('d-m-Y', strtotime($row['created_at'])) . '
+									Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="'.base_url('assets/flaticon/sidebar_picture.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +294,7 @@ class Event extends MY_Controller
 
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $data['register_id']['id'] . "'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
 
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
@@ -315,13 +316,34 @@ class Event extends MY_Controller
 					foreach ($tbl_paket_detail as $row_detail) {
 						$team = $this->mymodel->selectDataone('tbl_team', array('id' => $row_detail['id_team']));
 						$fileteam = $this->mymodel->selectDataone('file', array('table_id' => $team['id'], 'table' => 'tbl_team'));
+
 						$rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row_detail['id_raider']));
+
 						$filerider = $this->mymodel->selectDataone('file', array('table_id' => $rider['id'], 'table' => 'tbl_raider'));
+
+						if ($team != null) {
+							$phototeam = '<img src="' . base_url('webfiles/team/team_default.png') . '" width="50px" height="50px" style="border-radius:5px"><br>' . $team['name'];
+							if ($fileteam != null) {
+								$phototeam = '<img src="' . $fileteam['url'] . '" width="50px" height="50px" style="border-radius:5px"><br>' . $team['name'];
+							}
+						} else {
+							$phototeam = '<i>Tidak Terdaftar Team</i>';
+						}
+
+						if ($rider != null) {
+							$photorider = '<img src="' . base_url('webfiles/raider/raider_default.png') . '" width="50px" height="50px" style="border-radius:5px"><br>' . $rider['name'];
+							if ($filerider != null) {
+								$photorider = '<img src="' . $filerider['url'] . '" width="50px" height="50px" style="border-radius:5px"><br>' . $rider['name'];
+							}
+						} else {
+							$photorider = '<i>-</i>';
+						}
+
 
 						$rankDetail .= '<tr>
 					<td>' . $row_detail['number'] . '</td>
-					<td align="center"><img src="' . $fileteam['url'] . '" width="50px" height="50px" style="border-radius:5px"><br>' . $team['name'] . '</td>
-					<td align="center"><img src="' . $filerider['url'] . '" width="50px" height="50px" style="border-radius:5px"><br>' . $rider['name'] . '</td>
+					<td align="center">' . $phototeam . '</td>
+					<td align="center">' . $photorider . '</td>
 					<td>' . $row_detail['keterangan'] . '</td>
 					</tr>';
 					}
@@ -336,7 +358,7 @@ class Event extends MY_Controller
 				if ($fileRank) {
 					$filedownload = '<a href="' . base_url('download/downloadPDFPaket/') . $fileRank['id'] . '">
 						<button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
-							<i class="fa fa-download"></i> Download
+							<img src="'.base_url('assets/flaticon/download.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />  Download
 						</button>
 					</a>';
 				}

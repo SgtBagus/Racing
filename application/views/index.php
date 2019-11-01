@@ -7,12 +7,12 @@
 		<h3 class="box-title">Home</h3>
 	</div>
 </div>
-<div class="row"  align="center">
+<div class="row" align="center">
 	<a href="<?= base_url('event') ?>" class="a_black">
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
-				<div class="box-body" align="center">			
-                    <img src="<?= base_url('assets/flaticon/event.png')?>" style=" width: 80px; height: 80px; ">
+				<div class="box-body" align="center">
+					<img src="<?= base_url('assets/flaticon/event.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-                    <img src="<?= base_url('assets/flaticon/picture.png')?>" style=" width: 80px; height: 80px; ">
+					<img src="<?= base_url('assets/flaticon/wisata.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-                    <img src="<?= base_url('assets/flaticon/text-lines.png')?>" style=" width: 80px; height: 80px; ">
+					<img src="<?= base_url('assets/flaticon/text-lines.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-                    <img src="<?= base_url('assets/flaticon/box.png')?>" style=" width: 80px; height: 80px; ">
+					<img src="<?= base_url('assets/flaticon/box.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-                    <img src="<?= base_url('assets/flaticon/team.png')?>" style=" width: 80px; height: 80px; ">
+					<img src="<?= base_url('assets/flaticon/team.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-                    <img src="<?= base_url('assets/flaticon/rider.png')?>" style=" width: 80px; height: 80px; ">
+					<img src="<?= base_url('assets/flaticon/rider.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -78,23 +78,23 @@
 						$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event'));
 						$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "'");
 						$register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $row['id']));
-						$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $register_id['id'] . "'");
+						$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']);
 						?>
 						<a href="<?= base_url('event/view/') . $row['id'] ?>">
 							<div class="index-event mb">
 								<div class="box">
 									<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:125px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;">
-                            <?php
-                            if ($row['statusEvent'] == 'BERJALAN') {
-                                 echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
-                            } else if ($row['statusEvent'] == 'SELESAI') {
-                                echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
-                            } else if ($row['statusEvent'] == 'BATAL') {
-                               echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
-                            } else {
-                                echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
-                            }
-                            ?>
+										<?php
+											if ($row['statusEvent'] == 'BERJALAN') {
+												echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+											} else if ($row['statusEvent'] == 'SELESAI') {
+												echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+											} else if ($row['statusEvent'] == 'BATAL') {
+												echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+											} else {
+												echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
+											}
+											?>
 									</div>
 									<div class="cards-text text-center" style="color: black">
 										<p>
@@ -103,14 +103,16 @@
 											<small> <?= $row['alamat'] ?></small>
 											<br>
 											<small>
-												<?= date('d M', strtotime($row['tgleventStart'])) . " s/d " . date('d M', strtotime($row['tgleventEnd'])) ?>
+												<?= date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd'])) ?>
 											</small>
 										</p>
 									</div>
 									<div class="row">
 										<div class="col-xs-12" align="center" style="color: black">
-											<i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
-											<i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+											<b>
+												<img src="<?= base_url('assets/flaticon/icon_rider.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowraider[0]['rowraider'] ?>
+												<img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowteam[0]['rowteam'] ?>
+											</b>
 										</div>
 									</div>
 								</div>
@@ -123,7 +125,7 @@
 	</section>
 	<?php if ($tbl_blog) { ?>
 		<div class="col-xs-6">
-			<h3 class="box-title" >News</h3>
+			<h3 class="box-title">News</h3>
 		</div>
 		<div class="col-xs-6" align="right">
 			<h3><a href="<?= base_url('blogs') ?>">All News</a></h3>
@@ -144,7 +146,7 @@
 												<b class="title"><?= $row['title'] ?></b>
 												<br>
 												<small>
-													<?= date('d-M-Y', strtotime($row['created_at'])) ?>
+													<?= date('d M Y', strtotime($row['created_at'])) ?>
 												</small>
 											</p>
 										</div>
@@ -159,7 +161,7 @@
 	<?php } ?>
 	<?php if ($tbl_gallery) { ?>
 		<div class="col-xs-6">
-			<h3 class="box-title" >Gallery</h3>
+			<h3 class="box-title">Gallery</h3>
 		</div>
 		<div class="col-xs-6" align="right">
 			<h3><a href="<?= base_url('gallery') ?>">All Gallery</a></h3>
@@ -180,7 +182,7 @@
 												<b class="title"><?= $row['value'] ?></b>
 												<br>
 												<small>
-													<?= date('d-M-Y', strtotime($row['created_at'])) ?>
+													<?= date('d M Y', strtotime($row['created_at'])) ?>
 												</small>
 											</p>
 										</div>
@@ -194,7 +196,7 @@
 		</section>
 	<?php } ?>
 	<div class="col-xs-6">
-		<h3 class="box-title" >Merch</h3>
+		<h3 class="box-title">Merch</h3>
 	</div>
 	<div class="col-xs-6" align="right">
 		<h3><a href="<?= base_url('merchandise') ?>">All Merch</a></h3>
@@ -221,7 +223,7 @@
 										<p>
 											<b class="title"> <?= substr($row['title'], 0, 10) ?></b>
 											<br>
-											<span>Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span>
+                                            <small><b>Rp. <?= number_format($row['harga'], 0, ',', '.') ?>,- </b></small>
 										</p>
 									</div>
 								</div>

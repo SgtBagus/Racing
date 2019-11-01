@@ -39,7 +39,7 @@ class Monitorevent extends MY_Controller {
 				} 
 				
 				$output .= '
-				<div class="col-md-12">
+				<div class="col-xs-6">
 				<div class="box">
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
@@ -58,20 +58,20 @@ class Monitorevent extends MY_Controller {
 						</div>
 						<hr style="margin-top:5px; margin-bottom: 5px;">
 						<div class="row">
-							<div class="col-xs-6">
+							<div class="col-xs-12" align="center">
 								Tanggal Event :
 								<br>
 								<small>
 								' . date('d M Y', strtotime($event['tgleventStart'])) . '
-									<b>s/d</b>
+								    <b> s/d </b>
 									' . date('d M Y', strtotime($event['tgleventEnd'])) . '
 								</small>
 							</div>
-							<div class="col-xs-6" align="right">
+							<div class="col-xs-12" align="center">
 								Pendaftar :
 								<b>
-									<i class="fa fa-motorcycle"></i>' . $rowraider[0]['rowraider'] . '
-									<i class="fa fa-users"></i>' . $rowteam[0]['rowteam'] . '
+								<img src="'.base_url('assets/flaticon/icon_team.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />'.$rowteam[0]['rowteam'].'
+								<img src="'.base_url('assets/flaticon/icon_rider.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />'.$rowraider[0]['rowraider'].'
 								</b>
 								<br>
 								<small>Event Dibuat : ' . date('d M Y', strtotime($event['created_at'])) . '</small>

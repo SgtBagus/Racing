@@ -28,14 +28,13 @@
       <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100;">
         <div class="row">
           <div class="col-xs-2" align="center">
-            
           </div>
           <div class="col-xs-8 header-menu" align="center">
             <img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg">
           </div>
           <a href="#" id="open-sidebar">
             <div class="col-xs-2 header-menu" align="center" data-toggle="control-sidebar" style="margin-left: -10px">
-              <i class="fa fa-bars"></i>
+              <img src="<?= base_url('assets/flaticon/list.png') ?>" style=" width: 30px; height: 30px; ">
             </div>
           </a>
         </div>

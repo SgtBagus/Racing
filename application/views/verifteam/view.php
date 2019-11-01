@@ -41,14 +41,14 @@
                         <br>
                         <small>
                             <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
-                            <br>SAMPAI</br>
+                            <b> s/d </b>
                             <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
-                        </small>
+                        </small> 
                     </div>
                     <div class="col-xs-6" align="right">
                         Pendaftar :
                         <b>
-                            <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+                            <img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px; margin-right: 3px" /><?= $rowteam[0]['rowteam'] ?>
                         </b>
                         <br>
                         <small>Event Dibuat : <br><?= date('d-M-Y', strtotime($tbl_event['created_at'])) ?></small>
@@ -58,32 +58,24 @@
         </div>
     </div>
 </div>
-<a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang...">
+<a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-        <i class="fa fa-whatsapp"></i> Hubungi Admin
+        <img src="<?= base_url('assets/flaticon/whatsapp.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> Hubungi Admin
     </button>
 </a>
 <div class="row">
     <div class="col-md-12">
         <form role="form" action="<?= base_url('verifteam/view/' . $tbl_event['id']) ?>" method="GET">
             <div class="form-group">
-                <label>Nama Team</label>
+                <label>Cari Team</label>
                 <input type="text" name="name" class="form-control" <?php if ($_GET['name']) {
                                                                         echo 'value="' . $_GET['name'] . '"';
                                                                     } ?> id="filter-search">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-lg btn-block btn-primary">
-                    <i class="fa fa-search"></i> Cari
+                    Cari
                 </button>
-                <?php if ($_GET['name']) { ?>
-                    <br>
-                    <a href="<?= base_url('verifteam/view/' . $tbl_event['id']) ?>">
-                        <button type="button" class="btn btn-lg btn-block btn-info">
-                            <i class="fa fa-refresh"></i> Reset Pencarian
-                        </button>
-                    </a>
-                <?php } ?>
             </div>
         </form>
     </div>
@@ -96,7 +88,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        var limit = 2;
+        var limit = 10;
         var start = 0;
         var action = 'inactive';
         var search = 0;

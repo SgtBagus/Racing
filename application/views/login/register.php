@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-        <h3 class="box-title" align="center">Daftar Sebagai Team</h3>
+        <h3 style="margin-bottom: 30px;" align="center">Daftar Sebagai Team</h3>
     <form role="form" action="<?= base_url('login/actionRegister') ?>" method="POST" id="sumbit">
       <div class="show_error"></div>
       <div class="form-group">
@@ -38,9 +38,9 @@
         <input type="text" name="dt[nowa]" class="form-control">
       </div>
       <div class="show_error"></div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 30px;">
         <button type="submit" class="btn btn-send btn-md btn-block btn-primary">
-          <i class="fa fa-send"></i> Submit
+            Daftar
         </button>
         <p class="help-block pull-right">Sudah Punya Akun ? <a href="<?= base_url('login') ?>">Login Disini </a></p>
       </div>

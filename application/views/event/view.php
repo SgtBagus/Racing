@@ -14,11 +14,11 @@
                         <div class="row" align="center">
                             <?php
                             if ($tbl_event['statusEvent'] == 'BERJALAN') {
-                                 echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                                echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
                             } else if ($tbl_event['statusEvent'] == 'SELESAI') {
                                 echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
                             } else if ($tbl_event['statusEvent'] == 'BATAL') {
-                               echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+                                echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                             } else {
                                 echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                             }
@@ -42,9 +42,7 @@
                         <br>
                         <small>
                             <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
-                            <br>
-                            <b>SAMPAI</b>
-                            <br>
+                            <b> s/d </b>
                             <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
                         </small>
                     </div>
@@ -52,11 +50,11 @@
                         Pendaftar :
                         <br>
                         <b>
-                            <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
-                            <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+                            <img src="<?= base_url('assets/flaticon/icon_rider.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowraider[0]['rowraider'] ?>
+                            <img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowteam[0]['rowteam'] ?>
                         </b>
                         <br>
-                        <small>Event Dibuat : <br><?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
+                        <small>Event Dibuat : <?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
                     </div>
                 </div>
             </div>
@@ -65,7 +63,7 @@
 </div>
 <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-        <i class="fa fa-whatsapp"></i> Hubungi Admin
+        <img src="<?= base_url('assets/flaticon/whatsapp.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> Hubungi Admin
     </button>
 </a>
 <div class="row">
@@ -95,7 +93,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row" style="margin-top: 10px;">
     <div class="col-md-12">
         <div class="box">
             <div class="row">
@@ -109,7 +107,7 @@
                         <?php if ($rule) { ?>
                             <a href="<?= base_url('download/downloadPDFEvent/') . $rule['id'] ?>">
                                 <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
-                                    <i class="fa fa-download"></i> Download Peraturan Event
+                                    <img src="<?= base_url('assets/flaticon/download.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> Download Peraturan Event
                                 </button>
                             </a>
                         <?php } ?>
@@ -120,73 +118,130 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-xs-12" align="center">
-                <h3>Data Event </h3>
+    <div class="col-md-12" align="center">
+        <h3 class="box-title">Data Event </h3>
+        <a href="<?= base_url('verifteam/view/').$tbl_event['id'] ?>" class="a_black">
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/team.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-6">
-                <a href="<?= base_url('verifteam/view/') . $tbl_event['id'] ?>">
-                    <button class="btn btn-lg btn-block btn-warning" style="margin-bottom: 15px">
-                        <i class="fa fa-users"></i> Team
-                    </button>
-                </a>
+        </a>
+        <a href="<?= base_url('verifraider/view/').$tbl_event['id'] ?>" class="a_black">
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/rider.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-6">
-                <a href="<?= base_url('verifraider/view/') . $tbl_event['id'] ?>">
-                    <button class="btn btn-lg btn-block btn-warning" style="margin-bottom: 15px">
-                        <i class="fa fa-motorcycle"></i> Rider
-                    </button>
-                </a>
-            </div>
-        </div>
+        </a>
         <?php if ($tbl_event['statusEvent'] == 'BERJALAN' || $tbl_event['statusEvent'] == 'SELESAI') { ?>
             <a href="<?= base_url('event/rank/') . $tbl_event['id'] ?>">
-                <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
-                    <i class="fa fa-user"></i> Data Juara
-                </button>
+                <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                    <div class="box" style=" width: 100px; height: 100px;">
+                        <div class="box-body" align="center">
+                            <img src="<?= base_url('assets/flaticon/ranking.png') ?>" style=" width: 80px; height: 80px; ">
+                        </div>
+                    </div>
+                </div>
             </a>
-            <?php if ($tbl_event['live_url']) { ?>
-                <a href="<?= $tbl_event['live_url'] ?>">
-                    <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
-                        <i class="fa fa-camera"></i> Live Event
-                    </button>
-                </a>
-            <?php } ?>
+        <?php } else { ?>
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/ranking_disable.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        <?php if ($tbl_event['live_url']) { ?>
+            <a href="<?= $tbl_event['live_url'] ?>">
+                <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                    <div class="box" style=" width: 100px; height: 100px;">
+                        <div class="box-body" align="center">
+                            <img src="<?= base_url('assets/flaticon/live-streaming.png') ?>" style=" width: 80px; height: 80px; ">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <?php } else { ?>
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/live-streaming_disable.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
+            </div>
         <?php } ?>
         <a href="<?= base_url('event/gallery/') . $tbl_event['id'] ?>">
-            <button class="btn btn-lg btn-block btn-info" style="margin-bottom: 15px">
-                <i class="fa fa-picture-o"></i> Dokumentasi
-            </button>
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/dokumentasi.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
+            </div>
         </a>
         <?php if ($tbl_event['statusEvent'] == 'STARTED') {
             if ($this->session->userdata('id') != NULL) {
                 if ($this->session->userdata('role') == 'Team') { ?>
                     <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
-                        <button class="btn btn-lg btn-block btn-primary" style="margin-bottom: 15px">
-                            <i class="fa fa-users"></i> Daftarkan Tim
-                        </button>
+                        <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                            <div class="box" style=" width: 100px; height: 100px;">
+                                <div class="box-body" align="center">
+                                    <img src="<?= base_url('assets/flaticon/register.png') ?>" style=" width: 80px; height: 80px; ">
+                                </div>
+                            </div>
+                        </div>
                     </a>
                 <?php } else { ?>
                     <a href="<?= base_url('event/registerrider/') . $tbl_event['id'] ?>">
-                        <button class="btn btn-lg btn-block btn-primary" style="margin-bottom: 15px">
-                            <i class="fa fa-check"></i> Ikuti Event
-                        </button>
+                        <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                            <div class="box" style=" width: 100px; height: 100px;">
+                                <div class="box-body" align="center">
+                                    <img src="<?= base_url('assets/flaticon/register.png') ?>" style=" width: 80px; height: 80px; ">
+                                </div>
+                            </div>
+                        </div>
                     </a>
                 <?php }
                     } else { ?>
-                    <a href="<?= base_url('login/rider/')?>">
-                        <button class="btn btn-lg btn-block btn-primary" style="margin-bottom: 15px">
-                            <i class="fa fa-check"></i> Ikuti Event
-                        </button>
-                    </a>
+                <a href="<?= base_url('login/rider/') ?>">
+                    <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                        <div class="box" style=" width: 100px; height: 100px;">
+                            <div class="box-body" align="center">
+                                <img src="<?= base_url('assets/flaticon/register.png') ?>" style=" width: 80px; height: 80px; ">
+                            </div>
+                        </div>
+                    </div>
+                </a>
             <?php } ?>
         <?php } else if ($tbl_event['statusEvent'] == 'BERJALAN') { ?>
-            <h4 class="help-block" align="center">Event Telah Berjalan!</h4>
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
+            </div>
         <?php } else if ($tbl_event['statusEvent'] == 'SELESAI') { ?>
-            <h4 class="help-block" align="center">Event Telah Selesai!</h4>
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
+            </div>
         <?php } else if ($tbl_event['statusEvent'] == 'BATAL') { ?>
-            <h4 class="help-block" align="center">Event Dibatlkan!</h4>
+            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                <div class="box" style=" width: 100px; height: 100px;">
+                    <div class="box-body" align="center">
+                        <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
+                    </div>
+                </div>
+            </div>
         <?php } ?>
     </div>
-</div>

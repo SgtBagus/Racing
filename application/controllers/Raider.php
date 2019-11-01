@@ -76,18 +76,16 @@ class Raider extends MY_Controller
                 $motor = $this->mymodel->selectDataone('master_motor', array('id' => $row['motor_id']));
 
                 $gambar_raider = base_url('webfiles/raider/raider_default.png');
-                if($photo != NULL) 
-                {
+                if ($photo != NULL) {
                     $gambar_raider = $photo['url'];
                 }
 
                 $verificacion = '';
                 if ($row['verificacion'] == 'ENABLE') {
-                    $verificacion = '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
+                    $verificacion = '<img src="'.base_url('assets/flaticon/verified.png').'" style=" width: 15px; height: 15px; margin-bottom: 5px;">';
                 }
 
                 $output .= '
-                <a href="' . base_url('raider/edit/') . $row['id'] . '" class="a_black">
                 <div class="col-xs-12">
                 <div class="box"> 
                 <div class="box-body">
@@ -97,26 +95,28 @@ class Raider extends MY_Controller
                 </div>
                 <div class="col-xs-6">
                 <h4>' . $row['name'] . ' ' . $verificacion . '<br>
-                <small><i class="fa fa-globe"></i> ' . $row['kota'] . '</small> 
+                <small><img src="'.base_url('assets/flaticon/worldwide.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' . $row['kota'] . '</small> 
                 </h4>
                 <b>
-                <i class="fa fa-motorcycle"></i> ' . $motor['value'] . '
+                <img src="'.base_url('assets/flaticon/sport.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' . $motor['value'] . '
                 <br>
-                <i class="fa fa-phone"></i> ' . $row['nowa'] . '
+                <img src="'.base_url('assets/flaticon/phone-call.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' . $row['nowa'] . '
                 </b>
-                <p>Sebanyak : <b>' . $row['eventikut'] . '</b> Event Telah Di Ikuti</p>
+                <p>Sebanyak : <br><b>' . $row['eventikut'] . '</b> Event Telah Di Ikuti</p>
                 </div>
                 </div>
                 <br>
+                <a href="' . base_url('raider/edit/') . $row['id'] . '">
+                <button class="btn btn-lg btn-block btn-info"> Lihat </button>
+                </a>
                 <div class="row" id="deleteForm_' . $row['id'] . '">
                 <div class="col-xs-12 btnDelete_' . $row['id'] . '">
-                <button class="btn btn-lg btn-block btn-danger" onclick="hapus(' . $row['id'] . ')"> <i class="fa fa-trash"></i> Hapus Anggota Team</button>
+                <button class="btn btn-lg btn-block btn-danger" onclick="hapus(' . $row['id'] . ')"> Hapus </button>
                 </div>
                 </div>
                 </div>
                 </div>
                 </div>
-                </a>
                 ';
             }
         }
@@ -218,10 +218,10 @@ class Raider extends MY_Controller
                     if ($file['name'] != "raider_default.png") {
                         @unlink($file['dir']);
                     }
-                    
-                    if($file != NULL){
+
+                    if ($file != NULL) {
                         $this->mymodel->updateData('file', $data, array('table_id' =>  $id, 'table' => 'tbl_raider'));
-                    }else {
+                    } else {
                         $this->mymodel->insertData('file', $data);
                     }
                 }

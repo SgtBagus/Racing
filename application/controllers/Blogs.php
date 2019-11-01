@@ -33,20 +33,18 @@ class Blogs extends MY_Controller
 			foreach ($tbl_blog as $row) {
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_blog'));
 
-				$desktpsi = strlen($row["deskripsi"]) > 50 ? substr($row["deskripsi"], 0, 50) . "..." : $row["deskripsi"];
-
+				// $desktpsi = strlen($row["deskripsi"]) > 50 ? substr($row["deskripsi"], 0, 50) . "..." : $row["deskripsi"];
+				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
+				
 				$output .= '
-				<div class="col-md-12">
+				<div class="col-xs-6">
 					<a href="' . base_url('blogs/view/') . $row['id'] . '" class="a_black">
 						<div class="box">
                         <img class="img-even" src="' . $photo['url'] . '">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12" align="center">
-                                        <h3><b>' . $row['title'] . '</b></h3>
-                                    </div>
-									<div class="col-xs-12" align="center">
-									' . $desktpsi . '
+                                        <h4><b>' . $title . '</b></h4>
                                     </div>
                                 </div>
                             </div>

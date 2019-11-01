@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title" align="center">Daftar Sebagai Rider</h3>
+        <h3 align="center" style="margin-bottom: 30px;">Daftar Sebagai Rider</h3>
         <form role="form" action="<?= base_url('login/actionRegisterRider') ?>" method="POST" id="sumbit">
             <div class="show_error"></div>
             <div class="form-group">
@@ -102,9 +102,9 @@
                 <input type="text" name="dt[goldarah]" class="form-control">
             </div>
             <div class="show_error"></div>
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 30px;">
                 <button type="submit" class="btn btn-send btn-lg btn-block btn-primary">
-                    <i class="fa fa-save"></i> Simpan
+                    Daftar
                 </button>
             </div>
         </form>

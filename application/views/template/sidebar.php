@@ -7,15 +7,15 @@
                 $team = $this->mymodel->selectDataone('tbl_team', array('id' => $id_session));
                 $photo = $this->mymodel->selectDataone('file', array('table' => 'tbl_team', 'table_id' => $team['id']));
                 ?>
-                <?php if($photo != null){ ?>
+                <?php if ($photo != null) { ?>
                     <img src="<?= $photo['url'] ?>" class="img-circle" alt="User Image" height="150px" width="150px">
-                <?php } else {?>
+                <?php } else { ?>
                     <img src="<?= base_url('webfiles/team/team_default.png') ?>" class="img-circle" alt="User Image" height="150px" width="150px">
                 <?php } ?>
                 <h2>
                     <?= $team['name'] ?>
                     <?php if ($team['verificacion'] == 'ENABLE') {
-                        echo '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
+                        echo '<img src="'.base_url('assets/flaticon/verified.png').'" style=" width: 30px; height: 30px; margin-bottom: 5px;">';
                     } ?>
                 </h2>
             </div>
@@ -24,13 +24,13 @@
             <li class="header">MENU</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url() ?>">
-                    <i class="fa fa-home"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_house.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Home</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;" class="treeview">
                 <a href="#">
-                    <i class="fa fa-check-square-o"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Manajemen</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
@@ -38,22 +38,34 @@
                 </a>
                 <ul class="treeview-menu">
                     <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('raider') ?>"><i class="fa fa-motorcycle"></i> Rider</a>
+                        <a href="<?= base_url('raider') ?>">
+                            <img src="<?= base_url('assets/flaticon/sidebar_rider.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Rider
+                        </a>
                     </li>
                     <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('manager') ?>"><i class="fa fa-user"></i> Manajer</a>
+                        <a href="<?= base_url('team') ?>">
+                            <img src="<?= base_url('assets/flaticon/sidebar_team.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Team
+                        </a>
                     </li>
                     <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('team') ?>"><i class="fa fa-users"></i> Team</a>
+                        <a href="<?= base_url('manager') ?>">
+                            <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Manajer
+                        </a>
                     </li>
                     <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('teampassword') ?>"><i class="fa fa-lock"></i> Ubah Passowrd</a>
+                        <a href="<?= base_url('teampassword') ?>">
+                            <img src="<?= base_url('assets/flaticon/sidebar_locked.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Ubah Passowrd
+                        </a>
                     </li>
                 </ul>
             </li>
             <li style="margin-bottom: 5px;" class="treeview">
                 <a href="#">
-                    <i class="fa fa-map-o"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_star.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Event</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
@@ -62,55 +74,57 @@
                 <ul class="treeview-menu">
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('monitorevent') ?>">
-                            <i class="fa fa-television"></i> Monitoring Event
+                            <img src="<?= base_url('assets/flaticon/sidebar_smartphone.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Monitoring Event
                         </a>
                     </li>
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('event') ?>">
-                            <i class="fa fa-star"></i> Cari Event
+                            <img src="<?= base_url('assets/flaticon/research.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Cari Event
                         </a>
                     </li>
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('verifteam') ?>">
-                            <i class="fa fa-users"></i>
-                            <span>Verified Team</span>
+                            <img src="<?= base_url('assets/flaticon/sidebar_team.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Verified Team
                         </a>
                     </li>
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('verifraider') ?>">
-                            <i class="fa fa-motorcycle"></i>
-                            <span>Verified Rider</span>
+                            <img src="<?= base_url('assets/flaticon/sidebar_rider.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Verified Rider
                         </a>
                     </li>
                 </ul>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('wisata') ?>">
-                    <i class="fa fa-star"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_wisata.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Wisata</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('blogs') ?>">
-                    <i class="fa fa-newspaper-o"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_text-lines.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>News/Blogs</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('gallery') ?>">
-                    <i class="fa fa-picture-o"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_picture.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Gallery</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('merchandise') ?>">
-                    <i class="fa fa-cubes"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_shipment.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Merchandise</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login/logout') ?>">
-                    <i class="fa fa-sign-out"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_logout.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Logout</span>
                 </a>
             </li>

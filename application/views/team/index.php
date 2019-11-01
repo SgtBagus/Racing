@@ -46,7 +46,7 @@
             <div class="show_error"></div>
             <div class="form-group">
                 <button type="submit" class="btn btn-send btn-lg btn-block btn-primary">
-                    <i class="fa fa-save"></i> Simpan
+                    Simpan
                 </button>
             </div>
         </form>

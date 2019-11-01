@@ -4,44 +4,44 @@
             <li class="header">MASUK</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login/rider') ?>">
-                    <i class="fa fa-lock"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_locked.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Login Rider</span>
                 </a>
             </li>
             <!-- <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login') ?>">
-                    <i class="fa fa-lock"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_locked.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Login Team</span>
                 </a>
             </li> -->
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login/registerrider') ?>">
-                    <i class="fa fa-user"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_rider.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Register Rider</span>
                 </a>
             </li>
             <!-- <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('login/register') ?>">
-                    <i class="fa fa-user"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_team.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Register Team</span>
                 </a>
             </li> -->
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('kebijakanprivasi') ?>">
-                    <i class="fa fa-list"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_list.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Kebijakan & Privasi</span>
                 </a>
             </li>
             <li class="header">MENU</li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url() ?>">
-                    <i class="fa fa-home"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_house.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Home</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;" class="treeview">
                 <a href="#">
-                    <i class="fa fa-map-o"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_star.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Event</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
@@ -50,44 +50,45 @@
                 <ul class="treeview-menu">
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('event') ?>">
-                            <i class="fa fa-star"></i> Cari Event
+                            <img src="<?= base_url('assets/flaticon/research.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Cari Event
                         </a>
                     </li>
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('verifteam') ?>">
-                            <i class="fa fa-users"></i>
-                            <span>Verified Team</span>
+                            <img src="<?= base_url('assets/flaticon/sidebar_team.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Verified Team
                         </a>
                     </li>
                     <li style="margin-bottom: 5px;">
                         <a href="<?= base_url('verifraider') ?>">
-                            <i class="fa fa-motorcycle"></i>
-                            <span>Verified Rider</span>
+                            <img src="<?= base_url('assets/flaticon/sidebar_rider.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Verified Rider
                         </a>
                     </li>
                 </ul>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('wisata') ?>">
-                    <i class="fa fa-star"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_wisata.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Wisata</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('blogs') ?>">
-                    <i class="fa fa-newspaper-o"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_text-lines.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>News/Blogs</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('gallery') ?>">
-                    <i class="fa fa-picture-o"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_picture.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Gallery</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('merchandise') ?>">
-                    <i class="fa fa-cubes"></i>
+                    <img src="<?= base_url('assets/flaticon/sidebar_shipment.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Merchandise</span>
                 </a>
             </li>

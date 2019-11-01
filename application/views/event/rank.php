@@ -43,9 +43,7 @@
                         <br>
                         <small>
                             <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
-                            <br>
-                            <b>SAMPAI</b>
-                            <br>
+                            <b> s/d </b>
                             <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
                         </small>
                     </div>
@@ -53,8 +51,8 @@
                         Pendaftar :
                         <br>
                         <b>
-                            <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
-                            <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
+                            <img src="<?= base_url('assets/flaticon/icon_rider.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowraider[0]['rowraider'] ?>
+                            <img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowteam[0]['rowteam'] ?>
                         </b>
                         <br>
                         <small>Event Dibuat : <br><?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
@@ -66,14 +64,14 @@
 </div>
 <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-        <i class="fa fa-whatsapp"></i> Hubungi Admin
+        <img src="<?= base_url('assets/flaticon/whatsapp.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> Hubungi Admin
     </button>
 </a>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
             <div class="col-xs-12" align="center">
-                <h3>Data Juara </h3>
+                <h3 class="box-title">Data Juara</h3>
             </div>
         </div>
     </div>

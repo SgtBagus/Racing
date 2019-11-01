@@ -37,9 +37,9 @@ class Verifraider extends MY_Controller
         $search = $_GET['title'];
 
         if ($search) {
-            $event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' AND status = 'ENABLE' AND LOWER(title) like '%" . $search . "%' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' AND status = 'ENABLE' AND LOWER(title) like '%" . $search . "%' ORDER BY tgleventStart DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' AND status = 'ENABLE' ORDER BY id DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $event = $this->mymodel->selectWithQuery("SELECT * FROM tbl_event WHERE public = 'ENABLE' AND status = 'ENABLE' ORDER BY tgleventStart DESC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
         if ($event) {
             foreach ($event as $row) {
@@ -47,21 +47,27 @@ class Verifraider extends MY_Controller
 
                 $rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id  WHERE b.event_id = '" . $row['id'] . "'  AND b.approve = 'APPROVE'");
 
-                if ($row['status'] == 'ENABLE') {
-                    $status =  '<small class="label bg-green">Dibuka</small>';
+                if ($row['statusEvent'] == 'BERJALAN') {
+                    $status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                } else if ($row['statusEvent'] == 'SELESAI') {
+                    $status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                } else if ($row['statusEvent'] == 'BATAL') {
+                    $status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
                 } else {
-                    $status = '<small class="label bg-red">Ditutup</small>';
+                    $status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
                 }
+                
+                $title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
 
                 $output .= '
                 <a href="' . base_url("verifraider/view/") . $row['id'] . '" class="a_black">
-                <div class="col-md-12">
+                <div class="col-xs-6">
 				<div class="box">
 					<img class="img-even" src="' . $photo['url'] . '">
 					<div class="box-body">
 						<div class="row">
 							<div class="col-xs-12">
-								<h4 align="center">' . $row['title'] . '</h4>
+                            <h4 align="center">' . $title . '</h4>
 								<div class="row" align="center">
 								' . $status . '
 								</div>
@@ -73,20 +79,20 @@ class Verifraider extends MY_Controller
 							</div>
 						</div>
 						<hr style="margin-top:5px; margin-bottom: 5px;">
-						<div class="row">
-							<div class="col-xs-6">
+                        <div class="row">
+                        <div class="col-xs-12" align="center">
 								Tanggal Event :
 								<br>
 								<small>
 								' . date('d M Y', strtotime($row['tgleventStart'])) . '
-									<b>s/d</b>
+                            <b> s/d </b>
 									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
 								</small>
 							</div>
-							<div class="col-xs-6" align="right">
+							<div class="col-xs-12" align="center">
 								Pendaftar :
 								<b>
-									<i class="fa fa-motorcycle"></i>' . $rowraider[0]['rowraider'] . '
+                                <img src="' . base_url('assets/flaticon/icon_rider.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' . $rowraider[0]['rowraider'] . '
 								</b>
 								<br>
 								<small>Event Dibuat : ' . date('d M Y', strtotime($row['created_at'])) . '</small>
@@ -107,9 +113,11 @@ class Verifraider extends MY_Controller
         $search = $_GET['name'];
 
         if ($search) {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' AND c.name LIKE '%" . $_GET['name'] . "%' ORDER BY c.name ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.raider_id as raider_id, c.name, b.id from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id 
+                INNER JOIN tbl_team d ON b.team_id = d.id
+                WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' AND (c.name LIKE '%" . $_GET['name'] . "%' OR d.name LIKE '%" . $_GET['name'] . "%') ORDER BY a.event_register_id ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         } else {
-            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.event_register_id, a.raider_id, c.name FROM tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' ORDER BY c.name ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
+            $tbl_raider = $this->mymodel->selectWithQuery("SELECT b.event_id, a.event_register_id, a.raider_id, c.name FROM tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id INNER JOIN tbl_raider c ON a.raider_id = c.id WHERE b.event_id = '" . $id . "' AND b.approve = 'APPROVE' ORDER BY a.event_register_id ASC LIMIT " . $this->input->post('limit') . " OFFSET " . $this->input->post('start'));
         }
         if ($tbl_raider) {
             $i = 1;
@@ -131,29 +139,49 @@ class Verifraider extends MY_Controller
 
                 $teamvalue = '<p class="help-block pull-right">Rider Peorangan!</p>';
                 if ($team['name']) {
-                    $singkatTeam = strlen($team["name"]) > 10 ? substr($team["name"], 0, 10) . "..." : $team["name"];
-                    $teamvalue = '<p>' . $singkatTeam . '</p>';
+                    // $singkatTeam = strlen($team["name"]) > 10 ? substr($team["name"], 0, 10) . "..." : $team["name"];
+
+                    $singkatTeam = $team["name"];
+                    $teamvalue = '<p style="font-size:10px"><b>' . $singkatTeam . '</b></p>';
                 }
 
-                $raiderValue = strlen($raider["name"]) > 13 ? substr($raider["name"], 0, 13) . "..." : $raider["name"];
+                // $raiderValue = strlen($raider["name"]) > 13 ? substr($raider["name"], 0, 13) . "..." : $raider["name"];
+
+                $raiderValue = $raider["name"];
 
                 $photoUrl = base_url('webfiles/raider/raider_default.png');
                 if ($photo['url'] != NULL) {
                     $photoUrl = $photo['url'];
                 }
 
+                //             $output .= '<div class="col-xs-6">
+                //             <div class="box">
+                // <img class="img-even" src="' . $photoUrl . '" style="height: 100px;">
+                //                 <div class="box-body">
+                //                     <div class="row" align="center">
+                //                     <div class="col-xs-12">
+                //                     <p style="font-size:11px;">' . $raiderValue . ' ' . $verificacion . '</p>
+                //                         ' . $teamvalue . '
+
+                //                         ' . $teamPhoto . '
+                //                     </div>
+                //                     <p style="font-size:11px;">Number : <b>' . $raider['nostart'] . '</b></p>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>';
                 $output .= '<div class="col-xs-6">
                 <div class="box">
 				<img class="img-even" src="' . $photoUrl . '" style="height: 100px;">
                     <div class="box-body">
                         <div class="row" align="center">
                         <div class="col-xs-12">
-                        <p>' . $raiderValue . ' ' . $verificacion . '</p>
+                        <p style="font-size:11px;">' . $raiderValue . ' ' . $verificacion . '</p>
                             ' . $teamvalue . '
-                            <br>
-                            ' . $teamPhoto . '
+                            
+                            
                         </div>
-                        <p>Number : <b>' . $raider['nostart'] . '</b></p>
+                        <p style="font-size:11px;">Number : <b>' . $raider['nostart'] . '</b></p>
                         </div>
                     </div>
                 </div>

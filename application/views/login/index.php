@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <form action="<?= base_url('login/act_login') ?>" method="POST" id="login_form">
-      <h3 align="center">Silakan Login Sebagai Tim</h3>
+      <h3 align="center" style="margin-bottom: 30px;">Masuk Sebagai Tim</h3>
       <div class="show_error" id="error_input"></div>
       <div class="form-group">
         <label>Email</label>
@@ -12,9 +12,9 @@
         <input type="password" name="password" class="form-control">
         <!-- <p class="help-block"><a href="<?= base_url('login/password') ?>"> Lupa Password ? </a></p> -->
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 30px;">
         <button type="submit" class="btn btn-block btn-primary">
-          <i class="fa fa-sign-in"></i> Masuk Login
+            Masuk
         </button>
       </div>
       <p class="help-block pull-right">Tidak Punya Akun ? <a href="<?= base_url('login/register') ?>">Daftar Disini </a></p>

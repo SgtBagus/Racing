@@ -7,23 +7,15 @@
     <div class="col-md-12">
         <form role="form" action="<?= base_url('event') ?>" method="GET">
             <div class="form-group">
-                <label for="exampleInputEmail1">Judul Even</label>
+                <label for="exampleInputEmail1">Judul Event</label>
                 <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
                                                                             echo 'value="' . $_GET['title'] . '"';
                                                                         } ?> id="filter-search">
             </div>
             <div class="form-group" align="center">
                 <button type="submit" class="btn btn-lg btn-block btn-primary">
-                    <i class="fa fa-search"></i> Cari
+                    Cari
                 </button>
-                <?php if ($_GET['title']) { ?>
-                    <br>
-                    <a href="<?= base_url('raider') ?>">
-                        <button type="button" class="btn btn-lg btn-block btn-info">
-                            <i class="fa fa-refresh"></i> Reset Pencarian
-                        </button>
-                    </a>
-                <?php } ?>
             </div>
         </form>
     </div>

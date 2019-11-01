@@ -6,70 +6,67 @@
 <form action="<?= base_url('event/addregister') ?>" method="POST" id="sumbit">
     <input type="hidden" name="team_id" value='<?= $this->session->userdata['id'] ?>'>
     <input type="hidden" name="event_id" value='<?= $tbl_event['id'] ?>'>
-    
-<div class="row">
-    <div class="col-md-12">
-        <div class="box">
-            <img class="img-detail" src="<?= $file['url'] ?>">
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h4 align="center"><?= $tbl_event['title'] ?></h4>
-                        <div class="row" align="center">
-                            <?php
-                            if ($tbl_event['statusEvent'] == 'BERJALAN') {
-                                 echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
-                            } else if ($tbl_event['statusEvent'] == 'SELESAI') {
-                                echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
-                            } else if ($tbl_event['statusEvent'] == 'BATAL') {
-                               echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
-                            } else {
-                                echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
-                            }
-                            ?>
-                        </div>
-                        <div class="col-md-12" style="padding:0px 10px;">
-                            <p style="text-align:center;">
-                                <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
-                                <?= $tbl_event['alamat'] ?>
-                            </p>
-                            <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <img class="img-detail" src="<?= $file['url'] ?>">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 align="center"><?= $tbl_event['title'] ?></h4>
+                            <div class="row" align="center">
+                                <?php
+                                if ($tbl_event['statusEvent'] == 'BERJALAN') {
+                                    echo '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+                                } else if ($tbl_event['statusEvent'] == 'SELESAI') {
+                                    echo '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+                                } else if ($tbl_event['statusEvent'] == 'BATAL') {
+                                    echo '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+                                } else {
+                                    echo '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
+                                }
+                                ?>
+                            </div>
+                            <div class="col-md-12" style="padding:0px 10px;">
+                                <p style="text-align:center;">
+                                    <!--<i class="fa fa-globe"></i> <?= $tbl_event['kota'] ?><br>-->
+                                    <?= $tbl_event['alamat'] ?>
+                                </p>
+                                <!-- <a href="https://maps.google.com/?q=<?= $tbl_event['alamat'] ?>">
                             <button class="btn btn-md btn-block btn-info"> <i></i> Lihat Peta Di Google Maps</button>
                         </a> -->
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr style="margin-top:5px; margin-bottom: 5px;">
-                <div class="row">
-                    <div class="col-xs-6">
-                        Tanggal Event :
-                        <br>
-                        <small>
-                            <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
+                    <hr style="margin-top:5px; margin-bottom: 5px;">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Tanggal Event :
                             <br>
-                            <b>SAMPAI</b>
+                            <small>
+                                <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
+                                <b> s/d </b>
+                                <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
+                            </small>
+                        </div>
+                        <div class="col-xs-6" align="right">
+                            Pendaftar :
                             <br>
-                            <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
-                        </small>
-                    </div>
-                    <div class="col-xs-6" align="right">
-                        Pendaftar :
-                        <br>
-                        <b>
-                            <i class="fa fa-motorcycle"></i> <?= $rowraider[0]['rowraider'] ?>
-                            <i class="fa fa-users"></i> <?= $rowteam[0]['rowteam'] ?>
-                        </b>
-                        <br>
-                        <small>Event Dibuat : <br><?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
+                            <b>
+                                <img src="<?= base_url('assets/flaticon/icon_rider.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowraider[0]['rowraider'] ?>
+                                <img src="<?= base_url('assets/flaticon/icon_team.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /><?= $rowteam[0]['rowteam'] ?>
+                            </b>
+                            <br>
+                            <small>Event Dibuat : <?= date('d M Y', strtotime($tbl_event['created_at'])) ?></small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <a href="https://api.whatsapp.com/send?phone=<?= $tbl_event['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
         <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-            <i class="fa fa-whatsapp"></i> Hubungi Admin
+            <img src="<?= base_url('assets/flaticon/whatsapp.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> Hubungi Admin
         </button>
     </a>
     <div class="row">
@@ -124,7 +121,7 @@
     </div>
     <div class="show_error"></div>
     <?php if ($tbl_event['status'] == 'ENABLE') { ?>
-        <button id="buttonSubmit" class="btn btn-lg btn-block btn-primary btn-send"><i class="fa fa-send"></i> Kirim Pendaftaran</button>
+        <button id="buttonSubmit" class="btn btn-lg btn-block btn-primary btn-send">Kirim Pendaftaran</button>
     <?php } else { ?>
         <button class="btn btn-block btn-primary btn-send" disabled> Event ini telah di tutup</button>
     <?php } ?>
@@ -203,7 +200,7 @@
             '</div>' +
             '<div class="col-xs-7">' +
             '<h4>' + name + '<br>' +
-            '<small><i class="fa fa-globe"></i> ' + alamat + '</small>' +
+            '<small><img src="<?= base_url('assets/flaticon/worldwide.png')?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> ' + alamat + '</small>' +
             '</h4>' +
             // '<button type="button" class="btn btn-sm btn-block btn-danger" onclick="deleteRaider(' + id + ')"> Hapus</button>' +
             '</div>' +

@@ -11,16 +11,8 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-lg btn-block btn-primary" id="btn-search">
-                    <i class="fa fa-search"></i> Cari
+                    Cari
                 </button>
-                <?php if ($_GET['name']) { ?>
-                    <br>
-                    <a href="<?= base_url('raider') ?>">
-                        <button type="button" class="btn btn-lg btn-block btn-info">
-                            <i class="fa fa-refresh"></i> Reset Pencarian
-                        </button>
-                    </a>
-                <?php } ?>
             </div>
         </form>
     </div>
@@ -31,7 +23,7 @@
 </div>
 <div id="load_data_message"></div>
 <a href="<?= base_url('raider/create') ?>" class="float" style="color:white">
-    <i class="fa fa-plus my-float"></i>
+    <img src="<?= base_url('assets/flaticon/add.png') ?>" style=" width: 30px; height: 30px;">
 </a>
 
 <script type="text/javascript">
@@ -40,11 +32,11 @@
         $("#deleteForm_" + id).append('<div class="col-xs-12 btnDelete_' + id + '" align="center">Konfirmasi Penghapusan</div>' +
             '<div class="col-xs-6 btnDelete_' + id + '">' +
             '<button class="btn btn-sm btn-block btn-info" onclick="cancelDelete(' + id + ')">' +
-            '<i class="fa fa-close"></i> Cancel </button>' +
+            'Cancel </button>' +
             '</div>' +
             '<div class="col-xs-6 btnDelete_' + id + '">' +
             '<button class="btn btn-sm btn-block btn-danger" onclick="confirmDelete(' + id + ')">' +
-            '<i class="fa fa-check"></i> Hapus </button>' +
+            'Hapus </button>' +
             '</div>'
         );
     };
@@ -52,7 +44,7 @@
     function cancelDelete(id) {
         $(".btnDelete_" + id).remove();
         $("#deleteForm_" + id).append('<div class="col-xs-12 btnDelete_' + id + '">' +
-            '<button class="btn btn-sm btn-block btn-danger" onclick="hapus(' + id + ')"> <i class="fa fa-trash"></i> Hapus Manager</button>' +
+            '<button class="btn btn-sm btn-block btn-danger" onclick="hapus(' + id + ')">Hapus</button>' +
             '</div>'
         );
     }

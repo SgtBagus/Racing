@@ -5,19 +5,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <title>Never Say Old - Mobile</title>
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/morris.js/morris.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>owl/docs/assets/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>owl/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/iCheck/all.css">
+  <link rel="icon" href="<?= base_url('assets/') ?>img/logo.jpg">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/select2/dist/css/select2.min.css">
 
-  <link rel="icon" href="<?= base_url('assets/') ?>img/logo.jpg">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
@@ -46,10 +48,10 @@ if ($this->session->userdata('session_sop') == "") {
       <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100;">
         <div class="row">
           <div class="col-xs-2" align="center">
-            <?php if($page != "Home") {?>
-            <a href="#" id="back" class="header-menu" onclick="back()">
-              <i class="fa fa-arrow-left"></i>
-            </a>
+            <?php if ($page != "Home") { ?>
+              <a href="#" id="back" class="header-menu" onclick="back()">
+                <img src="<?= base_url('assets/flaticon/back.png') ?>" style=" width: 30px; height: 30px; ">
+              </a>
             <?php } ?>
           </div>
           <div class="col-xs-8 header-menu" align="center">
@@ -57,7 +59,7 @@ if ($this->session->userdata('session_sop') == "") {
           </div>
           <a href="#" id="open-sidebar">
             <div class="col-xs-2 header-menu" align="center" data-toggle="control-sidebar" style="margin-left: -10px">
-              <i class="fa fa-bars"></i>
+              <img src="<?= base_url('assets/flaticon/list.png') ?>" style=" width: 30px; height: 30px; ">
             </div>
           </a>
         </div>
@@ -69,7 +71,12 @@ if ($this->session->userdata('session_sop') == "") {
         <?= $contents ?>
         <marquee><?= MARQUEE ?></marquee>
       </div>
-      <div class="fixed-footer"></div>
+      <?php
+      if ($this->session->userdata('role')) {
+        ?>
+        <div class="fixed-footer"></div>
+      <?php }
+      ?>
     </div>
     <?php
     if ($this->session->userdata('session_sop') == "") {

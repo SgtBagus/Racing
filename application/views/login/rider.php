@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <form action="<?= base_url('login/act_login_rider') ?>" method="POST" id="login_form">
-      <h3 align="center">Silakan Login Sebagai Rider</h3>
+      <h3 align="center" style="margin-bottom: 30px;">Masuk Sebagai Rider</h3>
       <div class="show_error" id="error_input"></div>
       <div class="form-group">
         <label>Email</label>
@@ -11,9 +11,9 @@
         <label>Password</label>
         <input type="password" name="password" class="form-control">
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 30px;">
         <button type="submit" class="btn btn-block btn-primary">
-          <i class="fa fa-sign-in"></i> Masuk Login
+            Masuk
         </button>
       </div>
       <p class="help-block pull-right">Tidak Punya Akun Rider ? <a href="<?= base_url('login/registerrider') ?>">Daftar Disini </a></p>

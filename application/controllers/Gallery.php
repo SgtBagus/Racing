@@ -38,20 +38,20 @@ class Gallery extends MY_Controller
                 $main_image = $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'master_gallery'));
                 $imagecount = $this->mymodel->selectWithQuery('SELECT count(id) as imagecount from tbl_gallery WHERE status = "ENABLE" AND imagegroup_id = ' . $row['id']);
 
+				$value = strlen($row["value"]) > 15 ? substr($row["value"], 0, 15) . "..." : $row["value"];
+				
                 $output .= '
-                <div class="col-md-12">
+                <div class="col-xs-6">
                     <a href="' . base_url('gallery/view/') . $row['id'] . '" class="a_black">
                         <div class="box">
                         <img class="img-even" src="' . $main_image['url'] . '">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12" align="center">
-                                        <h3><b>' . $row['value'] . '</b></h3>
+                                        <h4><b>' . $value . '</b></h4>
                                     </div>
                                     <div class="col-xs-12" align="center">
-                                        <i class="fa fa-picture-o"></i> <b>' . $imagecount[0]['imagecount'] . '</b> Gambar
-                                        <br>
-                                        <i class="fa fa-calendar"></i> Dibuat pada tgl : ' . date('d-m-Y', strtotime($row['created_at'])) . '
+									    Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="'.base_url('assets/flaticon/sidebar_picture.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar
                                     </div>
                                 </div>
                             </div>
@@ -81,20 +81,7 @@ class Gallery extends MY_Controller
                 $output .= '
                 <div class="col-xs-12">
                     <div class="box">
-                    <img class="img-detail" src="' . $file['url'] . '">
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-xs-12" align="center">
-                                    <h3><b>' . $row['title'] . '</b></h3>
-                                </div>
-                                <div class="col-xs-12" align="center">
-                                    <i class="fa fa-calendar"></i> Dibuat pada tgl : ' . date('d-m-Y', strtotime($row['created_at'])) . '
-                                </div>
-                                <div class="col-xs-12">
-                                    <p>' . $row['caption'] . '</p>
-                                </div>
-                            </div>
-                        </div>
+                    <img src="' . $file['url'] . '" style="width:100%; border-radius:15px">
                     </div>
                 </div>';
             }

@@ -7,22 +7,25 @@
     <div class="col-md-12">
         <div class="box">
             <img class="img-detail" src="<?= $file['url'] ?>" id="main_image">
-
-            <?php
-            if ($file_detail) {
-                $i = 1;
-                foreach ($file_detail as $img) {
-                    ?>
-                    <div class="col-md-2 col-sm-3 col-xs-4">
-                        <img src="<?= $img['url'] ?>" id="detail_image-<?= $i ?>" class="img-detail-preview">
-                    </div>
-            <?php
-                    $i++;
-                }
-            } ?>
-            <div class="box-body" align="center">
-                <h3><?= $tbl_merchandise['title'] ?><br></h3>
-                Dibuat pada : <?= date('d-m-Y', strtotime($tbl_merchandise['created_at'])) ?> <br>
+            <div class="box-body" align="center" style="margin-top: -15px;">
+                <div class="row">   
+                    <?php
+                    if ($file_detail) {
+                        $i = 1;
+                        foreach ($file_detail as $img) {
+                            ?>
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="<?= $img['url'] ?>" id="detail_image-<?= $i ?>" class="img-detail-preview">
+                            </div>
+                    <?php
+                            $i++;
+                        }
+                    } ?>
+                </div>
+                <h4><b><?= $tbl_merchandise['title'] ?></b></h4>
+                <small>
+                Dibuat pada : <?= date('d M Y', strtotime($tbl_merchandise['created_at'])) ?>
+                </small>
             </div>
         </div>
     </div>
@@ -31,12 +34,12 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-body" align="center">
-                <i class="fa fa-money"></i> <b>Rp. <?= number_format($tbl_merchandise['harga'], 0, ',', '.') ?>,- </b>
+                <b>Rp. <?= number_format($tbl_merchandise['harga'], 0, ',', '.') ?>,- </b>
             </div>
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row" style="margin-top: 10px;">
     <div class="col-md-12">
         <div class="box">
             <div class="box-body">
@@ -49,7 +52,7 @@
     <div class="col-md-12">
         <a href="https://api.whatsapp.com/send?phone=<?= $tbl_merchandise['phone'] ?>&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
             <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
-                <i class="fa fa-whatsapp"></i> Hubungi Admin
+                <img src="<?= base_url('assets/flaticon/whatsapp.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> Hubungi Admin
             </button>
         </a>
     </div>

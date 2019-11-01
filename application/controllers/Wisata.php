@@ -34,7 +34,7 @@ class Wisata extends MY_Controller
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_wisata'));
 				
 				$output .= '
-				<div class="col-md-12">
+				<div class="col-xs-6">
 				<a href="' . base_url('wisata/view/') . $row['id'] . '" class="a_black">
 				<div class="box">
 				<img class="img-even" src="' . $photo['url'] . '">
@@ -45,11 +45,12 @@ class Wisata extends MY_Controller
 				</div>
 				</div>
 				<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12" align="center">
 				Wisata Dimulai : 
 				<br>
 				<small>
-				'.date('d M Y', strtotime($row['tglwisataStart'])).' - '.date('d M Y', strtotime($row['tglwisataEnd'])).'
+				'.date('d M Y', strtotime($row['tglwisataStart'])).' 
+                            <b> s/d </b> '.date('d M Y', strtotime($row['tglwisataEnd'])).'
 				</small>
 				</div>
 				</div>

@@ -5,12 +5,14 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <h4 align="center"><?= $subpage ?></h4><br>
         <div class="box">
             <img class="img-even" src="<?= $main_image['url'] ?>" alt="Third slide">
             <div class="box-body">
                 <div align="center">
-                    <i class="fa fa-calendar"></i> Dibuat pada tgl : <?= date('d-m-Y', strtotime($id['created_at'])) ?>
+                    <h4 align="center"><?= $subpage ?></h4>
+                    <small>
+                    Dibuat pada tgl : <?= date('d M Y', strtotime($id['created_at'])) ?>
+                    </small>
                 </div>
             </div>
         </div>
@@ -26,7 +28,7 @@
                                                                         } ?> id="filter-search">
             </div>
             <div class="form-group" align="center">
-                <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i> Cari</button>
+                <button type="submit" class="btn btn-block btn-primary">Cari</button>
             </div>
         </form>
     </div>

@@ -35,8 +35,12 @@ class Merchandise extends MY_Controller
 		if ($tbl_merchandise) {
 			foreach ($tbl_merchandise as $row) {
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_merchandise'));
+
+				
+				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
+				
 				$output .= '
-				<div class="col-md-12">
+				<div class="col-xs-6">
 					<a href="' . base_url('merchandise/view/') . $row['id'] . '" class="a_black">
 						<div class="box">
 						<img class="img-even" src="' . $photo['url'] . '">
@@ -45,10 +49,8 @@ class Merchandise extends MY_Controller
                                     <div class="col-xs-12">
                                     </div>
                                     <div class="col-xs-12" align="center">
-                                        <h3>
-                                            <b>' . $row['title'] . '</b><br>
-                                            <small><i class="fa fa-money"></i> <b>Rp. ' . number_format($row['harga'], 0, ',', '.') . ',- </b>
-                                        </h3>
+                                        <h4><b>' . $title . '</b><br></h4>
+                                        <small><b>Rp. ' . number_format($row['harga'], 0, ',', '.') . ',- </b></small>
                                     </div>
                                 </div>
                             </div>

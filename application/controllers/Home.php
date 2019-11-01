@@ -6,7 +6,7 @@ class Home extends MY_Controller {
 
 	public function index(){
 		$data['page'] = 'Home';
-		$data['tbl_event'] = $this->db->limit(5)->order_by('id', 'DESC')->get_where('tbl_event', array('public' => 'ENABLE'))->result_array();
+		$data['tbl_event'] = $this->db->limit(5)->order_by('tgleventStart', 'DESC')->get_where('tbl_event', array('public' => 'ENABLE'))->result_array();
 		$data['tbl_blog'] = $this->db->limit(4)->order_by('id', 'DESC')->get_where('tbl_blog', array('status' => 'ENABLE'))->result_array();
 		$data['tbl_gallery'] = $this->mymodel->selectWithQuery('SELECT a.*, b.imagegroup_id FROM master_imagegroup a INNER JOIN tbl_gallery b ON a.id = b.imagegroup_id WHERE a.public = "ENABLE" GROUP BY b.imagegroup_id ORDER BY id DESC LIMIT 5');
 		$data['tbl_merchandise'] = $this->db->limit(5)->order_by('id', 'DESC')->get_where('tbl_merchandise', array('status' => 'ENABLE'))->result_array();
