@@ -38,7 +38,7 @@ class Monitorevent extends MY_Controller {
 					$approve = '<small class="label bg-red"><i class="fa fa-ban"> </i> Pendaftaran Di Tolak </small>';
 				} 
 				
-				$title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
+				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
 
 				$output .= '
 				<div class="col-xs-6">
@@ -47,7 +47,7 @@ class Monitorevent extends MY_Controller {
 					<div class="box-body">
 						<div class="row">
 							<div class="col-xs-12" align="center">
-								<b style="font-size:15px">' . $title . '</b><br>
+								<b style="font-size:11px">' . $title . '</b><br>
 								<div class="row" align="center">
 								' . $approve . '
 								</div>

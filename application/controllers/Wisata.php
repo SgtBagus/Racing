@@ -43,7 +43,7 @@ class Wisata extends MY_Controller
 				<div class="box-body">
 				<div class="row">
 				<div class="col-xs-12" align="center">
-				<b style="font-size:15px">' . $title . '</b><br>
+				<b style="font-size:11px">' . $title . '</b><br>
 				</div>
 				</div>
 				<div class="row">

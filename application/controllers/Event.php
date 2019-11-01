@@ -193,7 +193,7 @@ class Event extends MY_Controller
 					$status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
 				}
 				
-				$title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
+				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
 
 				$output .= '
 				<a href="' . base_url("event/view/") . $row['id'] . '" class="a_black">
@@ -203,7 +203,7 @@ class Event extends MY_Controller
 					<div class="box-body">
 						<div class="row">
 							<div class="col-xs-12" align="center">
-								<b style="font-size:15px">' . $title . '</b><br>
+								<b style="font-size:11px">' . $title . '</b><br>
 								<div class="row" align="center">
 								' . $status . '
 								</div>

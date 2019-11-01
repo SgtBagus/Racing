@@ -31,29 +31,6 @@
             </li>
             <li style="margin-bottom: 5px;" class="treeview">
                 <a href="#">
-                    <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                    <span>Profil</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('raider/edit/' . $this->session->userdata('id')) ?>">
-                            <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                            Akun Saya
-                        </a>
-                    </li>
-                    <li style="margin-bottom: 5px;">
-                        <a href="<?= base_url('riderpassword') ?>">
-                            <img src="<?= base_url('assets/flaticon/sidebar_locked.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                            Ubah Passowrd
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li style="margin-bottom: 5px;" class="treeview">
-                <a href="#">
                     <img src="<?= base_url('assets/flaticon/sidebar_star.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Event</span>
                     <span class="pull-right-container">
@@ -87,6 +64,29 @@
                     </li>
                 </ul>
             </li>
+            <li style="margin-bottom: 5px;" class="treeview">
+                <a href="#">
+                    <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                    <span>Profil</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li style="margin-bottom: 5px;">
+                        <a href="<?= base_url('raider/edit/' . $this->session->userdata('id')) ?>">
+                            <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Akun Saya
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 5px;">
+                        <a href="<?= base_url('riderpassword') ?>">
+                            <img src="<?= base_url('assets/flaticon/sidebar_locked.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                            Ubah Passowrd
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('wisata') ?>">
                     <img src="<?= base_url('assets/flaticon/sidebar_wisata.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
@@ -109,6 +109,12 @@
                 <a href="<?= base_url('merchandise') ?>">
                     <img src="<?= base_url('assets/flaticon/sidebar_shipment.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Merchandise</span>
+                </a>
+            </li>
+            <li style="margin-bottom: 5px;">
+                <a href="<?= base_url('kebijakanprivasi') ?>">
+                    <img src="<?= base_url('assets/flaticon/sidebar_list.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                    <span>Kebijakan & Privasi</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">

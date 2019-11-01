@@ -38,7 +38,7 @@ class Gallery extends MY_Controller
                 $main_image = $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'master_gallery'));
                 $imagecount = $this->mymodel->selectWithQuery('SELECT count(id) as imagecount from tbl_gallery WHERE status = "ENABLE" AND imagegroup_id = ' . $row['id']);
 
-				$value = strlen($row["value"]) > 15 ? substr($row["value"], 0, 15) . "..." : $row["value"];
+				$value = strlen($row["value"]) > 20 ? substr($row["value"], 0, 20) . "..." : $row["value"];
 				
                 $output .= '
                 <div class="col-xs-6">
@@ -48,7 +48,7 @@ class Gallery extends MY_Controller
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12" align="center">
-                                        <b style="font-size:15px">' . $value . '</b><br>
+                                    <b style="font-size:11px">' . $value . '</b><br>
                                     </div>
                                     <div class="col-xs-12" align="center">
 									    Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="'.base_url('assets/flaticon/sidebar_picture.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar

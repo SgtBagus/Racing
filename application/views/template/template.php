@@ -45,16 +45,16 @@ if ($this->session->userdata('session_sop') == "") {
 <body class="layout-top-nav fixed skin-purple-light">
   <div class="wrapper">
     <header class="main-header">
-      <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100;">
-        <div class="row">
-          <div class="col-xs-2" align="center">
+      <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100; height: 68px;">
+        <div class="row" style="height: 68px;">
+          <div class="col-xs-2" align="center" style="height: 68px;">
             <?php if ($page != "Home") { ?>
               <a href="#" id="back" class="header-menu" onclick="back()">
                 <img src="<?= base_url('assets/flaticon/back.png') ?>" style=" width: 30px; height: 30px; ">
               </a>
             <?php } ?>
           </div>
-          <div class="col-xs-8 header-menu" align="center">
+          <div class="col-xs-8 header-menu" align="center" style="height: 68px;">
             <img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg">
           </div>
           <a href="#" id="open-sidebar">
@@ -66,7 +66,7 @@ if ($this->session->userdata('session_sop') == "") {
       </nav>
     </header>
     <div class="content-wrapper">
-      <div class="container" style="margin-top: -15px;">
+      <div class="container" style="margin-top: -20px;">
         <!-- <h3 align="center"> <?= $page ?><br><small> <?= $subpage ?></small></h3> -->
         <?= $contents ?>
         <marquee><?= MARQUEE ?></marquee>
