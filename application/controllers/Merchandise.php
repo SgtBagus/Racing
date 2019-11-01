@@ -46,8 +46,6 @@ class Merchandise extends MY_Controller
 						<img class="img-even" src="' . $photo['url'] . '">
 							<div class="box-body">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                    </div>
                                     <div class="col-xs-12" align="center">
                                         <b style="font-size:11px">' . $title . '</b><br>
                                         <small><b>Rp. ' . number_format($row['harga'], 0, ',', '.') . ',- </b></small>

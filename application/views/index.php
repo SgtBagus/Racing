@@ -16,7 +16,7 @@
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-					<img src="<?= base_url('assets/flaticon/wisata.png') ?>" style=" width: 80px; height: 80px; ">
+					<img src="<?= base_url('assets/flaticon/wisata_home.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -107,7 +107,7 @@
 	<?php } ?>
 	<div class="col-xs-12" align="center">
 		<a href="<?= base_url('event') ?>">
-			<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">LIHAT SEMUA </button>
+			<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua Event</button>
 		</a>
 	</div>
 </div>
@@ -140,7 +140,7 @@
 		</div>
 		<div class="col-xs-12" align="center">
 			<a href="<?= base_url('blogs') ?>">
-				<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">LIHAT SEMUA </button>
+				<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua News</button>
 			</a>
 		</div>
 	<?php } ?>
@@ -177,7 +177,7 @@
 	<?php } ?>
 	<div class="col-xs-12" align="center">
 		<a href="<?= base_url('merchandise') ?>">
-			<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">LIHAT SEMUA </button>
+			<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua Merch</button>
 		</a>
 	</div>
 </div>
@@ -210,7 +210,7 @@
 		</div>
 		<div class="col-xs-12" align="center">
 			<a href="<?= base_url('gallery') ?>">
-				<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">LIHAT SEMUA </button>
+				<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua Gallery</button>
 			</a>
 		</div>
 	<?php } ?>

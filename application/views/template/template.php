@@ -50,7 +50,7 @@ if ($this->session->userdata('session_sop') == "") {
           <div class="col-xs-2" align="center" style="height: 68px;">
             <?php if ($page != "Home") { ?>
               <a href="#" id="back" class="header-menu" onclick="back()">
-                <img src="<?= base_url('assets/flaticon/back.png') ?>" style=" width: 30px; height: 30px; ">
+                <img src="<?= base_url('assets/flaticon/back_header.png') ?>" style=" width: 30px; height: 30px; ">
               </a>
             <?php } ?>
           </div>
