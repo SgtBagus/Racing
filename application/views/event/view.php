@@ -185,10 +185,32 @@
                 </div>
             </div>
         </a>
-        <?php if ($tbl_event['statusEvent'] == 'STARTED') {
-            if ($this->session->userdata('id') != NULL) {
-                if ($this->session->userdata('role') == 'Team') { ?>
-                    <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
+        <?php if ($tbl_event['status'] == 'ENABLE') { ?>
+            <?php if ($tbl_event['statusEvent'] == 'STARTED') {
+                    if ($this->session->userdata('id') != NULL) {
+                        if ($this->session->userdata('role') == 'Team') { ?>
+                        <a href="<?= base_url('event/register/') . $tbl_event['id'] ?>">
+                            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                                <div class="box" style=" width: 100px; height: 100px;">
+                                    <div class="box-body" align="center">
+                                        <img src="<?= base_url('assets/flaticon/register.png') ?>" style=" width: 80px; height: 80px; ">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php } else { ?>
+                        <a href="<?= base_url('event/registerrider/') . $tbl_event['id'] ?>">
+                            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                                <div class="box" style=" width: 100px; height: 100px;">
+                                    <div class="box-body" align="center">
+                                        <img src="<?= base_url('assets/flaticon/register.png') ?>" style=" width: 80px; height: 80px; ">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php }
+                            } else { ?>
+                    <a href="<?= base_url('login/rider/') ?>">
                         <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
                             <div class="box" style=" width: 100px; height: 100px;">
                                 <div class="box-body" align="center">
@@ -197,45 +219,33 @@
                             </div>
                         </div>
                     </a>
-                <?php } else { ?>
-                    <a href="<?= base_url('event/registerrider/') . $tbl_event['id'] ?>">
-                        <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
-                            <div class="box" style=" width: 100px; height: 100px;">
-                                <div class="box-body" align="center">
-                                    <img src="<?= base_url('assets/flaticon/register.png') ?>" style=" width: 80px; height: 80px; ">
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                <?php }
-                    } else { ?>
-                <a href="<?= base_url('login/rider/') ?>">
-                    <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
-                        <div class="box" style=" width: 100px; height: 100px;">
-                            <div class="box-body" align="center">
-                                <img src="<?= base_url('assets/flaticon/register.png') ?>" style=" width: 80px; height: 80px; ">
-                            </div>
+                <?php } ?>
+            <?php } else if ($tbl_event['statusEvent'] == 'BERJALAN') { ?>
+                <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                    <div class="box" style=" width: 100px; height: 100px;">
+                        <div class="box-body" align="center">
+                            <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
                         </div>
                     </div>
-                </a>
+                </div>
+            <?php } else if ($tbl_event['statusEvent'] == 'SELESAI') { ?>
+                <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                    <div class="box" style=" width: 100px; height: 100px;">
+                        <div class="box-body" align="center">
+                            <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
+                        </div>
+                    </div>
+                </div>
+            <?php } else if ($tbl_event['statusEvent'] == 'BATAL') { ?>
+                <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
+                    <div class="box" style=" width: 100px; height: 100px;">
+                        <div class="box-body" align="center">
+                            <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
+                        </div>
+                    </div>
+                </div>
             <?php } ?>
-        <?php } else if ($tbl_event['statusEvent'] == 'BERJALAN') { ?>
-            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
-                <div class="box" style=" width: 100px; height: 100px;">
-                    <div class="box-body" align="center">
-                        <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
-                    </div>
-                </div>
-            </div>
-        <?php } else if ($tbl_event['statusEvent'] == 'SELESAI') { ?>
-            <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
-                <div class="box" style=" width: 100px; height: 100px;">
-                    <div class="box-body" align="center">
-                        <img src="<?= base_url('assets/flaticon/register_disable.png') ?>" style=" width: 80px; height: 80px; ">
-                    </div>
-                </div>
-            </div>
-        <?php } else if ($tbl_event['statusEvent'] == 'BATAL') { ?>
+        <?php } else { ?>
             <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
                 <div class="box" style=" width: 100px; height: 100px;">
                     <div class="box-body" align="center">
