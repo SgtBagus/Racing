@@ -123,7 +123,7 @@ if ($this->session->userdata('session_sop') == "") {
     function lazzy_loader(limit) {
       var output = '<div class="row">' +
         '<div class="col-xs-12" align="center">' +
-        '<h4><i class="fa fa-fw fa-spinner fa-spin"></i> Memuat Data !</h4' +
+        '<h4> Memuat Data !</h4>' +
         '</div>' +
         '</div>';
       $('#load_data_message').html(output);

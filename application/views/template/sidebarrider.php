@@ -34,7 +34,7 @@
                     <img src="<?= base_url('assets/flaticon/sidebar_star.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Event</span>
                     <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <img src="<?= base_url('assets/flaticon/sidebar.png') ?>" style="width: 10px; height: 10px; margin-bottom: 5px" class="pull-right">
                     </span>
                 </a>
                 <ul class="treeview-menu">
@@ -69,7 +69,7 @@
                     <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                     <span>Profil</span>
                     <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <img src="<?= base_url('assets/flaticon/sidebar.png') ?>" style="width: 10px; height: 10px; margin-bottom: 5px" class="pull-right">
                     </span>
                 </a>
                 <ul class="treeview-menu">
