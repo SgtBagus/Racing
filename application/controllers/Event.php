@@ -19,11 +19,10 @@ class Event extends MY_Controller
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
 		$data['rule'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'event_rule'));
 
-		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $data['tbl_event']['id'] . "'");
-
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
+		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/view', $data);
@@ -35,11 +34,9 @@ class Event extends MY_Controller
 		$data['tbl_event'] = $this->mymodel->selectDataone('tbl_event',  array('id' => $id));
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
 
-		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $data['tbl_event']['id'] . "'");
-
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
-
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
+		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/gallery', $data);
@@ -52,11 +49,9 @@ class Event extends MY_Controller
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
 		$data['raider'] = $this->mymodel->selectWhere('tbl_raider', array('team_id' => $this->session->userdata('id')));
 
-		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $data['tbl_event']['id'] . "'");
-
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
-
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
+		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = 'Mendaftar Event : <b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/register', $data);
@@ -179,9 +174,9 @@ class Event extends MY_Controller
 		if ($event) {
 			foreach ($event as $row) {
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event'));
-				$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "'");
+				$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
 
-				$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']);
+				$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']." AND b.approve = 'APPROVE' ");
 
 				if ($row['statusEvent'] == 'BERJALAN') {
 					$status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
@@ -194,6 +189,13 @@ class Event extends MY_Controller
 				}
 				
 				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
+				
+				$tanggal = "";
+				if ((!$row['tgleventStart']) and (!$row['tgleventEnd'])) { 
+					$tanggal = '<b>Comming Soon</b>';
+				} else {
+					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd']));
+				}
 
 				$output .= '
 				<a href="' . base_url("event/view/") . $row['id'] . '" class="a_black">
@@ -216,10 +218,7 @@ class Event extends MY_Controller
 							<div class="col-xs-12" align="center">
 								Tanggal Event :
 								<br>
-								<small>
-								' . date('d M Y', strtotime($row['tgleventStart'])) . '<b> s/d </b>
-									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
-								</small>
+								<small>'.$tanggal.'</small>
 							</div>
 							<div class="col-xs-12" align="center">
 								Pendaftar :
@@ -285,12 +284,9 @@ class Event extends MY_Controller
 		$data['tbl_event'] = $this->mymodel->selectDataone('tbl_event',  array('id' => $id));
 		$data['file'] = $this->mymodel->selectDataone('file',  array('table_id' => $id, 'table' => 'tbl_event'));
 
-		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $data['tbl_event']['id'] . "'");
-
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
-
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
-
+		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/rank', $data);

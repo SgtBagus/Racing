@@ -27,9 +27,10 @@ class Monitorevent extends MY_Controller {
 
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['event_id'], 'table' => 'tbl_event'));
 
-				$rowteam = $this->mymodel->selectWithQuery("SELECT count(id) as rowteam from tbl_event_register WHERE team_id NOT LIKE '0' "); 
-				$rowraider = $this->mymodel->selectWithQuery("SELECT count(id) as rowraider from tbl_event_register_raider WHERE event_register_id = '" . $row['id'] . "'"); 
+				$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
 
+				$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']." AND b.approve = 'APPROVE' ");
+				
 				if ($row['approve'] == 'WAITING') {
 					$approve = '<small class="label bg-yellow"><i class="fa fa-warning"> </i> Menunggu Dikonfirmasi </small>';
 				} else if ($row['approve'] == "APPROVE") {
@@ -39,6 +40,13 @@ class Monitorevent extends MY_Controller {
 				} 
 				
 				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
+
+				$tanggal = "";
+				if ((!$row['tgleventStart']) and (!$row['tgleventEnd'])) { 
+					$tanggal = '<b>Comming Soon</b>';
+				} else {
+					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd']));
+				}
 
 				$output .= '
 				<div class="col-xs-6">
@@ -60,10 +68,7 @@ class Monitorevent extends MY_Controller {
 							<div class="col-xs-12" align="center">
 								Tanggal Event :
 								<br>
-								<small>
-								' . date('d M Y', strtotime($row['tgleventStart'])) . '<b> s/d </b>
-									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
-								</small>
+								<small>'.$tanggal.'</small>
 							</div>
 							<div class="col-xs-12" align="center">
 								Pendaftar :

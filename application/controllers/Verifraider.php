@@ -24,7 +24,7 @@ class Verifraider extends MY_Controller
         $data['page'] = 'Verified Raider';
         $data['tbl_event'] = $this->mymodel->selectDataone('tbl_event', array('id' => $id));
         $data['file_event'] = $this->mymodel->selectDataone('file', array('table_id' => $data['tbl_event']['id'], 'table' => 'tbl_event'));
-        $data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id);
+        $data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
 
         $data['subpage'] = $data['tbl_event']['title'];
         $this->template->load('template/template', 'verifraider/view', $data);
@@ -44,8 +44,8 @@ class Verifraider extends MY_Controller
         if ($event) {
             foreach ($event as $row) {
                 $photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event'));
-
-                $rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id  WHERE b.event_id = '" . $row['id'] . "'  AND b.approve = 'APPROVE'");
+                
+				$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']." AND b.approve = 'APPROVE' ");
 
                 if ($row['statusEvent'] == 'BERJALAN') {
                     $status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
@@ -58,6 +58,13 @@ class Verifraider extends MY_Controller
                 }
                 
                 $title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
+
+				$tanggal = "";
+				if ((!$row['tgleventStart']) and (!$row['tgleventEnd'])) { 
+					$tanggal = '<b>Comming Soon</b>';
+				} else {
+					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd']));
+                }
 
                 $output .= '
 				<a href="' . base_url("verifteam/view/") . $row['id'] . '" class="a_black">
@@ -78,11 +85,7 @@ class Verifraider extends MY_Controller
                         <div class="col-xs-12" align="center">
 								Tanggal Event :
 								<br>
-								<small>
-								' . date('d M Y', strtotime($row['tgleventStart'])) . '
-                            <b> s/d </b>
-									' . date('d M Y', strtotime($row['tgleventEnd'])) . '
-								</small>
+								<small>'.$tanggal.'</small>
 							</div>
 							<div class="col-xs-12" align="center">
 								Pendaftar :

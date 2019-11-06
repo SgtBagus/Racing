@@ -41,9 +41,11 @@
                         Tanggal Event :
                         <br>
                         <small>
-                            <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) ?>
-                            <b> s/d </b>
-                            <?= date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
+                            <?php if ((!$tbl_event['tgleventStart']) and (!$tbl_event['tgleventEnd'])) { ?>
+                                <b>Comming Soon</b>
+                            <?php  } else { ?>
+                                <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
+                            <?php } ?>
                         </small>
                     </div>
                     <div class="col-xs-6" align="right">
@@ -118,7 +120,7 @@
 <div class="row">
     <div class="col-md-12" align="center">
         <h3 class="box-title">Data Event </h3>
-        <a href="<?= base_url('verifteam/view/').$tbl_event['id'] ?>" class="a_black">
+        <a href="<?= base_url('verifteam/view/') . $tbl_event['id'] ?>" class="a_black">
             <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
                 <div class="box" style=" width: 100px; height: 100px;">
                     <div class="box-body" align="center">
@@ -127,7 +129,7 @@
                 </div>
             </div>
         </a>
-        <a href="<?= base_url('verifraider/view/').$tbl_event['id'] ?>" class="a_black">
+        <a href="<?= base_url('verifraider/view/') . $tbl_event['id'] ?>" class="a_black">
             <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
                 <div class="box" style=" width: 100px; height: 100px;">
                     <div class="box-body" align="center">

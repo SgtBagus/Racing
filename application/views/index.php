@@ -64,9 +64,9 @@
 	</div>
 	<?php foreach ($tbl_event as $row) {
 		$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event'));
-		$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "'");
 		$register_id = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $row['id']));
-		$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']);
+		$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
+		$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id'] . " AND b.approve = 'APPROVE' ");
 		?>
 		<a href="<?= base_url('event/view/') . $row['id'] ?>">
 			<div class="col-xs-6">
@@ -89,7 +89,11 @@
 							<b class="title"><?= strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"] ?></b>
 							<br>
 							<small>
-								<?= date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd'])) ?>
+								<?php if ((!$row['tgleventStart']) and (!$row['tgleventEnd'])) { ?>
+									<b>Comming Soon</b>
+								<?php  } else { ?>
+									<?= date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd'])) ?>
+								<?php } ?>
 							</small>
 						</p>
 					</div>

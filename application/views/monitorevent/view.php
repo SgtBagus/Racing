@@ -26,9 +26,11 @@
                         Event Dimulai :
                         <br>
                         <small>
-                            <?= date('d-M', strtotime($tbl_event['tgleventStart'])) ?>
-                            <b>s/d</b>
-                            <?= date('d-M', strtotime($tbl_event['tgleventEnd'])) ?>
+                            <?php if ((!$tbl_event['tgleventStart']) and (!$tbl_event['tgleventEnd'])) { ?>
+                                <b>Comming Soon</b>
+                            <?php  } else { ?>
+                                <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
+                            <?php } ?>
                         </small>
                     </div>
                     <div class="col-xs-6" align="right">
