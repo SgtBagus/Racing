@@ -17,7 +17,7 @@
                             Wisata Dimulai :
                             <br>
                             <?php if ((!$tbl_wisata['tglwisataStart']) || (!$tbl_wisata['tglwisataEnd'])) { ?>
-                                <b>Comming Soon</b>
+                                <b>Coming Soon</b>
                             <?php  } else { ?>
                                 <?= date('d M Y', strtotime($tbl_wisata['tglwisataStart'])) . ' <b> s/d </b> ' . date('d M Y', strtotime($tbl_wisata['tglwisataEnd'])) ?>
                             <?php } ?>

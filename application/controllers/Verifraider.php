@@ -61,7 +61,7 @@ class Verifraider extends MY_Controller
 
 				$tanggal = "";
 				if ((!$row['tgleventStart']) || (!$row['tgleventEnd'])) { 
-					$tanggal = '<b>Comming Soon</b>';
+					$tanggal = '<b>Coming Soon</b>';
 				} else {
 					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd']));
                 }

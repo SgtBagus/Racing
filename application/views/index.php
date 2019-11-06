@@ -90,7 +90,7 @@
 							<br>
 							<small>
 								<?php if ((!$row['tgleventStart']) || (!$row['tgleventEnd'])) { ?>
-									<b>Comming Soon</b>
+									<b>Coming Soon</b>
 								<?php  } else { ?>
 									<?= date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd'])) ?>
 								<?php } ?>

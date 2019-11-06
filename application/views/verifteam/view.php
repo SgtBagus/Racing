@@ -41,7 +41,7 @@
                         <br>
                         <small>
                             <?php if ((!$tbl_event['tgleventStart']) || (!$tbl_event['tgleventEnd'])) { ?>
-                                <b>Comming Soon</b>
+                                <b>Coming Soon</b>
                             <?php  } else { ?>
                                 <?= date('d M Y', strtotime($tbl_event['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($tbl_event['tgleventEnd'])) ?>
                             <?php } ?>
