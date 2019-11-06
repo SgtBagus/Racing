@@ -40,7 +40,7 @@ class Monitoreventrider extends MY_Controller {
 				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
 
 				$tanggal = "";
-				if ((!$row['tgleventStart']) and (!$row['tgleventEnd'])) { 
+				if ((!$row['tgleventStart']) || (!$row['tgleventEnd'])) { 
 					$tanggal = '<b>Comming Soon</b>';
 				} else {
 					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd']));

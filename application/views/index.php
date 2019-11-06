@@ -89,7 +89,7 @@
 							<b class="title"><?= strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"] ?></b>
 							<br>
 							<small>
-								<?php if ((!$row['tgleventStart']) and (!$row['tgleventEnd'])) { ?>
+								<?php if ((!$row['tgleventStart']) || (!$row['tgleventEnd'])) { ?>
 									<b>Comming Soon</b>
 								<?php  } else { ?>
 									<?= date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd'])) ?>

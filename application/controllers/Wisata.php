@@ -35,6 +35,13 @@ class Wisata extends MY_Controller
 				
 				$title = strlen($row["title"]) > 15 ? substr($row["title"], 0, 15) . "..." : $row["title"];
 				
+				$tanggal = "";
+				if ((!$row['tgleventStart']) || (!$row['tgleventEnd'])) { 
+					$tanggal = '<b>Comming Soon</b>';
+				} else {
+					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd']));
+				}
+
 				$output .= '
 				<div class="col-xs-6">
 				<a href="' . base_url('wisata/view/') . $row['id'] . '" class="a_black">
@@ -50,10 +57,7 @@ class Wisata extends MY_Controller
 				<div class="col-xs-12" align="center">
 				Wisata Dimulai : 
 				<br>
-				<small>
-				'.date('d M Y', strtotime($row['tglwisataStart'])).' 
-                            <b> s/d </b> '.date('d M Y', strtotime($row['tglwisataEnd'])).'
-				</small>
+								<small>'.$tanggal.'</small>
 				</div>
 				</div>
 				</div>
