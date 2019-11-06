@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="box-title" align="center">News/Blogs</h3>
+        <h3 class="box-title" align="center">News</h3>
     </div>
 </div>
 <div class="row">

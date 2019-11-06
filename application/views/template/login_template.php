@@ -2,9 +2,16 @@
 <html>
 
 <head>
+  <script type="text/javascript">
+        if (screen.width >= 1081) {
+            window.location = "https://www.karyastudio.com";
+        }
+    </script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <title>Never Say Old - Mobile</title>
+  <link rel="icon" href="<?= base_url('assets/') ?>img/logo.jpg">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/Ionicons/css/ionicons.min.css">
@@ -20,6 +27,7 @@
   <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
   <script src="<?= base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>
+  
 </head>
 
 <body class="layout-top-nav fixed skin-purple-light">

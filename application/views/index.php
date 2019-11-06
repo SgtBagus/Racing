@@ -2,7 +2,7 @@
 	<div class="cover">
 	</div>
 </div>
-<div class="row" align="center">
+<div class="row" align="center" style="margin-top: 15px;">
 	<a href="<?= base_url('event') ?>" class="a_black">
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
@@ -48,11 +48,11 @@
 			</div>
 		</div>
 	</a>
-	<a href="<?= base_url('verifraider') ?>" class="a_black">
+	<a href="<?= base_url('gallery') ?>" class="a_black">
 		<div class="col-xs-4" style="padding-right: 0px; padding-left: 0px">
 			<div class="box" style=" width: 100px; height: 100px;">
 				<div class="box-body" align="center">
-					<img src="<?= base_url('assets/flaticon/rider.png') ?>" style=" width: 80px; height: 80px; ">
+					<img src="<?= base_url('assets/flaticon/gallery.png') ?>" style=" width: 80px; height: 80px; ">
 				</div>
 			</div>
 		</div>
@@ -112,43 +112,33 @@
 	</div>
 </div>
 <div class="row">
-	<?php if ($tbl_blog) { ?>
-		<div class="col-xs-12" align="center">
-			<h3 class="box-title">News</h3>
-		</div>
-		<div class="col-xs-12">
-			<div class="large-12 columns">
-				<div class="owl-carousel owl-theme" id="owl-news">
-					<?php foreach ($tbl_blog as $row) {
-							$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_blog'));
-							?>
-						<a href="<?= base_url('blogs/view/') . $row['id'] ?>">
-							<div class="index-event mb">
-								<div class="box">
-									<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:225px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;"></div>
-									<div class="cards-text text-center" style="color: black">
-										<p>
-											<b class="title"><?= substr($row['title'], 0, 55) ?>...</b>
-										</p>
-									</div>
-								</div>
-							</div>
-						</a>
-					<?php } ?>
+	<div class="col-xs-12" align="center">
+		<h3 class="box-title">News</h3>
+	</div>
+	<?php foreach ($tbl_blog as $row) {
+		$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_blog')); ?>
+		<a href="<?= base_url('blogs/view/') . $row['id'] ?>">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:225px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;"></div>
+					<div class="cards-text text-center" style="color: black">
+						<p>
+							<b class="title"><?= substr($row['title'], 0, 55) ?>...</b>
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xs-12" align="center">
-			<a href="<?= base_url('blogs') ?>">
-				<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua News</button>
-			</a>
-		</div>
+		</a>
 	<?php } ?>
+	<div class="col-xs-12" align="center">
+		<a href="<?= base_url('blogs') ?>">
+			<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua News</button>
+		</a>
+	</div>
 </div>
-
 <div class="row">
 	<div class="col-xs-12" align="center">
-		<h3 class="box-title">Merch</h3>
+		<h3 class="box-title">Merchandise</h3>
 	</div>
 	<?php foreach ($tbl_merchandise as $row) {
 		$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_merchandise')); ?>
@@ -177,72 +167,7 @@
 	<?php } ?>
 	<div class="col-xs-12" align="center">
 		<a href="<?= base_url('merchandise') ?>">
-			<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua Merch</button>
+			<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua Merchandise</button>
 		</a>
 	</div>
 </div>
-<div class="row">
-	<?php if ($tbl_gallery) { ?>
-		<div class="col-xs-12" align="center">
-			<h3 class="box-title">Gallery</h3>
-		</div>
-		<div class="col-xs-12">
-			<div class="large-12 columns">
-				<div class="owl-carousel owl-theme" id="owl-gallery">
-					<?php foreach ($tbl_gallery as $row) {
-							$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'master_gallery'));
-							?>
-						<a href="<?= base_url('gallery/view/') . $row['id'] ?>">
-							<div class="index-event mb">
-								<div class="box">
-									<div class="cards-image" style="border-top-left-radius: 10px;border-top-right-radius: 10px; border-bottom-left-radius: 0px;border-bottom-right-radius: 0px; height:225px;background: url(<?= $photo['url'] ?>);width:100%;background-position: center;background-size: cover;"></div>
-									<div class="cards-text text-center" style="color: black">
-										<p>
-											<b class="title"><?= $row['value'] ?></b>
-										</p>
-									</div>
-								</div>
-							</div>
-						</a>
-					<?php } ?>
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-12" align="center">
-			<a href="<?= base_url('gallery') ?>">
-				<button class="btn btn-primary btn-lg btn-blog" style="background-color: #72c02c;">Lihat Semua Gallery</button>
-			</a>
-		</div>
-	<?php } ?>
-</div>
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		$('#owl-news').owlCarousel({
-			center: false,
-			items: 1,
-			loop: false,
-			dots: false,
-			margin: 10,
-			responsive: {
-				600: {
-					items: 4
-				}
-			}
-		})
-
-		$('#owl-gallery').owlCarousel({
-			center: false,
-			items: 1,
-			loop: false,
-			margin: 10,
-			dots: false,
-			responsive: {
-				600: {
-					items: 5
-				}
-			}
-		})
-
-	})
-</script>

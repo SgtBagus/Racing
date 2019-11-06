@@ -26,7 +26,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <a href="https://api.whatsapp.com/send?phone=62811333037&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
+        <a href="https://api.whatsapp.com/send?phone=628122223827&text=Perkenalkan Saya <?= $this->session->userdata('name') ?>. Saya ingin menanyakan tentang..." target="_black">
     <button class="btn btn-lg btn-block btn-success" style="margin-bottom: 15px">
         <img src="<?= base_url('assets/flaticon/whatsapp.png') ?>" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" /> Hubungi Admin
     </button>

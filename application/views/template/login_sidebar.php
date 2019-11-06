@@ -77,7 +77,7 @@
             <li style="margin-bottom: 5px;">
                 <a href="<?= base_url('blogs') ?>">
                     <img src="<?= base_url('assets/flaticon/sidebar_text-lines.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                    <span>News/Blogs</span>
+                    <span>News</span>
                 </a>
             </li>
             <li style="margin-bottom: 5px;">

@@ -19,21 +19,6 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <form role="form" action="<?= base_url('gallery/view/' . $id['id']) ?>" method="GET">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Cari Gambar</label>
-                <input type="text" name="title" class="form-control" <?php if ($_GET['title']) {
-                                                                            echo 'value="' . $_GET['title'] . '"';
-                                                                        } ?> id="filter-search">
-            </div>
-            <div class="form-group" align="center">
-                <button type="submit" class="btn btn-block btn-primary">Cari</button>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="row">
     <div id="load_data">
     </div>
 </div>

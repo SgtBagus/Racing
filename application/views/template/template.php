@@ -2,6 +2,11 @@
 <html>
 
 <head>
+  <script type="text/javascript">
+        if (screen.width >= 1081) {
+            window.location = "https://www.karyastudio.com";
+        }
+    </script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -29,6 +34,8 @@
   <!-- <script src="<?= base_url('assets/') ?>owl/docs/assets/vendors/jquery.min.js"></script> -->
   <script src="<?= base_url('assets/') ?>owl/docs/assets/owlcarousel/owl.carousel.js"></script>
 </head>
+
+  
 <?php
 if ($this->session->userdata('session_sop') == "") {
   $this->load->view('template/login_sidebar');
@@ -48,14 +55,20 @@ if ($this->session->userdata('session_sop') == "") {
       <nav class="navbar" style="background-color:#000; top:0; width:100%; z-index:100; height: 68px;">
         <div class="row" style="height: 68px;">
           <div class="col-xs-2" align="center" style="height: 68px;">
-            <?php if ($page != "Home") { ?>
-              <a href="#" id="back" class="header-menu" onclick="back()">
+            <?php 
+            // if(isset($_SERVER['HTTP_REFERER'])) {
+    // $previous = $_SERVER['HTTP_REFERER'];
+    // $previous = base_url();
+// }
+
+            if ($page != "Home") { ?>
+              <a href="#" onclick="back()" class="header-menu">
                 <img src="<?= base_url('assets/flaticon/back_header.png') ?>" style=" width: 30px; height: 30px; ">
               </a>
             <?php } ?>
           </div>
           <div class="col-xs-8 header-menu" align="center" style="height: 68px;">
-            <img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg">
+            <a href="<?=base_url()?>"><img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg"></a>
           </div>
           <a href="#" id="open-sidebar">
             <div class="col-xs-2 header-menu" align="center" data-toggle="control-sidebar" style="margin-left: -10px">
