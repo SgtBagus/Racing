@@ -48,8 +48,9 @@ class Comment extends MY_Controller
             foreach ($tbl_comment as $row) {
 
                 $name = '';
-                $role = '';
                 $src = '';
+
+                $verif = '';
 
                 if ($row['id_raider']) {
                     $tbl_raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['id_raider']));
@@ -61,8 +62,8 @@ class Comment extends MY_Controller
                     }
 
                     $name = $tbl_raider['name'];
-                    $role = 'Rider';
                     $src = $url;
+                    $verif = $tbl_raider['verificacion'];
                 } elseif ($row['id_user']) {
                     $user = $this->mymodel->selectDataone('user', array('id' => $row['id_user']));
                     $file = $this->mymodel->selectDataone('file', array('table_id' => $row['id_user'], 'table' => 'user'));
@@ -73,8 +74,8 @@ class Comment extends MY_Controller
                     }
 
                     $name = $user['name'];
-                    $role = 'Admin';
                     $src = $url;
+                    $verif = '';
                 }
 
                 $admin = '';
@@ -90,9 +91,14 @@ class Comment extends MY_Controller
                     $createdandupdate = "Dibuat pada : " . date('d M Y H:i:s', strtotime($row['created_at']));
                 }
 
+                $check = '';
+                if ($verif == 'ENABLE') {
+                    $check = '<img src="' . base_url('assets/flaticon/verified.png') . '" width="15px" height="15px">';
+                }
+
                 $action = '';
                 if ($row['id_raider'] == $this->session->userdata('id')) {
-                    $action = '<div class="row" style="color:#737373;font-size: 12px; margin-top:-5px">
+                    $action = '<div class="row" style="color:#737373;font-size: 12px; margin-bottom: 5px;">
                     <div class="col-xs-1">
                         <a href="' . base_url('comment/edit/') . $row['id'] . '">
                             Edit
@@ -111,7 +117,7 @@ class Comment extends MY_Controller
                 </div>
                 <div class="col-xs-10">
                 <div class="comment">
-                <b>' . $name . '</b> ' . $admin . '<br>
+                <b>' . $name . '</b> ' . $check . $admin . '<br>
                 <p>' . $row['comment'] . '</p>
                 <p style="color:#737373;font-size: 12px;">
                 ' . $createdandupdate . '

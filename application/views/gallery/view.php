@@ -16,79 +16,6 @@
                 </div>
                 <hr style="margin:5px">
                 <h4 style="margin-bottom:5px"><b>Komentar Gallery</b></h4>
-                <?php
-                $i = 1;
-                foreach ($tbl_comment as $row) {
-                    $name = '';
-                    $role = '';
-                    $src = '';
-
-                    if ($row['id_raider']) {
-                        $tbl_raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['id_raider']));
-                        $file = $this->mymodel->selectDataone('file', array('table_id' => $row['id_raider'], 'table' => 'tbl_raider'));
-
-                        $url = $file['url'];
-                        if(!$url){
-                            $url = 'https://m.nsoproject.com/webfiles/raider/raider_default.png';
-                        }
-
-                        $name = $tbl_raider['name'];
-                        $role = 'Rider';
-                        $src = $url;
-                    } elseif ($row['id_user']) {
-                        $user = $this->mymodel->selectDataone('user', array('id' => $row['id_user']));
-                        $file = $this->mymodel->selectDataone('file', array('table_id' => $row['id_user'], 'table' => 'user'));
-
-                        $url = $file['url'];
-                        if(!$url){
-                            $url = 'https://admin.nsoproject.com/webfiles/users/6950c16c9bcc6995f376b297f163175942635.jpg';
-                        }
-                        
-                        $name = $user['name'];
-                        $role = 'Admin';
-                        $src = $url;
-                    } ?>
-
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <img src="<?= $src ?>" width="50px" height="50px" style="border-radius: 50%">
-                        </div>
-                        <div class="col-xs-10">
-                            <div class="comment">
-                                <b><?= $name ?></b> <?php if ($row['id_user']) {
-                                                            echo "- <i>Admin</i>";
-                                                        } ?><br>
-                                <p><?= $row['comment'] ?></p>
-                                <p style="color:#737373;font-size: 12px;">
-                                    <?php
-                                        if ($row['updated_at']) { ?>
-                                        Diubah pada : <?= date('d M Y H:i:s', strtotime($row['updated_at'])) ?>
-                                    <?php } else { ?>
-                                        Dibuat pada : <?= date('d M Y H:i:s', strtotime($row['created_at'])) ?>
-                                    <?php } ?>
-                                </p>
-                            </div>
-                            <?php if ($row['id_raider'] == $this->session->userdata('id')) { ?>
-                                <die class="row" style="color:#737373;font-size: 12px; margin-top:-5px">
-                                    <div class="col-xs-1">
-                                        <a href="<?= base_url('comment/edit/') . $row['id'] ?>">
-                                            Edit
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-1">
-                                        <a href="<?= base_url('comment/delete/') . $row['id'] . '/'. $row['imagegroup_id']. '/view'?>">
-                                            Hapus
-                                        </a>
-                                    </div>
-                                </die>
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php
-                } ?>
-                <a href="<?= base_url('gallery/commentview/').$id['id']?>">
-                    <p style="margin-bottom:5px" align="center"><b>Komentar Lainnya</b></p>
-                </a>
                 <div class="row">
                     <?php if ($this->session->userdata('id') != NULL) {
                         if ($this->session->userdata('role') == 'Team') { ?>
@@ -121,6 +48,85 @@
                         </div>
                     <?php } ?>
                 </div>
+                <br>
+                <?php
+                $i = 1;
+                foreach ($tbl_comment as $row) {
+                    $name = '';
+                    $src = '';
+
+                    $verif = '';
+
+                    if ($row['id_raider']) {
+                        $tbl_raider = $this->mymodel->selectDataone('tbl_raider', array('id' => $row['id_raider']));
+                        $file = $this->mymodel->selectDataone('file', array('table_id' => $row['id_raider'], 'table' => 'tbl_raider'));
+
+                        $url = $file['url'];
+                        if (!$url) {
+                            $url = 'https://m.nsoproject.com/webfiles/raider/raider_default.png';
+                        }
+
+                        $name = $tbl_raider['name'];
+                        $src = $url;
+                        $verif = $tbl_raider['verificacion'];
+                    } elseif ($row['id_user']) {
+                        $user = $this->mymodel->selectDataone('user', array('id' => $row['id_user']));
+                        $file = $this->mymodel->selectDataone('file', array('table_id' => $row['id_user'], 'table' => 'user'));
+
+                        $url = $file['url'];
+                        if (!$url) {
+                            $url = 'https://admin.nsoproject.com/webfiles/users/6950c16c9bcc6995f376b297f163175942635.jpg';
+                        }
+
+                        $name = $user['name'];
+                        $src = $url;
+                        $verif = '';
+                    } ?>
+
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img src="<?= $src ?>" width="50px" height="50px" style="border-radius: 50%">
+                        </div>
+                        <div class="col-xs-10">
+                            <div class="comment">
+                                <b><?= $name ?></b>
+                                <?php if ($verif == 'ENABLE') { ?>
+                                    <img src="<?= base_url('assets/flaticon/verified.png') ?>" width="15px" height="15px">
+                                <?php }
+                                    if ($row['id_user']) {
+                                        echo "- <i>Admin</i>";
+                                    } ?><br>
+                                <p><?= $row['comment'] ?></p>
+                                <p style="color:#737373;font-size: 12px;">
+                                    <?php
+                                        if ($row['updated_at']) { ?>
+                                        Diubah pada : <?= date('d M Y H:i:s', strtotime($row['updated_at'])) ?>
+                                    <?php } else { ?>
+                                        Dibuat pada : <?= date('d M Y H:i:s', strtotime($row['created_at'])) ?>
+                                    <?php } ?>
+                                </p>
+                            </div>
+                            <?php if ($row['id_raider'] == $this->session->userdata('id')) { ?>
+                                <div class="row" style="color:#737373;font-size: 12px; margin-bottom: 5px;">
+                                    <div class="col-xs-1">
+                                        <a href="<?= base_url('comment/edit/') . $row['id'] ?>">
+                                            Edit
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <a href="<?= base_url('comment/delete/') . $row['id'] . '/' . $row['imagegroup_id'] . '/view' ?>">
+                                            Hapus
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                <?php
+                } ?>
+                <a href="<?= base_url('gallery/commentview/') . $id['id'] ?>">
+                    <p style="margin-bottom:5px" align="center"><b>Komentar Lainnya</b></p>
+                </a>
             </div>
         </div>
     </div>

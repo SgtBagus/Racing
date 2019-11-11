@@ -16,7 +16,8 @@
                 <h2>
                     <?= $rider['name'] ?>
                     <?php if ($rider['verificacion'] == 'ENABLE') {
-                        echo '<i class="fa fa-check-circle" style="color: #3b8dbc"> </i>';
+                        echo '<img src="'.base_url('assets/flaticon/verified.png').'" style=" width: 30px; height: 30px; margin-bottom: 5px;">';
+                        
                     } ?>
                 </h2>
             </div>

@@ -22,7 +22,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        var limit = 3;
+        var limit = 4;
         var start = 0;
         var action = 'inactive';
         var search = 0;
