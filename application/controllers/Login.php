@@ -44,7 +44,6 @@ class Login extends MY_Controller
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$pass = md5($password);
-
 		$session     = $this->mlogin->loginrider($email, $pass);
 		if ($session) {
 			$this->session->set_userdata('session_sop', true);

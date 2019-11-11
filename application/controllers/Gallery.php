@@ -18,6 +18,9 @@ class Gallery extends MY_Controller
         $data['id'] = $this->mymodel->selectDataone('master_imagegroup', array('id' => $id));
         $data['main_image'] = $this->mymodel->selectDataOne('file', array('table_id' => $data['id']['id'], 'table' => 'master_gallery'));
         $data['subpage'] = '<b>' . $data['id']['value'] . '</b>';
+
+        $data['tbl_comment'] = $this->mymodel->selectWithQuery('SELECT * FROM tbl_comment WHERE imagegroup_id = ' . $id . ' ORDER BY created_at DESC LIMIT 3');
+
         $this->template->load('template/template', 'gallery/view', $data);
     }
 
@@ -38,8 +41,8 @@ class Gallery extends MY_Controller
                 $main_image = $this->mymodel->selectDataOne('file', array('table_id' => $row['id'], 'table' => 'master_gallery'));
                 $imagecount = $this->mymodel->selectWithQuery('SELECT count(id) as imagecount from tbl_gallery WHERE status = "ENABLE" AND imagegroup_id = ' . $row['id']);
 
-				$value = strlen($row["value"]) > 20 ? substr($row["value"], 0, 20) . "..." : $row["value"];
-				
+                $value = strlen($row["value"]) > 20 ? substr($row["value"], 0, 20) . "..." : $row["value"];
+
                 $output .= '
                 <div class="col-xs-6">
                     <a href="' . base_url('gallery/view/') . $row['id'] . '" class="a_black">
@@ -51,7 +54,7 @@ class Gallery extends MY_Controller
                                     <b style="font-size:11px">' . $value . '</b><br>
                                     </div>
                                     <div class="col-xs-12" align="center">
-									    Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="'.base_url('assets/flaticon/sidebar_picture.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar
+									    Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="' . base_url('assets/flaticon/sidebar_picture.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar
                                     </div>
                                 </div>
                             </div>
@@ -87,5 +90,26 @@ class Gallery extends MY_Controller
             }
         }
         echo $output;
+    }
+
+    public function comment()
+    {
+        $dt = $_POST['dt'];
+        $dt['id_raider'] = $this->session->userdata('id');
+        $dt['status'] = "ENABLE";
+        $dt['created_at'] = date('Y-m-d H:i:s');
+        $str = $this->db->insert('tbl_comment', $dt);
+
+        $this->alert->alertsuccess('Success Send Data');
+    }
+
+    public function commentview($id)
+    {
+        $data['page'] = 'Gallery';
+        $data['id'] = $this->mymodel->selectDataone('master_imagegroup', array('id' => $id));
+        $data['main_image'] = $this->mymodel->selectDataOne('file', array('table_id' => $data['id']['id'], 'table' => 'master_gallery'));
+        $data['subpage'] = '<b>' . $data['id']['value'] . '</b>';
+
+        $this->template->load('template/template', 'gallery/commentview', $data);
     }
 }

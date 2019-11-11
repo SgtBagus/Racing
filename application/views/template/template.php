@@ -4,7 +4,7 @@
 <head>
   <script type="text/javascript">
     if (screen.width >= 1081) {
-      window.location = "https://www.karyastudio.com";
+      window.location = "https://nsoproject.com/";
     }
   </script>
   <meta charset="utf-8">

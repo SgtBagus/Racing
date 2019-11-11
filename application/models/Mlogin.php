@@ -14,7 +14,7 @@ class Mlogin extends CI_Model {
   }
 
   public function loginrider($email, $pass){
-    $user = $this->mymodel->selectDataone('tbl_raider', array('email'=>$email, 'password' => $pass, 'status' => 'ENABLE'));
+    $user = $this->mymodel->selectDataone('tbl_raider', array('email' => $email, 'password' => $pass, "status" => 'ENABLE'));
     return $user;
   }
 

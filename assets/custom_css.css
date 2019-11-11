@@ -31,6 +31,10 @@ h4 {
     margin-top: -15px;
 }
 
+.content-wrapper {
+    background-color: #fff;
+}
+
 .div-center {
     position: absolute;
     top: 50%;
@@ -311,4 +315,21 @@ p {
 
 .box-title {
     font-weight: bold;
+}
+
+.comment {
+    background-color: #ebedf0;
+    border-radius: 18px;
+    display: inline-block;
+    line-height: 16px;
+    margin-top: 0;
+    min-width: 0;
+    overflow: hidden;
+    padding: 6px 12px 7px 12px;
+}
+
+.img-gallery-view {
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
